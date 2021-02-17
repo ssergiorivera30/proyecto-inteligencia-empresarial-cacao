@@ -1,0 +1,31 @@
+
+Intalación de Tailwindcss en vue 3
+
+Usar este comando debido a desactualización de vue con POSTCSS
+
+npm install tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7
+
+Usar este comando si hay cache de otras instalaciones de atilwindcss
+
+npm cache clean -f
+
+Crear este archivo en la raiz del proyecto
+
+module.exports = {
+    plugins: [
+        require('autoprefixer'),
+        require('tailwindcss')
+    ]
+}
+
+Crear app.css dentro de assets
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Importarlo en el main.js
+
+import '@/assets/styles/app.css'
+
+npm run serve
