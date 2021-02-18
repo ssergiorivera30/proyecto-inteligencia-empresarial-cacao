@@ -6,31 +6,31 @@
     </a>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
       <nav class="flex flex-col mx-4 my-6 space-y-4">
-        <router-link to="/" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <router-link to="/" class="inline-flex items-center justify-center py-3 hover:bg-white hover:text-purple-900 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Inicio</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
         </router-link>
-        <router-link to="/about" class="inline-flex items-center justify-center py-3 text-gray-600 hover:bg-white hover:text-purple-900 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <router-link to="/about" class="inline-flex items-center justify-center py-3 hover:bg-white hover:text-purple-900 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Dashboard</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
         </router-link>
-        <router-link to="/hola" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <router-link to="/hola" class="inline-flex items-center justify-center py-3 hover:bg-white hover:text-purple-900 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Folders</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
           </svg>
         </router-link>
-       <router-link to="/dashboard"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+       <router-link to="/dashboard"  class="inline-flex items-center justify-center py-3 hover:bg-white hover:text-purple-900 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Messages</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </router-link>
-        <router-link to="/ver" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <router-link to="/ver" class="inline-flex items-center justify-center py-3 hover:bg-white hover:text-purple-900 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Documents</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -49,7 +49,7 @@
     </div>
   </aside>
   <div class="flex-grow text-gray-800">
-    <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
+    <header class="flex items-center h-15 px-6 sm:px-10 bg-white">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -64,12 +64,11 @@
       </div>
       <div class="flex flex-shrink-0 items-center ml-auto">
         <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
-          <span class="sr-only">User Menu</span>
+          <span class="sr-only">Menu</span>
           <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
-            <span class="font-semibold">Sergio Rivera</span>
-            <span class="text-sm text-gray-600">Investigador</span>
+            <span class="text-sm font-semibold">Sergio Rivera</span>
           </div>
-          <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
+          <span class="h-10 w-10 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
             <img src="https://lh3.googleusercontent.com/fife/ABSRlIpw6FjG3K8GfnDhXhRadC6xGM6ILdiboApJAYo8sUuF-LH3J2_p0uJHebDYHJxRrpjpDWFKiHa2cBKJsLViOATRm_AYoWAVWBwlsLpTBOGOFkqGR_Mwa3-7WGXg09vKyCB9GYu37Xw4VUTL6oyTuKwvtW28EEHJgKpC-2AxAzHZC9dVoRRbmk-XpPlgVnarhaZ8DkSq4uKpxtdWys9woXrV2QBleXiFbqRy7ytgkTlsKM3-itqNbcr-nb7tfoSvGdMNK61lJGoJ6vUdKkPsF8yi1xoyqlb5bOE8zU6Eyf8R2krVl35N6W394O-uxmNW-5vtiOV5cFesoNe1yMIhq6el5oi64icAkyHrULGFnTk21UOWHzPamx1Q8MRccKIgvwZ4rpe1h672noSXSopRIar8vd84qsNIk3DjM9hyGhSVMH5fqSbV4WXs_1Tg6zkf0AbSKgFL8uV2zUNBkKmyV-gx9jl62623Jfqm8g4PmFGB2BEd-HOE9BLWk-ChjuVE62nQR_RuRUjRfPxtHj6A3HtZqhl7RjVrWcd2xVAA3axRivkwJyZdQj_HVexxXjzahHIAPjA5_0DINyVQaNdGXmqQ3EsPI1Jyx68X1FnHZ4JeEbPPGrM4VOpPDZMBRFHSvsJKE36ML3_7MZaF-7-v-nQ2z8M1sAw_sVGQrz2nyOh36_1MfzEgwO_FaUFpdYo1rinH9Zfs3MXNrIZwd3vGbPiMYTdQgqCQ0tgUuJlL9FTW6w=s32-c" alt="user profile photo" class="h-full w-full object-cover">
           </span>
           <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="hidden sm:block h-6 w-6 text-gray-300">
@@ -78,7 +77,7 @@
         </button>
         <div class="border-l pl-3 ml-3 space-x-1">
           <button class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
-            <span class="sr-only">Notifications</span>
+            <span class="sr-only">Notificaciones</span>
             <span class="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-green-400 rounded-full"></span>
             <span class="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-green-400 rounded-full animate-ping"></span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -86,7 +85,7 @@
             </svg>
           </button>
           <button class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
-            <span class="sr-only">Log out</span>
+            <span class="sr-only">Salir</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>

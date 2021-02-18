@@ -7,7 +7,7 @@
       <div class="max-w-xl mb-6">
         <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
 
-          INA<br class="hidden md:block" />
+          SINA<br class="hidden md:block" />
           
           <span class="my-3 inline-block text-deep-purple-accent-400 text-purple-900 leading-normal">
             <span> Software de Inteligencia de Negocios para el sector Agrícola</span>
