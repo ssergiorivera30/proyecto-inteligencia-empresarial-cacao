@@ -1,16 +1,15 @@
 <template>
-  <main class="p-6 sm:p-10 space-y-6">
-      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="grid gap-10 lg:grid-cols-2">
     <div class="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
       
       <div class="max-w-xl mb-6">
         <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
 
-          SINA<br class="hidden md:block" />
+          Grupo de Investigación Nova<br class="hidden md:block" />
           
           <span class="my-3 inline-block text-deep-purple-accent-400 text-purple-900 leading-normal">
-            <span> Software de Inteligencia de Negocios para el sector Agrícola</span>
+            <span>Sistema de Inteligencia de Negocios para el sector Agrícola</span>
           </span>
         </h2>
         <p class="text-base text-gray-700 md:text-lg">
@@ -42,7 +41,7 @@
     </div>
   </div>
 </div>
-    </main>
+
 </template>
 
 <script>

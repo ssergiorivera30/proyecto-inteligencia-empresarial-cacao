@@ -1,33 +1,60 @@
 <template>
    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+
+      <div class="pt-5 mb-8">
+      <ul class="list-reset flex border-b">
+          <li class="-mb-px mr-1">
+          <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 text-deep-purple-accent-400">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </a>
+        </li>          
+        <li class="-mb-px mr-1">
+         <router-link to="/proyecto/detalles" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white border-l border-t border-r rounded-t text-blue-900">
+            Detalles
+         </router-link>
+        </li>
+        <li class="-mb-px mr-1">
+         <router-link to="/proyecto/formularios" href="#" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer" >
+            Formularios
+         </router-link >
+        </li>
+        <li class="-mb-px mr-1">
+         <router-link to="/proyecto/integrantes"  class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
+            Integrantes
+         </router-link>
+        </li>  
+      </ul>  
+    </div>
       
       <header class="flex items-center justify-between">
-         <h2 class="text-lg leading-6 font-medium text-black">Fomularios</h2>
-         <div class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
+         <h2 class="text-lg leading-6 font-medium text-black">Estrategias Tecnológicas para el fortalecimiento de la cadena...</h2>
+         <router-link to="/proyectos/nuevo-proyecto" class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg width="12" height="20" fill="currentColor" class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
             </svg>
-            Nuevo formulario
-         </div>
+            Nuevo
+         </router-link>
       </header>
       <form class="relative mt-5">
          <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
          </svg>
-         <input type="text" aria-label="Filtrar fomularios" placeholder="Filtrar fomularios" class="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10 focus:border-light-blue-500 focus:outline-none focus:ring-1 focus:ring-light-blue-500">
+         <input type="text" aria-label="Filtrar proyectos" placeholder="Filtrar proyectos" class="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10 focus:border-light-blue-500 focus:outline-none focus:ring-1 focus:ring-light-blue-500">
       </form>
       <ul class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-4 mt-5">
-         <router-link to="/proyectos/nuevo-proyecto"  class="hover:shadow-lg flex rounded-lg">
+         <!-- <router-link to="/proyectos/nuevo-proyecto"  class="hover:shadow-lg flex rounded-lg">
             <div class="hover:border-purple-200 hover:shadow-md w-full flex items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm font-medium py-4 cursor-pointer">
-               Nuevo formulario
+               Nuevo proyecto
             </div>
-         </router-link>
-         <li class="">
+         </router-link> -->
+         <router-link to="/hola" >
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-3 items-center">
                   <div>
                      <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Variables climaticas</dd>
+                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Estrategias Tecnológicas para el fortalecimiento de la cadena...</dd>
                   </div>
                   <div class="mt-4">
                      <dt class="sr-only">Category</dt>
@@ -39,8 +66,8 @@
                   </div>
                </dl>
             </div>
-         </li>
-         <li class="">
+         </router-link>
+         <!-- <li class="">
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
                   <div>
@@ -113,9 +140,31 @@
                   </div>
                </dl>
             </div>
-         </li>
+         </li>-->
       </ul>    
 
 
    </div>
 </template>
+
+<script>
+
+export default {
+    data(){
+      return{
+         name: 'ProyectoDetalles',
+      }
+    },
+    beforeMount: function () {
+
+    },
+    mounted: function(){ 
+      //  console.log(this.$params);
+
+    },
+    methods:{
+       
+    
+    }
+  }
+</script>

@@ -1,23 +1,32 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import ProjectsHome from '../views/Projects/ProjectsHome'
-import NewProject from '../views/Projects/NewProject'
+import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
+import ProyectosHome from '../views/Proyectos/ProyectosHome'
+import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
+import ProyectoFormularios from '../views/Proyectos/ProyectosDetalles/ProyectoFormularios'
+import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIntegrantes'
+
+
+import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
+
 
 const routes = [
   { path: '/',  name: 'Home', component: Home  },
-  { path: '/proyectos', name: 'ProjectsHome', component: ProjectsHome,
+  { path: '/proyectos', name: 'ProyectosInicio', component: ProyectosInicio  },
+
+  { path: '/proyecto/detalles', name: 'ProyectoDetalles', component: ProyectoDetalles, 
     children:
-    [
-      {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        path: 'nuevo-proyecto',
-        component: NewProject
-      }      
-    ] 
+      [
+        { path: 'home', component: ProyectosHome },      
+        { path: 'detalles', component: ProyectoDetalles },      
+      ] 
   },
+  { path: '/proyecto/formularios', name: 'ProyectoFormularios', component: ProyectoFormularios},
+  { path: '/proyecto/integrantes', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
+
+
+  { path: '/proyectos/nuevo-proyecto', name: 'ProyectoNuevo', component: ProyectoNuevo},
   { path: '/hola', name: 'Hola', component: () => import('../views/Hola.vue') },
-  { path: '/dashboard', name: 'Dashboard', component: () => import('../views/Dashboard.vue') },
   { path: '/ver', name: 'Ver', component: () => import('../views/Ver.vue') }
 ]
 

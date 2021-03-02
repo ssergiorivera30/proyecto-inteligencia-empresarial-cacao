@@ -1,36 +1,48 @@
 <template>
-   <section class="px-4 sm:px-6 lg:px-4 xl:px-6 pt-4 pb-4 sm:pb-6 lg:pb-4 xl:pb-6 space-y-4" v-if="project == true">
+   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+
+      <div class="pt-5 mb-8">
+      <ul class="list-reset flex border-b">
+        <li class="-mb-px mr-1">
+            <router-link to="/proyectos" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white border-l border-t border-r rounded-t text-blue-900">
+               Proyectos
+            </router-link>
+        </li>
+       
+      </ul>  
+    </div>
+      
       <header class="flex items-center justify-between">
          <h2 class="text-lg leading-6 font-medium text-black">Proyectos</h2>
-         <div class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
+         <router-link to="/proyectos/nuevo-proyecto" class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg width="12" height="20" fill="currentColor" class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
             </svg>
             Nuevo
-         </div>
+         </router-link>
       </header>
-      <form class="relative">
+      <form class="relative mt-5">
          <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
          </svg>
          <input type="text" aria-label="Filtrar proyectos" placeholder="Filtrar proyectos" class="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10 focus:border-light-blue-500 focus:outline-none focus:ring-1 focus:ring-light-blue-500">
       </form>
-      <ul class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-4">
-         <router-link to="/proyectos/nuevo-proyecto"  class="hover:shadow-lg flex rounded-lg">
+      <ul class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-4 mt-5">
+         <!-- <router-link to="/proyectos/nuevo-proyecto"  class="hover:shadow-lg flex rounded-lg">
             <div class="hover:border-purple-200 hover:shadow-md w-full flex items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm font-medium py-4 cursor-pointer">
                Nuevo proyecto
             </div>
-         </router-link>
-         <li class="">
+         </router-link> -->
+         <router-link to="/proyecto/detalles" >
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
-               <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
+               <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-3 items-center">
                   <div>
                      <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Variables cilimáticas </dd>
+                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Estrategias Tecnológicas para el fortalecimiento de la cadena...</dd>
                   </div>
-                  <div>
+                  <div class="mt-4">
                      <dt class="sr-only">Category</dt>
-                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Sur del Huila</dd>
+                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Cacao</dd>
                   </div>
                   <div class="col-start-2 row-start-1 row-end-3">
                      <dt class="sr-only">Users</dt>
@@ -38,8 +50,8 @@
                   </div>
                </dl>
             </div>
-         </li>
-         <li class="">
+         </router-link>
+         <!-- <li class="">
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
                   <div>
@@ -75,6 +87,26 @@
                </dl>
             </div>
          </li>
+
+          <li class="">
+            <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
+               <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
+                  <div>
+                     <dt class="sr-only">Title</dt>
+                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Mapa organoléptico</dd>
+                  </div>
+                  <div>
+                     <dt class="sr-only">Category</dt>
+                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Sur-occidente del Huila</dd>
+                  </div>
+                  <div class="col-start-2 row-start-1 row-end-3">
+                     <dt class="sr-only">Users</dt>
+                     <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"><img src="https://images.unsplash.com/photo-1546525848-3ce03ca516f6?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"></dd>
+                  </div>
+               </dl>
+            </div>
+         </li>
+
          <li class="">
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
@@ -92,13 +124,11 @@
                   </div>
                </dl>
             </div>
-         </li>
-      </ul>
-   
-   <router-view></router-view>
+         </li>-->
+      </ul>    
 
-   </section>
 
+   </div>
 </template>
 
 <script>
@@ -106,8 +136,7 @@
 export default {
     data(){
       return{
-         name: 'ProjectsHome',
-         project: true,
+         name: 'ProyectosInicio',
       }
     },
     beforeMount: function () {
