@@ -45,17 +45,13 @@
          <input type="text" aria-label="Filtrar fomularios" placeholder="Filtrar fomularios" class="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10 focus:border-light-blue-500 focus:outline-none focus:ring-1 focus:ring-light-blue-500">
       </form>
       <ul class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-4 mt-5">
-         <router-link to="/proyectos/nuevo-proyecto"  class="hover:shadow-lg flex rounded-lg">
-            <div class="hover:border-purple-200 hover:shadow-md w-full flex items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm font-medium py-4 cursor-pointer">
-               Nuevo formulario
-            </div>
-         </router-link>
-         <li class="">
+        
+         <li class="" v-for="form in Forms" :key="form.id">
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-3 items-center">
                   <div>
                      <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Variables climaticas</dd>
+                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">{{ form.name }}</dd>
                   </div>
                   <div class="mt-4">
                      <dt class="sr-only">Category</dt>
@@ -68,6 +64,8 @@
                </dl>
             </div>
          </li>
+
+<!--         
          <li class="">
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
@@ -141,29 +139,45 @@
                   </div>
                </dl>
             </div>
-         </li>
-      </ul>    
+         </li> -->
 
-
+      </ul>
    </div>
 </template>
 
 <script>
 
+import axios from "axios"
+import API_ROUTER from "./../../../services/SERVER_API"
+
+
 export default {
     data(){
       return{
          name: 'ProyectoFormularios',
+         Forms: {}
       }
-    },
-    beforeMount: function () {
-
-    },
+    },    
     mounted: function(){ 
-      //  console.log(this.$params);
+      
+      this.LoadFormsByUsers()
 
     },
     methods:{
+      LoadFormsByUsers: function()
+         {
+         axios.post(API_ROUTER.PHP7_CONTROLLER+"form_load_by_users.php", 
+            { 
+               CodeUserPetition: 1
+            }).then((response) => {
+               this.Forms = response.data 
+               
+               console.log(response.data );
+            })
+            .catch(function (error) {
+               console.log(error);
+            })
+         },        
        
     
     }

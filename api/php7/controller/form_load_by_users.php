@@ -12,13 +12,9 @@ require_once "../model/Response.php";
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
 
-$NameForm = $array['NameForm'];
-$DescriptionForm = $array['DescriptionForm'];
+$CodeUserPetition = $array['CodeUserPetition'];
 
-$create = (new Forms())->CreateForm($conection, $NameForm, $DescriptionForm);
-
-$message 	= $create > 0 ? 'Comienza a crear' : 'Sin cambios registrados';
-$icono 		= $create > 0 ? 'success' : 'warning';
+$create = (new Forms())->LoadFormsByUsers($conection);
 
 $response = new Response();
-$response_view = $response -> ResponseBasic($message, $icono);
+$response_view = $response -> ResponseInfiniteObjects($create);

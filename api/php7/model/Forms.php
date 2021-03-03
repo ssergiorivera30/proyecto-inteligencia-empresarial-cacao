@@ -10,4 +10,11 @@ class Forms
 		$stm -> execute();
 		return $stm->rowCount();
 	}
+
+	function LoadFormsByUsers($conection){
+		$sql = "SELECT fin_auto, fin_name as name, fin_description as description, fin_updated as updated FROM forms_initials WHERE fin_vigence = 1 ";
+		$stm = $conection -> prepare( $sql );
+		$stm -> execute();
+		return $stm->fetchAll();
+	}
 }

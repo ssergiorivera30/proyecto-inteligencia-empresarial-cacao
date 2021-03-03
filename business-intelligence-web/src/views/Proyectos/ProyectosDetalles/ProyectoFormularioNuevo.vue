@@ -20,9 +20,19 @@
           <div class="grid grid-cols-1 gap-6">
               <div class="">
                 <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Nombre del formulario</label>                                
-                <input type="text" class="form-control" placeholder="Nombre completo del proyecto" required>
+                <input type="text" class="form-control" placeholder="Nombre completo del proyecto" required v-model="NameForm">
               </div>           
             </div>
+
+             <div>
+              <label for="about" class="block text-sm font-medium text-gray-700 mb-2">Acerca del formulario</label>
+              <textarea id="about" name="about" rows="3" class="form-control" v-model="DescriptionForm" placeholder="Breve descripción del formulario"></textarea>
+              <p class="mt-1 text-sm text-gray-500">
+                * Si el formulario es público, esta información sera indexada en futuras búsquedas de formularios para la recolección de datos.
+              </p>
+            </div> 
+
+            <lt-div class="lt-toolbar__wrapper" style="left: 882px; position: absolute !important; top: 337px !important; bottom: auto !important; z-index: auto;"><lt-div class="lt-toolbar__premium-icon"></lt-div><lt-div class="lt-toolbar__status-icon lt-toolbar__status-icon-has-no-errors" title="LanguageTool - Revisión ortográfica y gramatical"></lt-div></lt-div>
 
             <!-- <div class="grid grid-cols-3 gap-6">
               <div class="">
@@ -69,10 +79,6 @@
             </div> -->
       
           <div class="px-4 py-3 text-right sm:px-6">
-            <router-link to="/proyecto/formularios/nuevo/crear" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Continuar
-            </router-link>
-
             <button type="submit" 
               class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Continuar
@@ -111,13 +117,16 @@ export default {
           { 
             NameForm: this.NameForm,
             DescriptionForm: this.DescriptionForm
-          })
-          .then(function (response) {
+          }).then((response) => {
             new Noty({ theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
                      type: response.data.icono, text: response.data.mensaje }).show();
           })
-          .catch(function (error) {
+          .catch((error) => {
             console.log(error);
+          })
+          .then(res => {
+            console.log(res);
+            this.$router.push("/proyecto/formularios/nuevo/crear");
           })
       }
        
