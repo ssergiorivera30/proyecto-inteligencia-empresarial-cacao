@@ -46,7 +46,7 @@
 
 <script>
 
-import API_ROUTER from './../services/model.vue'
+import API_ROUTER from './../services/SERVER_API'
 
 export default {
   data(){

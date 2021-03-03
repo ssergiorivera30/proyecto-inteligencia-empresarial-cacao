@@ -2,6 +2,7 @@
 
     const API_ROUTER = {
         API_CONTROLLER : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/controller/',
+        PHP7_CONTROLLER : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/php7/controller/',
         API_FILE_SYSTEMS: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
         API_FACTURATE: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
         API_DOCUMENT: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
@@ -12,4 +13,3 @@
 
 </script>
 
-C:/xampp/htdocs/proyecto-inteligencia-empresarial-cacao/api/file_systems/images
