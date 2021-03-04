@@ -32,7 +32,7 @@
               </p>
             </div> 
 
-            <lt-div class="lt-toolbar__wrapper" style="left: 882px; position: absolute !important; top: 337px !important; bottom: auto !important; z-index: auto;"><lt-div class="lt-toolbar__premium-icon"></lt-div><lt-div class="lt-toolbar__status-icon lt-toolbar__status-icon-has-no-errors" title="LanguageTool - Revisión ortográfica y gramatical"></lt-div></lt-div>
+            
 
             <!-- <div class="grid grid-cols-3 gap-6">
               <div class="">
