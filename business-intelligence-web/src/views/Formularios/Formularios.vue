@@ -148,13 +148,13 @@
 <script>
 
 import axios from "axios"
-import API_ROUTER from "./../../../services/SERVER_API"
+import API_ROUTER from "./../../services/SERVER_API"
 
 
 export default {
     data(){
       return{
-         name: 'ProyectoFormularios',
+         name: 'Formularios',
          Forms: {}
       }
     },    

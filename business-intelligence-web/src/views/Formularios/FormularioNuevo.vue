@@ -1,13 +1,15 @@
 <template>
-   <section class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-      <header class="flex items-center justify-between">
+   <section class="px-4 pt-5 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+      <header class="flex items-center justify-between mb-10">
+        
 
-        <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
+        <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 pr-4 bg-white hover:text-blue-900 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 text-deep-purple-accent-400">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </a>
-         <h2 class="text-lg leading-6 font-medium text-black">Nuevo formulario</h2>
+         <h2 class="text-lg leading-6 font-medium text-black">Crear formulario</h2>
+
          <div class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg width="12" height="20" fill="currentColor" class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
@@ -19,8 +21,8 @@
       <form action="#" method="POST" class="space-y-4 mt-5" @submit.prevent="SaveInitialForm()">              
           <div class="grid grid-cols-1 gap-6">
               <div class="">
-                <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Nombre del formulario</label>                                
-                <input type="text" class="form-control" placeholder="Nombre completo del proyecto" required v-model="NameForm">
+                <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Formulario</label>                                
+                <input type="text" class="form-control" placeholder="Nombre del formulario" required v-model="NameForm">
               </div>           
             </div>
 
@@ -28,11 +30,9 @@
               <label for="about" class="block text-sm font-medium text-gray-700 mb-2">Acerca del formulario</label>
               <textarea id="about" name="about" rows="3" class="form-control" v-model="DescriptionForm" placeholder="Breve descripción del formulario"></textarea>
               <p class="mt-1 text-sm text-gray-500">
-                * Si el formulario es público, esta información sera indexada en futuras búsquedas de formularios para la recolección de datos.
+                * Formulario privado.
               </p>
-            </div> 
-
-            
+            </div>            
 
             <!-- <div class="grid grid-cols-3 gap-6">
               <div class="">
@@ -92,12 +92,12 @@
 
 import axios from "axios"
 import Noty from "noty";
-import API_ROUTER from "./../../../services/SERVER_API"
+import API_ROUTER from "./../../services/SERVER_API"
 
 export default {
     data(){
       return{
-         name: 'ProyectoFormularioNuevo',
+         name: 'FormularioNuevo',
          NameForm: '',
          DescriptionForm: '',
       }

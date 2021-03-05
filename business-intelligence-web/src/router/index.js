@@ -3,10 +3,20 @@ import Home from '../views/Home.vue'
 import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
 import ProyectosHome from '../views/Proyectos/ProyectosHome'
 import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
-import ProyectoFormularios from '../views/Proyectos/ProyectosDetalles/ProyectoFormularios'
 import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIntegrantes'
-import ProyectoFormularioNuevo from '../views/Proyectos/ProyectosDetalles/ProyectoFormularioNuevo'
-import FromularioNuevoCrear from '../views/Proyectos/ProyectosDetalles/FromularioNuevoCrear'
+
+
+import Formularios from '../views/Formularios/Formularios'
+import FormularioNuevo from '../views/Formularios/FormularioNuevo'
+
+
+import FromularioCreadorGeneral from '../views/Formularios/FromularioCreadorGeneral'
+
+import FromularioCreador from '../views/Formularios/FromularioCreador'
+import FromularioCompartir from '../views/Formularios/FromularioCompartir'
+import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
+
+
 
 
 import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
@@ -23,10 +33,20 @@ const routes = [
         { path: 'detalles', component: ProyectoDetalles },      
       ] 
   },
-  { path: '/proyecto/formularios', name: 'ProyectoFormularios', component: ProyectoFormularios},
+  { path: '/proyecto/formularios', name: 'Formularios', component: Formularios},
   { path: '/proyecto/integrantes', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
-  { path: '/proyecto/formularios/nuevo', name: 'ProyectoFormularioNuevo', component: ProyectoFormularioNuevo},
-  { path: '/proyecto/formularios/nuevo/crear', name: 'FromularioNuevoCrear', component: FromularioNuevoCrear},
+  { path: '/proyecto/formularios/nuevo', name: 'FormularioNuevo', component: FormularioNuevo},
+
+
+  { path: '/proyecto/formularios/nuevo/f', name: 'FromularioCreadorGeneral', component: FromularioCreadorGeneral,
+    children:
+      [
+        { path: 'crear', name: 'FromularioCreador', component: FromularioCreador },
+        { path: 'compartir', name: 'FromularioCompartir', component: FromularioCompartir },
+        { path: 'ver', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
+      ]  
+},
+
 
 
   { path: '/proyectos/nuevo-proyecto', name: 'ProyectoNuevo', component: ProyectoNuevo},
