@@ -126,7 +126,7 @@ export default {
           })
           .then(res => {
             console.log(res);
-            this.$router.push("/proyecto/formularios/nuevo/crear");
+            this.$router.push("/proyecto/formularios/nuevo/f/crear");
           })
       }
        
