@@ -10,10 +10,18 @@
          </router-link>
       </header>
       <form class="relative mt-5">
-         <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+
+         <div class="label-intro">
+          <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+            <label class="bg-white text-gray-600 px-1">Nombre del campo</label>
+          </div>
+          <svg width="15" height="15" fill="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
          </svg>
-         <input type="text" aria-label="Filtrar personas" placeholder="Filtrar personas" class=" text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10 focus:border-light-blue-500 focus:outline-none focus:ring-1 focus:ring-light-blue-500">
+          <input type="text" class="text-sm text-black placeholder-gray-500 py-1 pl-10 px-1 outline-none block h-full w-full" required v-model="FechaFinal">
+        </div>
+
+
       </form>
    </div>
 </template>

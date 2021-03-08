@@ -12,3 +12,7 @@
 .btn-green {
     @apply text-white bg-green-500 hover:bg-green-700;
 }
+
+.label-intro{
+    @apply border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1;
+}
