@@ -46,9 +46,14 @@
                <div class="-mt-4 absolute tracking-wider px-1 text-xs">
                   <label class="bg-white text-gray-600 px-1">Tipo de campo</label>
                </div>
-               <input type="text"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  required v-model="FechaFinal">
+               <select type="text"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" required v-model="FechaFinal">
+                  <option value="">Seleccionar opción</option>
+                  <option value="">Texto</option>
+                  <option value="">Entero</option>
+                  <option value="">Buleano</option>
+
+               </select>
             </div>
 
             <div class="py-1 text-left">
@@ -63,8 +68,8 @@
       <div>
 
          <div class="display-fex mt-5">
-               <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)" class="mx-2 px-2 py-1 rounded-full bg-green-400 cursor-pointer"><i class="fa fa-pencil"></i> Editar encabezado</span>
-               <span v-if="editorBasicoForm == 3" @click="OrdenVisivility(1)" class="mx-2 px-2 py-1 rounded-full bg-blue-400 cursor-pointer"><i class="fa fa-plus"></i> Agregar campos</span>
+               <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)" class="mx-2 px-3 py-1 text-white rounded-full bg-green-400 cursor-pointer"><i class="fa fa-pencil"></i> Editar encabezado</span>
+               <span v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)" class="mx-2 px-3 py-1 text-white rounded-full bg-blue-400 cursor-pointer"><i class="fa fa-plus"></i> Agregar campos</span>
          </div>
 
          <div class="px-4 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-3">
