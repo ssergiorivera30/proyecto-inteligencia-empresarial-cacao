@@ -7,10 +7,10 @@ import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIn
 
 
 import Formularios from '../views/Formularios/Formularios'
+
+
+
 import FormularioNuevo from '../views/Formularios/FormularioNuevo'
-
-
-import FromularioCreadorGeneral from '../views/Formularios/FromularioCreadorGeneral'
 
 import FromularioCreador from '../views/Formularios/FromularioCreador'
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
@@ -35,13 +35,13 @@ const routes = [
   },
   { path: '/proyecto/formularios', name: 'Formularios', component: Formularios},
   { path: '/proyecto/integrantes', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
-  { path: '/proyecto/formularios/nuevo', name: 'FormularioNuevo', component: FormularioNuevo},
 
 
-  { path: '/proyecto/formularios/nuevo/f', name: 'FromularioCreadorGeneral', component: FromularioCreadorGeneral,
+
+  { path: '/proyecto/formularios/nuevo', name: 'FormularioNuevo', component: FormularioNuevo,
     children:
       [
-        { path: 'crear', name: 'FromularioCreador', component: FromularioCreador },
+        { path: 'creador', name: 'FromularioCreador', component: FromularioCreador },
         { path: 'compartir', name: 'FromularioCompartir', component: FromularioCompartir },
         { path: 'ver', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  

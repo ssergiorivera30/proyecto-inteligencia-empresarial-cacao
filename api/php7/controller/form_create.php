@@ -17,7 +17,9 @@ $DescriptionForm = $array['DescriptionForm'];
 
 $create = (new Forms())->CreateForm($conection, $NameForm, $DescriptionForm);
 
-$message 	= $create > 0 ? 'Comienza a crear' : 'Sin cambios registrados';
+$create = isset($create) ? $create : 0;
+
+$message 	= $create > 0 ? '✨ Excelente ! ahora construye tu formulario' : '😬 Algo a slaido mal, favor reintentar';
 $icono 		= $create > 0 ? 'success' : 'warning';
 
 $response = new Response();
