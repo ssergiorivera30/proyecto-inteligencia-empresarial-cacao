@@ -2,9 +2,13 @@
 
 class Response
 {
-
-	function ResponseBasic($mensaje, $icono){
+	function ResponseMsgIcono($mensaje, $icono){
 		$response = array('mensaje'=> $mensaje, 'icono' => $icono);
+		echo json_encode($response);
+		exit();
+	}
+	function ResponseMsgIconoCode($mensaje, $icono, $code){
+		$response = array('mensaje'=> $mensaje, 'icono' => $icono, 'code' => $code);
 		echo json_encode($response);
 		exit();
 	}
@@ -17,10 +21,4 @@ class Response
 		echo json_encode($object);
 		exit();
 	}
-	function ResponseMsgIconoCode($mensaje, $icono, $code){
-		$response = array('mensaje'=> $mensaje, 'icono' => $icono, 'code' => $code);
-		echo json_encode($response);
-		exit();
-	}
-	
 }

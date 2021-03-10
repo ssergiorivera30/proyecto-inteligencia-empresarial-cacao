@@ -5,9 +5,10 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 $json = file_get_contents('php://input'); 
 $array = json_decode($json, true);
 
-require_once "../model/Conexion.php";
+require_once "../services/Conexion.php";
+require_once "../services/Response.php";
+
 require_once "../model/Forms.php";
-require_once "../model/Response.php";
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();

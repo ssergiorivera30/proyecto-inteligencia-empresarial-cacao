@@ -12,7 +12,11 @@ import Formularios from '../views/Formularios/Formularios'
 
 import FormularioNuevo from '../views/Formularios/FormularioNuevo'
 
-import FromularioCreador from '../views/Formularios/FromularioCreador'
+import FromularioConstructor from '../views/Formularios/FromularioConstructor'
+import FromularioEditor from '../views/Formularios/FromularioEditor'
+
+
+
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
 import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
 
@@ -38,10 +42,11 @@ const routes = [
 
 
 
-  { path: '/proyecto/formularios/nuevo', name: 'FormularioNuevo', component: FormularioNuevo,
+  { path: '/proyecto/formulario', name: 'FormularioNuevo', component: FormularioNuevo,
     children:
       [
-        { path: 'creador', name: 'FromularioCreador', component: FromularioCreador },
+        { path: 'constructor', name: 'FromularioConstructor', component: FromularioConstructor },
+        { path: 'editor/:id', name: 'FromularioEditor', component: FromularioEditor },        
         { path: 'compartir', name: 'FromularioCompartir', component: FromularioCompartir },
         { path: 'ver', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  
