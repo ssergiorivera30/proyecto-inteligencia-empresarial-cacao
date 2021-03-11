@@ -4,11 +4,15 @@
       <div class="space-y-9 ">
 
          <div class="display-fex mt-5">
-            <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)" class="mx-2 px-3 py-1 text-white rounded-full bg-green-400 cursor-pointer"><i class="fa fa-pencil"></i> Editar encabezado</span>
-            <span v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)" class="mx-2 px-3 py-1 text-white rounded-full bg-blue-400 cursor-pointer"><i class="fa fa-plus"></i> Agregar campos</span>
+            <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)" class="mx-2 px-2 py-1 text-white text-xs rounded-full bg-green-400 cursor-pointer">
+               <i class="fa fa-pencil"></i> Editar encabezado
+            </span>
+            <span v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)" class="mx-2 px-2 py-1 text-white text-xs rounded-full bg-blue-400 cursor-pointer">
+               <i class="fa fa-plus"></i> Agregar campos
+            </span>
          </div>
 
-         <form v-if="editorBasicoForm == 0" action="#" method="POST" class="space-y-6 mt-5" @submit.prevent="SaveInitialForm()">       
+         <form v-if="editorBasicoForm == 0" action="#" method="POST" class="space-y-6 mt-5" @submit.prevent="UpdateInfoBasicForm()">       
             <div class="label-intro">
                <div class="-mt-4 absolute tracking-wider px-1 text-xs">
                   <label class="bg-white text-gray-600 px-1">Nombre del formulario</label>
@@ -40,7 +44,7 @@
             </div>
          </form>
 
-         <PreviewForm v-if="editorBasicoForm == 0" :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>  
+         <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>  
 
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1" autocomplete="off">
             <div class="relative mt-5 grid grid-cols-3 gap-4">
@@ -226,7 +230,9 @@
          this.LoadInfoForm()
       },  
       methods: {
+         UpdateInfoBasicForm: function(){
 
+         },
          AddInput: function(){
   
             this.ArrayInputs.push(               
