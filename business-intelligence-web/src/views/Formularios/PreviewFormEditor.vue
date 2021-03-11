@@ -1,57 +1,97 @@
-<template>
-   <div> 
-      <div class="px-4 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-3">            
-         <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-            <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-               {{ NameForm }}
-            </h2>
-            <p class="text-base text-gray-700 md:text-lg">
-               {{ DescriptionForm }}
-            </p>
-         </div>
-         <div class="max-w-lg space-y-3 sm:mx-auto lg:max-w-xl">
-            <div class="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
-               <div class="mr-2">
-                  <svg class="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8" stroke="currentColor" viewBox="0 0 52 52">
-                     <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                     </svg>
-                  </div>
-               <span class="text-gray-800"></span>
-            </div>
+<template>  
+      <div class="pt-2 pb-16 lg:pt-3">
+        
+         <div class="space-y-3">
 
-            <div class="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
-               <div class="mr-2">
-                  <svg class="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8" stroke="currentColor" viewBox="0 0 52 52">
-                     <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                     </svg>
+            <form @submit.prevent="guardar" class="relative mt-5 grid grid-cols-1 gap-5">
+               <div v-for="input in ArrayInputs" :key="input.id" class="label-intro">
+                  <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                     <label class="bg-white text-gray-600 px-1">{{ input['input']['name'] }}</label>
                   </div>
-               <span class="text-gray-800"></span>
-            </div>
 
-            <div class="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
-               <div class="mr-2">
-                  <svg class="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8" stroke="currentColor" viewBox="0 0 52 52">
-                     <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                     </svg>
-                  </div>
-               <span class="text-gray-800"></span>
-            </div>
+                  <span v-if="input['input']['type'] == 'textarea'">
+                     <textarea 
+                        :placeholder="input['input']['placeholder']" 
+                        :value="input['input']['value']" 
+                        cols="30"
+                        rows="10"
+                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                  </textarea>
+                  </span>
+
+                  <span v-else-if="input['input']['type'] == 'select'">
+                     <select 
+                        :placeholder="input['input']['placeholder']" 
+                        :value="input['input']['value']"
+                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                        <option value="0">Seleccionar opción</option>
+                        <option value="1">Texto</option>
+                        <option value="2">Entero</option>
+                        <option value="3">Buleano</option>
+                     </select>
+                  </span>
+
+                  <span v-else>
+
+                     
+                     <input 
+                        v-if="input['input']['required'] == 'true'"
+                        :type="input['input']['type']" 
+                        :placeholder="input['input']['placeholder']"
+                        :value="input['input']['value']" 
+                        :minlength="input['input']['minlength']"
+                        :maxlength="input['input']['maxlength']"
+                        :min="input['input']['min']"
+                        :max="input['input']['max']"
+                        required 
+                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+
+                        <input 
+                         v-else
+                        :type="input['input']['type']" 
+                        :placeholder="input['input']['placeholder']"
+                        :value="input['input']['value']" 
+                        :minlength="input['input']['minlength']"
+                        :maxlength="input['input']['maxlength']"
+                        :min="input['input']['min']"
+                        :max="input['input']['max']"                        
+                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                  </span>
+               </div>
+
+               <div class="py-1 text-left" v-if="ArrayInputs.length  > 0">
+                  <button type="submit"
+                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400">
+                     Guardar
+                  </button>
+               </div>
+            </form>
+
+            <pre>{{ ArrayInputs  }}</pre>
          </div>
       </div>
-   </div>
 </template>
 
 <script>
 
-export default {
-   props: {
-      NameForm: String,
-      DescriptionForm: String,
-   },
-   data(){
-      return{
-         name: 'PreviewFormEditor',         
+   export default {
+      props: {
+         NameForm: String,
+         DescriptionForm: String,
+         ArrayInputs: Object
+      },
+      data() {
+         return {
+            name: 'PreviewFormEditor',
+         }
+      },
+      mounted: function () {
+
+      },
+      methods: {
+         guardar: function () {
+            console.log('Guardar')
+         }
       }
-    },      
-  }
+   }
 </script>

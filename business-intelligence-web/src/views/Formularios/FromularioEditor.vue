@@ -1,7 +1,7 @@
 <template>
-   <div class="grid grid-cols-2 gap-4">
+   <div class="grid grid-cols-1 gap-4 ">
       
-      <div class="space-y-9">
+      <div class="space-y-9 ">
 
          <div class="display-fex mt-5">
             <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)" class="mx-2 px-3 py-1 text-white rounded-full bg-green-400 cursor-pointer"><i class="fa fa-pencil"></i> Editar encabezado</span>
@@ -23,6 +23,7 @@
                      <label class="bg-white text-gray-600 px-1">Breve descripción</label>
                   </div>
                   <textarea
+                  rows="4"
                      class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                      required v-model="DescriptionForm"></textarea>
                </div>
@@ -34,41 +35,152 @@
             <div class="py-2 text-left">
                <button type="submit"
                   class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Continuar
+                  Actualizar
                </button>
             </div>
          </form>
 
-         <form v-if="editorBasicoForm == 1" class="relative mt-5 grid grid-cols-2 gap-4">
+         <PreviewForm v-if="editorBasicoForm == 0" :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>  
+
+         <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1" autocomplete="off">
+            <div class="relative mt-5 grid grid-cols-3 gap-4">
+            
+            <div class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Tipo de campo</label>
+               </div>
+               <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" 
+                  required
+                  v-model="InputType"
+                  @change="AttributeInputVisivility">
+                  <option value="0">Seleccionar opción</option>
+                  <option value="text">Texto</option>
+                  <option value="number">Número</option>
+                  <option value="select">lista desplegable</option>
+                  <option value="textarea">Textarea</option>
+                  <option value="email">Email</option>
+                  <option value="tel">Tel</option>
+                  <option value="checkbox">Checkbox</option>
+                  <option value="radio">Radio</option>
+                  <option value="file">Archivo</option>
+                  <option value="image">Imagen</option>
+                  <option value="password">Contraseña</option>
+                  <option value="url">URL</option>
+                  <option value="range">Rango</option>
+                  <option value="date">Date</option>
+                  <option value="datetime-local">Datetime</option>
+                  <option value="month">Mes</option>
+                  <option value="week">Semana</option>
+                  <option value="time">Time</option>
+                  <option value="color">Color</option>                 
+               </select>
+            </div>
+
             <div class="label-intro">
                <div class="-mt-4 absolute tracking-wider px-1 text-xs">
                   <label class="bg-white text-gray-600 px-1">Nombre del campo</label>
                </div>
                <input type="text"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  required v-model="NameInput">
+                  required
+                  v-model="InputName"
+                  autofocus>
             </div>
-            <div class="label-intro">
+
+              <div class="label-intro">
                <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Tipo de campo</label>
+                  <label class="bg-white text-gray-600 px-1">Campo obligatorio</label>
                </div>
-               <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" required v-model="TypeInput">
-                  <option value="0">Seleccionar opción</option>
-                  <option value="1">Texto</option>
-                  <option value="2">Entero</option>
-                  <option value="3">Buleano</option>
+               <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" 
+                  required
+                  v-model="InputRequired">
+                  <option value="false">No</option>
+                  <option value="true">Si</option>
+                           
                </select>
             </div>
-            <div class="py-1 text-left">
+
+            <div class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Placeholder</label>
+               </div>
+               <input type="text"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  v-model="InputPlaceholder">
+            </div>
+
+            <div class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Valor por defecto</label>
+               </div>
+               <input type="text"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  v-model="InputValue">
+            </div>
+
+            <div class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Longitud mínima</label>
+               </div>
+               <input type="number"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  required v-model="InputMinlength">
+            </div>
+
+            <div class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Longitud máxima</label>
+               </div>
+               <input type="number"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  required v-model="InputMaxlength" @keyup="SizeAndMaxLenght()">
+            </div>
+
+            <div v-if="Size == 1" class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Tamaño</label>
+               </div>
+               <input type="number"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  required v-model="InputSize">
+            </div>
+
+            
+
+
+            <div v-if="MinMax == 1" 
+               class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Min</label>
+               </div>
+               <input type="text"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  v-model="InputMin"
+                  required>
+            </div>
+
+            <div v-if="MinMax == 1" 
+               class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
+                  <label class="bg-white text-gray-600 px-1">Max</label>
+               </div>
+               <input type="text"
+                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                  v-model="InputMax"
+                  required>
+            </div>
+            </div>
+
+            <div class="py-1 mt-5 text-left">
                <button type="submit"
                   class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Guardar
+                  Crear
                </button>
             </div>
-         </form>
+         </form>        
       </div>
 
-      <PreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>
+      <PreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
 
    </div>
 </template>
@@ -79,10 +191,12 @@
    import API_ROUTER from "./../../services/SERVER_API"
 
    import PreviewFormEditor from "./PreviewFormEditor"
+   import PreviewForm from "./PreviewForm"
 
    export default {
       components:{
-         PreviewFormEditor
+         PreviewFormEditor,
+         PreviewForm,
       },
       data() {
          return {
@@ -91,18 +205,59 @@
             NameForm: '',
             DescriptionForm: '',
             editorBasicoForm: 1,
-            NameInput: '',
-            TypeInput: '',
-         }
-      },
-      beforeMount: function () {
+            MinMax: 0,
+            Size: 0,
 
-      },
+            InputName: '',
+            InputType: '',
+            InputRequired: false,
+            InputPlaceholder: '',
+            InputValue: '',
+            InputMinlength: '',
+            InputMaxlength: '',
+            InputSize: '',
+            InputMin: '',
+            InputMax: '',
+
+            ArrayInputs: [],
+         }
+      },   
       mounted: function () {
          this.LoadInfoForm()
-
-      },
+      },  
       methods: {
+
+         AddInput: function(){
+  
+            this.ArrayInputs.push(               
+               { 
+                  input: {
+                     'name': this.InputName,
+                     'type': this.InputType,
+                     'required': this.InputRequired,                     
+                     'placeholder': this.InputPlaceholder,
+                     'value': this.InputValue,
+                     'minlength': this.InputMinlength,
+                     'maxlength': this.InputMaxlength,
+                     'size': this.InputSize,
+                     'min': this.InputMin,
+                     'max': this.InputMax,                   
+                  }
+               }
+            );
+        
+            this.InputName= ''
+            this.InputType= ''
+            this.InputRequired= false
+            this.InputPlaceholder= ''
+            this.InputValue= ''
+            this.InputMinlength= ''
+            this.InputMaxlength= ''
+            this.InputSize = ''
+            this.InputMin = ''
+            this.InputMax = ''
+            
+         },
          LoadInfoForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
                {
@@ -131,6 +286,43 @@
 
          OrdenVisivility: function(orden){
             this.editorBasicoForm = orden
+         },
+
+         SizeAndMaxLenght: function(){
+            
+            this.InputSize = this.InputMaxlength
+
+         },
+
+         AttributeInputVisivility: function(){
+
+            this.MinMax = 0
+            this.Size = 0
+
+            if(   this.InputType == 'number' || 
+                  this.InputType == 'range' || 
+                  this.InputType == 'date' || 
+                  this.InputType == 'datetime' || 
+                  this.InputType == 'month' || 
+                  this.InputType == 'hour' || 
+                  this.InputType == 'week'){
+
+                  this.MinMax = 1
+            }
+
+            if(   this.InputType == 'text' || 
+                  this.InputType == 'search' || 
+                  this.InputType == 'tel' || 
+                  this.InputType == 'url' || 
+                  this.InputType == 'email' || 
+                  this.InputType == 'password' ){
+
+                  this.Size = 1
+            }
+            
+            console.log(this.InputType)
+            console.log(this.InputSize)
+
          }
 
 

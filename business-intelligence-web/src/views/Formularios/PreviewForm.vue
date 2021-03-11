@@ -8,35 +8,7 @@
             <p class="text-base text-gray-700 md:text-lg">
                {{ DescriptionForm }}
             </p>
-         </div>
-         <div class="max-w-lg space-y-3 sm:mx-auto lg:max-w-xl">
-            <div class="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
-               <div class="mr-2">
-                  <svg class="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8" stroke="currentColor" viewBox="0 0 52 52">
-                     <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                     </svg>
-                  </div>
-               <span class="text-gray-800"></span>
-            </div>
-
-            <div class="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
-               <div class="mr-2">
-                  <svg class="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8" stroke="currentColor" viewBox="0 0 52 52">
-                     <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                     </svg>
-                  </div>
-               <span class="text-gray-800"></span>
-            </div>
-
-            <div class="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
-               <div class="mr-2">
-                  <svg class="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8" stroke="currentColor" viewBox="0 0 52 52">
-                     <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                     </svg>
-                  </div>
-               <span class="text-gray-800"></span>
-            </div>
-         </div>
+         </div>  
       </div>
    </div>
 </template>
