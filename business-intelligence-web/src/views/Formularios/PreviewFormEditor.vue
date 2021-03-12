@@ -1,10 +1,42 @@
 <template>  
-      <div class="pt-2 pb-16 lg:pt-3">
+      <div class="pt-2 pb-5 lg:pt-3">
         
          <div class="space-y-3">
 
             <form @submit.prevent="guardar" class="relative mt-5 grid grid-cols-1 gap-5">
-               <div v-for="input in ArrayInputs" :key="input.id" class="label-intro">
+
+                <div v-for="input in ArrayInputs" :key="input.id">
+
+                  <span v-if="input['input']['type'] == 'checkbox'">
+                     <div class="block">
+                        <span class="text-gray-700">{{ input['input']['name'] }}</span>
+                        <div class="mt-2">
+                           <div v-for="option in input['input']['ifCheckbox']" :key="option">
+                              <label class="inline-flex items-center">
+                                 <input type="checkbox">
+                                 <span class="ml-2">{{ option['option']['value']}}</span>
+                              </label>
+                           </div>                      
+                        </div>
+                        </div>
+                  </span>
+
+                  <span v-if="input['input']['type'] == 'radio'">
+                     <div class="block">
+                        <span class="text-gray-700">{{ input['input']['name'] }}</span>
+                        <div class="mt-2">
+                           <div v-for="option in input['input']['ifCheckbox']" :key="option">
+                              <label class="inline-flex items-center">
+                                 <input type="radio" :name="input['input']['name']">
+                                 <span class="ml-2">{{ option['option']['value']}}</span>
+                              </label>
+                           </div>                      
+                        </div>
+                        </div>
+                  </span>
+
+
+                  <div class="label-intro" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
                   <div class="-mt-4 absolute tracking-wider px-1 text-xs">
                      <label class="bg-white text-gray-600 px-1">{{ input['input']['name'] }}</label>
                   </div>
@@ -25,14 +57,13 @@
                         :value="input['input']['value']"
                         class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
                         <option value="0">Seleccionar opción</option>
-                        <option value="1">Texto</option>
-                        <option value="2">Entero</option>
-                        <option value="3">Buleano</option>
+                        <option v-for="option in input['input']['ifCheckbox']" :key="option" value="">{{ option['option']['value'] }}</option>
                      </select>
                   </span>
 
-                  <span v-else>
+                                 
 
+                  <span v-else>
                      
                      <input 
                         v-if="input['input']['required'] == 'true'"
@@ -57,6 +88,7 @@
                         :max="input['input']['max']"                        
                         class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
                   </span>
+                  </div>
                </div>
 
                <div class="py-1 text-left" v-if="ArrayInputs.length  > 0">
@@ -67,7 +99,7 @@
                </div>
             </form>
 
-            <pre>{{ ArrayInputs  }}</pre>
+            <details><pre>{{ ArrayInputs  }}</pre></details>
          </div>
       </div>
 </template>

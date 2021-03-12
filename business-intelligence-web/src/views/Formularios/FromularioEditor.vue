@@ -1,4 +1,5 @@
 <template>
+   <div class="px-4 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
    <div class="grid grid-cols-1 gap-4 ">
       
       <div class="space-y-9 ">
@@ -14,8 +15,8 @@
 
          <form v-if="editorBasicoForm == 0" action="#" method="POST" class="space-y-6 mt-5" @submit.prevent="UpdateInfoBasicForm()">       
             <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Nombre del formulario</label>
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Nombre del formulario</label>
                </div>
                <input type="text"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
@@ -23,8 +24,8 @@
             </div>
             <div>
                <div class="label-intro">
-                  <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                     <label class="bg-white text-gray-600 px-1">Breve descripción</label>
+                  <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                     <label class="bg-white text-gray-800 px-1">Breve descripción</label>
                   </div>
                   <textarea
                   rows="4"
@@ -43,21 +44,28 @@
                </button>
             </div>
          </form>
+      
+      </div>
+      
 
-         <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>  
+         <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm"/> 
+
+         <div class="space-y-9 ">
+
+         <PreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
 
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1" autocomplete="off">
-            <div class="relative mt-5 grid grid-cols-3 gap-4">
+            <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4">
             
             <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Tipo de campo</label>
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Tipo de campo</label>
                </div>
                <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" 
                   required
                   v-model="InputType"
                   @change="AttributeInputVisivility">
-                  <option value="0">Seleccionar opción</option>
+                  <option value="">Seleccionar opción</option>
                   <option value="text">Texto</option>
                   <option value="number">Número</option>
                   <option value="select">lista desplegable</option>
@@ -67,10 +75,8 @@
                   <option value="checkbox">Checkbox</option>
                   <option value="radio">Radio</option>
                   <option value="file">Archivo</option>
-                  <option value="image">Imagen</option>
                   <option value="password">Contraseña</option>
                   <option value="url">URL</option>
-                  <option value="range">Rango</option>
                   <option value="date">Date</option>
                   <option value="datetime-local">Datetime</option>
                   <option value="month">Mes</option>
@@ -81,8 +87,8 @@
             </div>
 
             <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Nombre del campo</label>
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Nombre del campo</label>
                </div>
                <input type="text"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
@@ -92,8 +98,8 @@
             </div>
 
               <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Campo obligatorio</label>
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Campo obligatorio</label>
                </div>
                <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" 
                   required
@@ -103,77 +109,103 @@
                            
                </select>
             </div>
+            
 
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Placeholder</label>
+            <div  v-if="CheckRadio == 0" class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Placeholder</label>
                </div>
                <input type="text"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                   v-model="InputPlaceholder">
             </div>
 
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Valor por defecto</label>
+            <div v-if="CheckRadio == 0"  class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Valor por defecto</label>
                </div>
                <input type="text"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                   v-model="InputValue">
             </div>
 
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Longitud mínima</label>
+            <div  v-if="CheckRadio == 0" class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Longitud mínima</label>
                </div>
                <input type="number"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                   required v-model="InputMinlength">
             </div>
 
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Longitud máxima</label>
+            <div  v-if="CheckRadio == 0" class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Longitud máxima</label>
                </div>
                <input type="number"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                   required v-model="InputMaxlength" @keyup="SizeAndMaxLenght()">
             </div>
 
-            <div v-if="Size == 1" class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Tamaño</label>
+            <div v-if="Size == 1 && CheckRadio == 0" class="label-intro">
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Tamaño</label>
                </div>
                <input type="number"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                   required v-model="InputSize">
             </div>
-
-            
-
-
-            <div v-if="MinMax == 1" 
+        
+            <div v-if="MinMax == 1 && CheckRadio == 0" 
                class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Min</label>
+               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                  <label class="bg-white text-gray-800 px-1">Min</label>
                </div>
                <input type="text"
                   class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
                   v-model="InputMin"
                   required>
+               </div>
+
+               <div v-if="MinMax == 1 && CheckRadio == 0" 
+                  class="label-intro">
+                  <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                     <label class="bg-white text-gray-800 px-1">Max</label>
+                  </div>
+                  <input type="text"
+                     class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
+                     v-model="InputMax"
+                     required>
+               </div>            
             </div>
 
-            <div v-if="MinMax == 1" 
-               class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Max</label>
+            <span v-if="CheckRadio == 1" class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
+               <div class="label-intro" v-for="ACheck in ArrayCheckbox" :key="ACheck.id">
+                  <div class="-mt-4 absolute tracking-wider px-1 text-sm">
+                     <label class="bg-white text-gray-800 px-1">Opción</label>
+                  </div>
+                  <input type="text" class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" v-model="ACheck['option']['value']">
                </div>
-               <input type="text"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  v-model="InputMax"
-                  required>
-            </div>
-            </div>
+
+               <!-- <div  v-if="CheckRadio == 1" class="">
+                  <button type="button"
+                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     <i class="fa fa-trash"></i>      
+                  </button>
+               </div> -->
+
+               
+               <button type="button" v-if="CheckRadio == 1" @click="AddCheckBox"
+                  class="grid-cols-2 mr-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     <i class="fa fa-plus pt-1 mr-2"></i> Agregar opción
+               </button>
+            </span>   
+
+            
+                     
+
+            
+
 
             <div class="py-1 mt-5 text-left">
                <button type="submit"
@@ -184,8 +216,11 @@
          </form>        
       </div>
 
-      <PreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
+   
 
+         <pre>{{ ArrayCheckbox }}</pre>
+
+   </div>
    </div>
 </template>
 <script>
@@ -211,6 +246,7 @@
             editorBasicoForm: 1,
             MinMax: 0,
             Size: 0,
+            CheckRadio: 0,
 
             InputName: '',
             InputType: '',
@@ -224,12 +260,21 @@
             InputMax: '',
 
             ArrayInputs: [],
+            ArrayCheckbox: [],
          }
       },   
       mounted: function () {
          this.LoadInfoForm()
       },  
       methods: {
+         AddCheckBox(){
+            this.ArrayCheckbox.push({
+               option:{
+                  value: ''
+               }
+            })
+
+         },
          UpdateInfoBasicForm: function(){
 
          },
@@ -247,8 +292,10 @@
                      'maxlength': this.InputMaxlength,
                      'size': this.InputSize,
                      'min': this.InputMin,
-                     'max': this.InputMax,                   
+                     'max': this.InputMax,
+                     'ifCheckbox':  this.ArrayCheckbox,               
                   }
+                  
                }
             );
         
@@ -263,6 +310,8 @@
             this.InputMin = ''
             this.InputMax = ''
             
+            this.ArrayCheckbox = []
+            
          },
          LoadInfoForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
@@ -275,19 +324,12 @@
                      window.history.back()
                   }
 
-                  console.log(response['data']['datos'][0]['name']);
-
                   this.NameForm = response['data']['datos'][0]['name']
                   this.DescriptionForm = response['data']['datos'][0]['description']
 
-                  // new Noty({
-                  //    theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
-                  //    type: response.data.icono, text: response.data.mensaje
-                  // }).show();
-               })
-               .catch(() => {
-                  alert('Error de conexión')
-               })
+            }).catch(() => {
+               alert('Error de conexión')
+            })
          },
 
          OrdenVisivility: function(orden){
@@ -304,9 +346,9 @@
 
             this.MinMax = 0
             this.Size = 0
+            this.CheckRadio = 0
 
-            if(   this.InputType == 'number' || 
-                  this.InputType == 'range' || 
+            if(   this.InputType == 'number' ||
                   this.InputType == 'date' || 
                   this.InputType == 'datetime' || 
                   this.InputType == 'month' || 
@@ -325,6 +367,17 @@
 
                   this.Size = 1
             }
+
+            if(   this.InputType == 'checkbox' || 
+                  this.InputType == 'radio' ||
+                  this.InputType == 'select' ){
+
+                  this.CheckRadio = 1
+            }
+
+
+            
+
             
             console.log(this.InputType)
             console.log(this.InputSize)

@@ -1,0 +1,93 @@
+<template>
+   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+
+      <div class="pt-5 mb-8">
+         <ul class="list-reset flex border-b">
+            <li class="-mb-px mr-1">
+            <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 text-deep-purple-accent-400">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+               </svg>
+            </a>
+         </li>          
+         <li class="-mb-px mr-1">
+            <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white">
+               Atrás
+            </a>
+         </li>
+         <li class="-mb-px mr-1">
+            <router-link to="/proyecto/formularios" href="#" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white border-l border-t border-r rounded-t text-blue-900" >
+               Formulario
+            </router-link >
+         </li>
+         <li class="-mb-px mr-1">
+            <router-link :to="'/proyecto/formulario/editor/'+ this.$route.params.id_formulario" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
+               Datos
+            </router-link>
+         </li>           
+         </ul>  
+      </div>
+      
+      <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>
+
+      <header class="flex items-center justify-between">
+         <h2 class="text-lg leading-6 font-medium text-black">Fomularios</h2>
+         <router-link :to="'/proyecto/formulario/editor/'+ this.$route.params.id_formulario" class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
+            <svg width="12" height="20" fill="currentColor" class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
+               <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
+            </svg>
+            Editar formulario
+         </router-link>
+      </header>
+
+    
+   </div>
+</template>
+
+<script>
+
+import axios from "axios"
+import API_ROUTER from "./../../services/SERVER_API"
+ import PreviewForm from "./../../components/Formularios/PreviewForm"
+
+export default {
+   components:{
+         PreviewForm
+      },
+    data(){
+      return{
+         name: 'FormularioDetalles',
+         OrderForm: 'load',
+         NameForm: '',
+         DescriptionForm: '',
+      }
+    },    
+    mounted: function(){ 
+      
+      this.LoadInfoForm()
+
+    },
+    methods:{
+      LoadInfoForm: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
+               {
+                  Form: this.$route.params.id_formulario,
+                  OrderForm: this.OrderForm
+               }).then((response) => {
+
+                  if(response.data.mensaje != 1){
+                     window.history.back()
+                  }
+
+                  this.NameForm = response['data']['datos'][0]['name']
+                  this.DescriptionForm = response['data']['datos'][0]['description']
+               })
+               .catch(() => {
+                  alert('Error de conexión')
+               })
+         },       
+       
+    
+    }
+  }
+</script>

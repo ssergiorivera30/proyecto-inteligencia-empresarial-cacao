@@ -4,7 +4,7 @@
          <form action="#" method="POST" class="space-y-6 mt-5" @submit.prevent="SaveInitialForm()">           
             <div class="label-intro">
                <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Nombre del formulario</label>
+                  <label class="bg-white text-gray-600 px-1">Formulario nuevo</label>
                </div>
                <input type="text" class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" required v-model="NameForm">
             </div>
@@ -25,7 +25,12 @@
             </div>
          </form>         
       </div>
-      <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>     
+      <PreviewForm v-if="NameForm != '' " :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>  
+
+      <div v-else class="">
+         <img :src="img_form_person" alt="" class=" pt-1 pb-20 px-20">
+      </div>
+
    </div>
 </template>
 <script>
@@ -43,6 +48,7 @@
       data() {
          return {
             name: 'FromularioConstructor',
+            img_form_person: API_ROUTER.API_UI+'/form_information_yellow.svg',
             NameForm: '',
             DescriptionForm: '',     
          }
