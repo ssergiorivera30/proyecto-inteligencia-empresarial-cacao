@@ -55,89 +55,66 @@
          <PreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
 
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1" autocomplete="off">
-            <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4">
-            
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Tipo de campo</label>
-               </div>
-               <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" 
-                  required
-                  v-model="InputType"
-                  @change="AttributeInputVisivility">
-                  <option value=""></option>
-                  <option value="text">Respuesta corta</option>
-                  <option value="number">Númerico</option>
-                  <option value="select">Lista desplegable</option>
-                  <option value="textarea">Parrafo</option>
-                  <option value="email">Email</option>
-                  <option value="tel">Tel</option>
-                  <option value="checkbox">Selección multiple</option>
-                  <option value="radio">Selección única</option>
-                  <option value="file">Archivo</option>
-                  <option value="password">Contraseña</option>
-                  <option value="url">Dirección web</option>
-                  <option value="date">Fecha</option>
-                  <option value="datetime-local">Fecha y hora</option>
-                  <option value="time">Hora</option>
-                  <option value="month">Mes</option>
-                  <option value="week">Semana</option>                  
-                  <option value="color">Color</option>                 
-               </select>
-            </div>
+            <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4 gap-y-8">
 
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Nombre del campo</label>
-               </div>
-               <input type="text"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  required
-                  v-model="InputName"
-                  autofocus>
-            </div>
 
-              <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Campo obligatorio</label>
-               </div>
-               <select class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" 
+               <div class="block">
+                  <label><span class="text-gray-700">Tipo de campo</span></label>                     
+                     <select class="px-3 block rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full" 
+                        required
+                        v-model="InputType"
+                        @change="AttributeInputVisivility">
+                        <option value=""></option>
+                        <option value="text">Respuesta corta</option>
+                        <option value="number">Númerico</option>
+                        <option value="select">Lista desplegable</option>
+                        <option value="textarea">Parrafo</option>
+                        <option value="email">Email</option>
+                        <option value="tel">Tel</option>
+                        <option value="checkbox">Selección multiple</option>
+                        <option value="radio">Selección única</option>
+                        <option value="file">Archivo</option>
+                        <option value="password">Contraseña</option>
+                        <option value="url">Dirección web</option>
+                        <option value="date">Fecha</option>
+                        <option value="datetime-local">Fecha y hora</option>
+                        <option value="time">Hora</option>
+                        <option value="month">Mes</option>
+                        <option value="week">Semana</option>                  
+                        <option value="color">Color</option>                 
+                     </select>
+              </div>
+              
+
+              <div class="block">
+                  <label><span class="text-gray-700">Nombre del campo</span></label>
+                     <input type="text" class="px-3 block rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full" 
+                     placeholder="" required
+                     v-model="InputName">                     
+              </div>
+
+              <div class="block">
+                  <label><span class="text-gray-700">Obligatorio</span></label>                    
+                  <select class="px-3 block rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full" 
                   required
                   v-model="InputRequired">
                   <option value="false">No</option>
-                  <option value="true">Si</option>
-                           
-               </select>
-            </div>
-            
-
-            <div  v-if="CheckRadio == 0" class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Placeholder</label>
-               </div>
-               <input type="text"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  v-model="InputPlaceholder">
-            </div>
-
-            <div v-if="CheckRadio == 0"  class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Valor por defecto</label>
-               </div>
-               <input type="text"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  v-model="InputValue">
-            </div>
-
-            <div class="block my-9">
-               <label >
-                <span class="text-gray-700">Full name</span>
-                <input type="text" class="px-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full" placeholder="">
-              </label>
+                  <option value="true">Si</option>                           
+               </select>                     
               </div>
 
-    
-                            
+              <div class="block" v-if="CheckRadio == 0" >
+                  <label><span class="text-gray-700">Placeholder</span></label>
+                     <input type="text" class="px-3 block rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full"
+                     v-model="InputPlaceholder">                     
+              </div>
+
+              <div class="block" v-if="CheckRadio == 0" >
+                  <label><span class="text-gray-700">Valor por defecto</span></label>
+                     <input type="text" class="px-3 block rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full"
+                     v-model="InputValue">                     
+              </div>
+            
             </div>
 
             <span v-if="CheckRadio == 1" class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
