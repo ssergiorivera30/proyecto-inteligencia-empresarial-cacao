@@ -65,23 +65,23 @@
                   required
                   v-model="InputType"
                   @change="AttributeInputVisivility">
-                  <option value="">Seleccionar opción</option>
-                  <option value="text">Texto</option>
-                  <option value="number">Número</option>
-                  <option value="select">lista desplegable</option>
-                  <option value="textarea">Textarea</option>
+                  <option value=""></option>
+                  <option value="text">Respuesta corta</option>
+                  <option value="number">Númerico</option>
+                  <option value="select">Lista desplegable</option>
+                  <option value="textarea">Parrafo</option>
                   <option value="email">Email</option>
                   <option value="tel">Tel</option>
-                  <option value="checkbox">Checkbox</option>
-                  <option value="radio">Radio</option>
+                  <option value="checkbox">Selección multiple</option>
+                  <option value="radio">Selección única</option>
                   <option value="file">Archivo</option>
                   <option value="password">Contraseña</option>
-                  <option value="url">URL</option>
-                  <option value="date">Date</option>
-                  <option value="datetime-local">Datetime</option>
+                  <option value="url">Dirección web</option>
+                  <option value="date">Fecha</option>
+                  <option value="datetime-local">Fecha y hora</option>
+                  <option value="time">Hora</option>
                   <option value="month">Mes</option>
-                  <option value="week">Semana</option>
-                  <option value="time">Time</option>
+                  <option value="week">Semana</option>                  
                   <option value="color">Color</option>                 
                </select>
             </div>
@@ -129,54 +129,15 @@
                   v-model="InputValue">
             </div>
 
-            <div  v-if="CheckRadio == 0" class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Longitud mínima</label>
-               </div>
-               <input type="number"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  required v-model="InputMinlength">
-            </div>
+            <div class="block my-9">
+               <label >
+                <span class="text-gray-700">Full name</span>
+                <input type="text" class="px-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-600 outline-none block h-full w-full" placeholder="">
+              </label>
+              </div>
 
-            <div  v-if="CheckRadio == 0" class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Longitud máxima</label>
-               </div>
-               <input type="number"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  required v-model="InputMaxlength" @keyup="SizeAndMaxLenght()">
-            </div>
-
-            <div v-if="Size == 1 && CheckRadio == 0" class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Tamaño</label>
-               </div>
-               <input type="number"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  required v-model="InputSize">
-            </div>
-        
-            <div v-if="MinMax == 1 && CheckRadio == 0" 
-               class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                  <label class="bg-white text-gray-800 px-1">Min</label>
-               </div>
-               <input type="text"
-                  class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                  v-model="InputMin"
-                  required>
-               </div>
-
-               <div v-if="MinMax == 1 && CheckRadio == 0" 
-                  class="label-intro">
-                  <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                     <label class="bg-white text-gray-800 px-1">Max</label>
-                  </div>
-                  <input type="text"
-                     class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                     v-model="InputMax"
-                     required>
-               </div>            
+    
+                            
             </div>
 
             <span v-if="CheckRadio == 1" class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
@@ -207,7 +168,7 @@
             
 
 
-            <div class="py-1 mt-5 text-left">
+            <div v-if="InputType != '' && InputName != '' "  class="py-1 mt-5 text-left">
                <button type="submit"
                   class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Crear
@@ -375,16 +336,7 @@
                   this.CheckRadio = 1
             }
 
-
-            
-
-            
-            console.log(this.InputType)
-            console.log(this.InputSize)
-
          }
-
-
       }
    }
 </script>
