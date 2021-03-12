@@ -36,7 +36,7 @@
 
                <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
                  
-                  <label><span class="text-gray-700 capitalize">{{ input['input']['name'] }}</span></label>
+                  <label><span class="text-gray-700 font-medium capitalize">{{ input['input']['name'] }}</span></label>
 
                   <span v-if="input['input']['type'] == 'textarea'">
                      <textarea 
