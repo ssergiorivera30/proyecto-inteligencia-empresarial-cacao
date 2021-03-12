@@ -1,8 +1,8 @@
 <template>
-   <div class="px-4 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-      <div class="grid grid-cols-1 gap-4 ">
+   <div class="px-4 mb-10 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+      <div class="grid grid-cols-1 gap-4 mb-10 ">
 
-         <div class="space-y-9 ">
+      
 
             <div class="display-fex mt-5">
                <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)"
@@ -15,24 +15,15 @@
                </span>
             </div>
 
-            <form v-if="editorBasicoForm == 0" action="#" method="POST" class="space-y-6 mt-5"
-               @submit.prevent="UpdateInfoBasicForm()">
-               <div class="label-intro">
-                  <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                     <label class="bg-white text-gray-800 px-1">Nombre del formulario</label>
-                  </div>
-                  <input type="text"
-                     class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                     required v-model="NameForm">
+            <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm()" class="grid gap-x-4 gap-y-8 mt-5" >
+               <div class="block">
+                   <label><span class="text-gray-700">Nombre del formulario</span></label>
+                  <input type="text" class="form-control2" required v-model="NameForm">
                </div>
                <div>
-                  <div class="label-intro">
-                     <div class="-mt-4 absolute tracking-wider px-1 text-sm">
-                        <label class="bg-white text-gray-800 px-1">Breve descripción</label>
-                     </div>
-                     <textarea rows="4"
-                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full"
-                        required v-model="DescriptionForm"></textarea>
+                  <div class="block">
+                     <label><span class="text-gray-700">Descripción</span></label>
+                     <textarea rows="4" class="form-control2 py-2" required v-model="DescriptionForm"></textarea>
                   </div>
                   <p class="mt-1 text-sm text-gray-500">
                      * Formulario privado.
@@ -47,19 +38,15 @@
                </div>
             </form>
 
-         </div>
-
-
+   
          <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
-
-         <div class="space-y-9 ">
-
-            <PreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
+      
+         <PreviewFormEditor v-if="ArrayInputs.length" :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
 
             <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1" autocomplete="off">
-               <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4 gap-y-8">
+               <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
                   <div class="block">
-                     <label><span class="text-gray-700">Tipo de campo</span></label>
+                     <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
                      <select class="form-control2" required v-model="InputType" @change="AttributeInputVisivility">
                         <option value=""></option>
                         <option value="text">Respuesta corta</option>
@@ -83,12 +70,12 @@
                   </div>
 
                   <div class="block">
-                     <label><span class="text-gray-700">Nombre del campo</span></label>
+                     <label><span class="text-gray-700 font-semibold">Nombre del campo</span></label>
                      <input type="text" class="form-control2" placeholder="" required v-model="InputName">
                   </div>
 
                   <div class="block">
-                     <label><span class="text-gray-700">Obligatorio</span></label>
+                     <label><span class="text-gray-700 font-semibold">Obligatorio</span></label>
                      <select class="form-control2" required v-model="InputRequired">
                         <option value="false">No</option>
                         <option value="true">Si</option>
@@ -96,12 +83,12 @@
                   </div>
 
                   <div class="block" v-if="CheckRadio == 0">
-                     <label><span class="text-gray-700">Placeholder</span></label>
+                     <label><span class="text-gray-700 font-semibold">Placeholder</span></label>
                      <input type="text" class="form-control2" v-model="InputPlaceholder">
                   </div>
 
                   <div class="block" v-if="CheckRadio == 0">
-                     <label><span class="text-gray-700">Valor por defecto</span></label>
+                     <label><span class="text-gray-700 font-semibold">Valor por defecto</span></label>
                      <input type="text" class="form-control2" v-model="InputValue">
                   </div>
                </div>
@@ -110,7 +97,7 @@
                   class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-8">
 
                   <div v-for="ACheck in ArrayCheckbox" :key="ACheck.id" class="block">
-                     <label><span class="text-gray-700">Opción</span></label>
+                     <label><span class="text-gray-700 font-semibold">Opción</span></label>
                      <input type="text" class="form-control2" v-model="ACheck['option']['value']">
                   </div>
 
@@ -121,14 +108,23 @@
                </span>
 
 
-               <div v-if="InputType != '' && InputName != '' " class="py-1 mt-5 text-left">
+               <div v-if="InputType != '' && InputName != '' " class="py-10 text-left ">
                   <button type="submit"
-                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                     Crear
+                     class="mr-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     Crear entrada de datos
                   </button>
+
+                  <button type="submit"
+                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     Terminar y guardar
+                  </button>
+
                </div>
+
+             
+
             </form>
-         </div>
+      
 
 
 
@@ -273,7 +269,6 @@
             }
 
             if (this.InputType == 'text' ||
-               this.InputType == 'search' ||
                this.InputType == 'tel' ||
                this.InputType == 'url' ||
                this.InputType == 'email' ||

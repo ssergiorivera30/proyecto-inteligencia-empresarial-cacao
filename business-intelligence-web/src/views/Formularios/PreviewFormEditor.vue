@@ -1,9 +1,7 @@
 <template>  
-      <div class="pt-2 pb-5 lg:pt-3">
-        
-         <div class="space-y-3">
+      <div class="py-0">
 
-            <form @submit.prevent="guardar" class="relative mt-5 grid grid-cols-1 gap-5">
+            <form @submit.prevent="guardar" class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2">
 
                 <div v-for="input in ArrayInputs" :key="input.id">
 
@@ -18,7 +16,7 @@
                               </label>
                            </div>                      
                         </div>
-                        </div>
+                     </div>
                   </span>
 
                   <span v-if="input['input']['type'] == 'radio'">
@@ -32,14 +30,13 @@
                               </label>
                            </div>                      
                         </div>
-                        </div>
+                     </div>
                   </span>
 
 
-                  <div class="label-intro" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
-                  <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                     <label class="bg-white text-gray-600 px-1">{{ input['input']['name'] }}</label>
-                  </div>
+               <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
+                 
+                  <label><span class="text-gray-700 capitalize">{{ input['input']['name'] }}</span></label>
 
                   <span v-if="input['input']['type'] == 'textarea'">
                      <textarea 
@@ -47,7 +44,7 @@
                         :value="input['input']['value']" 
                         cols="30"
                         rows="10"
-                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                        class="form-control2 py-3">
                   </textarea>
                   </span>
 
@@ -55,7 +52,7 @@
                      <select 
                         :placeholder="input['input']['placeholder']" 
                         :value="input['input']['value']"
-                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                        class="form-control2 py-3">
                         <option value="0">Seleccionar opción</option>
                         <option v-for="option in input['input']['ifCheckbox']" :key="option" value="">{{ option['option']['value'] }}</option>
                      </select>
@@ -75,7 +72,7 @@
                         :min="input['input']['min']"
                         :max="input['input']['max']"
                         required 
-                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                        class="form-control2 py-3">
 
                         <input 
                          v-else
@@ -86,21 +83,25 @@
                         :maxlength="input['input']['maxlength']"
                         :min="input['input']['min']"
                         :max="input['input']['max']"                        
-                        class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full">
+                        class="form-control2 py-3">
                   </span>
                   </div>
                </div>
 
-               <div class="py-1 text-left" v-if="ArrayInputs.length  > 0">
+               
+
+               <!-- <div class="py-1 text-left" v-if="ArrayInputs.length  > 0">
                   <button type="submit"
                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400">
                      Guardar
                   </button>
-               </div>
+               </div> -->
             </form>
 
-            <details><pre>{{ ArrayInputs  }}</pre></details>
-         </div>
+           
+
+            <!-- <details><pre>{{ ArrayInputs.length  }}</pre></details> -->
+        
       </div>
 </template>
 
