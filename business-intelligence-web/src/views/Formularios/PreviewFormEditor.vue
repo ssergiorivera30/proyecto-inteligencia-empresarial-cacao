@@ -3,13 +3,13 @@
 
             <form @submit.prevent="guardar" class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2">
 
-                <div v-for="input in ArrayInputs" :key="input.id">
+                <div v-for="(input, index) in ArrayInputs" :key="index">
 
                   <span v-if="input['input']['type'] == 'checkbox'">
                      <div class="block">
                         <span class="text-gray-700">{{ input['input']['name'] }}</span>
                         <div class="mt-2">
-                           <div v-for="option in input['input']['ifCheckbox']" :key="option">
+                           <div v-for="option in input['input']['options']" :key="option">
                               <label class="inline-flex items-center">
                                  <input type="checkbox">
                                  <span class="ml-2">{{ option['option']['value']}}</span>
@@ -23,7 +23,7 @@
                      <div class="block">
                         <span class="text-gray-700">{{ input['input']['name'] }}</span>
                         <div class="mt-2">
-                           <div v-for="option in input['input']['ifCheckbox']" :key="option">
+                           <div v-for="option in input['input']['options']" :key="option">
                               <label class="inline-flex items-center">
                                  <input type="radio" :name="input['input']['name']">
                                  <span class="ml-2">{{ option['option']['value']}}</span>
@@ -36,7 +36,14 @@
 
                <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
                  
-                  <label><span class="text-gray-700 font-medium capitalize">{{ input['input']['name'] }}</span></label>
+                     <label class="grid grid-cols-5 gap-4 items-center" v-if="input['input']['edit'] == 0"> 
+                        <span class="col-span-4 text-gray-700 font-medium" contenteditable="true">{{ input['input']['name'] }}</span>
+                        <div class="text-right">
+                           <span class="fa fa-trash cursor-pointer mx-2" @click="DeleteOption(index)"></span>
+                           <span class="fa fa-pencil cursor-pointer mx-2" @click="SendIdEdit(index)"></span>
+                        </div>                        
+                     </label>
+
 
                   <span v-if="input['input']['type'] == 'textarea'">
                      <textarea 
@@ -53,8 +60,8 @@
                         :placeholder="input['input']['placeholder']" 
                         :value="input['input']['value']"
                         class="form-control2 py-3">
-                        <option value="0">Seleccionar opción</option>
-                        <option v-for="option in input['input']['ifCheckbox']" :key="option" value="">{{ option['option']['value'] }}</option>
+                        <option value="" selected>Seleccionar opción</option>
+                        <option v-for="option in input['input']['options']" :key="option" value="">{{ option['option']['value'] }}</option>
                      </select>
                   </span>
 
@@ -84,7 +91,7 @@
                         :min="input['input']['min']"
                         :max="input['input']['max']"                        
                         class="form-control2 py-3">
-                  </span>
+                     </span>
                   </div>
                </div>
 
@@ -100,31 +107,37 @@
 
            
 
-            <!-- <details><pre>{{ ArrayInputs.length  }}</pre></details> -->
+            <details><pre>{{ ArrayInputs  }}</pre></details>
         
       </div>
 </template>
 
 <script>
 
-   export default {
-      props: {
-         NameForm: String,
-         DescriptionForm: String,
-         ArrayInputs: Object
-      },
+   export default {      
       data() {
          return {
             name: 'PreviewFormEditor',
          }
       },
+      props: {
+         NameForm: String,
+         DescriptionForm: String,
+         ArrayInputs: Object,
+      },
       mounted: function () {
 
       },
       methods: {
+         SendIdEdit: function(value){
+            this.$emit('GetIdEdit', value)
+         },
          guardar: function () {
             console.log('Guardar')
-         }
+         },
+         DeleteOption: function (index) {      
+            this.$props.ArrayInputs.splice(index, 1);
+         },         
       }
    }
 </script>

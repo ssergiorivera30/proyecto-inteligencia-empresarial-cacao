@@ -17,7 +17,7 @@
         </li>
         <li class="-mb-px mr-1">
          <router-link to="/proyecto/formularios" href="#" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer" >
-            Formularios
+            Recolección de datos
          </router-link >
         </li>
         <li class="-mb-px mr-1">

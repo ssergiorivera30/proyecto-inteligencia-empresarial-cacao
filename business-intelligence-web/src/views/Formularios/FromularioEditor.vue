@@ -1,10 +1,10 @@
 <template>
    <div class="px-4 mb-10 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-      <div class="grid grid-cols-1 gap-4 mb-10 ">
+      <div class="grid grid-cols-1 mb-10 ">
 
       
 
-            <div class="display-fex mt-5">
+            <div class="display-fex my-10">
                <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)"
                   class="mx-2 px-2 py-1 text-white text-xs rounded-full bg-green-400 cursor-pointer">
                   <i class="fa fa-pencil"></i> Editar encabezado
@@ -15,7 +15,7 @@
                </span>
             </div>
 
-            <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm()" class="grid gap-x-4 gap-y-8 mt-5" >
+            <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm()" class="grid gap-x-4 gap-y-8 my-5" >
                <div class="block">
                    <label><span class="text-gray-700">Nombre del formulario</span></label>
                   <input type="text" class="form-control2" required v-model="NameForm">
@@ -32,18 +32,34 @@
 
                <div class="py-2 text-left">
                   <button type="submit"
-                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     class="btn-indigo">
                      Actualizar
                   </button>
                </div>
             </form>
 
    
-         <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
+         <PreviewForm 
+            :NameForm="NameForm" 
+            :DescriptionForm="DescriptionForm" />
       
-         <PreviewFormEditor v-if="ArrayInputs.length" :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
+         <PreviewFormEditor 
+            v-if="ArrayInputs.length" 
+            :NameForm="NameForm" 
+            :DescriptionForm="DescriptionForm" 
+            :ArrayInputs="ArrayInputs"
+            @GetIdEdit="AsignedIdEdit" />
 
-            <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1" autocomplete="off">
+
+
+
+
+
+
+
+
+
+            <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned == null" autocomplete="off" class="my-10">
                <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
                   <div class="block">
                      <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
@@ -82,53 +98,168 @@
                      </select>
                   </div>
 
-                  <div class="block" v-if="CheckRadio == 0">
+                  <div class="block" v-if="SelectedTypeOptions == 0">
                      <label><span class="text-gray-700 font-semibold">Placeholder</span></label>
                      <input type="text" class="form-control2" v-model="InputPlaceholder">
                   </div>
 
-                  <div class="block" v-if="CheckRadio == 0">
+                  <div class="block" v-if="SelectedTypeOptions == 0">
                      <label><span class="text-gray-700 font-semibold">Valor por defecto</span></label>
                      <input type="text" class="form-control2" v-model="InputValue">
                   </div>
                </div>
 
-               <span v-if="CheckRadio == 1"
-                  class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-8">
+         
+               <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionForm()" class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12">
 
-                  <div v-for="ACheck in ArrayCheckbox" :key="ACheck.id" class="block">
-                     <label><span class="text-gray-700 font-semibold">Opción</span></label>
-                     <input type="text" class="form-control2" v-model="ACheck['option']['value']">
+                  <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
+                     <label class="grid grid-cols-3 gap-4">
+                        <span class="text-gray-700 font-semibold">Opción {{ index }} </span>
+                        <span class="fa fa-trash cursor-pointer" @click="DeleteOption(index)"></span>
+                     </label>
+                     <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
                   </div>
 
-                  <button type="button" v-if="CheckRadio == 1" @click="AddCheckBox"
-                     class="mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button type="submit" v-if="SelectedTypeOptions == 1"
+                     class="mt-5 btn-gray">
                      <i class="fa fa-plus pt-1 mr-2"></i> Agregar opción
                   </button>
-               </span>
+               </form>
 
 
                <div v-if="InputType != '' && InputName != '' " class="py-10 text-left ">
                   <button type="submit"
-                     class="mr-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     class="mr-3 btn-indigo">
                      Crear entrada de datos
                   </button>
 
                   <button type="submit"
-                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     class=" btn-green2">
                      Terminar y guardar
                   </button>
 
                </div>
-
-             
-
-            </form>
-      
+            
+            </form>  
 
 
 
-         <pre>{{ ArrayCheckbox }}</pre>
+
+
+
+
+
+
+
+            <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned != null" autocomplete="off" class="my-10">
+
+               <span v-for="(inputEdit, index) in ArrayInputs[0]" :key="index">
+                  <pre>{{ inputEdit }}</pre>
+
+              
+               <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
+                  <div class="block">
+                     <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
+                     <select class="form-control2" required v-model="inputEdit.type" @change="AttributeInputVisivility">
+                        <option value=""></option>
+                        <option value="text">Respuesta corta</option>
+                        <option value="number">Númerico</option>
+                        <option value="select">Lista desplegable</option>
+                        <option value="textarea">Parrafo</option>
+                        <option value="email">Email</option>
+                        <option value="tel">Tel</option>
+                        <option value="checkbox">Selección multiple</option>
+                        <option value="radio">Selección única</option>
+                        <option value="file">Archivo</option>
+                        <option value="password">Contraseña</option>
+                        <option value="url">Dirección web</option>
+                        <option value="date">Fecha</option>
+                        <option value="datetime-local">Fecha y hora</option>
+                        <option value="time">Hora</option>
+                        <option value="month">Mes</option>
+                        <option value="week">Semana</option>
+                        <option value="color">Color</option>
+                     </select>
+                  </div>
+
+                  <div class="block">
+                     <label><span class="text-gray-700 font-semibold">Nombre del campo</span></label>
+                     <input type="text" class="form-control2" placeholder="" required v-model="inputEdit.name">
+                  </div>
+
+                  <div class="block">
+                     <label><span class="text-gray-700 font-semibold">Obligatorio</span></label>
+                     <select class="form-control2" required v-model="inputEdit.required">
+                        <option value="false">No</option>
+                        <option value="true">Si</option>
+                     </select>
+                  </div>
+
+                  <div class="block" v-if="SelectedTypeOptions == 0">
+                     <label><span class="text-gray-700 font-semibold">Placeholder</span></label>
+                     <input type="text" class="form-control2" v-model="inputEdit.placeholder">
+                  </div>
+
+                  <div class="block" v-if="SelectedTypeOptions == 0">
+                     <label><span class="text-gray-700 font-semibold">Valor por defecto</span></label>
+                     <input type="text" class="form-control2" v-model="inputEdit.value">
+                  </div>
+               </div>
+
+         
+               <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionForm()" class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12">
+
+                  <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
+                     <label class="grid grid-cols-3 gap-4">
+                        <span class="text-gray-700 font-semibold">Opción {{ index }} </span>
+                        <span class="fa fa-trash cursor-pointer" @click="DeleteOption(index)"></span>
+                     </label>
+                     <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
+                  </div>
+
+                  <button type="submit" v-if="SelectedTypeOptions == 1"
+                     class="mt-5 btn-gray">
+                     <i class="fa fa-plus pt-1 mr-2"></i> Agregar opción
+                  </button>
+               </form>
+
+
+               <div v-if="InputType != '' && InputName != '' " class="py-10 text-left ">
+                  <button type="submit"
+                     class="mr-3 btn-indigo">
+                     Crear entrada de datos
+                  </button>
+
+                  <button type="submit"
+                     class=" btn-green2">
+                     Terminar y guardar
+                  </button>
+
+               </div>
+               </span>
+            
+            </form>     
+
+
+
+
+
+
+
+
+
+
+
+            <div>
+         </div> 
+
+            
+
+         <pre>{{ InputIdEidtAsigned }}</pre>
+
+         <pre>{{ ArrayInputs }}</pre>
+
+         <pre>{{ ArrayOptions }}</pre>
 
       </div>
    </div>
@@ -156,7 +287,7 @@
             editorBasicoForm: 1,
             MinMax: 0,
             Size: 0,
-            CheckRadio: 0,
+            SelectedTypeOptions: 0,
 
             InputName: '',
             InputType: '',
@@ -170,20 +301,27 @@
             InputMax: '',
 
             ArrayInputs: [],
-            ArrayCheckbox: [],
+            ArrayOptions: [],
+         
+            InputIdEidtAsigned: null
          }
       },
       mounted: function () {
          this.LoadInfoForm()
       },
-      methods: {
-         AddCheckBox() {
-            this.ArrayCheckbox.push({
+      methods: {     
+         AsignedIdEdit: function(value){
+            this.InputIdEidtAsigned = value
+         },
+         AddOptionForm() {
+            this.ArrayOptions.push({
                option: {
                   value: ''
                }
             })
-
+         },
+         DeleteOption: function (index) {      
+            this.ArrayOptions.splice(index, 1);
          },
          UpdateInfoBasicForm: function () {
 
@@ -203,7 +341,8 @@
                      'size': this.InputSize,
                      'min': this.InputMin,
                      'max': this.InputMax,
-                     'ifCheckbox': this.ArrayCheckbox,
+                     'edit': 0,
+                     'options': this.ArrayOptions,
                   }
 
                }
@@ -220,7 +359,7 @@
             this.InputMin = ''
             this.InputMax = ''
 
-            this.ArrayCheckbox = []
+            this.ArrayOptions = []
 
          },
          LoadInfoForm: function () {
@@ -256,7 +395,7 @@
 
             this.MinMax = 0
             this.Size = 0
-            this.CheckRadio = 0
+            this.SelectedTypeOptions = 0
 
             if (this.InputType == 'number' ||
                this.InputType == 'date' ||
@@ -281,10 +420,10 @@
                this.InputType == 'radio' ||
                this.InputType == 'select') {
 
-               this.CheckRadio = 1
+               this.SelectedTypeOptions = 1
             }
 
-            this.ArrayCheckbox = []
+            this.ArrayOptions = []
 
          }
       }

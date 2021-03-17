@@ -120,8 +120,7 @@ import 'firebase/auth';
       this.verificarSession()
     },
     mounted: function(){
-      console.log('Hola Mundo')
-
+   
     },
     methods:{
       login() {
