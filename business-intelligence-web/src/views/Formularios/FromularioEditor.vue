@@ -64,7 +64,6 @@
                   <div class="block">
                      <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
                      <select class="form-control2" required v-model="InputType" @change="AttributeInputVisivility">
-                        <option value=""></option>
                         <option value="text">Respuesta corta</option>
                         <option value="number">Númerico</option>
                         <option value="select">Lista desplegable</option>
@@ -161,7 +160,6 @@
                   <div class="block">
                      <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
                      <select class="form-control2" required v-model="inputEdit.type" @change="AttributeInputVisivility">
-                        <option value=""></option>
                         <option value="text">Respuesta corta</option>
                         <option value="number">Númerico</option>
                         <option value="select">Lista desplegable</option>
@@ -207,9 +205,9 @@
                </div>
 
          
-               <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionForm()" class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12">
-
-                  <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
+               <form v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' " @submit.prevent="AddOptionFormEdit(inputEdit.options)" class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12">
+                
+                  <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
                      <label class="grid grid-cols-3 gap-4">
                         <span class="text-gray-700 font-semibold">Opción {{ index }} </span>
                         <span class="fa fa-trash cursor-pointer" @click="DeleteOption(index)"></span>
@@ -217,7 +215,7 @@
                      <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
                   </div>
 
-                  <button type="submit" v-if="SelectedTypeOptions == 1"
+                  <button type="submit" v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
                      class="mt-5 btn-gray">
                      <i class="fa fa-plus pt-1 mr-2"></i> Agregar opción
                   </button>
@@ -290,7 +288,7 @@
             SelectedTypeOptions: 0,
 
             InputName: '',
-            InputType: '',
+            InputType: 'text',
             InputRequired: false,
             InputPlaceholder: '',
             InputValue: '',
@@ -319,6 +317,19 @@
                   value: ''
                }
             })
+         },
+         AddOptionFormEdit(index) {
+
+            console.log(this.ArrayInputs)
+
+
+            // this.ArrayInputs[index]['input']['options'].push({
+            //    option: {
+            //       value: ''
+            //    }            
+            // })
+
+            // Fuente: https://cutt.ly/cz7mexO
          },
          DeleteOption: function (index) {      
             this.ArrayOptions.splice(index, 1);
@@ -349,7 +360,7 @@
             );
 
             this.InputName = ''
-            this.InputType = ''
+            this.InputType = 'text'
             this.InputRequired = false
             this.InputPlaceholder = ''
             this.InputValue = ''
