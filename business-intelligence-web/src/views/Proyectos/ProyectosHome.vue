@@ -3,7 +3,7 @@
 
     
       <header class="flex items-center justify-between">
-         <h2 class="text-lg leading-6 font-medium text-black">Proyectos</h2>
+         <h2 class="text-lg leading-6 font-medium text-black">Mis proyectos</h2>
          <router-link to="/proyectos/nuevo-proyecto" class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg width="12" height="20" fill="currentColor" class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
@@ -41,80 +41,7 @@
                </dl>
             </div>
          </router-link>
-         <!-- <li class="">
-            <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
-               <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-                  <div>
-                     <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Variables ambientales</dd>
-                  </div>
-                  <div>
-                     <dt class="sr-only">Category</dt>
-                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Sur-occidente del Huila</dd>
-                  </div>
-                  <div class="col-start-2 row-start-1 row-end-3">
-                     <dt class="sr-only">Users</dt>
-                     <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"></dd>
-                  </div>
-               </dl>
-            </div>
-         </li>
-         <li class="">
-            <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
-               <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-                  <div>
-                     <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Variables empresariales</dd>
-                  </div>
-                  <div>
-                     <dt class="sr-only">Category</dt>
-                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Sur-occidente del Huila</dd>
-                  </div>
-                  <div class="col-start-2 row-start-1 row-end-3">
-                     <dt class="sr-only">Users</dt>
-                     <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"><img src="https://images.unsplash.com/photo-1546525848-3ce03ca516f6?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"></dd>
-                  </div>
-               </dl>
-            </div>
-         </li>
-
-          <li class="">
-            <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
-               <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-                  <div>
-                     <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Mapa organoléptico</dd>
-                  </div>
-                  <div>
-                     <dt class="sr-only">Category</dt>
-                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Sur-occidente del Huila</dd>
-                  </div>
-                  <div class="col-start-2 row-start-1 row-end-3">
-                     <dt class="sr-only">Users</dt>
-                     <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"><img src="https://images.unsplash.com/photo-1546525848-3ce03ca516f6?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"></dd>
-                  </div>
-               </dl>
-            </div>
-         </li>
-
-         <li class="">
-            <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
-               <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-                  <div>
-                     <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Variables socioeconómicas</dd>
-                  </div>
-                  <div>
-                     <dt class="sr-only">Category</dt>
-                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Sur-occidente del Huila</dd>
-                  </div>
-                  <div class="col-start-2 row-start-1 row-end-3">
-                     <dt class="sr-only">Users</dt>
-                     <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"><img src="https://images.unsplash.com/photo-1546525848-3ce03ca516f6?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=facearea&amp;facepad=2&amp;w=48&amp;h=48&amp;q=80" alt="" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" loading="lazy"></dd>
-                  </div>
-               </dl>
-            </div>
-         </li>-->
+    
       </ul>    
 
 

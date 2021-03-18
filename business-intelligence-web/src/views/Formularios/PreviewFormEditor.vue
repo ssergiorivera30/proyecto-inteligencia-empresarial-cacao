@@ -1,15 +1,27 @@
 <template>
    <div class="py-0">
-      <form @submit.prevent="guardar"
-         class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-3">
 
+  
+           
+      <form @submit.prevent="guardar" autocomplete="off">
+
+      <draggable class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-3" :list="ArrayInputs" @change="log">
+
+ 
+
+        
          <div v-for="(input, index) in ArrayInputs" :key="index">
             <div class="block">
                <label class="grid grid-cols-5 gap-4 items-center">
-                  <span class="col-span-4 text-gray-700 font-medium">{{ input['input']['name'] }}</span>
+                  <span class="col-span-4 text-gray-700 font-medium  group flex items-center">
+                     <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20" class="cursor-move" >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                     </svg> -->
+                      <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move">
+                     {{ input['input']['name'] }}</span>
                   <div class="text-right">
-                     <span class="text-gray-500 fa fa-trash cursor-pointer mx-2" @click="DeleteOption(index)"></span>
-                     <span class="text-gray-500 fa fa-pencil cursor-pointer mx-2" @click="SendIdEdit(index)"></span>
+                     <span class="text-gray-500 cursor-pointer mr-5" @click="DeleteOption(index)" title="Eliminar"><i class="fa fa-trash"></i></span>
+                     <span class="text-gray-500 cursor-pointer ml-5" @click="SendIdEdit(index)" title="Editar"><i class="fa fa-pencil"></i></span>
                   </div>
                </label>
 
@@ -63,7 +75,7 @@
                </span>
             </div>
          </div>
-
+      </draggable>
          <!-- <div class="py-1 text-left" v-if="ArrayInputs.length  > 0">
                   <button type="submit"
                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400">
@@ -71,18 +83,30 @@
                   </button>
                </div> -->
       </form>
-      <details>
+       
+
+
+       <details>
          <pre>{{ ArrayInputs  }}</pre>
       </details>
+
    </div>
 </template>
 
 <script>
 
+     import { VueDraggableNext } from 'vue-draggable-next'
+
    export default {
+      components: {
+         draggable: VueDraggableNext,
+      },
+      
       data() {
          return {
             name: 'PreviewFormEditor',
+            enabled: true,           
+            dragging: false,
          }
       },
       props: {
@@ -94,6 +118,9 @@
 
       },
       methods: {
+         log(event) {
+            console.log(event)
+         },
          SendIdEdit: function (value) {
             this.$emit('GetIdEdit', value)
          },

@@ -40,10 +40,11 @@
             :DescriptionForm="DescriptionForm" />
 
          <PreviewFormEditor 
-            v-if="ArrayInputs.length" 
+            v-if="ArrayInputs.length && InputIdEidtAsigned == null" 
             :NameForm="NameForm" 
             :DescriptionForm="DescriptionForm"
-            :ArrayInputs="ArrayInputs" @GetIdEdit="AsignedIdEdit" />
+            :ArrayInputs="ArrayInputs" @GetIdEdit="AsignedIdEdit" 
+            />
 
             
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned == null" autocomplete="off"
@@ -223,6 +224,7 @@
 
    import PreviewFormEditor from "./PreviewFormEditor"
    import PreviewForm from "./PreviewForm"
+   
 
    export default {
       components: {
