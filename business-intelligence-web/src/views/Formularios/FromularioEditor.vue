@@ -113,7 +113,7 @@
 
                   <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
                      <label class="grid grid-cols-3 gap-4">
-                        <span class="text-gray-700 font-semibold">Opción {{ index }} </span>
+                        <span class="text-gray-700 font-semibold">Opción</span>
                         <span class="fa fa-trash cursor-pointer" @click="DeleteOption(index)"></span>
                      </label>
                      <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
@@ -150,12 +150,10 @@
 
 
 
-            <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned != null" autocomplete="off" class="my-10">
+            <form @submit.prevent="AddInputEdit" v-if="editorBasicoForm == 1 && InputIdEidtAsigned != null" autocomplete="off" class="my-10">
 
-               <span v-for="(inputEdit, index) in ArrayInputs[0]" :key="index">
-                  <pre>{{ inputEdit }}</pre>
-
-              
+               <span v-for="(inputEdit, index) in ArrayInputs[InputIdEidtAsigned]" :key="index">
+                              
                <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
                   <div class="block">
                      <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
@@ -193,24 +191,29 @@
                      </select>
                   </div>
 
-                  <div class="block" v-if="SelectedTypeOptions == 0">
+                  <div class="block" v-if="inputEdit.type != 'checkbox' && inputEdit.type != 'radio' && inputEdit.type !='select' ">
                      <label><span class="text-gray-700 font-semibold">Placeholder</span></label>
                      <input type="text" class="form-control2" v-model="inputEdit.placeholder">
                   </div>
 
-                  <div class="block" v-if="SelectedTypeOptions == 0">
-                     <label><span class="text-gray-700 font-semibold">Valor por defecto</span></label>
+                  <div class="block" v-if="inputEdit.type != 'checkbox' && inputEdit.type != 'radio' && inputEdit.type !='select' ">
+                     <label><span class="text-gray-700 font-semibold">Valor por defecto </span></label>
                      <input type="text" class="form-control2" v-model="inputEdit.value">
                   </div>
                </div>
 
          
-               <form v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' " @submit.prevent="AddOptionFormEdit(inputEdit.options)" class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12">
+               <form @submit.prevent="AddOptionFormEdit()" 
+                     v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' " 
+                     class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12"
+                     autocomplete="off">
                 
                   <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
+
+                     <pre>{{ ACheck.index }}</pre>
                      <label class="grid grid-cols-3 gap-4">
-                        <span class="text-gray-700 font-semibold">Opción {{ index }} </span>
-                        <span class="fa fa-trash cursor-pointer" @click="DeleteOption(index)"></span>
+                        <span class="text-gray-700 font-semibold">Opción </span>
+                        <span class="fa fa-trash cursor-pointer" @click="DeleteOptionEdit(index)"></span>
                      </label>
                      <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
                   </div>
@@ -222,42 +225,27 @@
                </form>
 
 
-               <div v-if="InputType != '' && InputName != '' " class="py-10 text-left ">
-                  <button type="submit"
+               <div v-if="inputEdit.type != '' && inputEdit.name != '' " class="py-10 text-left ">
+                  <button type="submit" 
                      class="mr-3 btn-indigo">
-                     Crear entrada de datos
-                  </button>
-
-                  <button type="submit"
-                     class=" btn-green2">
-                     Terminar y guardar
-                  </button>
+                     Actualizar
+                  </button>               
 
                </div>
                </span>
             
             </form>     
 
-
-
-
-
-
-
-
-
-
-
             <div>
          </div> 
 
             
 
-         <pre>{{ InputIdEidtAsigned }}</pre>
+         <!-- <pre>{{ InputIdEidtAsigned }}</pre> -->
 
-         <pre>{{ ArrayInputs }}</pre>
+         <!-- <pre>{{ ArrayInputs }}</pre>
 
-         <pre>{{ ArrayOptions }}</pre>
+         <pre>{{ ArrayOptions }}</pre> -->
 
       </div>
    </div>
@@ -318,18 +306,17 @@
                }
             })
          },
-         AddOptionFormEdit(index) {
-
-            console.log(this.ArrayInputs)
-
-
-            // this.ArrayInputs[index]['input']['options'].push({
-            //    option: {
-            //       value: ''
-            //    }            
-            // })
-
-            // Fuente: https://cutt.ly/cz7mexO
+         AddOptionFormEdit() {            
+            this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
+               option: {
+                  value: ''
+               }            
+            })            
+         },
+         DeleteOptionEdit(index) {  
+              
+            this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
+                       
          },
          DeleteOption: function (index) {      
             this.ArrayOptions.splice(index, 1);
@@ -373,24 +360,23 @@
             this.ArrayOptions = []
 
          },
-         LoadInfoForm: function () {
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
-               {
-                  Form: this.$route.params.id,
-                  OrderForm: this.OrderForm
-               }).then((response) => {
 
-                  if (response.data.mensaje != 1) {
-                     window.history.back()
-                  }
+         AddInputEdit: function () {
 
-                  this.NameForm = response['data']['datos'][0]['name']
-                  this.DescriptionForm = response['data']['datos'][0]['description']
+            console.log(this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'])
 
-               }).catch(() => {
-                  alert('Error de conexión')
-               })
-         },
+            if (  this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'checkbox' &&
+                  this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'radio' &&
+                  this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'select') {
+
+                  this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'] = []  
+            }
+
+            this.InputType = 'text'            
+            this.InputIdEidtAsigned = null    
+             
+
+         },        
 
          OrdenVisivility: function (orden) {
             this.editorBasicoForm = orden
@@ -436,7 +422,25 @@
 
             this.ArrayOptions = []
 
-         }
+         },
+          LoadInfoForm: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
+               {
+                  Form: this.$route.params.id,
+                  OrderForm: this.OrderForm
+               }).then((response) => {
+
+                  if (response.data.mensaje != 1) {
+                     window.history.back()
+                  }
+
+                  this.NameForm = response['data']['datos'][0]['name']
+                  this.DescriptionForm = response['data']['datos'][0]['description']
+
+               }).catch(() => {
+                  alert('Error de conexión')
+               })
+         },
       }
    }
 </script>

@@ -5,38 +5,8 @@
 
                 <div v-for="(input, index) in ArrayInputs" :key="index">
 
-                  <span v-if="input['input']['type'] == 'checkbox'">
                      <div class="block">
-                        <span class="text-gray-700">{{ input['input']['name'] }}</span>
-                        <div class="mt-2">
-                           <div v-for="option in input['input']['options']" :key="option">
-                              <label class="inline-flex items-center">
-                                 <input type="checkbox">
-                                 <span class="ml-2">{{ option['option']['value']}}</span>
-                              </label>
-                           </div>                      
-                        </div>
-                     </div>
-                  </span>
-
-                  <span v-if="input['input']['type'] == 'radio'">
-                     <div class="block">
-                        <span class="text-gray-700">{{ input['input']['name'] }}</span>
-                        <div class="mt-2">
-                           <div v-for="option in input['input']['options']" :key="option">
-                              <label class="inline-flex items-center">
-                                 <input type="radio" :name="input['input']['name']">
-                                 <span class="ml-2">{{ option['option']['value']}}</span>
-                              </label>
-                           </div>                      
-                        </div>
-                     </div>
-                  </span>
-
-
-               <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
-                 
-                     <label class="grid grid-cols-5 gap-4 items-center" v-if="input['input']['edit'] == 0"> 
+                        <label class="grid grid-cols-5 gap-4 items-center"> 
                         <span class="col-span-4 text-gray-700 font-medium" contenteditable="true">{{ input['input']['name'] }}</span>
                         <div class="text-right">
                            <span class="fa fa-trash cursor-pointer mx-2" @click="DeleteOption(index)"></span>
@@ -45,6 +15,29 @@
                      </label>
 
 
+                        <div class="mt-2" v-if="input['input']['type'] == 'radio'">
+                           <div v-for="option in input['input']['options']" :key="option">
+                              <label class="inline-flex items-center">
+                                 <input type="radio" :name="input['input']['name']">
+                                 <span class="ml-2">{{ option['option']['value']}}</span>
+                              </label>
+                           </div>                      
+                        </div>
+
+                        <div class="mt-2" v-if="input['input']['type'] == 'checkbox'">
+                           <div v-for="option in input['input']['options']" :key="option">
+                              <label class="inline-flex items-center">
+                                 <input type="checkbox">
+                                 <span class="ml-2">{{ option['option']['value']}}</span>
+                              </label>
+                           </div>                      
+                        </div>
+                     </div>
+
+
+               <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
+                 
+                  
                   <span v-if="input['input']['type'] == 'textarea'">
                      <textarea 
                         :placeholder="input['input']['placeholder']" 
