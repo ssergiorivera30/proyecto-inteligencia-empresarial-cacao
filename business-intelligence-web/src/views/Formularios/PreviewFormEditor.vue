@@ -1,15 +1,15 @@
 <template>
    <div class="py-0">
       <form @submit.prevent="guardar"
-         class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2">
+         class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-3">
 
          <div v-for="(input, index) in ArrayInputs" :key="index">
             <div class="block">
                <label class="grid grid-cols-5 gap-4 items-center">
                   <span class="col-span-4 text-gray-700 font-medium">{{ input['input']['name'] }}</span>
                   <div class="text-right">
-                     <span class="fa fa-trash cursor-pointer mx-2" @click="DeleteOption(index)"></span>
-                     <span class="fa fa-pencil cursor-pointer mx-2" @click="SendIdEdit(index)"></span>
+                     <span class="text-gray-500 fa fa-trash cursor-pointer mx-2" @click="DeleteOption(index)"></span>
+                     <span class="text-gray-500 fa fa-pencil cursor-pointer mx-2" @click="SendIdEdit(index)"></span>
                   </div>
                </label>
 
