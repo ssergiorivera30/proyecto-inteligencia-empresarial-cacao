@@ -1,5 +1,25 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+
+
+
+import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
+import ServiciosHome from '../views/Servicios/ServiciosHome'
+
+
+import MapsHome from '../views/Maps/MapsHome'
+import MapsCreate from '../views/Maps/MapsCreate'
+
+
+
+
+
+
+
+
+
+
+
 import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
 import ProyectosHome from '../views/Proyectos/ProyectosHome'
 import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
@@ -29,6 +49,23 @@ import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
 
 const routes = [
   { path: '/',  name: 'Home', component: Home  },
+
+  { path: '/servicios', redirect: '/servicios/home', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
+    children:
+      [
+        { path: 'home', name: 'ServiciosHome', component: ServiciosHome }, 
+      ] 
+  },  
+
+
+  { path: '/maps', name: 'MapsHome', component: MapsHome  },
+  { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate  },
+
+  
+  
+
+  
+
   { path: '/proyectos', name: 'ProyectosInicio', component: ProyectosInicio  },
 
   { path: '/proyecto/detalles', name: 'ProyectoDetalles', component: ProyectoDetalles, 

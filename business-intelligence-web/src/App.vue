@@ -16,10 +16,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
         </router-link>
-        <router-link to="/proyectos" class="inline-flex items-center justify-center py-3 hover:text-purple-900 focus:text-gray-400 focus:text-purple-900 rounded-lg" title="Proyectos">
-          <span class="sr-only">Proyectos</span>          
+        <router-link to="/servicios" class="inline-flex items-center justify-center py-3 hover:text-purple-900 focus:text-gray-400 focus:text-purple-900 rounded-lg" title="Herramientas">
+          <span class="sr-only">Servicios</span>          
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
           </svg>
         </router-link>
         <router-link to="/hola" class="inline-flex items-center justify-center py-3 hover:text-purple-900 focus:text-gray-400 focus:text-purple-900 rounded-lg">
@@ -47,7 +47,7 @@
     </div>
   </aside>
   <div class="flex-grow text-gray-800 ">
-    <header class="flex items-center h-15 px-6 sm:px-10 bg-indigo-400 shadow-sm">
+    <header class="flex items-center h-15 px-6 sm:px-10 bg-blue-500 shadow-sm">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">

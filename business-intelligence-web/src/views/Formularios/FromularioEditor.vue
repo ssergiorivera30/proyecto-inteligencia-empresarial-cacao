@@ -36,17 +36,17 @@
          </form>
 
          <PreviewForm 
+            v-if="editorBasicoForm == 1"
             :NameForm="NameForm" 
             :DescriptionForm="DescriptionForm" />
 
          <PreviewFormEditor 
-            v-if="ArrayInputs.length && InputIdEidtAsigned == null" 
+            v-if="ArrayInputs.length && InputIdEidtAsigned == null && editorBasicoForm == 1 " 
             :NameForm="NameForm" 
             :DescriptionForm="DescriptionForm"
             :ArrayInputs="ArrayInputs" @GetIdEdit="AsignedIdEdit" 
             />
 
-            
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned == null" autocomplete="off"
             class="my-10">
             <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">

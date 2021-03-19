@@ -86,9 +86,9 @@
        
 
 
-       <details>
+       <!-- <details>
          <pre>{{ ArrayInputs  }}</pre>
-      </details>
+      </details> -->
 
    </div>
 </template>
