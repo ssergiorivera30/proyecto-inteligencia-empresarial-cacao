@@ -1,43 +1,48 @@
 // import { MapElementFactory } from "vue3-google-map ";
 
-// export default MapElementFactory({
-//   name: "directionsRenderer",
+export default {
+  data(){
+    return{
+       name: 'DirectionsRenderer',         
+    }
+  }, 
 
-//   ctr() {
-//     return window.google.maps.DirectionsRenderer;
-//   },
 
-//   events: [],
+  ctr() {
+    // return window.google.maps.DirectionsRenderer;
+  },
 
-//   mappedProps: {},
+  events: [],
 
-//   props: {
-//     origin: { type: Object },
-//     destination: { type: Object },
-//     travelMode: { type: String }
-//   },
+  mappedProps: {},
 
-//   afterCreate(directionsRenderer) {
-//     let directionsService = new window.google.maps.DirectionsService();
+  props: {
+    origin: { type: Object },
+    destination: { type: Object },
+    travelMode: { type: String }
+  },
 
-//     this.$watch(
-//       () => [this.origin, this.destination, this.travelMode],
-//       () => {
-//         let { origin, destination, travelMode } = this;
-//         if (!origin || !destination || !travelMode) return;
+  afterCreate(directionsRenderer) {
+    let directionsService = new window.google.maps.DirectionsService();
 
-//         directionsService.route(
-//           {
-//             origin,
-//             destination,
-//             travelMode
-//           },
-//           (response, status) => {
-//             if (status !== "OK") return;
-//             directionsRenderer.setDirections(response);
-//           }
-//         );
-//       }
-//     );
-//   }
-// });
+    this.$watch(
+      () => [this.origin, this.destination, this.travelMode],
+      () => {
+        let { origin, destination, travelMode } = this;
+        if (!origin || !destination || !travelMode) return;
+
+        directionsService.route(
+          {
+            origin,
+            destination,
+            travelMode
+          },
+          (response, status) => {
+            if (status !== "OK") return;
+            directionsRenderer.setDirections(response);
+          }
+        );
+      }
+    );
+  }
+};
