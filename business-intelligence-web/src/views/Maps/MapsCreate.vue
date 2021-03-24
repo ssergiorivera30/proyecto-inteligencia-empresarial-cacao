@@ -6,7 +6,7 @@
       style="width: 100%; height: 700px"
       :center="LaPlata"
       :zoom="5" >
-      <DirectionsRenderer travelMode="driving" :origin="origin" :destination="destionation"/>
+      <div travelMode="driving" :origin="origin" :destination="destionation" />
     <Marker :options="{ position: LaPlata, icon: Marcador, size: 20 }" @click="hola()" />
     <Marker :options="{ position: Nataga, icon: Marcador, size: 10 }" @click="hola()"/>
   </GoogleMap>
@@ -39,7 +39,7 @@
 import { ref } from 'vue'
 import API_ROUTER from './../../services/SERVER_API'
 import { GoogleMap, Marker } from 'vue3-google-map'
-import DirectionsRenderer from './../../components/Maps/MapsSilver.js'
+import DirectionsRenderer from './../../components/Maps/MapsSilver.vue'
 
 export default {
     components: { 
@@ -53,35 +53,38 @@ export default {
         LaPlata: { lat: 2.3877584, lng: -75.8934048 },
         Nataga: { lat: 2.545506, lng: -75.8096025 }, 
         start: "",
-        end: "" ,
-        directionsService: new google.maps.DirectionsService()
+        end: "",
+        origin: { lat: 2.3877584, lng: -75.8934048 },
+        destination: { lat: 2.545506, lng: -75.8096025 },
+        travelMode: "driving"
       }
     },
     mounted(){
 
-          
-
-          console.log(this.directionsService)
-
-
     },
-    computed: {
-    origin() {
-      if (!this.start) return null;
-      return { query: this.start };
-    },
-    destionation() {
-      if (!this.end) return null;
-      return { query: this.end };
-    }
-  },
+
     methods:{
-      hola(){
-        console.log('hola')
-      }
 
-    }
-  
+      hola: function(){        
+
+         origin = 'chicago, il'
+         destination = 'st louis, m'
+         travelMode = 'DRIVING'
+
+        let directionsService = new window.google.maps.DirectionsService();
+        let directionsRenderer = new window.google.maps.DirectionsRenderer()
+
+        directionsService.route({  
+          origin: { lat: 2.3877584, lng: -75.8934048 },
+          destination: { lat: 2.545506, lng: -75.8096025 },  
+          travelMode: 'DRIVING' },
+          (response, status) => {
+            if (status !== "OK") return;
+            directionsRenderer.setDirections(response);
+          }
+        );
+      },
+  }
 }
 </script>
 
