@@ -10,8 +10,9 @@
         <Marker :options="{ position: LaPlata, icon: Marcador, size: 20 }" @click="hola()" />
         <Marker :options="{ position: Nataga, icon: Marcador, size: 10 }" @click="hola()"/>
         <Marker :options="{ position: LaPlata2, icon: Marcador, size: 10 }" @click="hola()"/>
+        <Marker :options="{ position: Mi_Position, icon: MyMarcador, size: 10 }" @click="hola()"/>
 
-        <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destionation"/>
+        <!-- <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destionation"/> -->
     </GoogleMap>
   </div>
 </template>
@@ -30,13 +31,17 @@ export default {
       return{
         name: 'MapsCreate',
         Marcador: API_ROUTER.API_UI+'maps/location.png',
+        MyMarcador: API_ROUTER.API_UI+'maps/my.png',
         LaPlata: { lat:  2.3867844, lng: -75.8944577 },
         LaPlata2: { lat:  2.3886939, lng: -75.8949618 },
         Nataga: { lat: 2.545506, lng: -75.8096025 }, 
         travelMode: "DRIVING",
+        Mi_Position: { lat: 2.545506, lng: -75.8096025 }, 
+
       }
     },
     mounted(){
+      this.geolocate()
 
     },
     computed: {
@@ -51,6 +56,15 @@ export default {
   },
 
     methods:{
+      geolocate: function() {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.Mi_Position = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        console.log(  this.Mi_Position)
+      });
+    },
 
       hola: function(){    
 
