@@ -5,12 +5,13 @@
       style="width: 100%; height: 800px"
       ref="map" 
       id="map"
+      :options="{ mapOptions }"
       :center="LaPlata"
       :zoom="18" >
-        <Marker :options="{ position: LaPlata, icon: Marcador, size: 20 }" @click="hola()" />
-        <Marker :options="{ position: Nataga, icon: Marcador, size: 10 }" @click="hola()"/>
-        <Marker :options="{ position: LaPlata2, icon: Marcador, size: 10 }" @click="hola()"/>
-        <Marker :options="{ position: Mi_Position, icon: MyMarcador, size: 10 }" @click="hola()"/>
+        <Marker :options="{ position: LaPlata, icon: Marcador, size: 20 }" @click="GetRuta()" />
+        <Marker :options="{ position: Nataga, icon: Marcador, size: 10 }" @click="GetRuta()"/>
+        <Marker :options="{ position: LaPlata2, icon: Marcador, size: 10 }" @click="GetRuta()"/>
+        <Marker :options="{ position: Mi_Position, icon: MyMarcador, size: 10 }" @click="GetRuta()"/>
 
         <!-- <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destionation"/> -->
     </GoogleMap>
@@ -37,12 +38,14 @@ export default {
         Nataga: { lat: 2.545506, lng: -75.8096025 }, 
         travelMode: "DRIVING",
         Mi_Position: { lat: 2.545506, lng: -75.8096025 }, 
-
+        mapOptions: {},
+        map: null // --> HERE
+        
       }
     },
     mounted(){
-      this.geolocate()
-
+      this.Geolocation()
+ 
     },
     computed: {
     origin() {
@@ -56,21 +59,21 @@ export default {
   },
 
     methods:{
-      geolocate: function() {
+      Geolocation: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.Mi_Position = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        console.log(  this.Mi_Position)
       });
     },
+    GetRuta: function(){
 
-      hola: function(){    
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer;
+       directionsDisplay.setMap(this.$refs.map.$mapObject);
+  
 
-          
-
-       //google maps API's direction service
       function calculateAndDisplayRoute(directionsService, directionsDisplay, start, destination) {
         directionsService.route({
           origin: start,
@@ -79,22 +82,15 @@ export default {
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
+            this.mapOptions = response
             console.log(response)
           } else {
             window.alert('Directions request failed due to ' + status);
           }
         });
       }
-
-      var directionsService = new google.maps.DirectionsService;
-      var directionsDisplay = new google.maps.DirectionsRenderer;
-          directionsDisplay.setMap(this.$refs.map.$mapObject);
-
-      console.log(this.LaPlata);
-      console.log(this.Nataga);
       
       calculateAndDisplayRoute(directionsService, directionsDisplay, this.LaPlata, this.Nataga);
-      console.log('hmmm yha');
 
       },
   }
