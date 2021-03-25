@@ -11,7 +11,7 @@
         <Marker :options="{ position: Nataga, icon: Marcador, size: 10 }" @click="hola()"/>
         <Marker :options="{ position: LaPlata2, icon: Marcador, size: 10 }" @click="hola()"/>
 
-        <span travelMode="DRIVING" :origin="origin" :destination="destionation"/>
+        <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destionation"/>
     </GoogleMap>
   </div>
 </template>
@@ -20,10 +20,10 @@
 import { ref } from 'vue'
 import API_ROUTER from './../../services/SERVER_API'
 import { GoogleMap, Marker } from 'vue3-google-map'
-
+ import DirectionsRenderer from './../../components/Maps/DirectionsRenderer.js'
 export default {
     components: { 
-      GoogleMap, Marker
+      GoogleMap, Marker, DirectionsRenderer
     },
     data(){
 
@@ -42,11 +42,11 @@ export default {
     computed: {
     origin() {
 
-      return { query: this.LaPlata };
+      return this.LaPlata 
     },
     destionation() {
   
-      return { query: this.LaPlata2 };
+      return this.LaPlata2 
     }
   },
 
