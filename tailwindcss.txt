@@ -5,6 +5,19 @@ Usar este comando debido a desactualización de vue con POSTCSS
 
 npm install tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7
 
+ó 
+
+npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+
+si hay error:
+
+Syntax Error: Error: PostCSS plugin autoprefixer requires PostCSS 8.
+Migration guide for end-users:
+https://github.com/postcss/postcss/wiki/PostCSS-8-for-end-users
+
+=> Solucionado esto se puede continuar
+
+
 Usar este comando si hay cache de otras instalaciones de atilwindcss
 
 npm cache clean -f
