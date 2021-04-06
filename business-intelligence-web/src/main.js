@@ -9,14 +9,14 @@ import firebase from 'firebase/app';
 
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCBa2GkWSjY6BJHPWwl_Br5MxjsZdze208",
-    authDomain: "occicafe-la-plata-2021.firebaseapp.com",
-    projectId: "occicafe-la-plata-2021",
-    storageBucket: "occicafe-la-plata-2021.appspot.com",
-    messagingSenderId: "632942145297",
-    appId: "1:632942145297:web:efb393a4f3a62a67d3e6b0",
-    measurementId: "G-R695LRN5GB"
-  };
+  apiKey: "AIzaSyBytAdD5bIBtaaqeGZ3o1C_DJwoOzQK2w4",
+  authDomain: "app-cacao-sena.firebaseapp.com",
+  projectId: "app-cacao-sena",
+  storageBucket: "app-cacao-sena.appspot.com",
+  messagingSenderId: "752324770547",
+  appId: "1:752324770547:web:e2700be43296c5a30a5586",
+  measurementId: "G-PZ6D9CGYDT"
+};
 
 firebase.initializeApp(firebaseConfig);
 

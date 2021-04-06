@@ -1,7 +1,7 @@
 <template>
 
     <header class="flex items-center justify-between">
-        <h2 class="text-sm leading-6 font-medium text-black">Actividad reciente</h2>        
+        <h2 class="text-sm leading-6 font-medium text-black">Mis servicios</h2>        
      </header>
 
     <form class="relative mt-5">

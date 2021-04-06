@@ -11,16 +11,16 @@
       </header>
 
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-4 my-5">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-10 gap-4 my-5">
         <div class="">
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <a href="#" class="block relative">
-                        <img alt="profil" :src="ImgProyectos" class="mx-auto object-cover h-20 w-20 "/>
+                        <img alt="profil" :src="ImgProyectos" class="mx-auto object-cover h-12 w-12 "/>
                     </a>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
-                    <span class="text-gray-600 dark:text-white text-lg font-medium">
+                    <span class="text-gray-600 dark:text-white text-sm font-medium">
                         Proyectos
                     </span>
                 </div>
@@ -30,11 +30,11 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <a href="#" class="block relative">
-                        <img alt="profil" :src="ImgForm" class="mx-auto object-cover h-20 w-20 "/>
+                        <img alt="profil" :src="ImgForm" class="mx-auto object-cover h-12 w-12 "/>
                     </a>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
-                    <span class="text-gray-600 dark:text-white text-lg font-medium">
+                    <span class="text-gray-600 dark:text-white text-sm font-medium">
                         Formularios
                     </span>                    
                 </div>
@@ -44,11 +44,11 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <div class="block relative">
-                        <img alt="profil" :src="ImgMaps" class="mx-auto object-cover h-20 w-20 "/>
+                        <img alt="profil" :src="ImgMaps" class="mx-auto object-cover h-12 w-12 "/>
                     </div>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
-                    <span class="text-gray-600 dark:text-white text-lg font-medium">
+                    <span class="text-gray-600 dark:text-white text-sm font-medium">
                         Mapas
                     </span>
                 </div>
@@ -58,11 +58,11 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <a href="#" class="block relative">
-                        <img alt="profil" :src="ImgDatabase" class="mx-auto object-cover h-20 w-20 "/>
+                        <img alt="profil" :src="ImgDatabase" class="mx-auto object-cover h-12 w-12 "/>
                     </a>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
-                    <span class="text-gray-600 dark:text-white text-lg font-medium">
+                    <span class="text-gray-600 dark:text-white text-sm font-medium">
                         Databases
                     </span>
                 </div>
@@ -73,11 +73,11 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <a href="#" class="block relative">
-                        <img alt="profil" :src="Imgkanban" class="mx-auto object-cover h-20 w-20 "/>
+                        <img alt="profil" :src="Imgkanban" class="mx-auto object-cover h-12 w-12 "/>
                     </a>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
-                    <span class="text-gray-600 dark:text-white text-lg font-medium">
+                    <span class="text-gray-600 dark:text-white text-sm font-medium">
                         Kanban
                     </span>
                 </div>
