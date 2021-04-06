@@ -2,108 +2,80 @@
    <div class="px-4 mb-10 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
       <div class="grid grid-cols-1 mb-10 ">
 
-         <div class="p-5">
-    <div class="flex justify-center items-baseline flex-wrap">
-        <div class="flex m-2">
-            <button class="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-gray-200  
-        bg-gray-100 
-        text-gray-700 
-        border duration-200 ease-in-out 
-        border-gray-600 transition">
-                <div class="flex leading-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left w-5 h-5">
+         <!-- hover:bg-gray-200  
+        bg-gray-100  -->
+         <div class="flex  items-baseline flex-wrap">
+
+            <div class="flex m-2">
+
+               <a href="javascript:history.back()" class="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  <div class="flex leading-5">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-chevron-left w-5 h-5">
                         <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    Back</div>
-            </button>
-            <button class="text-base  rounded-l-none border-l-0  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-teal-200  
-        bg-teal-100 
-        text-teal-700 
-        border duration-200 ease-in-out 
-        border-teal-600 transition">
-                <div class="flex leading-5">Next
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right w-5 h-5 ml-1">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </div>
-            </button>
-        </div>
-        <div class="flex m-2">
-
-           <button class="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-gray-200  
-        bg-gray-100 
-        text-gray-700 
-        border duration-200 ease-in-out 
-        border-gray-600 transition">
-                <div class="flex leading-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left w-5 h-5">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    Atrás</div>
-            </button>
+                     </svg>
+                     Atrás
+                  </div>
+               </a>
 
 
 
-            <button class="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-teal-700 hover:text-teal-100 
-        bg-teal-100 
-        text-teal-700 
-        border duration-200 ease-in-out 
-        border-teal-600 transition">
-                <div class="flex leading-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save w-5 h-5 mr-1">
+               
+               <button v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)" class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  <div class="flex leading-5">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-edit w-5 h-5 mr-1">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                     </svg>
+                     Editar encabezado
+                  </div>
+               </button>
+
+               <button v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)" class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  <div class="flex leading-4">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-edit w-5 h-5 mr-1">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                     </svg>
+                     Agregar campos
+                  </div>
+               </button>
+
+               
+               <button class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  <div class="flex leading-5">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-save w-5 h-5 mr-1">
                         <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
                         <polyline points="17 21 17 13 7 13 7 21"></polyline>
                         <polyline points="7 3 7 8 15 8"></polyline>
-                    </svg>
-                    Save</div>
-            </button>
-            <button class="text-base  rounded-l-none rounded-r-none border-l-0 border-r-0  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-teal-700 hover:text-teal-100 
-        bg-teal-100 
-        text-teal-700 
-        border duration-200 ease-in-out 
-        border-teal-600 transition">
-                <div class="flex leading-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit w-5 h-5 mr-1">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg>
-                    Edit</div>
-            </button>
-            <button class="text-base  rounded-l-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-teal-700 hover:text-teal-100 
-        bg-teal-100 
-        text-teal-700 
-        border duration-200 ease-in-out 
-        border-teal-600 transition">
-                <div class="flex leading-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye w-5 h-5 mr-1">
+                     </svg>
+                     Previsualizar
+                  </div>
+               </button>
+
+               <button class="text-base rounded-l-none hover:bg-gray-200 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  <div class="flex leading-5">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-eye w-5 h-5 mr-1">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    View</div>
-            </button>
-        </div>
-    </div>
+                     </svg>
+                     Guardar formulario
+                  </div>
+               </button>
 
-</div>
-
-
-
-         <div class="display-fex my-10">
-            <span v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)"
-               class="mx-2 px-2 py-1 text-white text-xs rounded-full bg-green-400 cursor-pointer">
-               <i class="fa fa-pencil"></i> Editar encabezado
-            </span>
-            <span v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)"
-               class="mx-2 px-2 py-1 text-white text-xs rounded-full bg-blue-400 cursor-pointer">
-               <i class="fa fa-plus"></i> Agregar campos
-            </span>
+               
+            </div>
          </div>
+
 
          <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm()" class="grid gap-x-4 gap-y-8 my-5">
             <div class="block">
@@ -127,17 +99,11 @@
             </div>
          </form>
 
-         <PreviewForm 
-            v-if="editorBasicoForm == 1"
-            :NameForm="NameForm" 
-            :DescriptionForm="DescriptionForm" />
+         <PreviewForm v-if="editorBasicoForm == 1" :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
 
-         <PreviewFormEditor 
-            v-if="ArrayInputs.length && InputIdEidtAsigned == null && editorBasicoForm == 1 " 
-            :NameForm="NameForm" 
-            :DescriptionForm="DescriptionForm"
-            :ArrayInputs="ArrayInputs" @GetIdEdit="AsignedIdEdit" 
-            />
+         <PreviewFormEditor v-if="ArrayInputs.length && InputIdEidtAsigned == null && editorBasicoForm == 1 "
+            :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs"
+            @GetIdEdit="AsignedIdEdit" />
 
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned == null" autocomplete="off"
             class="my-10">
@@ -297,7 +263,7 @@
             </span>
          </form>
          <div>
-      </div>
+         </div>
 
          <!-- <pre>{{ InputIdEidtAsigned }}</pre> -->
 
@@ -316,7 +282,7 @@
 
    import PreviewFormEditor from "./PreviewFormEditor"
    import PreviewForm from "./PreviewForm"
-   
+
 
    export default {
       components: {
