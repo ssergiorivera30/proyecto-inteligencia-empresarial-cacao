@@ -22,7 +22,20 @@ import MapsCreate from '../views/Maps/MapsCreate'
 
 import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
 import ProyectosHome from '../views/Proyectos/ProyectosHome'
+
+
+
 import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
+
+import ProyectoDetallesHeader from '../views/Proyectos/ProyectoDetallesHeader'
+
+
+
+
+
+
+
+
 import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIntegrantes'
 
 
@@ -48,7 +61,8 @@ import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
 
 
 const routes = [
-  { path: '/',  name: 'Home', component: Home  },
+  { path: '/', redirect: 'inicio', component: Home  },
+  { path: '/inicio',  name: 'Home', component: Home  },
 
   { path: '/servicios', redirect: '/servicios/home', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
     children:
@@ -61,30 +75,28 @@ const routes = [
   { path: '/maps', name: 'MapsHome', component: MapsHome  },
   { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate  },
 
-  
-  
 
   
 
   { path: '/proyectos', name: 'ProyectosInicio', component: ProyectosInicio  },
 
-  { path: '/proyecto/detalles', name: 'ProyectoDetalles', component: ProyectoDetalles, 
+  { path: '/proyecto/ver', name: 'ProyectoDetallesHeader', redirect:'/proyecto/ver/detalles', component: ProyectoDetallesHeader, 
     children:
-      [
-        { path: 'home', component: ProyectosHome },      
-        { path: 'detalles', component: ProyectoDetalles },      
+      [    
+        { path: 'detalles', name:'ProyectoDetalles', component: ProyectoDetalles },    
+        { path: 'recolecion-de-datos', name: 'Formularios', component: Formularios},
+        { path: 'integrantes', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
       ] 
   },
-  { path: '/proyecto/formularios', name: 'Formularios', component: Formularios},
-  { path: '/proyecto/integrantes', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
+  
+  
 
 
 
   { path: '/proyecto/formulario', name: 'FormularioNuevo', component: FormularioNuevo,
     children:
       [
-        { path: 'constructor', name: 'FromularioConstructor', component: FromularioConstructor },
-              
+        { path: 'constructor', name: 'FromularioConstructor', component: FromularioConstructor },              
         { path: 'compartir', name: 'FromularioCompartir', component: FromularioCompartir },
         { path: 'ver', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  

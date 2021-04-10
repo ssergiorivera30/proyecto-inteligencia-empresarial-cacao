@@ -15,7 +15,7 @@
 
       <ul class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-4 mt-5">
       
-         <router-link to="/proyecto/detalles" >
+         <router-link to="/proyecto/ver" >
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-3 items-center">
                   <div>

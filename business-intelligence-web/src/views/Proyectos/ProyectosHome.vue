@@ -23,7 +23,7 @@
                Nuevo proyecto
             </div>
          </router-link> -->
-         <router-link to="/proyectos/detalles" >
+         <router-link to="/proyectos/ver" >
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-3 items-center">
                   <div>

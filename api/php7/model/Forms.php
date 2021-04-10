@@ -26,4 +26,18 @@ class Forms
 		$stm -> execute();
 		return $stm->fetchAll();
 	}
+
+	function LoadAdvancedForm($conection, $id_form){
+		
+		$sql = "SELECT mta_auto_id, mta_form_id, mta_date_created, mta_hour_created, mta_updated, mta_status, mta_vigence, mta_json FROM mother_tables WHERE mta_form_id=? limit 1";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $id_form);
+		$stm -> execute();
+		$mi_json = $stm->fetchAll();
+
+		$formulario = $mi_json[0]['mta_json'];
+
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $formulario );				
+	}
 }

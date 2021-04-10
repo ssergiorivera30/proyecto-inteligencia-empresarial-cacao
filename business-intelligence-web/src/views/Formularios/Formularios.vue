@@ -1,34 +1,5 @@
 <template>
-   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-
-      <div class="pt-5 mb-8">
-         <ul class="list-reset flex border-b">
-            <li class="-mb-px mr-1">
-            <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 text-deep-purple-accent-400">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-               </svg>
-            </a>
-         </li>          
-         <li class="-mb-px mr-1">
-            <router-link to="/proyecto/detalles" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white">
-               Detalles
-            </router-link >
-         </li>
-         <li class="-mb-px mr-1">
-            <router-link to="/proyecto/formularios" href="#" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white border-l border-t border-r rounded-t text-blue-900" >
-               Recolección de datos
-            </router-link >
-         </li>
-         <li class="-mb-px mr-1">
-            <router-link to="/proyecto/integrantes" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
-               Integrantes
-            </router-link>
-         </li>  
-         </ul>  
-      </div>
-         
-      
+   <div class="">      
       <header class="flex items-center justify-between">
          <h2 class="text-lg leading-6 font-medium text-black">Fomularios</h2>
          <router-link to="/proyecto/formulario/constructor" class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">

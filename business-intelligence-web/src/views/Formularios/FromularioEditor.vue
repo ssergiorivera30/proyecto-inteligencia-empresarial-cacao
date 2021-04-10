@@ -45,10 +45,12 @@
                      Agregar campos
                   </div>
                </button>
+                            
 
-               
-               <button class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+               <button @click="AsSavedForm = 1"
+               class="text-base rounded-l-none  hover:bg-gray-200 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
+                     
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-save w-5 h-5 mr-1">
@@ -56,19 +58,21 @@
                         <polyline points="17 21 17 13 7 13 7 21"></polyline>
                         <polyline points="7 3 7 8 15 8"></polyline>
                      </svg>
-                     Previsualizar
+                     Guardar formulario
                   </div>
                </button>
 
-               <button class="text-base rounded-l-none hover:bg-gray-200 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+               <button v-if="AsSavedForm == 1" @click="AsSavedForm = 0 "
+               class="text-base rounded-l-none bg-red-400  hover:bg-red-500 text-white hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-eye w-5 h-5 mr-1">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                     </svg>
-                     Guardar formulario
+                     Aún no
+                  </div>
+               </button>
+
+               <button v-if="AsSavedForm == 1" @click="SaveNewForm(); AsSavedForm = 0"
+               class="text-base rounded-l-none bg-green-500  hover:bg-green-600 text-white hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  <div class="flex leading-5">
+                     Si, guardar
                   </div>
                </button>
 
@@ -115,8 +119,7 @@
                      <option value="number">Númerico</option>
                      <option value="select">Lista desplegable</option>
                      <option value="textarea">Parrafo</option>
-                     <option value="email">Email</option>
-                     <option value="tel">Tel</option>
+                     <option value="email">Email</option>                 
                      <option value="checkbox">Selección multiple</option>
                      <option value="radio">Selección única</option>
                      <option value="file">Archivo</option>
@@ -125,8 +128,6 @@
                      <option value="date">Fecha</option>
                      <option value="datetime-local">Fecha y hora</option>
                      <option value="time">Hora</option>
-                     <option value="month">Mes</option>
-                     <option value="week">Semana</option>
                      <option value="color">Color</option>
                   </select>
                </div>
@@ -177,9 +178,9 @@
                <button type="submit" class="mr-3 btn-indigo">
                   Crear entrada de datos
                </button>
-               <button type="submit" class=" btn-green2">
+               <!-- <button type="submit" class=" btn-green2">
                   Terminar y guardar
-               </button>
+               </button> -->
             </div>
          </form>
 
@@ -195,8 +196,7 @@
                         <option value="number">Númerico</option>
                         <option value="select">Lista desplegable</option>
                         <option value="textarea">Parrafo</option>
-                        <option value="email">Email</option>
-                        <option value="tel">Tel</option>
+                        <option value="email">Email</option>                 
                         <option value="checkbox">Selección multiple</option>
                         <option value="radio">Selección única</option>
                         <option value="file">Archivo</option>
@@ -205,8 +205,6 @@
                         <option value="date">Fecha</option>
                         <option value="datetime-local">Fecha y hora</option>
                         <option value="time">Hora</option>
-                        <option value="month">Mes</option>
-                        <option value="week">Semana</option>
                         <option value="color">Color</option>
                      </select>
                   </div>
@@ -314,13 +312,31 @@
             ArrayInputs: [],
             ArrayOptions: [],
 
-            InputIdEidtAsigned: null
+            InputIdEidtAsigned: null,
+
+            AsSavedForm: 0,
          }
       },
       mounted: function () {
          this.LoadInfoForm()
       },
       methods: {
+         SaveNewForm: function () {
+
+            // this.AsSavedForm = 1
+
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_saved.php",
+               {
+                  FormId: this.$route.params.id,
+                  ArrayInputs: this.ArrayInputs
+               }).then((response) => {
+
+                  console.log(response)
+
+               }).catch(() => {
+                  alert('Error de conexión')
+            })
+         },
          AsignedIdEdit: function (value) {
             this.InputIdEidtAsigned = value
          },

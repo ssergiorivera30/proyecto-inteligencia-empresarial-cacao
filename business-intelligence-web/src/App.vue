@@ -10,7 +10,7 @@
     </router-link>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-100 w-14">
       <nav class="flex flex-col mx-4 my-2 space-y-3">
-        <router-link to="/" class="inline-flex items-center justify-center py-2 hover:text-purple-900 focus:text-gray-400 focus:text-purple-900 rounded-lg">
+        <router-link to="/inicio" class="inline-flex items-center justify-center py-2 hover:text-purple-900 focus:text-gray-400 focus:text-purple-900 rounded-lg">
           <span class="sr-only">Inicio</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -51,7 +51,7 @@
     </div>
   </aside>
   <div class="flex-grow text-gray-800 ">
-    <header class="flex items-center h-10 px-1 sm:px-10 bg-green-500 shadow-sm">
+    <header class="flex items-center h-10 px-1 sm:px-10 bg-blue-900 shadow-sm">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
