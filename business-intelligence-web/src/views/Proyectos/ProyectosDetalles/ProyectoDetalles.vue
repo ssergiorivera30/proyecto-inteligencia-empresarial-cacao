@@ -23,7 +23,7 @@
             
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="">
-               <div class="px-4 py-3 sm:px-6">
+               <div class="px-1 py-3 sm:px-3">
                   <h3 class="text-lg leading-6 font-medium text-gray-900">
                      Información del proyecto
                   </h3>
@@ -33,7 +33,7 @@
                </div>
                <div class="border-t border-gray-200">
                   <dl>
-                     <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
                            Autores
                         </dt>
@@ -43,7 +43,7 @@
 
                         </dd>
                      </div>
-                     <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <div class="bg-white px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
                            Equipo Ejecutor
                         </dt>
@@ -57,7 +57,7 @@
 
                         </dd>
                      </div>
-                     <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
                            Áreas de conocimiento
                         </dt>
@@ -65,7 +65,7 @@
                            margotfoster@example.com
                         </dd>
                      </div>
-                     <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <div class="bg-white px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
                            Valor total del proyecto
                         </dt>
@@ -73,7 +73,7 @@
                            $120,000
                         </dd>
                      </div>
-                     <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
                            Objetivo general
                         </dt>
@@ -84,7 +84,7 @@
                            eu.
                         </dd>
                      </div>
-                     <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <div class="bg-white px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
                            Ajuntos
                         </dt>
