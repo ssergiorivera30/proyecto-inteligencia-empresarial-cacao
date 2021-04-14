@@ -3,14 +3,14 @@
     <ul class="list-reset flex border-b">
       <li class="-mb-px mr-1">
         <router-link :to="GoBack"
-          class="text-blue-400 font-semibold inline-block py-1 px-4 bg-white hover:text-blue-900 cursor-pointer">
+          class="text-blue-400 font-semibold inline-block py-1 px-3 bg-white hover:text-blue-900 cursor-pointer">
           Atrás
         </router-link>
       </li>
       <!--  -->
       <li class="-mb-px mr-1" v-for="routes in RoutesNavs" :key="routes">
         
-        <router-link :to="routes.Linkroute"
+        <router-link :to="routes.Linkroute+'/'+this.$route.params.id_project"
           active-class="border-l border-t border-r rounded-t text-blue-900"
           class="text-blue-400 font-semibold inline-block py-1 px-4 bg-white">
           {{ routes.nameRoute}}

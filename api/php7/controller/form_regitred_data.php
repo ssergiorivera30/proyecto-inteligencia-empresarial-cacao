@@ -15,46 +15,9 @@ $conection = $connect -> BDMysqlBigNovaSoftware();
 
 $response = new Response();
 
-// $id_form = $array['id_form'];
+$id_form = $array['id_form'];
 
-// array(2) {
-//   ["id_form"]=>
-//   string(2) "32"
-//   ["data"]=>
-//   array(12) {
-//     ["Nombres"]=>
-//     string(0) ""
-//     ["Apellidos"]=>
-//     string(0) ""
-//     ["Parrafo"]=>
-//     string(0) ""
-//     ["Email"]=>
-//     string(0) ""
-//     ["Documento"]=>
-//     array(0) {
-//     }
-//     ["Contraseña"]=>
-//     string(0) ""
-//     ["URL"]=>
-//     string(0) ""
-//     ["Edad"]=>
-//     string(0) ""
-//     ["Fecha"]=>
-//     string(0) ""
-//     ["Fecha y hora"]=>
-//     string(0) ""
-//     ["Hora"]=>
-//     string(0) ""
-//     ["Color Favorito"]=>
-//     string(7) "#000000"
-//   }
-// }
-
-
-// SELECT `id`, `Nombres`, `Apellidos`, `Parrafo`, `Email`, `Documento`, `Contraseña`, `URL`, `Edad`, `Fecha`, `Fecha_y_hora`, `Hora`, `Color_Favorito` FROM `table_form_25` WHERE 1
-
-
-$sql = "INSERT INTO table_form_25 ( ";
+$sql = "INSERT INTO table_form_$id_form ( ";
 
 foreach ($array['data'] as $key => $value) {
 
@@ -114,7 +77,7 @@ $stm->execute();
 
 if( $stm->rowCount() > 0){
 
-	$response = array('response' => 'success', 'mensaje' => 'Servicio registrado' );
+	$response = array('response' => 'success', 'mensaje' => 'Registro guardado' );
 
 }else{
 

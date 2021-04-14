@@ -1,20 +1,18 @@
 <template>
-   <div class="grid grid-cols-2 gap-4">
-      <div>
-         <form action="#" method="POST" class="space-y-6 mt-5" @submit.prevent="SaveInitialForm()">           
-            <div class="label-intro">
-               <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                  <label class="bg-white text-gray-600 px-1">Formulario nuevo</label>
-               </div>
-               <input type="text" class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" required v-model="NameForm">
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    
+         <form action="#" method="POST" class="space-y-6 mt-5" @submit.prevent="SaveInitialForm()">
+            <div>
+               <label class="block text-gray-700">Formulario nuevo</label>
+               <input type="text"
+                  class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  required v-model="NameForm">
             </div>
             <div>
-               <div class="label-intro">
-                  <div class="-mt-4 absolute tracking-wider px-1 text-xs">
-                     <label class="bg-white text-gray-600 px-1">Breve descripción</label>
-                  </div>
-                  <textarea rows="4" class="text-sm text-black placeholder-gray-500 py-1 pl-2 px-1 outline-none block h-full w-full" required v-model="DescriptionForm"></textarea>
-               </div>
+               <label class="block text-gray-700">Breve descripción</label>
+               <textarea rows="4"
+               class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+               required v-model="DescriptionForm"></textarea>
                <p class="mt-1 text-sm text-gray-500">* Formulario privado.</p>
             </div>
             <div class="py-2 text-left">
@@ -23,13 +21,16 @@
                   Continuar
                </button>
             </div>
-         </form>         
-      </div>
-      <PreviewForm v-if="NameForm != '' " :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>  
+         </form>
+    
 
-      <div v-else class="">
-         <img :src="img_form_person" alt="" class=" pt-1 pb-20 px-20">
+      <PreviewForm v-if="NameForm != '' " :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
+      
+      
+      <div  v-else class="flex justify-center">
+         <img class="w-2/3 p-10" :src="img_form_person" alt="" >
       </div>
+
 
    </div>
 </template>
@@ -42,36 +43,36 @@
    import PreviewForm from "./PreviewForm"
 
    export default {
-      components:{
+      components: {
          PreviewForm
       },
       data() {
          return {
             name: 'FromularioConstructor',
-            img_form_person: API_ROUTER.API_UI+'/form_information_yellow.svg',
+            img_form_person: API_ROUTER.API_UI + '/forms/new_form.svg',
             NameForm: '',
-            DescriptionForm: '',     
+            DescriptionForm: '',
          }
-      },      
+      },
       mounted: function () {
 
       },
       methods: {
          SaveInitialForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "form_create.php",
-            {
-               NameForm: this.NameForm,
-               DescriptionForm: this.DescriptionForm
-            }).then((response) => {
-               
-               new Noty({
-                  theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
-                  type: response.data.icono, text: response.data.mensaje
-               }).show();
-                  
-               this.$router.replace("/proyecto/formulario/editor/" + response.data.code );
+               {
+                  NameForm: this.NameForm,
+                  DescriptionForm: this.DescriptionForm
+               }).then((response) => {
 
-            })
+                  new Noty({
+                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                     type: response.data.icono, text: response.data.mensaje
+                  }).show();
+
+                  this.$router.replace("/proyecto/formulario/editor/" + response.data.code);
+
+               })
          },
       }
    }

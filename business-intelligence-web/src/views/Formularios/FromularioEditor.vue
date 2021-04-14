@@ -15,7 +15,7 @@
                         class="feather feather-chevron-left w-5 h-5">
                         <polyline points="15 18 9 12 15 6"></polyline>
                      </svg>
-                     Atrás
+                     <span class="hidden md:block">Atrás</span>
                   </div>
                </a>
 
@@ -30,7 +30,7 @@
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                      </svg>
-                     Editar encabezado
+                     <span class="hidden md:block">Editar encabezado</span>
                   </div>
                </button>
 
@@ -42,7 +42,7 @@
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                      </svg>
-                     Agregar campos
+                     <span class="hidden md:block">Agregar campos</span>
                   </div>
                </button>
                             
@@ -58,7 +58,7 @@
                         <polyline points="17 21 17 13 7 13 7 21"></polyline>
                         <polyline points="7 3 7 8 15 8"></polyline>
                      </svg>
-                     Guardar formulario
+                     <span class="hidden md:block">Guardar formulario</span>
                   </div>
                </button>
 
@@ -81,7 +81,7 @@
          </div>
 
 
-         <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm()" class="grid gap-x-4 gap-y-8 my-5">
+         <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm(), OrdenVisivility(1)" class="grid gap-x-4 gap-y-8 my-5">
             <div class="block">
                <label><span class="text-gray-700">Nombre del formulario</span></label>
                <input type="text" class="form-control2" required v-model="NameForm">
@@ -111,7 +111,7 @@
 
          <form @submit.prevent="AddInput" v-if="editorBasicoForm == 1 && InputIdEidtAsigned == null" autocomplete="off"
             class="my-10">
-            <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
+            <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2">
                <div class="block">
                   <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
                   <select class="form-control2" required v-model="InputType" @change="AttributeInputVisivility">
@@ -331,7 +331,10 @@
                   ArrayInputs: this.ArrayInputs
                }).then((response) => {
 
-                  console.log(response)
+                  new Noty({
+                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                     type: response.data.icono, text: response.data.mensaje
+                  }).show();
 
                }).catch(() => {
                   alert('Error de conexión')

@@ -15,16 +15,16 @@
 
       <ul class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-4 mt-5">
       
-         <router-link to="/proyecto/ver" >
+         <router-link  v-for="projects in ArrayProjects" :key="projects" :to="'/proyecto/ver/detalles/'+ projects.id"> 
             <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-purple-200 hover:shadow-md">
                <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-3 items-center">
                   <div>
                      <dt class="sr-only">Title</dt>
-                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">Estrategias Tecnológicas para el fortalecimiento de la cadena...</dd>
+                     <dd class="leading-6 font-medium text-black group-hover:text-purple-900">{{ projects.name }}</dd>
                   </div>
                   <div class="mt-4">
                      <dt class="sr-only">Category</dt>
-                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">Cacao</dd>
+                     <dd class="text-sm font-medium group-hover:text-light-blue-200 sm:mb-4 lg:mb-0 xl:mb-4">{{ projects.create_date }}</dd>
                   </div>
                   <div class="col-start-2 row-start-1 row-end-3">
                      <dt class="sr-only">Users</dt>
@@ -45,6 +45,7 @@
 
 <script>
 
+import axios from 'axios';
 import API_ROUTER from './../../services/SERVER_API'
 
 export default {
@@ -56,9 +57,33 @@ export default {
         ImgProyectos: API_ROUTER.API_UI+'icons/proyectos.jpg',
         ImgMaps: API_ROUTER.API_UI+'icons/maps.jpg',
         Imgkanban: API_ROUTER.API_UI+'icons/Imgkanban.webp',
+
+        ArrayProjects: [],
       }
-    },
-  
+   },
+   mounted: function(){
+
+      this.LoadProjects()
+
+  },
+  methods: {
+      LoadProjects :function(){
+         axios.post(API_ROUTER.PHP7_CONTROLLER + "project_load.php",
+            {
+               UserService: 1,
+            }).then((res) => {
+
+               console.log(res)
+
+               this.ArrayProjects = res.data
+
+            }).catch(() => {
+               
+               alert('Error de conexión')
+
+         })
+      },
+   }  
 }
 </script>
 

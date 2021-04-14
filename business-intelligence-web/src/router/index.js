@@ -53,10 +53,11 @@ import FromularioEditor from '../views/Formularios/FromularioEditor'
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
 import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
 import FormularioDetalles from '../views/FormularioDetalles/FormularioDetalles'
+import FormularioDatos from '../views/FormularioDetalles/FormularioDatos'
 
 
 
-FormularioDetalles
+
 import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
 
 
@@ -83,9 +84,9 @@ const routes = [
   { path: '/proyecto/ver', name: 'ProyectoDetallesHeader', redirect:'/proyecto/ver/detalles', component: ProyectoDetallesHeader, 
     children:
       [    
-        { path: 'detalles', name:'ProyectoDetalles', component: ProyectoDetalles },    
-        { path: 'recolecion-de-datos', name: 'Formularios', component: Formularios},
-        { path: 'integrantes', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
+        { path: 'detalles/:id_project', name:'ProyectoDetalles', component: ProyectoDetalles },    
+        { path: 'recolecion-de-datos/:id_project', name: 'Formularios', component: Formularios},
+        { path: 'integrantes/:id_project', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
       ] 
   },
   
@@ -104,9 +105,7 @@ const routes = [
 
 { path: '/proyecto/formulario/editor/:id', name: 'FromularioEditor', component: FromularioEditor },
 { path: '/formulario/detalles/:id_formulario', name: 'FormularioDetalles', component: FormularioDetalles },
-
-
-
+{ path: '/formulario/datos/:id_formulario', name: 'FormularioDatos', component: FormularioDatos },
 
 
 

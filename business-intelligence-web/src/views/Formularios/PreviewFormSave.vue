@@ -77,7 +77,10 @@
 <script>
 
 import axios from 'axios'
+import Noty from "noty";
+
 import API_ROUTER from "./../../services/SERVER_API"
+
 
 
    export default {
@@ -124,7 +127,12 @@ import API_ROUTER from "./../../services/SERVER_API"
 
                   console.log(response)
 
-                  window.location.reload()
+                   new Noty({
+                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                     type: response.data.response, text: response.data.mensaje
+                  }).show();
+
+                  // window.location.reload()
 
            
                   

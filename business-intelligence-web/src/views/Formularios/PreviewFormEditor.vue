@@ -5,7 +5,7 @@
            
       <form @submit.prevent="guardar" autocomplete="off">
 
-      <draggable class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-3" :list="ArrayInputs" @change="log">
+      <draggable class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2" :list="ArrayInputs" @change="log">
 
  
 
@@ -20,8 +20,8 @@
                       <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move">
                      {{ input['input']['name'] }}</span>
                   <div class="text-right">
-                     <span class="text-gray-500 cursor-pointer mr-5" @click="DeleteOption(index)" title="Eliminar"><i class="fa fa-trash"></i></span>
-                     <span class="text-gray-500 cursor-pointer ml-5" @click="SendIdEdit(index)" title="Editar"><i class="fa fa-pencil"></i></span>
+                     <span class="text-gray-700 cursor-pointer mr-2" @click="DeleteOption(index)" title="Eliminar"><i class="fa fa-trash"></i></span>
+                     <span class="text-gray-700 cursor-pointer ml-2" @click="SendIdEdit(index)" title="Editar"><i class="fa fa-pencil"></i></span>
                   </div>
                </label>
 
