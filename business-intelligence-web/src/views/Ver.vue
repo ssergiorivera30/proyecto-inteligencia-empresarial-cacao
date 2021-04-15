@@ -1,58 +1,111 @@
 <template>
-  <main class="p-6 sm:p-10 space-y-6">
+<!-- component -->
+       
+<div class="px-0 pb-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pb-5">
+    <div>
+        <div class="h-48 w-full bg-cover bg-black" :style="'background-image:url('+imagen_a+')'">
 
-  
-    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-  <div class="grid gap-5 row-gap-8 lg:grid-cols-2">
-    <div class="flex flex-col justify-center">
-      <div class="max-w-xl mb-6">
-        <div>
-          <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-            Brand new
-          </p>
+
         </div>
-        <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-          Innovative analytics<br class="hidden md:block" />
-          that you
-          <span class="inline-block text-deep-purple-accent-400">will love</span>
-        </h2>
-        <p class="text-base text-gray-700 md:text-lg">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo.
-        </p>
-      </div>
-      <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">
-        Learn more
-        <svg class="inline-block w-3 ml-2" fill="currentColor" viewBox="0 0 12 12">
-          <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path>
-        </svg>
-      </a>
+
+
+
+
+        <div class="px-6 md:px-32 flex justify-between lg:flex-row flex-col">
+            <div class="flex lg:flex-row flex-col">
+                <div class="w-36 h-36 bg-cover rounded-full bg-center absolute transform -translate-y-1/2 ring-4 ring-white" 
+                :style="'background-image:url('+imagen_c+')'">
+                </div>
+                <p class="lg:ml-36 mt-16 lg:mt-0 pl-4 text-3xl font-semibold py-5">
+                  Sergio Rivera
+                </p>
+            </div>
+            <div class="py-5 lg:space-x-3 space-y-3 lg:space-y-0">
+                <button class="lg:w-auto inline-flex w-full font-semibold tracking-wide justify-center w-full items-center text-gray-600 space-x-1.5 border border-gray-400 focus:ring-1 focus:ring-gray-300 focus:ring-offset-2 hover:bg-gray-100 focus:outline-none px-4 py-2 text-sm rounded-lg">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg>
+                    </span>
+                    
+                    <span>
+                        Message
+                    </span>
+                    
+                </button>
+                <button class="lg:w-auto inline-flex w-full font-semibold tracking-wide justify-center w-full items-center text-gray-600 space-x-1.5 border border-gray-400 focus:ring-1 focus:ring-gray-300 focus:ring-offset-2 hover:bg-gray-100 focus:outline-none px-4 py-2 text-sm rounded-lg">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.48 22.926l-1.193.658c-6.979 3.621-19.082-17.494-12.279-21.484l1.145-.637 3.714 6.467-1.139.632c-2.067 1.245 2.76 9.707 4.879 8.545l1.162-.642 3.711 6.461zm-9.808-22.926l-1.68.975 3.714 6.466 1.681-.975-3.715-6.466zm8.613 14.997l-1.68.975 3.714 6.467 1.681-.975-3.715-6.467z"/></svg>
+                    </span>
+                    
+                    <span>
+                        Call
+                    </span>
+                    
+                </button>
+            </div>
+        </div>
+
+         
+
+
+
     </div>
-    <div class="relative">
-      <svg class="absolute w-full text-teal-accent-400" fill="currentColor" viewBox="0 0 600 392">
-        <rect x="0" y="211" width="75" height="181" rx="8"></rect>
-        <rect x="525" y="260" width="75" height="132" rx="8"></rect>
-        <rect x="105" y="83" width="75" height="309" rx="8"></rect>
-        <rect x="210" y="155" width="75" height="237" rx="8"></rect>
-        <rect x="420" y="129" width="75" height="263" rx="8"></rect>
-        <rect x="315" y="0" width="75" height="392" rx="8"></rect>
-      </svg>
-      <svg class="relative w-full text-deep-purple-accent-400" fill="currentColor" viewBox="0 0 600 392">
-        <rect x="0" y="311" width="75" height="81" rx="8"></rect>
-        <rect x="525" y="351" width="75" height="41" rx="8"></rect>
-        <rect x="105" y="176" width="75" height="216" rx="8"></rect>
-        <rect x="210" y="237" width="75" height="155" rx="8"></rect>
-        <rect x="420" y="205" width="75" height="187" rx="8"></rect>
-        <rect x="315" y="83" width="75" height="309" rx="8"></rect>
-      </svg>
-    </div>
-  </div>
 </div>
-    </main>
+
+<div class="px-3 pb-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pb-5">
+
+
+        
+
+          <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" />
+   
+
+
+
+
+
+
+        </div>
+
+
+
 </template>
+
+
 
 <script>
 
+import API_ROUTER from './../services/SERVER_API'
+import ServicesRecent from '../components/Servicios/ServicesRecent.vue'
+   import NavBarSecondary from './../components/Utilidades/NavBarSecondary.vue'
+
+
 export default {
-  name: 'Home',
+  components: { 
+     NavBarSecondary
+   },
+  data(){
+    return{
+      name: 'Ver',
+      imagen_a: API_ROUTER.API_FILE_SYSTEMS+'1.jpg',
+      imagen_b: API_ROUTER.API_FILE_SYSTEMS+'2.jpg',
+      imagen_c: API_ROUTER.API_FILE_SYSTEMS+'3.jpg',
+
+      GoBack: '/inicio',
+      RoutesNavs: [
+        { Linkroute: '/proyecto/ver/detalles', nameRoute: 'Mi cuenta' },
+        { Linkroute: '/proyecto/ver/recolecion-de-datos', nameRoute: 'Personalización' },
+        { Linkroute: '/proyecto/ver/integrantes', nameRoute: 'Seguridad' },
+      ]
+        
+    }
+  }, 
+  mounted: function(){
+
+  },
+  methods:{
+
+
+  }
+  
 }
 </script>
