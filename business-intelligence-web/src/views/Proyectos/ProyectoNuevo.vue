@@ -11,7 +11,9 @@
          </div>
       </header>
 
-      <form  class="space-y-4 mt-5" @submit.prevent="RegiserProject()">              
+      <form  class="space-y-4 mt-5" @submit.prevent="RegiserProject()"> 
+        
+                     
           <div class="grid grid-cols-1 gap-6">
               <div class="">
                 <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Nombre proyecto</label>                                

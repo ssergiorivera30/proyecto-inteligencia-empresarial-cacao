@@ -1,7 +1,9 @@
 <style>
   @import "~noty/lib/noty.css";
   @import "~noty/lib/themes/sunset.css";
+  @import "./assets/boxicons-2.0.7/css/boxicons.min.css"; 
 </style>
+
 <template>
   <body class="flex min-h-screen">
   <aside class="hidden sm:flex sm:flex-col">
