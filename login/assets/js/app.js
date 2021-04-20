@@ -28,10 +28,10 @@
         UserEmail: 'syrivera89@misena.edu.co',
         UserPassword:'123456',
         
-        UserNames:'',
-        UserNewEmail:'',
-        UserFirstPassword:'',
-        UserConfirmPassword:'',
+        UserNames:'asdas asdasd',
+        UserNewEmail:'syrivera89@misena.edu.co',
+        UserFirstPassword:'3534534534',
+        UserConfirmPassword:'3534534534',
 
         EmailUserRecuperate: '',
       },
@@ -57,7 +57,7 @@
         RecuperateUserPassword: function(){
 
         },
-        RgisterUser: function(){
+        RegisterUser: function(){
           axios.post(BASE_API+'user_create.php', {
             UserNames: this.UserNames,
             UserNewEmail: this.UserNewEmail,
@@ -66,6 +66,12 @@
           }).then((response) =>{
                        
               this.ReverseMessage(response.data['ClassStyle'], response.data['MsgResponse'])
+
+
+              if(response.data['ClassStyle'] === 'text-green-900'){
+                this.ResetForm()
+              }
+              
           
           }).catch(()=> {
             this.ReverseMessage('Error de conexión', 'text-red-900')
@@ -88,5 +94,16 @@
           this.ClassStyle = ClassStyle
           this.MsgResponse = MsgResponse
         },
+        ResetForm: function(){
+
+          this.UserEmail = ''
+          this.UserPassword = ''
+          this.UserNames = ''
+          this.UserNewEmail = ''
+          this.UserFirstPassword = ''
+          this.UserConfirmPassword = ''
+          this.EmailUserRecuperate = ''
+
+        }
       }
     })

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 </head>
 
-<body class="bg-white">
+<body class="bg-white dark:bg-gray-800">
   <div id="app">
     <div class="py-2 px-4 sm:px-12 flex justify-between">
       <div class="bg-gray-200 rounded-full">
@@ -116,7 +116,7 @@
 
         <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Crear cuenta</h1>
 
-        <form @submit.prevent="RgisterUser()" class="w-full" autocomplete="off">
+        <form @submit.prevent="RegisterUser" class="w-full" autocomplete="off">
 
           <div>
             <label class="block text-gray-700">Nombres y apellidos</label>
@@ -223,11 +223,8 @@
 
 
 
-      <div v-if="NewCount == 3" class="w-full md:w-5/12 py-5 px-4 sm:px-12 flex flex-wrap">
-        <img :src="SrcAssets+'loading/loading.svg'" alt="" class="bg-gray-100 mx-auto flex align-center w-20 md:w-24"
-          loading="lazy">
-        <button @click="NewCount = 0" type="button"
-          class="w-full mt-24 block bg-gray-200 hover:bg-gray-200 focus:bg-gray-200 text-gray font-semibold rounded-lg px-4 py-2 mt-4">Cancelar</button>
+      <div v-if="NewCount == 3" class="w-full sm:w-3/4 md:w-3/5 lg:w-5/12 xl:w-4/12 2xl:w-1/4 py-1 md:py-5 px-4 sm:px-12 flex flex-wrap">
+        <img :src="SrcAssets+'loading/loading.svg'" alt="" class="bg-gray-100 mx-auto flex align-center w-20 md:w-24" loading="lazy">
       </div>
 
 

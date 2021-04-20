@@ -4,7 +4,7 @@ class Users
 {	
 	function VerifyExitence($conection, $UserNewEmail){
 		
-		$sql = "SELECT usr_auto_id, usr_user_id, usr_email, usr_password, usr_update FROM users_credentials WHERE usr_email =?";
+		$sql = "SELECT usr_email FROM users_credentials WHERE usr_email=?";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $UserNewEmail);
 		$stm -> execute();		
@@ -13,18 +13,26 @@ class Users
 
 	function CreateUserFirstStep($conection){
 	
-		$response_id_user = 0;
+		$CODE_USER = 0;
+		$status = 1;
+		$mi_date = date('Y-m-d');
+		$mi_hour = date('H:m:s');
 
-		$sql = "INSERT users_keys(usk_date_created, usk_hour_created,usk_status, usk_vigence) VALUES (NOW(), NOW(), 1, 1 )";
+		$sql = "INSERT users_keys(usk_date_created, usk_hour_created, usk_status, usk_vigence) VALUES ( ?, ?, ?, ?  )";
 		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $mi_date);
+		$stm -> bindParam(2, $mi_hour);
+		$stm -> bindParam(3, $status);
+		$stm -> bindParam(4, $status);
 		$stm -> execute();
+
 
 		if($stm->rowCount() > 0){
 
-			$response_id_user = $conection->lastInsertId();
+			$CODE_USER = $conection->lastInsertId();
 		}
 
-		return $response_id_user;
+		echo $CODE_USER;
 		
 	}
 
@@ -38,7 +46,8 @@ class Users
 		$stm -> bindParam(2, $UserNewEmail);
 		$stm -> bindParam(3, $PasswordCyfred);
 		$stm -> execute();
-		return $stm->rowCount();		
+		return $stm->rowCount();	
+
 	}
 
 	function CreateUserDataPersonalBasic($conection, $result_created_id, $UserNames ){

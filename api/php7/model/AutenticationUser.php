@@ -12,7 +12,7 @@ class AutenticationUser
 
 		$PasswordCyfred = sha1($UserPassword);
 
-		$sql_login = "SELECT usr_auto_id as code, usr_email as email, usr_password as pass, usr_status as ext1, usr_vigence as ext2 FROM users_credentials WHERE usr_email = ? and usr_password = ? and usr_status = 1 and usr_vigence = 1 ";
+		$sql_login = "SELECT usr_user_id, usr_email, usr_password, usr_update FROM users_credentials WHERE  usr_email=? and usr_password=?";
 		$login = $conexion->prepare($sql_login);
 		$login ->bindParam(1, $UserEmail);
 		$login ->bindParam(2, $PasswordCyfred);
