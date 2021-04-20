@@ -10,213 +10,241 @@
   <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 </head>
 <body>
-  <div class="flex justify-center" id="app">
+  <div id="app">
 
+    <div class="py-2 px-4 sm:px-12 flex justify-between">
+      <div class="flex-start">
+        <a href="javascript:history.back()" v-if="NewCount == 0" class="cursor-pointer text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </a>
+      </div>
+      <div class="text-right">
+        <span v-if="NewCount != 0" @click="NewCount = 0" class="cursor-pointer text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </span>
+      </div>
+    </div>
 
-    <div v-if="NewCount == 0" class="w-96	py-5 px-4 sm:px-12 flex flex-wrap content-center">
+    <img v-if="NewCount == 0" :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="flex sm:hidden mx-auto flex align-center mt-5 md:mt-16 w-24 md:w-24" loading="lazy">
+ 
 
-      <img :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="mx-auto flex align-center w-24 md:w-24" loading="lazy">
-      <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Ingreso</h1>
+    <div class="flex items-center justify-center" style="height: 80vh;">
 
-      <form @submit.prevent="LoginUserCount()" class="w-full" autocomplete="off">
-        <div>
-          <label class="block text-gray-700">Dirección de correo electrónico</label>
-          <input type="email" placeholder="Su correo electrónico" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
-            v-model="UserEmail" autofocus autocomplete required>
-        </div>
+      <div v-if="NewCount == 0" class="w-full sm:w-3/4 md:w-3/5 lg:w-5/12 xl:w-4/12 2xl:w-1/4 py-1 md:py-5 px-4 sm:px-12 flex flex-wrap">
 
-        <div class="mt-4">
-          <label class="block text-gray-700">Contraseña</label>
-          <input type="password" placeholder="Introducir la contraseña" minlength="6" maxlength="16" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500
+        <img :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="hidden sm:flex mx-auto flex align-center mt-5 md:mt-16 w-24 md:w-24" loading="lazy">
+
+     
+        <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Ingreso</h1>
+
+        <form @submit.prevent="LoginUserCount()" class="w-full" autocomplete="off">
+          <div>
+            <label class="block text-gray-700">Correo electrónico</label>
+            <input type="email" placeholder="Su correo electrónico"
+              class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
+              v-model="UserEmail" autofocus autocomplete required>
+          </div>
+
+          <div class="mt-4">
+            <label class="block text-gray-700">Contraseña</label>
+            <input type="password" placeholder="Introducir la contraseña" minlength="6" maxlength="16" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500
           focus:bg-white focus:outline-none" v-model="UserPassword" required>
-        </div>
+          </div>
 
-        <div class="text-right mt-2">
-          <button @click="NewCount = 2" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">¿Has olvidado tu contraseña?</button>
-        </div>
+          <div class="text-right mt-2">
+            <button @click="NewCount = 2"
+              class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">¿Has olvidado tu
+              contraseña?</button>
+          </div>
 
-        <div class="w-full text-left mt-2">
-          <p class="font-semibold" :class="ClassStyle">{{ MsgResponse }}</p>
-        </div>
+          <div class="w-full text-left mt-2">
+            <p class="font-semibold" :class="ClassStyle">{{ MsgResponse }}</p>
+          </div>
 
-        <button type="submit" class="w-full block bg-blue-900 hover:bg-blue-900 focus:bg-blue-900 text-white font-semibold rounded-lg px-4 py-2 mt-6">
-          Iniciar sesión
+          <button type="submit"
+            class="w-full block bg-blue-900 hover:bg-blue-900 focus:bg-blue-900 text-white font-semibold rounded-lg px-4 py-2 mt-6">
+            Iniciar sesión
+          </button>
+        </form>
+
+        <hr class="my-6 border-gray-300 w-full">
+
+        <button @click="LoginUserWitchGoogle()" type="button"
+          class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
+          <div class="flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6"
+              viewBox="0 0 48 48">
+              <defs>
+                <path id="a"
+                  d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
+              </defs>
+              <clipPath id="b">
+                <use xlink:href="#a" overflow="visible" />
+              </clipPath>
+              <path clip-path="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z" />
+              <path clip-path="url(#b)" fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
+              <path clip-path="url(#b)" fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
+              <path clip-path="url(#b)" fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
+            </svg>
+            <span class="ml-4">Iniciar sesión con Google</span>
+          </div>
         </button>
-      </form>
 
-      <hr class="my-6 border-gray-300 w-full">
-
-      <button @click="LoginUserWitchGoogle()" type="button"
-        class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
-        <div class="flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6" viewBox="0 0 48 48">
-            <defs>
-              <path id="a" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
-            </defs>
-            <clipPath id="b">
-              <use xlink:href="#a" overflow="visible" />
-            </clipPath>
-            <path clip-path="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z" />
-            <path clip-path="url(#b)" fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
-            <path clip-path="url(#b)" fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
-            <path clip-path="url(#b)" fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
-          </svg>
-          <span class="ml-4">Iniciar sesión con Google</span>
+        <div class="w-full text-center mt-4">
+          <p class="">No tiene cuenta? <span @click="NewCount = 1"
+              class="cursor-pointer text-blue-500 hover:text-blue-700 font-semibold">Crea una cuenta</span></p>
         </div>
-      </button>
-
-      <div class="w-full text-center mt-4">
-        <p class="">No tiene cuenta? <span @click="NewCount = 1" class="cursor-pointer text-blue-500 hover:text-blue-700 font-semibold">Crea una cuenta</span></p>
-      </div>
-    </div>
-
-
-    <div v-if="NewCount == 1" class="w-96	py-5 px-4 sm:px-12 flex flex-wrap content-center">
-
-      <div class="text-left mt-2">
-        <span @click="NewCount = 0"
-          class="cursor-pointer text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </span>
       </div>
 
-      <img :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="mx-auto flex align-center w-24 md:w-24" loading="lazy">
+
+      <div v-if="NewCount == 1" class="w-full sm:w-3/4 md:w-3/5 lg:w-5/12 xl:w-4/12 2xl:w-1/4 py-1 md:py-5 px-4 sm:px-12 flex flex-wrap">
+
+        <img :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="hidden sm:flex mx-auto flex align-center mt-5 md:mt-16 w-24 md:w-24" loading="lazy">
+
+       
+        <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Crear cuenta</h1>
+
+        <form @submit.prevent="RgisterUser()" class="w-full" autocomplete="off">
+
+          <div>
+            <label class="block text-gray-700">Nombres y apellidos</label>
+            <input type="rext" placeholder="Su nombre y apellido"
+              class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
+              v-model="UserNames" autofocus autocomplete required>
+          </div>
+
+          <div class="mt-2">
+            <label class="block text-gray-700">Dirección de correo electrónico </label>
+            <input type="email" placeholder="Su correo electrónico"
+              class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
+              autofocus autocomplete required v-model="UserNewEmail">
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 
 
-    
-      <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Crear cuenta</h1>
 
-      <form @submit.prevent="RgisterUser()" class="w-full" autocomplete="off">
-
-        <div>
-          <label class="block text-gray-700">Nombres y apellidos</label>
-          <input type="rext" placeholder="Su nombre y apellido"
-            class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
-            v-model="UserNames" autofocus autocomplete required>
-        </div>
-
-        <div class="mt-2">
-          <label class="block text-gray-700">Dirección de correo electrónico </label>
-          <input type="email" placeholder="Su correo electrónico"
-            class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
-            autofocus autocomplete required v-model="UserNewEmail">
-        </div>
-
-        <div class="mt-2">
-          <label class="block text-gray-700">Contraseña</label>
-          <input type="password" placeholder="Introducir la contraseña" minlength="6" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500
+            <div class="mt-2">
+              <label class="block text-gray-700">Contraseña</label>
+              <input type="password" placeholder="Contraseña" minlength="6" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500
               focus:bg-white focus:outline-none" required v-model="UserFirstPassword">
-        </div>
+            </div>
 
-        <div class="mt-2">
-          <label class="block text-gray-700">Confirmar contraseña</label>
-          <input type="password" placeholder="Confirma tu contraseña" minlength="6" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500
+            <div class="mt-2">
+              <label class="block text-gray-700">Confirme contraseña</label>
+              <input type="password" placeholder="Confirme contraseña" minlength="6" class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500
               focus:bg-white focus:outline-none" required v-model="UserConfirmPassword">
-        </div>
+            </div>
 
-        <div class="text-left mt-2">
-          <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Al registrarme
-            acepto los términos y condiciones</a>
-        </div>
-
-        <div class="w-full text-left mt-2">
-          <p class="font-semibold" :class="ClassStyle">{{ MsgResponse }}
-            <span v-if="ClassStyle == 'text-green-900' " @click="NewCount = 0" class="cursor-pointer text-blue-500 hover:text-blue-700 font-semibold">Ingresar</span>
-          </p>
-        </div>
-
-        <button type="submit"
-          class="w-full block bg-blue-900 hover:bg-blue-900 focus:bg-blue-900 text-white font-semibold rounded-lg px-4 py-2 mt-4">Crear
-          cuenta</button>
-      </form>
-
-      <hr class="my-6 border-gray-300 w-full">
-
-      <button @click="LoginUserCount()" type="button"
-        class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
-        <div class="flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6"
-            viewBox="0 0 48 48">
-            <defs>
-              <path id="a"
-                d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
-            </defs>
-            <clipPath id="b">
-              <use xlink:href="#a" overflow="visible" />
-            </clipPath>
-            <path clip-path="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z" />
-            <path clip-path="url(#b)" fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
-            <path clip-path="url(#b)" fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
-            <path clip-path="url(#b)" fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
-          </svg>
-          <span class="ml-4">Registrarme con Google</span>
-        </div>
-      </button>
-    </div>
+          </div>
 
 
 
-    <div v-if="NewCount == 2" class="w-96	py-5 px-4 sm:px-12 flex flex-wrap content-center">
-      <div class="text-left mt-2">
-        <span @click="NewCount = 0"
-          class="cursor-pointer text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </span>
+          <div class="text-left mt-2">
+            <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Al
+              registrarme
+              acepto los términos y condiciones</a>
+          </div>
+
+          <div class="w-full text-left mt-2">
+            <p class="font-semibold" :class="ClassStyle">{{ MsgResponse }}
+              <span v-if="ClassStyle == 'text-green-900' " @click="NewCount = 0"
+                class="cursor-pointer text-blue-500 hover:text-blue-700 font-semibold">Ingresar</span>
+            </p>
+          </div>
+
+          <button type="submit"
+            class="w-full block bg-blue-900 hover:bg-blue-900 focus:bg-blue-900 text-white font-semibold rounded-lg px-4 py-2 mt-4">Crear
+            cuenta</button>
+        </form>
+
+        <hr class="my-6 border-gray-300 w-full">
+
+        <button @click="LoginUserCount()" type="button"
+          class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
+          <div class="flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6"
+              viewBox="0 0 48 48">
+              <defs>
+                <path id="a"
+                  d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
+              </defs>
+              <clipPath id="b">
+                <use xlink:href="#a" overflow="visible" />
+              </clipPath>
+              <path clip-path="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z" />
+              <path clip-path="url(#b)" fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
+              <path clip-path="url(#b)" fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
+              <path clip-path="url(#b)" fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
+            </svg>
+            <span class="ml-4">Registrarme con Google</span>
+          </div>
+        </button>
       </div>
-      <img :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="mx-auto flex align-center w-20 md:w-24"
-        loading="lazy">
-      <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Recuperar contraseña</h1>
-      <form @submit.prevent="RecuperateUserPassword()" class="w-full" autocomplete="off">
-        <div class="mt-2">
-          <label class="block text-gray-700">Dirección de correo electrónico </label>
-          <input type="email" placeholder="Correo electrónico de la cuenta"
-            class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
-            autofocus autocomplete required v-model="EmailUserRecuperate">
-        </div>
-        <div class="text-left mt-2">
-          <span class="text-sm font-normal text-gray-700">Enviaremos un correo electrónico con las indicaciones para
-            recuperar el acceso.</span>
-        </div>
-        <button type="submit"
-          class="w-full block bg-blue-900 hover:bg-blue-900 focus:bg-blue-900 text-white font-semibold rounded-lg px-4 py-2 mt-4">Enviar
-          correo</button>
-      </form>
+
+
+
+      <div v-if="NewCount == 2" class="w-full sm:w-3/4 md:w-3/5 lg:w-5/12 xl:w-4/12 2xl:w-1/4 py-1 md:py-5 px-4 sm:px-12 flex flex-wrap">
+
+        <img :src="SrcAssets +'logotipo/big-nova.png'" alt="" class="hidden sm:flex mx-auto flex align-center mt-5 md:mt-16 w-24 md:w-24" loading="lazy">
+
+        <h1 class="w-full text-xl md:text-2xl font-bold leading-tight my-6 flex justify-center">Recuperar contraseña
+        </h1>
+        <form @submit.prevent="RecuperateUserPassword()" class="w-full" autocomplete="off">
+          <div class="mt-2">
+            <label class="block text-gray-700">Dirección de correo electrónico </label>
+            <input type="email" placeholder="Correo electrónico de la cuenta"
+              class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none"
+              autofocus autocomplete required v-model="EmailUserRecuperate">
+          </div>
+          <div class="text-left mt-2">
+            <span class="text-sm font-normal text-gray-700">Enviaremos un correo electrónico con las indicaciones para
+              recuperar el acceso.</span>
+          </div>
+          <button type="submit"
+            class="w-full block bg-blue-900 hover:bg-blue-900 focus:bg-blue-900 text-white font-semibold rounded-lg px-4 py-2 mt-4">Enviar
+            correo</button>
+        </form>
+      </div>
+
+
+
+      <div v-if="NewCount == 3" class="w-full md:w-5/12 py-5 px-4 sm:px-12 flex flex-wrap">
+        <img :src="SrcAssets+'loading/loading.svg'" alt="" class="bg-gray-100 mx-auto flex align-center w-20 md:w-24"
+          loading="lazy">
+        <button @click="NewCount = 0" type="button"
+          class="w-full mt-24 block bg-gray-200 hover:bg-gray-200 focus:bg-gray-200 text-gray font-semibold rounded-lg px-4 py-2 mt-4">Cancelar</button>
+      </div>
+
+
+
+
     </div>
-
-
-
-    <div v-if="NewCount == 3" class="w-96	py-5 px-4 sm:px-12 flex flex-wrap content-center">
-      <img :src="SrcAssets+'loading/loading.svg'" alt="" class="bg-gray-100 mx-auto flex align-center w-20 md:w-24" loading="lazy">
-      <button @click="NewCount = 0" type="button" class="w-full mt-24 block bg-gray-200 hover:bg-gray-200 focus:bg-gray-200 text-gray font-semibold rounded-lg px-4 py-2 mt-4">Cancelar</button>
-    </div>
-
-
-
-   
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="./assets/js/app.js"></script>
-<script>
-  var swiper = new Swiper('.swiper-container', {
-    direction: 'vertical',
-    autoplay: {
-    delay: 7500,
-    disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
- });
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      direction: 'vertical',
+      autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
 </body>
+
 </html>
