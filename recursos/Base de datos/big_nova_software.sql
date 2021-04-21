@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2021 a las 05:46:15
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.4.16
+-- Tiempo de generación: 22-04-2021 a las 01:06:08
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,6 +43,30 @@ CREATE TABLE `forms_initials` (
 
 INSERT INTO `forms_initials` (`fin_auto`, `fin_name`, `fin_description`, `fin_created`, `fin_updated`, `fin_status`, `fin_vigence`) VALUES
 (6, 'Ambiental', 'Descripción del formulario', '2021-04-12', '2021-04-12 20:12:59', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `log_user_sesions_success`
+--
+
+CREATE TABLE `log_user_sesions_success` (
+  `uls_auto_id` int(11) NOT NULL,
+  `uls_user_id` int(11) NOT NULL,
+  `uls_email` text COLLATE utf8_spanish_ci NOT NULL,
+  `uls_data` text COLLATE utf8_spanish_ci NOT NULL,
+  `uls_data_cy` text COLLATE utf8_spanish_ci NOT NULL,
+  `uls_date` date NOT NULL,
+  `uls_hour` time NOT NULL,
+  `uls_updated` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `log_user_sesions_success`
+--
+
+INSERT INTO `log_user_sesions_success` (`uls_auto_id`, `uls_user_id`, `uls_email`, `uls_data`, `uls_data_cy`, `uls_date`, `uls_hour`, `uls_updated`) VALUES
+(1, 1, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-21', '16:59:54', '2021-04-21 21:59:54');
 
 -- --------------------------------------------------------
 
@@ -131,6 +155,7 @@ CREATE TABLE `projects_objetive_generals` (
 
 CREATE TABLE `users_credentials` (
   `usr_user_id` int(11) NOT NULL,
+  `usr_count_id_type` int(11) NOT NULL,
   `usr_email` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `usr_password` varchar(120) COLLATE utf8_spanish_ci NOT NULL,
   `usr_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -140,8 +165,8 @@ CREATE TABLE `users_credentials` (
 -- Volcado de datos para la tabla `users_credentials`
 --
 
-INSERT INTO `users_credentials` (`usr_user_id`, `usr_email`, `usr_password`, `usr_update`) VALUES
-(1, 'syrivera89@misena.edu.co', 'd5280598f8da1e60ef0325323415d40056142ad3', '2021-04-21 03:42:38');
+INSERT INTO `users_credentials` (`usr_user_id`, `usr_count_id_type`, `usr_email`, `usr_password`, `usr_update`) VALUES
+(1, 1, 'syrivera89@misena.edu.co', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-21 21:49:14');
 
 -- --------------------------------------------------------
 
@@ -169,6 +194,29 @@ INSERT INTO `users_keys` (`usk_auto_id`, `usk_name`, `usk_date_created`, `usk_ho
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `user_count_type`
+--
+
+CREATE TABLE `user_count_type` (
+  `ucty_auto_id` int(11) NOT NULL,
+  `ucty_name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `ucty_date_created` date NOT NULL,
+  `ucty_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ucty_status` tinyint(1) NOT NULL DEFAULT 0,
+  `ucty_vigence` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `user_count_type`
+--
+
+INSERT INTO `user_count_type` (`ucty_auto_id`, `ucty_name`, `ucty_date_created`, `ucty_updated`, `ucty_status`, `ucty_vigence`) VALUES
+(1, 'Correo electronico', '2021-04-21', '2021-04-21 21:26:12', 0, 0),
+(2, 'Gmail', '2021-04-21', '2021-04-21 21:26:12', 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `user_data_personals`
 --
 
@@ -188,31 +236,6 @@ CREATE TABLE `user_data_personals` (
 INSERT INTO `user_data_personals` (`udp_user_id`, `udp_name`, `udp_gender`, `udp_date_birth`, `udp_type_id`, `udp_numer_id`) VALUES
 (1, 'Sergio Yamit Rivera', 'Masculino', '0000-00-00', 'TI', 0);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `user_log_sesions`
---
-
-CREATE TABLE `user_log_sesions` (
-  `uls_auto_id` int(11) NOT NULL,
-  `uls_email` text COLLATE utf8_spanish_ci NOT NULL,
-  `uls_data` text COLLATE utf8_spanish_ci NOT NULL,
-  `uls_data_cy` text COLLATE utf8_spanish_ci NOT NULL,
-  `uls_date` date NOT NULL,
-  `uls_hour` time NOT NULL,
-  `uls_updated` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `user_log_sesions`
---
-
-INSERT INTO `user_log_sesions` (`uls_auto_id`, `uls_email`, `uls_data`, `uls_data_cy`, `uls_date`, `uls_hour`, `uls_updated`) VALUES
-(35, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '08:32:41', '2021-04-20 13:32:41'),
-(36, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '16:59:36', '2021-04-20 21:59:36'),
-(37, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '17:23:17', '2021-04-20 22:23:17');
-
 --
 -- Índices para tablas volcadas
 --
@@ -222,6 +245,13 @@ INSERT INTO `user_log_sesions` (`uls_auto_id`, `uls_email`, `uls_data`, `uls_dat
 --
 ALTER TABLE `forms_initials`
   ADD PRIMARY KEY (`fin_auto`);
+
+--
+-- Indices de la tabla `log_user_sesions_success`
+--
+ALTER TABLE `log_user_sesions_success`
+  ADD PRIMARY KEY (`uls_auto_id`),
+  ADD KEY `user_log_sesions_ibfk_1` (`uls_user_id`);
 
 --
 -- Indices de la tabla `mother_tables`
@@ -254,7 +284,8 @@ ALTER TABLE `projects_objetive_generals`
 -- Indices de la tabla `users_credentials`
 --
 ALTER TABLE `users_credentials`
-  ADD PRIMARY KEY (`usr_user_id`);
+  ADD PRIMARY KEY (`usr_user_id`),
+  ADD KEY `users_credentials_ibfk_2` (`usr_count_id_type`);
 
 --
 -- Indices de la tabla `users_keys`
@@ -263,16 +294,16 @@ ALTER TABLE `users_keys`
   ADD PRIMARY KEY (`usk_auto_id`);
 
 --
+-- Indices de la tabla `user_count_type`
+--
+ALTER TABLE `user_count_type`
+  ADD PRIMARY KEY (`ucty_auto_id`);
+
+--
 -- Indices de la tabla `user_data_personals`
 --
 ALTER TABLE `user_data_personals`
   ADD PRIMARY KEY (`udp_user_id`);
-
---
--- Indices de la tabla `user_log_sesions`
---
-ALTER TABLE `user_log_sesions`
-  ADD PRIMARY KEY (`uls_auto_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -283,6 +314,12 @@ ALTER TABLE `user_log_sesions`
 --
 ALTER TABLE `forms_initials`
   MODIFY `fin_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `log_user_sesions_success`
+--
+ALTER TABLE `log_user_sesions_success`
+  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `mother_tables`
@@ -315,14 +352,20 @@ ALTER TABLE `users_keys`
   MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `user_log_sesions`
+-- AUTO_INCREMENT de la tabla `user_count_type`
 --
-ALTER TABLE `user_log_sesions`
-  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+ALTER TABLE `user_count_type`
+  MODIFY `ucty_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `log_user_sesions_success`
+--
+ALTER TABLE `log_user_sesions_success`
+  ADD CONSTRAINT `log_user_sesions_success_ibfk_1` FOREIGN KEY (`uls_user_id`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `mother_tables`
@@ -346,7 +389,8 @@ ALTER TABLE `projects_objetive_generals`
 -- Filtros para la tabla `users_credentials`
 --
 ALTER TABLE `users_credentials`
-  ADD CONSTRAINT `users_credentials_ibfk_1` FOREIGN KEY (`usr_user_id`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `users_credentials_ibfk_1` FOREIGN KEY (`usr_user_id`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_credentials_ibfk_2` FOREIGN KEY (`usr_count_id_type`) REFERENCES `user_count_type` (`ucty_auto_id`);
 
 --
 -- Filtros para la tabla `user_data_personals`

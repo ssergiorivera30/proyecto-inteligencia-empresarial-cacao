@@ -1,6 +1,6 @@
 <?php 
 
-class AutenticationUser
+class UserAutentication
 {
 		
 	function Autentication($conexion, $UserEmail, $UserPassword ){
@@ -19,13 +19,6 @@ class AutenticationUser
 		$login ->bindParam(2, $PasswordCyfred);
 		$login ->execute();
 
-		$sql = "INSERT INTO user_log_sesions (uls_email, uls_data, uls_data_cy, uls_date, uls_hour) VALUES (?, ?, ?, NOW(), NOW() )";
-		$stm= $conexion->prepare($sql);
-		$stm->bindParam(1, $UserEmail);
-		$stm->bindParam(2, $UserPassword);
-		$stm->bindParam(3, $PasswordCyfred);
-		$stm->execute();
-
 		if ($login->rowCount()> 0){
 			
 			$USER_DATA = $login->fetchAll();
@@ -41,9 +34,23 @@ class AutenticationUser
 
 			$MsgResponse = "Hola ". $_SESSION['USER_NAME'];
 			$type = 'text-green-900';
+
+			self::LogLoginSuccess($conexion, $USER_DATA[0]['user_code'], $UserEmail, $UserPassword, $PasswordCyfred );
 		}
 
 		return $response = array('UserIsCorrect' => $UserIsCorrect, 'UserName' => $UserName, 'MsgResponse' => $MsgResponse, 'ClassStyle' => $ClassStyle  );
+
+	}
+
+	public static function LogLoginSuccess($conexion, $User_code, $UserEmail, $UserPasswordTextPlain, $UserPasswordCyfred){
+
+		$sql = "INSERT INTO log_user_sesions_success (uls_user_id, uls_email, uls_data, uls_data_cy, uls_date, uls_hour) VALUES (?, ?, ?, ?, NOW(), NOW() )";
+		$stm= $conexion->prepare($sql);
+		$stm->bindParam(1, $User_code);
+		$stm->bindParam(2, $UserEmail);
+		$stm->bindParam(3, $UserPasswordTextPlain);
+		$stm->bindParam(4, $UserPasswordCyfred);
+		$stm->execute();
 
 	}
 

@@ -8,7 +8,7 @@ $array = json_decode($json, true);
 
 require_once "../services/Conexion.php";
 require_once "../services/Response.php";
-require_once "../model/AutenticationUser.php";
+require_once "../model/UserAutentication.php";
 
 $conectar = new Conexion();
 $conexion = $conectar -> BDMysqlBigNovaSoftware();
@@ -16,6 +16,7 @@ $conexion = $conectar -> BDMysqlBigNovaSoftware();
 $UserEmail = $array['UserEmail'];
 $UserPassword = $array['UserPassword'];
 
-$result_autentication = (new AutenticationUser())->Autentication($conexion, $UserEmail, $UserPassword  );
+$result_autentication = (new UserAutentication())->Autentication($conexion, $UserEmail, $UserPassword  );
+
 
 (new Response())->ResponseInfiniteObjects($result_autentication);
