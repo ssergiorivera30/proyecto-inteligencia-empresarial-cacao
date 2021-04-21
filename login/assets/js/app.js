@@ -28,10 +28,10 @@
         UserEmail: 'syrivera89@misena.edu.co',
         UserPassword:'123456',
         
-        UserNames:'Sergio Yamit Rivera',
-        UserNewEmail:'syrivera89@misena.edu.co',
-        UserFirstPassword:'3534534534',
-        UserConfirmPassword:'3534534534',
+        UserNames:'',
+        UserNewEmail:'',
+        UserFirstPassword:'',
+        UserConfirmPassword:'',
 
         EmailUserRecuperate: '',
       },
@@ -58,24 +58,32 @@
 
         },
         RegisterUser: function(){
-          axios.post(BASE_API+'user_create.php', {
-            UserNames: this.UserNames,
-            UserNewEmail: this.UserNewEmail,
-            UserFirstPassword: this.UserFirstPassword,
-            UserConfirmPassword: this.UserConfirmPassword
-          }).then((response) =>{
-                       
-              this.ReverseMessage(response.data['ClassStyle'], response.data['MsgResponse'])
 
+        	if(this.UserFirstPassword != this.UserConfirmPassword){
 
-              if(response.data['ClassStyle'] === 'text-green-900'){
-                this.ResetForm()
-              }
-              
-          
-          }).catch(()=> {
-            this.ReverseMessage('Error de conexión', 'text-red-900')
-          })
+        		this.ReverseMessage('text-red-900', 'Las contraseñas no coinciden')
+
+        	} else {
+
+        		axios.post(BASE_API+'user_create.php', {
+		            UserNames: this.UserNames,
+		            UserNewEmail: this.UserNewEmail,
+		            UserFirstPassword: this.UserFirstPassword,
+		            UserConfirmPassword: this.UserConfirmPassword
+		          }).then((response) =>{
+		                       
+		            this.ReverseMessage(response.data['ClassStyle'], response.data['MsgResponse'])
+
+		            if(response.data['ClassStyle'] === 'text-green-900'){
+
+		                this.ResetForm()
+		            }		              
+		          
+		         }).catch(()=> {
+
+		            this.ReverseMessage('text-red-900', 'Error de conexión')
+		        })
+        	}          
         },
         LoginUserWitchGoogle() {
           const provider = new firebase.auth.GoogleAuthProvider();
@@ -91,6 +99,7 @@
             .then(err => alert(err));
         },        
         ReverseMessage: function (ClassStyle, MsgResponse) {
+
           this.ClassStyle = ClassStyle
           this.MsgResponse = MsgResponse
         },
