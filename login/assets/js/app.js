@@ -69,7 +69,7 @@
 
 
               if(response.data['ClassStyle'] === 'text-green-900'){
-                // this.ResetForm()
+                this.ResetForm()
               }
               
           

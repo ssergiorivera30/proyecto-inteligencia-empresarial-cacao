@@ -41,7 +41,6 @@ if( $result_verification < 1){
 
 		$ClassStyle = 'text-green-900';		
 		$MsgResponse = 'Su cuenta fue creada exitosamente';
-
 		
 	}
 }
@@ -50,5 +49,3 @@ $response = array( 'ClassStyle'=>$ClassStyle, 'MsgResponse'=> $MsgResponse );
 
 $ClassResponse = new Response();
 $ClassResponse->ResponseInfiniteObjects($response);
-
-// var_dump($conexion);
