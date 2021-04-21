@@ -15,15 +15,15 @@
 
         const API_ROUTER = {
 
-        API_UI : 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/ui/',
+        API_UI : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/ui/',
 
-        API_CONTROLLER : 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/controller/',
-        PHP7_CONTROLLER : 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/php7/controller/',
+        API_CONTROLLER : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/controller/',
+        PHP7_CONTROLLER : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/php7/controller/',
         
-        API_FILE_SYSTEMS: 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
-        API_FACTURATE: 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
-        API_DOCUMENT: 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
-        LOGUIN: 'http://10.193.28.40:8080', 
+        API_FILE_SYSTEMS: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
+        API_FACTURATE: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
+        API_DOCUMENT: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',
+        LOGUIN: 'http://127.0.0.1:8080', 
     };
     
     // const API_ROUTER = {
