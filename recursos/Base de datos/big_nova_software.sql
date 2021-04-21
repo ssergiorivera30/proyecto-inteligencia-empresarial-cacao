@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2021 a las 16:31:27
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.8
+-- Tiempo de generación: 21-04-2021 a las 05:46:15
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -136,6 +136,13 @@ CREATE TABLE `users_credentials` (
   `usr_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `users_credentials`
+--
+
+INSERT INTO `users_credentials` (`usr_user_id`, `usr_email`, `usr_password`, `usr_update`) VALUES
+(1, 'syrivera89@misena.edu.co', 'd5280598f8da1e60ef0325323415d40056142ad3', '2021-04-21 03:42:38');
+
 -- --------------------------------------------------------
 
 --
@@ -144,12 +151,20 @@ CREATE TABLE `users_credentials` (
 
 CREATE TABLE `users_keys` (
   `usk_auto_id` int(11) NOT NULL,
+  `usk_name` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `usk_date_created` date NOT NULL,
   `usk_hour_created` time NOT NULL,
   `usk_updated` timestamp NOT NULL DEFAULT current_timestamp(),
   `usk_status` tinyint(1) NOT NULL DEFAULT 0,
   `usk_vigence` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `users_keys`
+--
+
+INSERT INTO `users_keys` (`usk_auto_id`, `usk_name`, `usk_date_created`, `usk_hour_created`, `usk_updated`, `usk_status`, `usk_vigence`) VALUES
+(1, 'syrivera89@misena.edu.co', '2021-04-21', '05:04:38', '2021-04-21 03:42:38', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -163,8 +178,15 @@ CREATE TABLE `user_data_personals` (
   `udp_gender` enum('Masculino','Femenino','Otro','') COLLATE utf8_spanish_ci NOT NULL,
   `udp_date_birth` date NOT NULL,
   `udp_type_id` enum('TI','CC','PASS','CE') COLLATE utf8_spanish_ci NOT NULL,
-  `udp_numer_id` bigint(16) NOT NULL
+  `udp_numer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `user_data_personals`
+--
+
+INSERT INTO `user_data_personals` (`udp_user_id`, `udp_name`, `udp_gender`, `udp_date_birth`, `udp_type_id`, `udp_numer_id`) VALUES
+(1, 'Sergio Yamit Rivera', 'Masculino', '0000-00-00', 'TI', 0);
 
 -- --------------------------------------------------------
 
@@ -187,7 +209,9 @@ CREATE TABLE `user_log_sesions` (
 --
 
 INSERT INTO `user_log_sesions` (`uls_auto_id`, `uls_email`, `uls_data`, `uls_data_cy`, `uls_date`, `uls_hour`, `uls_updated`) VALUES
-(35, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '08:32:41', '2021-04-20 13:32:41');
+(35, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '08:32:41', '2021-04-20 13:32:41'),
+(36, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '16:59:36', '2021-04-20 21:59:36'),
+(37, 'syrivera89@misena.edu.co', '123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2021-04-20', '17:23:17', '2021-04-20 22:23:17');
 
 --
 -- Índices para tablas volcadas
@@ -288,13 +312,13 @@ ALTER TABLE `projects_objetive_generals`
 -- AUTO_INCREMENT de la tabla `users_keys`
 --
 ALTER TABLE `users_keys`
-  MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `user_log_sesions`
 --
 ALTER TABLE `user_log_sesions`
-  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Restricciones para tablas volcadas

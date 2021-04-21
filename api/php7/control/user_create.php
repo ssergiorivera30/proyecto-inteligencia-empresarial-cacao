@@ -6,63 +6,46 @@ $json = file_get_contents('php://input');
 $array = json_decode($json, true);
 
 require_once "../services/Conexion.php";
-require_once "../services/Response.php";
+
 require_once "../model/Users.php";
+require_once "../services/Response.php";
 
 $conectar = new Conexion();
 $conexion = $conectar -> BDMysqlBigNovaSoftware();
-
-echo $array['UserNewEmail'];
 
 $UserNames = $array['UserNames'];
 $UserNewEmail = $array['UserNewEmail'];
 $UserFirstPassword = $array['UserFirstPassword'];
 $UserConfirmPassword = $array['UserConfirmPassword'];
 
-
 $ClassStyle = 'text-red-900';
 $MsgResponse = 'Este correo ya se encuentra registrado';
 
-$UserClass = new Users();
+$ClassUsers = new Users();
 
-$result_verification = $UserClass->VerifyExitence($conexion, $UserNewEmail );
+$result_verification = $ClassUsers->VerifyExitence($conexion, $UserNewEmail );
 
-echo $result_verification;
-
-if($result_verification >= 1){
-
-
-}else{
+if( $result_verification < 1){
 	
-	$result_created_id = $UserClass->CreateUserFirstStep($conexion );
+	$result_created_id = $ClassUsers->CreateUserFirstStep($conexion, $UserNewEmail );
 
-	if($result_created_id != 0){
+	if($result_created_id < 1){
 
-		$ClassStyle = 'text-green-900';
-
-		$result_created_credentials = $UserClass->CreateUserCredentials($conexion, $result_created_id, $UserNewEmail, $UserFirstPassword );
-
-		$result_created_data_basic = $UserClass->CreateUserDataPersonalBasic($conexion, $result_created_id, $UserNames );
-
-		if($result_created_credentials > 0 && $result_created_data_basic > 0){
-
-			$MsgResponse = 'Su cuenta fue creada exitosamente';
-
-		}else{
-
-			$MsgResponse = 'Cuenta creada correctamente';		
-		}
+		$ClassStyle = 'text-red-900';
+		$MsgResponse = 'Error de sistema';	
 
 	} else{
 
-		$ClassStyle = 'text-red-900';
-		$MsgResponse = 'Error de sistema';
+		$result_created_credentials = $ClassUsers->CreateUserCredentials($conexion, $result_created_id, $UserNewEmail, $UserFirstPassword );
+		$result_created_data_basic = $ClassUsers->CreateUserDataPersonalBasic($conexion, $result_created_id, $UserNames );
+
+		$ClassStyle = 'text-green-900';		
+		$MsgResponse = 'Su cuenta fue creada exitosamente';
+		
 	}
-
 }
-
 
 $response = array( 'ClassStyle'=>$ClassStyle, 'MsgResponse'=> $MsgResponse );
 
 $ClassResponse = new Response();
-$verResponse = $ClassResponse->ResponseInfiniteObjects($response);
+$ClassResponse->ResponseInfiniteObjects($response);

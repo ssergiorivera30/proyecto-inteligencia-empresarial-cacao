@@ -7,10 +7,12 @@ $array = json_decode($json, true);
 
 session_start();
 
-$_SESSION['state'] = false;
+$_SESSION['USER_STATE'] = false;
+$_SESSION['USER_CODE']  = null;
+$_SESSION['USER_NAME']  = null;
 
 session_destroy();
 
-$response = array('state' => false);
+$response = array('state_user' => false);
 
 echo json_encode($response);

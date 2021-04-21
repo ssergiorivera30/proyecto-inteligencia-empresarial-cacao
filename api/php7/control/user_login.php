@@ -2,6 +2,7 @@
 
 header('Access-Control-Allow-Origin: *'); 
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");  
+
 $json = file_get_contents('php://input'); 
 $array = json_decode($json, true);
 
@@ -15,12 +16,6 @@ $conexion = $conectar -> BDMysqlBigNovaSoftware();
 $UserEmail = $array['UserEmail'];
 $UserPassword = $array['UserPassword'];
 
-
-
 $result_autentication = (new AutenticationUser())->Autentication($conexion, $UserEmail, $UserPassword  );
 
-
-// return $response = array('UserIsCorrect' => $UserIsCorrect, 'UserName' => $UserName );
-
 (new Response())->ResponseInfiniteObjects($result_autentication);
-

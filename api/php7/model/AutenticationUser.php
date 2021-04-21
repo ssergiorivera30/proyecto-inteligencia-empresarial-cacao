@@ -12,7 +12,8 @@ class AutenticationUser
 
 		$PasswordCyfred = sha1($UserPassword);
 
-		$sql_login = "SELECT usr_user_id, usr_email, usr_password, usr_update FROM users_credentials WHERE  usr_email=? and usr_password=?";
+		$sql_login = "SELECT usr_user_id as user_code, udp_name as user_name FROM users_credentials, user_data_personals WHERE 
+		usr_user_id = udp_user_id and usr_email = ? and usr_password = ? ";
 		$login = $conexion->prepare($sql_login);
 		$login ->bindParam(1, $UserEmail);
 		$login ->bindParam(2, $PasswordCyfred);
@@ -27,18 +28,18 @@ class AutenticationUser
 
 		if ($login->rowCount()> 0){
 			
-			session_start();
-
 			$USER_DATA = $login->fetchAll();
-			
-			$_SESSION['state'] = true;
-			$_SESSION['id']    = $USER_DATA[0]['code'];
-			$_SESSION['name']  = $USER_DATA[0]['email'];
 
-			$UserIsCorrect = $_SESSION['state'] ;
-			$UserName = $_SESSION['name'];
+			session_start();
+						
+			$_SESSION['USER_STATE'] = true;
+			$_SESSION['USER_CODE']  = $USER_DATA[0]['user_code'];
+			$_SESSION['USER_NAME']  = $USER_DATA[0]['user_name'];
 
-			$MsgResponse = "Hola ". $_SESSION['name'];
+			$UserIsCorrect = $_SESSION['USER_STATE'];
+			$UserName = $_SESSION['USER_NAME'];
+
+			$MsgResponse = "Hola ". $_SESSION['USER_NAME'];
 			$type = 'text-green-900';
 		}
 
