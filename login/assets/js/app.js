@@ -10,8 +10,8 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    const BASE_API = 'http://192.168.1.5/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
-    const BASE_ASSETS = 'http://192.168.1.5/proyecto-inteligencia-empresarial-cacao/api/ui/';
+    const BASE_API = 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
+    const BASE_ASSETS = 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/ui/';
 
     new Vue({
       el: '#app',
@@ -28,7 +28,7 @@
         UserEmail: 'syrivera89@misena.edu.co',
         UserPassword:'123456',
         
-        UserNames:'asdas asdasd',
+        UserNames:'Sergio Yamit Rivera',
         UserNewEmail:'syrivera89@misena.edu.co',
         UserFirstPassword:'3534534534',
         UserConfirmPassword:'3534534534',
@@ -69,7 +69,7 @@
 
 
               if(response.data['ClassStyle'] === 'text-green-900'){
-                this.ResetForm()
+                // this.ResetForm()
               }
               
           

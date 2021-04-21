@@ -15,12 +15,7 @@ $conexion = $conectar -> BDMysqlBigNovaSoftware();
 $UserEmail = $array['UserEmail'];
 $UserPassword = $array['UserPassword'];
 
-
-
 $result_autentication = (new AutenticationUser())->Autentication($conexion, $UserEmail, $UserPassword  );
-
-
-// return $response = array('UserIsCorrect' => $UserIsCorrect, 'UserName' => $UserName );
 
 (new Response())->ResponseInfiniteObjects($result_autentication);
 
