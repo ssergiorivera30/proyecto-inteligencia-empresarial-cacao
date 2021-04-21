@@ -10,8 +10,13 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    const BASE_API = 'http://192.168.1.5/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
-    const BASE_ASSETS = 'http://192.168.1.5/proyecto-inteligencia-empresarial-cacao/api/ui/';
+    // const BASE_API = 'http://192.168.1.5/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
+    // const BASE_ASSETS = 'http://192.168.1.5/proyecto-inteligencia-empresarial-cacao/api/ui/';
+
+    const BASE_API = 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
+    const BASE_ASSETS = 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/ui/';
+
+
 
     new Vue({
       el: '#app',
@@ -88,7 +93,7 @@
               // The signed-in user info.
               var user = data.user;
             })
-            .then(err => alert(err));
+            .catch(err => alert(err));
         },        
         ReverseMessage: function (ClassStyle, MsgResponse) {
           this.ClassStyle = ClassStyle
