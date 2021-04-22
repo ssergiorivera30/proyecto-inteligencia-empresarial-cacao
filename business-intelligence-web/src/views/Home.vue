@@ -1,5 +1,5 @@
 <template>
-<div class="px-3 pt-10 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pt-10">
+<div class="px-3 pt-10 md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pt-10">
   <div class="grid gap-10 lg:grid-cols-2">
     <div class="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
       
@@ -25,7 +25,7 @@
         </a> -->
       </div>
     </div>
-    <div class="flex items-center justify-center -mx-4 lg:pl-8">
+    <div class="hidden md:flex items-center justify-center -mx-4 lg:pl-8">
       <div class="flex flex-col items-end px-3">
         <img
           class="object-cover mb-6 rounded shadow-lg h-28 sm:h-48 xl:h-56 w-28 sm:w-48 xl:w-56 bg-gray-100" :src="imagen_c" alt="" loading="lazy"
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="px-3 py-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:py-5">
+<div class="px-3 pt-10 md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pt-10">
 
    <ServicesRecent />
 </div>

@@ -94,7 +94,7 @@
       </div>
     </header>
 
-    <router-view class="md:container md:mx-auto"/>
+    <router-view class="md:container"/>
     
   </div>
 </body>
