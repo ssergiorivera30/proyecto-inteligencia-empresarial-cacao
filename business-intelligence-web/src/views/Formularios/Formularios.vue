@@ -23,15 +23,15 @@
             <dl class="grid items-center">
                <div>
                   <dd class="leading-6 font-medium text-black group-hover:text-blue-900">
-                     <span v-if="form.name.length > 60">{{ form.name.substring(0,62) }}...</span>
+                     <span v-if="form.name.length > 30">{{ form.name.substring(0,30) }}...</span>
                      <span v-else>{{ form.name }}</span>
                   </dd>
                </div>
 
                <div class="my-3">
                   <dd class="text-sm font-medium text-gray-400 group-hover:text-light-blue-200">
-                     <span v-if="form.description.length > 60">{{ form.description.substring(0,32) }}...</span>
-                     <span v-else>{{ form.description }}</span>
+                     <span v-if="form.description.length > 62">{{ form.description.substring(0,32) }}...<br><br></span>
+                     <span v-else>{{ form.description }}.</span>
                   </dd>                  
                </div>
 
