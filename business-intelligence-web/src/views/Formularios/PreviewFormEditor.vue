@@ -8,9 +8,6 @@
          <draggable class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2"
             :list="ArrayInputs" @change="log">
 
-
-
-
             <div v-for="(input, index) in ArrayInputs" :key="index">
                <div class="block">
                   <label class="grid grid-cols-5 gap-4 items-center">
@@ -19,16 +16,16 @@
                         {{ input['input']['name'] }}</span>
                      <div class="text-right">
 
-                        <div class="w-56 text-right">
+                    
                            <Menu as="div" class="relative inline-block text-left">
-                              <div>
-                                 <MenuButton
-                                    class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                                    Options
-                                    <ChevronDownIcon class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
-                                       aria-hidden="true" />
+                           
+                                 <MenuButton class="inline-flex justify-center text-sm" aria-hidden="true" >                                  
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                    </svg> -->
+                                    hola
                                  </MenuButton>
-                              </div>
+                             
 
                               <transition enter-active-class="transition duration-100 ease-out"
                                  enter-from-class="transform scale-95 opacity-0"
@@ -38,21 +35,23 @@
                                  leave-to-class="transform scale-95 opacity-0">
                                  <MenuItems
                                     class="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                    <div class="px-1 py-1">
-                                       <MenuItem v-slot="{ active }">
-                                       <button :class="[ active ? 'bg-violet-500 text-gray-900' : 'text-gray-900', 'group flex rounded-md items-center w-full px-2 py-2 text-sm' ]"
-                                          @click="DeleteOption(index)" title="Eliminar"><i class="fa fa-trash"></i>Eliminar</button>
-                                       </MenuItem>
+                                    <div class="px-1 py-1">                                      
 
                                        <MenuItem v-slot="{ active }">
                                        <button :class="[ active ? 'bg-violet-500 text-gray-900' : 'text-gray-900', 'group flex rounded-md items-center w-full px-2 py-2 text-sm' ]"
                                           @click="SendIdEdit(index)" title="Eliminar"><i class="fa fa-trash"></i>Editar</button>
                                        </MenuItem>
+
+                                       <MenuItem v-slot="{ active }">
+                                       <button :class="[ active ? 'bg-violet-500 text-gray-900' : 'text-gray-900', 'group flex rounded-md items-center w-full px-2 py-2 text-sm' ]"
+                                          @click="DeleteOption(index)" title="Eliminar"><i class="fa fa-trash"></i>Eliminar</button>
+                                       </MenuItem>
+
                                     </div>
                                  </MenuItems>
                               </transition>
                            </Menu>
-                        </div>
+                        
                      </div>
                   </label>
 

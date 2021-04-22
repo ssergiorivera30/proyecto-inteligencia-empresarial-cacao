@@ -3,12 +3,22 @@
 class Forms
 {
 	function CreateForm($conection, $name_form, $description_form){
-		$sql = "INSERT forms_initials(fin_name, fin_description, fin_created)VALUES(?,?, NOW() )";
+		$sql = "INSERT INTO forms_initials(fin_name, fin_description, fin_created)VALUES(?,?, NOW() )";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $name_form);
 		$stm -> bindParam(2, $description_form);
 		$stm -> execute();
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $conection->lastInsertId());
+	}
+
+	function UpdateFormBasic($conection, $FormId, $NameForm, $DescriptionForm ){
+		$sql = "UPDATE forms_initials SET fin_name=?, fin_description=? WHERE fin_auto=?";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $NameForm);
+		$stm -> bindParam(2, $DescriptionForm);
+		$stm -> bindParam(3, $FormId);
+		$stm -> execute();
+		return $stm->rowCount();
 	}
 
 	function LoadInfoBasicForm($conection, $id_form){

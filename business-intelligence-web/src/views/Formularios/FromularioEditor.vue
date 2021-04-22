@@ -457,7 +457,21 @@
             this.ArrayOptions.splice(index, 1);
          },
          UpdateInfoBasicForm: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_update_basic.php",
+               {
+                  FormId: this.$route.params.id,
+                  NameForm: this.NameForm,
+                  DescriptionForm: this.DescriptionForm
+               }).then((response) => {
 
+                  new Noty({
+                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                     type: response.data.icono, text: response.data.mensaje
+                  }).show();
+
+               }).catch(() => {
+                  alert('Error de conexión')
+               })
          },
          AddInput: function () {
 
