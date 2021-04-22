@@ -13,6 +13,8 @@ $_SESSION['USER_NAME']  = null;
 
 session_destroy();
 
-$response = array('state_user' => false);
+$RUTA_LOGIN = 'https://grupodeinvestigacionnova.com/';
+
+$response = array('path'=> $RUTA_LOGIN);
 
 echo json_encode($response);

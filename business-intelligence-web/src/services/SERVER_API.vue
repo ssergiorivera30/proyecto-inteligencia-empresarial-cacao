@@ -17,7 +17,7 @@
 
         API_UI : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/ui/',
 
-        API_CONTROLLER : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/controller/',
+        API : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/',
         PHP7_CONTROLLER : 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/php7/controller/',
         
         API_FILE_SYSTEMS: 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/file_systems/images/',

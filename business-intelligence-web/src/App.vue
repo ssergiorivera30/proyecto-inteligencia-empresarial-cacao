@@ -63,7 +63,7 @@
         class="h-8 py-2 pl-10 pr-4 w-full border-4 border-transparent focus:border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg focus:outline-none" />
       </div> -->
       <div class="flex flex-shrink-0 items-center ml-auto" >
-        <button class="inline-flex items-center p-2 hover:text-purple-900 rounded-lg focus:outline-none" @click="login()">
+        <button class="inline-flex items-center p-2 hover:text-purple-900 rounded-lg focus:outline-none">
           <span class="sr-only">Menu</span>
           <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
             <span class="text-sm font-semibold text-white">{{ user_name }}</span>
@@ -84,7 +84,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
           </button>
-          <button @click="logout()" class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full focus:outline-none">
+          <button @click="CloseSessionWitchEmail" class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full focus:outline-none">
             <span class="sr-only">Salir</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -105,26 +105,51 @@
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import axios from 'axios'
+import API_ROUTER from './services/SERVER_API'
+
   
   export default {
     data(){
       return{
         name: 'app',
         auth: firebase.auth(),
+
         user_photo: 'https://lh3.googleusercontent.com/fife/ABSRlIpw6FjG3K8GfnDhXhRadC6xGM6ILdiboApJAYo8sUuF-LH3J2_p0uJHebDYHJxRrpjpDWFKiHa2cBKJsLViOATRm_AYoWAVWBwlsLpTBOGOFkqGR_Mwa3-7WGXg09vKyCB9GYu37Xw4VUTL6oyTuKwvtW28EEHJgKpC-2AxAzHZC9dVoRRbmk-XpPlgVnarhaZ8DkSq4uKpxtdWys9woXrV2QBleXiFbqRy7ytgkTlsKM3-itqNbcr-nb7tfoSvGdMNK61lJGoJ6vUdKkPsF8yi1xoyqlb5bOE8zU6Eyf8R2krVl35N6W394O-uxmNW-5vtiOV5cFesoNe1yMIhq6el5oi64icAkyHrULGFnTk21UOWHzPamx1Q8MRccKIgvwZ4rpe1h672noSXSopRIar8vd84qsNIk3DjM9hyGhSVMH5fqSbV4WXs_1Tg6zkf0AbSKgFL8uV2zUNBkKmyV-gx9jl62623Jfqm8g4PmFGB2BEd-HOE9BLWk-ChjuVE62nQR_RuRUjRfPxtHj6A3HtZqhl7RjVrWcd2xVAA3axRivkwJyZdQj_HVexxXjzahHIAPjA5_0DINyVQaNdGXmqQ3EsPI1Jyx68X1FnHZ4JeEbPPGrM4VOpPDZMBRFHSvsJKE36ML3_7MZaF-7-v-nQ2z8M1sAw_sVGQrz2nyOh36_1MfzEgwO_FaUFpdYo1rinH9Zfs3MXNrIZwd3vGbPiMYTdQgqCQ0tgUuJlL9FTW6w=s32-c',
+        
+        user_code: false,
+        user_state: false,
         user_name: '...',
         user_email: '...',
         logged: 0,
       }
     },
     beforeMount: function () {
-      this.verificarSession()
+      this.VerifySsesionWitchEmail()
     },
     mounted: function(){
    
     },
-    methods:{
-      login() {
+    methods: {
+      VerifySsesionWitchEmail :function(){
+         axios.get(API_ROUTER.API + "/php7/control/user_session.php").then((res) => {
+          if(res.data.user_state === false){
+            this.CloseDataSesion(res.data.path)            
+          }
+          this.AsignedDataSesion(res.data.user_state, res.data.user_code, res.data.user_name)
+          }).catch(() => {               
+            alert('Error de conexión')
+        })
+      },
+      CloseSessionWitchEmail :function(){
+         axios.get(API_ROUTER.API + "/php7/control/user_close.php").then((res) => {         
+          this.CloseDataSesion(res.data.path)
+          }).catch(() => {               
+            alert('Error de conexión')
+        })
+      },
+
+      StartSsessionWitchGoogleGmail() {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
         .then(function(result) {
@@ -138,7 +163,7 @@ import 'firebase/auth';
           console.log(errorCode, errorMessage, email, credential);
         })
       },
-      verificarSession: function(){
+      VerifySessionWitchGoogleGmail: function(){
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             this.DataUserSigin = JSON.stringify(user)
@@ -155,7 +180,7 @@ import 'firebase/auth';
           
         })  
       },
-      logout(){ 
+      CloseSessionWitchGoogleGmail(){ 
         firebase.auth().signOut()
         .then(function(result) {
           // window.location.href=API_GESTOR.LOGUIN 
@@ -165,6 +190,17 @@ import 'firebase/auth';
           console.log(error);          
         });
       },
+      AsignedDataSesion:function(state, code, name){
+        this.user_state = state
+        this.user_code = code
+        this.user_name = name
+      },
+      CloseDataSesion:function(path){
+        this.user_state = false
+        this.user_code = '...'
+        this.user_name = '...'
+        window.location.href = path
+      }
     }
   }
 </script>
