@@ -19,9 +19,9 @@
             GoBack: '/inicio',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/proyecto/ver/detalles', nameRoute: 'Detalles' },
-               { Linkroute: '/proyecto/ver/recolecion-de-datos', nameRoute: 'Recolección de datos' },
-               { Linkroute: '/proyecto/ver/integrantes', nameRoute: 'Integrantes' },
+               { Linkroute: '/proyecto/ver/detalles/'+this.$route.params.id_project, nameRoute: 'Detalles' },
+               { Linkroute: '/proyecto/ver/recolecion-de-datos/'+this.$route.params.id_project, nameRoute: 'Recolección de datos' },
+               { Linkroute: '/proyecto/ver/integrantes/'+this.$route.params.id_project, nameRoute: 'Integrantes' },
             ]
          }
       },

@@ -19,7 +19,7 @@
 
       <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
       <router-link v-for="form in Forms" :key="form.id" :to="'/formulario/detalles/'+form.fin_auto">
-         <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-blue-900 hover:shadow-md">
+         <div class="group cursor-pointer rounded-lg p-4 border border-gray-200 hover:bg-light-blue-500 hover:border-blue-100 hover:shadow-md">
             <dl class="grid items-center">
                <div>
                   <dd class="leading-6 font-medium text-black group-hover:text-blue-900">

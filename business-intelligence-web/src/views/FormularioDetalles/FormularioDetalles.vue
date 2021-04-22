@@ -1,26 +1,9 @@
 <template>
-   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+   <div class="px-4 py-1 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:container">
 
-      <div class="pt-5 mb-8">
-         <ul class="list-reset flex border-b">
-                     
-         <li class="-mb-px mr-1">
-            <a href="javascript:history.back()" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white">
-               Atrás
-            </a>
-         </li>
-         <li class="-mb-px mr-1">
-            <router-link to="/proyecto/formularios" href="#" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white border-l border-t border-r rounded-t text-blue-900" >
-               Formulario
-            </router-link >
-         </li>
-         <li class="-mb-px mr-1">
-            <router-link :to="'/formulario/datos/'+ this.$route.params.id_formulario" class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white hover:text-blue-900 cursor-pointer">
-               Datos
-            </router-link>
-         </li>           
-         </ul>  
-      </div>
+      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle"/>
+
+     
       
       <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm"/>
 
@@ -43,16 +26,26 @@
 
 import axios from "axios"
 import API_ROUTER from "./../../services/SERVER_API"
- import PreviewForm from "./../../components/Formularios/PreviewForm"
-   import PreviewFormSave from "./../Formularios/PreviewFormSave"
+import PreviewForm from "./../../components/Formularios/PreviewForm"
+import PreviewFormSave from "./../Formularios/PreviewFormSave"
+
+import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+
 export default {
    components:{
          PreviewForm,
-         PreviewFormSave
+         PreviewFormSave,
+         NavBarSecondary
       },
     data(){
       return{
          name: 'FormularioDetalles',
+         GoBack: 'history.back',
+         GoBackTitle: 'Lista de formularios',
+         RoutesNavs: [
+            { Linkroute: '/formulario/detalles/'+this.$route.params.id_formulario, nameRoute: 'Detalles del formulario' },
+            { Linkroute: '/formulario/datos/'+this.$route.params.id_formulario, nameRoute: 'Datos' }
+         ],
          OrderForm: 'load',
          NameForm: '',
          DescriptionForm: '',
