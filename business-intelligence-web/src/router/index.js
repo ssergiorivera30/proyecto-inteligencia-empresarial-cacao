@@ -28,8 +28,15 @@ import FromularioEditor from '../views/Formularios/FromularioEditor'
 
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
 import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
-import FormularioDetalles from '../views/FormularioDetalles/FormularioDetalles'
-import FormularioDatos from '../views/FormularioDetalles/FormularioDatos'
+
+
+
+
+
+import FormularioDetallesHeader from '../views/Formularios/FormularioDetalles/FormularioDetallesHeader'
+import FormularioDetalles from '../views/Formularios/FormularioDetalles/FormularioDetalles'
+import FormularioDatos from '../views/Formularios/FormularioDetalles/FormularioDatos'
+
 
 import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
 
@@ -67,11 +74,23 @@ const routes = [
         { path: 'compartir', name: 'FromularioCompartir', component: FromularioCompartir },
         { path: 'ver', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  
-},
+  },
+
+
+  { path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,
+    children:
+      [
+        { path: 'detalles/:id_formulario', name: 'FormularioDetalles', component: FormularioDetalles },              
+        { path: 'datos/:id_formulario', name: 'FormularioDatos', component: FormularioDatos },
+      ]  
+  },
+
+  
 
 { path: '/proyecto/formulario/editor/:id', name: 'FromularioEditor', component: FromularioEditor },
-{ path: '/formulario/detalles/:id_formulario', name: 'FormularioDetalles', component: FormularioDetalles },
-{ path: '/formulario/datos/:id_formulario', name: 'FormularioDatos', component: FormularioDatos },
+
+
+
 
 
 

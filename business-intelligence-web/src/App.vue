@@ -94,7 +94,7 @@
       </div>
     </header>
 
-    <router-view class="md:container "/>
+    <router-view />
     <div class="mb-24"></div>
     
   </div>

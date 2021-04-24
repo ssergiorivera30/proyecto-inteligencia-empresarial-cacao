@@ -13,7 +13,7 @@
 <script>
 
 
-   import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+   import NavBarSecondary from './../../../components/Utilidades/NavBarSecondary.vue'
 
 
    export default {
@@ -23,16 +23,15 @@
       },
       data() {
          return {
-            name: 'ProyectoDetallesHeader',
-            TitleHeader: 'Proyecto',
+            name: 'FormularioDetallesHeader',
+            TitleHeader: 'Formulario',
             SubTitleHeader: 'Detalles',
-            GoBack: '/inicio',
-            GoBackTitle: 'Ir al inicio',
+            GoBack: 'history.back',
+            GoBackTitle: 'Lista de formularios',
             RoutesNavs: [
-               { Linkroute: '/proyecto/ver/detalles/'+this.$route.params.id_project, nameRoute: 'Detalles' },
-               { Linkroute: '/proyecto/ver/recolecion-de-datos/'+this.$route.params.id_project, nameRoute: 'Recolección de datos' },
-               { Linkroute: '/proyecto/ver/integrantes/'+this.$route.params.id_project, nameRoute: 'Integrantes' },
-            ]
+               { Linkroute: '/formulario/ver/detalles/' + this.$route.params.id_formulario, nameRoute: 'Detalles del formulario' },
+               { Linkroute: '/formulario/ver/datos/' + this.$route.params.id_formulario, nameRoute: 'Datos' }
+            ],
          }
       },
       beforeMount: function () {
