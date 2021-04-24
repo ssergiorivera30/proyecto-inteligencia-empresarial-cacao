@@ -2,64 +2,36 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
 
-
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
 import ServiciosHome from '../views/Servicios/ServiciosHome'
 
-
 import MapsHome from '../views/Maps/MapsHome'
 import MapsCreate from '../views/Maps/MapsCreate'
-
-
-
-
-
-
-
-
-
 
 
 import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
 import ProyectosHome from '../views/Proyectos/ProyectosHome'
 
 
-
 import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
 
 import ProyectoDetallesHeader from '../views/Proyectos/ProyectoDetallesHeader'
 
-
-
-
-
-
-
-
 import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIntegrantes'
 
-
 import Formularios from '../views/Formularios/Formularios'
-
-
 
 import FormularioNuevo from '../views/Formularios/FormularioNuevo'
 
 import FromularioConstructor from '../views/Formularios/FromularioConstructor'
 import FromularioEditor from '../views/Formularios/FromularioEditor'
 
-
-
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
 import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
 import FormularioDetalles from '../views/FormularioDetalles/FormularioDetalles'
 import FormularioDatos from '../views/FormularioDetalles/FormularioDatos'
 
-
-
-
 import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
-
 
 const routes = [
   { path: '/', redirect: 'inicio', component: Home  },
@@ -72,11 +44,8 @@ const routes = [
       ] 
   },  
 
-
   { path: '/maps', name: 'MapsHome', component: MapsHome  },
   { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate  },
-
-
   
 
   { path: '/proyectos', name: 'ProyectosInicio', component: ProyectosInicio  },
@@ -84,15 +53,12 @@ const routes = [
   { path: '/proyecto/ver', name: 'ProyectoDetallesHeader', redirect:'/proyecto/ver/detalles', component: ProyectoDetallesHeader, 
     children:
       [    
-        { path: 'detalles/:id_project', name:'ProyectoDetalles', component: ProyectoDetalles },    
+        { path: 'detalles/:id_project', name:'ProyectoDetalles', component: ProyectoDetalles }, 
         { path: 'recolecion-de-datos/:id_project', name: 'Formularios', component: Formularios},
         { path: 'integrantes/:id_project', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
       ] 
   },
   
-  
-
-
 
   { path: '/proyecto/formulario', name: 'FormularioNuevo', component: FormularioNuevo,
     children:
