@@ -21,8 +21,8 @@
                </div>
 
                <div class="my-3">
-                  <dd class="text-sm font-medium text-gray-400 group-hover:text-light-blue-200">
-                     <span v-if="form.description.length > 62">{{ form.description.substring(0,32) }}...<br><br></span>
+                  <dd class="text-xs text-gray-400 group-hover:text-light-blue-200">
+                     <span v-if="form.description.length > 62">{{ form.description.substring(0,32) }}...<br></span>
                      <span v-else>{{ form.description }}.</span>
                   </dd>                  
                </div>

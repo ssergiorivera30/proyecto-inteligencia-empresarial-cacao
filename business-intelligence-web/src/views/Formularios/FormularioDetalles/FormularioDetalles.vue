@@ -1,9 +1,6 @@
 <template>
    <div class="px-4 py-1 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:container">
 
-
-
-
       <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
 
       <header class="flex items-center justify-center mb-5">
@@ -22,13 +19,10 @@
    import PreviewForm from "./../../../components/Formularios/PreviewForm"
    import PreviewFormSave from "./../../Formularios/PreviewFormSave"
 
-   import NavBarSecondary from './../../../components/Utilidades/NavBarSecondary.vue'
-
    export default {
       components: {
          PreviewForm,
          PreviewFormSave,
-         NavBarSecondary
       },
       data() {
          return {

@@ -9,7 +9,7 @@
           v-if="GoBack !== 'history.back'"
           :to="GoBack"
           :title="GoBackTitle"
-          class="py-1 text-gray-700 inline-block px-3 bg-white hover:text-blue-900 cursor-pointer justify-items-center">
+          class="py-1 text-gray-700 inline-block px-3 bg-gray-100 rounded-t hover:text-blue-900 cursor-pointer justify-items-center">
           <i class='bx bx-chevron-left font-bold'></i>
         </router-link>  
 
@@ -17,7 +17,7 @@
           v-else
           href="javascript:history.back()" 
           :title="GoBackTitle" 
-          class="py-1 text-gray-600 inline-block px-3 bg-white hover:text-blue-900 cursor-pointer justify-items-center">
+          class="py-1 text-gray-600 inline-block px-3 bg-gray-100 rounded-t hover:text-blue-900 cursor-pointer justify-items-center">
           <i class='bx bx-chevron-left font-bold'></i>
         </a>          
     
