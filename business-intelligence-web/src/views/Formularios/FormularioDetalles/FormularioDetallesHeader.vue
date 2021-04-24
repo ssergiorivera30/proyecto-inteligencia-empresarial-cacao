@@ -1,10 +1,5 @@
 <template>
    <div class="pl-4 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container">
-
-      
-
-
-
       <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :SubTitleHeader="SubTitleHeader"/>
       <router-view />
    </div>
@@ -29,7 +24,12 @@
             GoBack: 'history.back',
             GoBackTitle: 'Lista de formularios',
             RoutesNavs: [
-               { Linkroute: '/formulario/ver/detalles/' + this.$route.params.id_formulario, nameRoute: 'Detalles del formulario' },
+               { Linkroute: '/formulario/ver/detalles/' + this.$route.params.id_formulario, nameRoute: 'Detalles del formulario',
+                  NavRight:
+                  [
+                     { LinkName: 'Editar formulario', LinkType: 2, linkIcon: 'bx bxs-pencil', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_formulario },
+                  ]
+               },
                { Linkroute: '/formulario/ver/datos/' + this.$route.params.id_formulario, nameRoute: 'Datos' }
             ],
          }

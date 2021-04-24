@@ -2,13 +2,35 @@
 
 class Forms
 {
-	function CreateForm($conection, $name_form, $description_form){
+	function CreateForm($conection, $name_form, $description_form, $IdFormProject){
+
 		$sql = "INSERT INTO forms_initials(fin_name, fin_description, fin_created)VALUES(?,?, NOW() )";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $name_form);
 		$stm -> bindParam(2, $description_form);
 		$stm -> execute();
-		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $conection->lastInsertId());
+
+		$ID_FORM =  $conection->lastInsertId();
+
+		$sql_pro = "INSERT INTO forms_projects(fpr_id_form, fpr_id_projects, fpr_date_created, fpr_hour_created ) VALUES ( ?,?, NOW(), NOW() )";
+		$stm_pro = $conection -> prepare( $sql_pro );
+		$stm_pro -> bindParam(1, $ID_FORM);
+		$stm_pro -> bindParam(2, $IdFormProject);
+		$stm_pro -> execute();
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_FORM );
+	}
+
+
+	function UserAddForm($conection, $IdForm, $USER_CODE){
+
+		$sql = "INSERT INTO forms_users(fous_id_form, fous_id_user, fous_date_created, fous_hour_created ) VALUES( ?,?, NOW(), NOW() )";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $IdForm);
+		$stm -> bindParam(2, $USER_CODE);
+		$stm -> execute();
+
+		return $stm->rowCount();
 	}
 
 	function UpdateFormBasic($conection, $FormId, $NameForm, $DescriptionForm ){

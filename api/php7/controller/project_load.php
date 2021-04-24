@@ -9,6 +9,8 @@ $array = json_decode($json, true);
 require_once "../services/Conexion.php";
 require_once "../services/Response.php";
 require_once "../model/Projects.php";
+require_once "../control/user_session_verify.php";
+
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();

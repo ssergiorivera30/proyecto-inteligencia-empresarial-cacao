@@ -75,6 +75,7 @@ export default {
     SaveInitialForm: function () {
       axios
         .post(API_ROUTER.PHP7_CONTROLLER + "form_create.php", {
+          IdFormProject: this.$route.params.id_project,
           NameForm: this.NameForm,
           DescriptionForm: this.DescriptionForm,
         })

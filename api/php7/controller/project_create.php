@@ -9,16 +9,20 @@ $array = json_decode($json, true);
 require_once "../services/Conexion.php";
 require_once "../services/Response.php";
 require_once "../model/Projects.php";
+require_once "../control/user_session_verify.php";
+
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
+
+$USER_CODE = $_SESSION['USER_CODE'];
 
 $ProjectName = $array['ProjectName'];
 $ProjectCode = $array['ProjectCode'];
 $ProjectEntity = $array['ProjectEntity'];
 
 
-$create = (new Projects())->CreateProjects($conection, $ProjectName);
+$create = (new Projects())->CreateProjects($conection, $ProjectName, $USER_CODE);
 
 
 $message = $create['respuesta'] > 0 ? '✨ Excelente ! ahora construye tu formulario' : '😬 Algo a slaido mal, favor reintentar';

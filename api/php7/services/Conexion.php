@@ -2,7 +2,7 @@
 
 class Conexion{
 
-	function BDMysqlBigNovaSoftware(){		
+	function BDMysqlBigNovaSoftware(){
 
 		$host = "localhost";		
 		$database = "big_nova_software";

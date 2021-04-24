@@ -70,9 +70,9 @@ const routes = [
   { path: '/proyecto/formulario', name: 'FormularioNuevo', component: FormularioNuevo,
     children:
       [
-        { path: 'constructor', name: 'FromularioConstructor', component: FromularioConstructor },              
-        { path: 'compartir', name: 'FromularioCompartir', component: FromularioCompartir },
-        { path: 'ver', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
+        { path: 'constructor/:id_project', name: 'FromularioConstructor', component: FromularioConstructor },              
+        { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
+        { path: 'ver/:id_project', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  
   },
 

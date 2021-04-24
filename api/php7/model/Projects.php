@@ -2,12 +2,21 @@
 
 class Projects
 {
-	function CreateProjects($conection, $ProjectName){
+	function CreateProjects($conection, $ProjectName, $USER_CODE){
 		$sql = "INSERT projects(pro_name, pro_date_create, pro_hour_create)VALUES(?, NOW(), NOW() )";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $ProjectName);
 		$stm -> execute();
-		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $conection->lastInsertId());
+
+		$ID_PROJECT = $conection->lastInsertId();
+
+		$sql_pro = "INSERT INTO projects_users(pus_id_project, pus_id_user, pus_date_create, pus_hour_create ) VALUES ( ?,?, NOW(), NOW() )";
+		$stm_pro = $conection -> prepare( $sql_pro );
+		$stm_pro -> bindParam(1, $ID_PROJECT);
+		$stm_pro -> bindParam(2, $USER_CODE);
+		$stm_pro -> execute();
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_PROJECT );
 	}
 
 	function RegisterCodeProjects($conection, $ProjectCodeID, $ProjectCode, $ProjectEntity){
@@ -27,9 +36,7 @@ class Projects
 		return $stm->fetchAll();
 	}
 
-	function LoadProjectsIdBasics($conection, $ProjectId){
-
-		 
+	function LoadProjectsIdBasics($conection, $ProjectId){		 
 
 		$sql = "SELECT pro_auto_id, pro_name, pro_date_create, pro_hour_create, pro_updated, pro_status, pro_vigence, prco_auto_id, prco_project_id, prco_code, prco_entity  FROM projects, projects_codes WHERE pro_auto_id = ? and pro_auto_id=prco_auto_id";
 		$stm = $conection -> prepare( $sql );

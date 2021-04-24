@@ -1,8 +1,6 @@
 <template>
    <div class="">
 
-
-
       <header class="flex items-center justify-between">
          <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_project }}</h2>
          <span 
@@ -196,9 +194,7 @@ import API_ROUTER from './../../../services/SERVER_API'
             {
                ProjectId: this.$route.params.id_project,
             }).then((res) => {
-
-               console.log(res)
-
+               
                this.ArrayProjects = res.data
 
             }).catch(() => {
