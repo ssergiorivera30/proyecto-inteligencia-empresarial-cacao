@@ -1,5 +1,5 @@
 <template>
-   <div class="px-4 py-1 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:container">
+   <div class="pl-4 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container">
 
       
 
