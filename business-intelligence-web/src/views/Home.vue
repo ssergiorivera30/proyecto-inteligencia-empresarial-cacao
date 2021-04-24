@@ -4,7 +4,7 @@
     <div class="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
       
       <div class="max-w-xl mb-6">
-        <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-blue-900 sm:text-4xl sm:leading-none">
+        <h2 class="max-w-lg mb-6 font-sans text-2xl font-bold tracking-tight text-blue-900 sm:text-1xl sm:leading-none">
 
           Grupo de Investigación Nova<br class="hidden md:block" />
           

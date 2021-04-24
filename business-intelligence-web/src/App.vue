@@ -48,7 +48,7 @@
     </div>
   </aside>
   <div class="flex-grow text-gray-800 ">
-    <header class="flex items-center h-10 px-1 sm:px-10 bg-blue-900 shadow-sm">
+    <header class="flex items-center h-12 px-1 sm:px-10 bg-blue-900 shadow-sm">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -94,7 +94,8 @@
       </div>
     </header>
 
-    <router-view class="md:container"/>
+    <router-view class="md:container "/>
+    <div class="mb-24"></div>
     
   </div>
 </body>

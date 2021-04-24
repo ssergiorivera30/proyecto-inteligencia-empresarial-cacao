@@ -1,24 +1,30 @@
 <template>
   <div class="pt-3 mb-2">
-    <ul class="list-reset flex border">
+    <ul class="list-reset flex border-b-2 border-gray-100">
      
-        <router-link v-if="GoBack !== 'history.back'" :to="GoBack" :title="GoBackTitle" class="text-gray-600 font-semibold inline-block px-3 bg-white hover:text-blue-900 cursor-pointer justify-items-center">
-          <i class='bx bx-chevron-left'></i>
+        <router-link 
+          v-if="GoBack !== 'history.back'"
+          :to="GoBack"
+          :title="GoBackTitle"
+          class="py-1 text-gray-700 font-semibold inline-block px-3 bg-white hover:text-blue-900 cursor-pointer justify-items-center">
+          <i class='bx bx-chevron-left font-bold'></i>
         </router-link>  
 
-        <a v-else href="javascript:history.back()" :title="GoBackTitle" class="text-gray-600 font-semibold inline-block px-3 bg-white hover:text-blue-900 cursor-pointer justify-items-center">
+        <a 
+          v-else
+          href="javascript:history.back()" 
+          :title="GoBackTitle" 
+          class="py-1 text-gray-600 font-semibold inline-block px-3 bg-white hover:text-blue-900 cursor-pointer justify-items-center">
           <i class='bx bx-chevron-left'></i>
-        </a>  
-
-        
+        </a>          
     
         <router-link 
           v-for="routes in RoutesNavs"
           :key="routes" 
           :to="routes.Linkroute" 
           :title="'Ir a '+routes.nameRoute"
-          class="-mb-px border-l px-4 text-gray-600 font-semibold inline-block" 
-          active-class="bg-blue-50 text-blue-900">
+          class="py-1 -mb-px px-4 text-gray-600 font-semibold inline-block" 
+          active-class="text-blue-900 border-b-2 border-blue-900">
             {{ routes.nameRoute }}
         </router-link>
     </ul>
