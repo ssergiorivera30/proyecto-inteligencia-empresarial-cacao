@@ -11,6 +11,7 @@ require_once "../services/Response.php";
 require_once "../model/Projects.php";
 require_once "../control/user_session_verify.php";
 
+$USER_CODE = $_SESSION['USER_CODE'];
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
@@ -19,6 +20,6 @@ $response = new Response();
 
 $UserService = $array['UserService'];
 
-$respuesta = (new Projects())->LoadProjects($conection, $UserService);
+$respuesta = (new Projects())->LoadProjects($conection, $USER_CODE);
 
 $response -> ResponseInfiniteObjects( $respuesta );

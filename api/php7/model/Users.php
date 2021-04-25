@@ -41,7 +41,8 @@ class Users
 	
 		$PasswordCyfred = sha1($UserFirstPassword);
 
-		$sql = "INSERT INTO users_credentials (usr_user_id, usr_email, usr_password ) VALUES (?, ?, ? )";
+	
+		$sql = "INSERT INTO users_credentials (usr_user_id, usr_count_id_type, usr_email, usr_password ) VALUES (?, 1, ?, ? )";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $result_created_id);
 		$stm -> bindParam(2, $UserNewEmail);

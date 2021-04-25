@@ -25,7 +25,7 @@ $ProjectEntity = $array['ProjectEntity'];
 $create = (new Projects())->CreateProjects($conection, $ProjectName, $USER_CODE);
 
 
-$message = $create['respuesta'] > 0 ? '✨ Excelente ! ahora construye tu formulario' : '😬 Algo a slaido mal, favor reintentar';
+$message = $create['respuesta'] > 0 ? '✨ Excelente ! tu proyecto fue creado correctamente' : '😬 Algo a slaido mal, favor reintentar';
 
 $icono = $create['respuesta'] > 0 ? 'success' : 'warning';
 

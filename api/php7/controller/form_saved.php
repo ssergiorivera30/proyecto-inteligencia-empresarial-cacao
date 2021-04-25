@@ -13,18 +13,19 @@ require_once "../model/CoreTables.php";
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
 
-$FormId = $array['FormId'];
+
+$ID_FORM = $array['FormId'];
 $ArrayInputs = $array['ArrayInputs'];
 
-$ID_MOTHER_TABLE = (new CoreTables())->CreateRegisterMotherTable( $conection, $FormId, $ArrayInputs );
+$ID_MOTHER_TABLE = (new CoreTables())->CreateRegisterMotherTable( $conection, $ID_FORM, $ArrayInputs );
 
-$NAME_TABLE = 'table_form_'.$FormId;
+
+$NAME_BD = "big_nova_software";
+
+$NAME_TABLE = 'z_form_'.$ID_FORM;
 
 $QUERY_TABLE = array('nombre_tabla'=> "CREATE TABLE $NAME_TABLE ( id INT AUTO_INCREMENT PRIMARY KEY ");
 $QUERY_FINA_TABLE = array();
-
-
-// var_dump($ArrayInputs);
 
 
 foreach ($ArrayInputs as $key => $value) {
@@ -135,7 +136,6 @@ foreach ($ArrayInputs as $key => $value) {
 
 
 
-	
 
 
 // foreach ($QUERY_TABLE as $key => $value) {
@@ -151,44 +151,32 @@ $QUERY_TABLE_SENTENCE_END = ' )';
 array_push($QUERY_TABLE, $QUERY_TABLE_SENTENCE_END);
 
 $separado_por_comas = implode(" ", $QUERY_TABLE);
-
-
-$sql = "SELECT ? FROM information_schema.tables WHERE table_schema = 'big_nova_software' AND table_name = ?";
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $NAME_TABLE);
-		$stm -> bindParam(2, $NAME_TABLE);
-		$stm -> execute();
-
-
-
-if( $stm->rowCount() > 0 ){
-
-	$message = '😬 Este formulario ya cuanta con entradas personalizadas';
-	$icono = 'warning';
-
-}else{
-
 	$MYSQL_TABLE_IS = $separado_por_comas;
 
-	$CREATE_TABLE = $conection -> prepare( $MYSQL_TABLE_IS );
-	$CREATE_TABLE -> bindParam(1, $id_form);
+
+
+
+
+
+
+// var_dump($MYSQL_TABLE_IS);
+	// echo 'creando';
+	$CREATE_TABLE = $conection -> prepare('CREATE TABLE z_form_17 ( id INT AUTO_INCREMENT PRIMARY KEY , Edad INT(10) , Nombres VARCHAR(120) )');
 	$CREATE_TABLE -> execute();	
 
 
 	if( $CREATE_TABLE->rowCount() > 0){
 
-		$message = '✨ Excelente ! Entradas del formulario creadas';
+		$message = '✨ Excelente! Entradas del formulario creadas';
 		$icono = 'success';
 
 	}else{
 
-		$message = '✨ Verificar formularios en el módulo anterior';
+		$message = 'Error de conexión';
 		$icono = 'warning';
 
 	}
 
-}
-
-
 $response = new Response();
 $response -> ResponseMsgIconoCode($message, $icono, null);
+

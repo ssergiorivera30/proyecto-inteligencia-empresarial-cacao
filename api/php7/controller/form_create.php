@@ -14,7 +14,7 @@ require_once "../control/user_session_verify.php";
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
 
-echo $USER_CODE = $_SESSION['USER_CODE'];
+$USER_CODE = $_SESSION['USER_CODE'];
 
 $IdFormProject = $array['IdFormProject'];
 $NameForm = $array['NameForm'];
@@ -22,12 +22,12 @@ $DescriptionForm = $array['DescriptionForm'];
 
 $create_form = (new Forms())->CreateForm($conection, $NameForm, $DescriptionForm, $IdFormProject);
 
-echo $add_user = (new Forms())->UserAddForm($conection, $create_form['id'], $USER_CODE);
+$add_user = (new Forms())->UserAddForm($conection, $create_form['id'], $USER_CODE);
 
-// $create_form = isset($create_form) ? $create_form : 0;
+$create_form = isset($create_form) ? $create_form : 0;
 
-// $message = $create_form['respuesta'] > 0 ? '✨ Excelente ! ahora construye tu formulario' : '😬 Algo a slaido mal, favor reintentar';
-// $icono = $create_form['respuesta'] > 0 ? 'success' : 'warning';
+$message = $create_form['respuesta'] > 0 ? '✨ Excelente ! ahora construye tu formulario' : '😬 Algo a slaido mal, favor reintentar';
+$icono = $create_form['respuesta'] > 0 ? 'success' : 'warning';
 
-// $response = new Response();
-// $response_view = $response -> ResponseMsgIconoCode($message, $icono, $create_form['id']);
+$response = new Response();
+$response_view = $response -> ResponseMsgIconoCode($message, $icono, $create_form['id']);

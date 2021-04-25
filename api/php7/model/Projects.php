@@ -10,7 +10,7 @@ class Projects
 
 		$ID_PROJECT = $conection->lastInsertId();
 
-		$sql_pro = "INSERT INTO projects_users(pus_id_project, pus_id_user, pus_date_create, pus_hour_create ) VALUES ( ?,?, NOW(), NOW() )";
+		$sql_pro = "INSERT INTO projects_users (pus_id_project, pus_id_user, pus_date_create, pus_hour_create ) VALUES ( ?,?, NOW(), NOW() )";
 		$stm_pro = $conection -> prepare( $sql_pro );
 		$stm_pro -> bindParam(1, $ID_PROJECT);
 		$stm_pro -> bindParam(2, $USER_CODE);
@@ -20,7 +20,7 @@ class Projects
 	}
 
 	function RegisterCodeProjects($conection, $ProjectCodeID, $ProjectCode, $ProjectEntity){
-		$sql = "INSERT projects_codes(prco_project_id, prco_code, prco_entity)VALUES(?, ?, ? )";
+		$sql = "INSERT projects_codes(prco_project_id, prco_code, prco_entity ) VALUES(?, ?, ? )";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $ProjectCodeID);
 		$stm -> bindParam(2, $ProjectCode);
@@ -29,16 +29,30 @@ class Projects
 		return $respuesta = array('respuesta' => $stm->rowCount());
 	}
 
-	function LoadProjects($conection, $UserService){
-		$sql = "SELECT pro_auto_id as id, pro_name as name, pro_date_create as create_date, pro_hour_create as create_hour FROM projects WHERE pro_status=1 and pro_vigence=1";
+	function LoadProjects($conection, $USER_CODE){
+
+		$projects = array();
+
+		$sql = "SELECT pus_auto_id, pus_id_project, pus_id_user, pus_date_create, pus_hour_create, pus_updated, pus_status, pus_vigence, pro_auto_id, pro_name, pro_date_create, pro_hour_create FROM projects_users, projects WHERE pus_id_user=? and pus_id_project = pro_auto_id and pro_status = 1 and pro_vigence = 1 group by pro_auto_id";
 		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $USER_CODE);
 		$stm -> execute();
-		return $stm->fetchAll();
+
+		foreach ($stm->fetchAll() as $key => $value) {
+
+			$pro['id'] = $value['pro_auto_id'];
+			$pro['name'] = $value['pro_name'];
+			$pro['create_date'] = $value['pro_date_create'];
+			$pro['create_hour'] = $value['pro_hour_create'];
+			$projects[] = $pro;		
+		}
+
+		return $projects;
 	}
 
 	function LoadProjectsIdBasics($conection, $ProjectId){		 
 
-		$sql = "SELECT pro_auto_id, pro_name, pro_date_create, pro_hour_create, pro_updated, pro_status, pro_vigence, prco_auto_id, prco_project_id, prco_code, prco_entity  FROM projects, projects_codes WHERE pro_auto_id = ? and pro_auto_id=prco_auto_id";
+		$sql = "SELECT pro_auto_id, pro_name, pro_date_create, pro_hour_create, pro_updated, pro_status, pro_vigence, prco_auto_id, prco_project_id, prco_code, prco_entity  FROM projects, projects_codes WHERE pro_auto_id = ? and pro_auto_id = prco_project_id and pro_vigence = 1";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $ProjectId);		
 		$stm -> execute();
