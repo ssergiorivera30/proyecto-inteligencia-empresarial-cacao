@@ -9,6 +9,10 @@ $array = json_decode($json, true);
 require_once "../services/Conexion.php";
 require_once "../services/Response.php";
 require_once "../model/CoreTables.php";
+require_once "../model/ConstructorTable.php";
+
+
+
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
@@ -25,169 +29,48 @@ $registrar_formulario = $class_core_table->CreateRegisterMotherTable( $conection
 
 if($registrar_formulario > 0){
 
-	echo $exixtencia_table = $class_core_table->VerridicarExixtenciaTabla( $conection, $NAME_TABLE );
+	$verificar_existencia_tabla = $class_core_table->VeridicarExistenciaTabla( $conection, $NAME_TABLE );
 
+	if($verificar_existencia_tabla > 0){
+
+		$message = 'El formulario ya existe';
+		$icono = 'error';		
+
+	}else{
+
+		$message = '✨ Consulta SQL de la tabla generada correctamente';
+		$icono = 'success';
+
+		$class_constructor = new ConstructorTable();
+		$sql_tabla_construida = $class_constructor ->GeneratorSqlTable($NAME_TABLE, $ArrayInputs);
+
+		// echo $sql_tabla_construida;
+
+		$ejecucion_consulta = $class_core_table->CreateTableTabla( $conection, $sql_tabla_construida );
+
+			if($ejecucion_consulta > 0){
+				
+				$message = '✨ Excelente! Tu formulario fue creado correctamente';
+				$icono = 'success';
+
+			}else{
+
+				$message = 'Error al crear el registro';
+				$icono = 'warning';
+			}		
+
+
+	}
+
+
+}else{
+
+
+		$message = 'El código de formulario ya existe';
+		$icono = 'warning';
 
 }
 
-
-exit();
-die();
-
-$QUERY_TABLE = array('nombre_tabla'=> "CREATE TABLE $NAME_TABLE ( id INT AUTO_INCREMENT PRIMARY KEY ");
-$QUERY_FINA_TABLE = array();
-
-
-foreach ($ArrayInputs as $key => $value) {
-
-
-	if( $value['input']['type'] == 'text'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(120) ');
-
-	}
-
-	if( $value['input']['type'] == 'number'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' INT(10) ');
-		
-	}
-	
-
-	if( $value['input']['type'] == 'textarea'){
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' TEXT(600) ');		
-	}
-
-	if( $value['input']['type'] == 'email'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(50) ');
-		
-	}
-
-	if( $value['input']['type'] == 'tel'){
-
-			$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(15) ');
-		
-	}
-
-
-	if( $value['input']['type'] == 'file'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(120) ');
-		
-	}
-
-
-	if( $value['input']['type'] == 'password'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(120) ');
-		
-	}
-
-	if( $value['input']['type'] == 'url'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(200) ');
-		
-	}
-
-	if( $value['input']['type'] == 'date'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' DATE ');
-		
-	}
-
-	if( $value['input']['type'] == 'datetime-local'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' DATETIME ');
-
-	}
-
-	if( $value['input']['type'] == 'time'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' TIME ');
-		
-	}
-
-	if( $value['input']['type'] == 'color'){
-
-		$input_name = strtr($value['input']['name'], " ", "_");
-		array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(8) ');
-		
-	}
-
-}
-
-// foreach ($ArrayInputs as $key => $value) {
-
-// 	if( $value['input']['type'] == 'select'){
-		
-// 	}
-
-
-// 	if( $value['input']['type'] == 'checkbox'){
-
-// 	}
-
-// 	if( $value['input']['type'] == 'radio'){
-		
-// 	}
-// }
-
-
-
-
-
-// foreach ($QUERY_TABLE as $key => $value) {
-
-// 	$_THE_QUERY = $value;
-	
-// 	$QUERY_FINA_TABLE[] = $_THE_QUERY;
-// }
-
-
-$QUERY_TABLE_SENTENCE_END = ' )';
-
-array_push($QUERY_TABLE, $QUERY_TABLE_SENTENCE_END);
-
-$separado_por_comas = implode(" ", $QUERY_TABLE);
-	$MYSQL_TABLE_IS = $separado_por_comas;
-
-
-
-
-
-
-
-// var_dump($MYSQL_TABLE_IS);
-	// $query_create_table = strval($MYSQL_TABLE_IS);
-
-	// $CREATE_TABLE = $conection -> prepare($query_create_table);
-	// $CREATE_TABLE -> execute();	
-
-
-	// if( $CREATE_TABLE->rowCount() > 0){
-
-	// 	$message = '✨ Excelente! Entradas del formulario creadas';
-	// 	$icono = 'success';
-
-	// }else{
-
-	// 	$message = 'Error de conexión';
-	// 	$icono = 'warning';
-
-	// }
 
 $response = new Response();
 $response -> ResponseMsgIconoCode($message, $icono, null);
-

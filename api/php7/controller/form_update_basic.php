@@ -17,8 +17,6 @@ $FormId = $array['FormId'];
 $NameForm = $array['NameForm'];
 $DescriptionForm = $array['DescriptionForm'];
 
-
-
 $create = (new Forms())->UpdateFormBasic($conection, $FormId, $NameForm, $DescriptionForm );
 
 $create = isset($create) ? $create : 0;

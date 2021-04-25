@@ -14,9 +14,7 @@ class CoreTables
 		return $conection->lastInsertId();
 	}
 
-	function VerridicarExixtenciaTabla($conection, $NAME_TABLE){
-
-		$data = json_encode($ArrayInputs);
+	function VeridicarExistenciaTabla($conection, $NAME_TABLE){
 
 		$sql = "SHOW TABLES LIKE ?";
 		$stm = $conection -> prepare( $sql );
@@ -24,5 +22,16 @@ class CoreTables
 		$stm -> execute();
 		return $stm->rowCount();
 	}
+
+	function CreateTableTabla($conection, $sql_tabla_construida){
+
+		$sql = $sql_tabla_construida;
+		$CREATE_TABLE = $conection -> prepare($sql);
+		$CREATE_TABLE -> execute();
+		echo $CREATE_TABLE->rowCount();
+	}
+
+
+
 	
 }
