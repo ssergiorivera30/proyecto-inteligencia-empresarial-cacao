@@ -39,6 +39,9 @@ if( $result_verification < 1){
 		$result_created_credentials = $ClassUsers->CreateUserCredentials($conexion, $result_created_id, $UserNewEmail, $UserFirstPassword );
 		$result_created_data_basic = $ClassUsers->CreateUserDataPersonalBasic($conexion, $result_created_id, $UserNames );
 
+		$result_created_avatar_empty = $ClassUsers->UserCreateAvatar($conexion, $result_created_id, 0 );
+
+
 		$ClassStyle = 'text-green-900';		
 		$MsgResponse = 'Su cuenta fue creada exitosamente';
 		

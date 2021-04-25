@@ -75,5 +75,17 @@ class Users
 		return $stm->rowCount();		
 	}
 
+	function UserCreateAvatar($conection, $id_user, $avatar){
+	
+		$sql = "INSERT INTO users_avatars ( usava_id_user, usava_avatar, usava_date_created, usava_hour_date ) VALUES (?, ?, NOW(), NOW() )";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $id_user);
+		$stm -> bindParam(2, $avatar);
+		$stm -> execute();
+		return $stm->rowCount();		
+	}
+
+
+
 
 }
