@@ -17,12 +17,22 @@ $conection = $connect -> BDMysqlBigNovaSoftware();
 $ID_FORM = $array['FormId'];
 $ArrayInputs = $array['ArrayInputs'];
 
-$ID_MOTHER_TABLE = (new CoreTables())->CreateRegisterMotherTable( $conection, $ID_FORM, $ArrayInputs );
-
-
 $NAME_BD = "big_nova_software";
-
 $NAME_TABLE = 'z_form_'.$ID_FORM;
+
+$class_core_table = new CoreTables();
+$registrar_formulario = $class_core_table->CreateRegisterMotherTable( $conection, $ID_FORM, $ArrayInputs );
+
+if($registrar_formulario > 0){
+
+	echo $exixtencia_table = $class_core_table->VerridicarExixtenciaTabla( $conection, $NAME_TABLE );
+
+
+}
+
+
+exit();
+die();
 
 $QUERY_TABLE = array('nombre_tabla'=> "CREATE TABLE $NAME_TABLE ( id INT AUTO_INCREMENT PRIMARY KEY ");
 $QUERY_FINA_TABLE = array();
@@ -160,22 +170,23 @@ $separado_por_comas = implode(" ", $QUERY_TABLE);
 
 
 // var_dump($MYSQL_TABLE_IS);
-	// echo 'creando';
-	$CREATE_TABLE = $conection -> prepare('CREATE TABLE z_form_17 ( id INT AUTO_INCREMENT PRIMARY KEY , Edad INT(10) , Nombres VARCHAR(120) )');
-	$CREATE_TABLE -> execute();	
+	// $query_create_table = strval($MYSQL_TABLE_IS);
+
+	// $CREATE_TABLE = $conection -> prepare($query_create_table);
+	// $CREATE_TABLE -> execute();	
 
 
-	if( $CREATE_TABLE->rowCount() > 0){
+	// if( $CREATE_TABLE->rowCount() > 0){
 
-		$message = '✨ Excelente! Entradas del formulario creadas';
-		$icono = 'success';
+	// 	$message = '✨ Excelente! Entradas del formulario creadas';
+	// 	$icono = 'success';
 
-	}else{
+	// }else{
 
-		$message = 'Error de conexión';
-		$icono = 'warning';
+	// 	$message = 'Error de conexión';
+	// 	$icono = 'warning';
 
-	}
+	// }
 
 $response = new Response();
 $response -> ResponseMsgIconoCode($message, $icono, null);
