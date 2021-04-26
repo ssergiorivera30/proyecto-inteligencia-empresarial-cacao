@@ -21,10 +21,18 @@ import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIn
 
 import Formularios from '../views/Formularios/Formularios'
 
-import FormularioNuevoHeader from '../views/Formularios/FormularioNuevo/FormularioNuevoHeader'
 
-import FromularioConstructor from '../views/Formularios/FromularioConstructor'
-import FromularioEditor from '../views/Formularios/FromularioEditor'
+// Formulario nuevo
+
+import FormularioNuevoHeader from '../views/Formularios/FormularioNuevo/FormularioNuevoHeader'
+import FromularioNuevo from '../views/Formularios/FormularioNuevo/FromularioNuevo'
+import FromularioEditor from '../views/Formularios/FormularioNuevo/FromularioEditor'
+
+
+
+
+
+
 
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
 import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
@@ -70,7 +78,7 @@ const routes = [
   { path: '/proyecto/formulario', name: 'FormularioNuevoHeader', component: FormularioNuevoHeader,
     children:
       [
-        { path: 'constructor/:id_project', name: 'FromularioConstructor', component: FromularioConstructor },              
+        { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },              
         { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
         { path: 'ver/:id_project', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  

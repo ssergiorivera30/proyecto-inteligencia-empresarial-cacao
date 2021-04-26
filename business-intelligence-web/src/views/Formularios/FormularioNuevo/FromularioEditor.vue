@@ -352,13 +352,13 @@
 
    import axios from "axios"
    import Noty from "noty";
-   import API_ROUTER from "./../../services/SERVER_API"
+   import API_ROUTER from "./../../../services/SERVER_API"
 
    import { ref } from 'vue'
    import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-   import PreviewFormEditor from "./PreviewFormEditor"
-   import PreviewForm from "./PreviewForm"
+   import PreviewFormEditor from "./../../../components/Formularios/PreviewFormEditor"
+   import PreviewForm from "./../../../components/Formularios/PreviewForm"
 
 
    export default {

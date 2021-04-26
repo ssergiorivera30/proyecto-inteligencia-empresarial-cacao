@@ -54,9 +54,9 @@
 <script>
 import axios from "axios";
 import Noty from "noty";
-import API_ROUTER from "./../../services/SERVER_API";
+import API_ROUTER from "./../../../services/SERVER_API";
 
-import PreviewForm from "./PreviewForm";
+import PreviewForm from "./../../../components/Formularios/PreviewForm";
 
 export default {
   components: {
@@ -64,7 +64,7 @@ export default {
   },
   data() {
     return {
-      name: "FromularioConstructor",
+      name: "FromularioNuevo",
       img_form_person: API_ROUTER.API_UI + "/forms/new_form.svg",
       NameForm: "",
       DescriptionForm: "",

@@ -1,6 +1,5 @@
 <template>
    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-
       <header class="flex items-center justify-between">
          <h2 class="text-sm leading-6 font-medium text-black"></h2>
          <div class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium py-2 cursor-pointer">
@@ -10,12 +9,9 @@
               </svg>  
             </a>        
          </div>
-      </header>
-   
+      </header>   
       
-   <router-view/>
-          
-
+    <router-view/>
 
    </div>
 </template>
@@ -32,11 +28,9 @@ export default {
 
     },
     mounted: function(){ 
-      //  console.log(this.$params);
 
     },
-    methods:{
-       
+    methods:{       
     
     }
   }
