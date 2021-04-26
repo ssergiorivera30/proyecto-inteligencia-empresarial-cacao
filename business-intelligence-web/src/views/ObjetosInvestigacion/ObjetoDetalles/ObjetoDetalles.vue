@@ -21,9 +21,6 @@
                     <router-link :to="'/proyecto/objeto/detalle/inicio/'+dataForm[0]" class="text-blue-600 hover:text-blue-900">Detalles</router-link>
                   </td>
                   <td v-for="(column) in sizeColumns" :key="column" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ dataForm[column]}}</td>
-                  
-                 
-                  
                 </tr>
               </tbody>
             </table>
@@ -47,7 +44,7 @@
     },
     data() {
       return {
-        name: 'FormularioDatos',
+        name: 'ObjetoDetalles',
         OrderForm: 'load',
         NameForm: '',
         DescriptionForm: '',
@@ -65,24 +62,7 @@
     },
     mounted: function () {
 
-      if(this.$route.params.type == 'ob'){
 
-        this.NameTable = 'z_object_'
-        this.rutaDataBasic = 'object_load.php'
-        this.rutaDataListar = 'objetos_data_listar.php'
-
-        }
-        if(this.$route.params.type == 'fo'){
-
-        this.NameTable = 'z_form_'
-        this.rutaDataBasic = 'form_load.php'
-        this.rutaDataListar = 'form_data_listar.php'
-
-        }
-
-      
-      this.LoadFromBasic()
-      this.GetData()
 
     },
     methods: {

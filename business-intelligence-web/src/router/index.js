@@ -44,13 +44,15 @@ import MisObjetosInvestigacion from '../views/ObjetosInvestigacion/ListaObjetos/
 
 // Nuevos objetos de investigación
 
-
-
 import ObjetoNuevoHeader from '../views/ObjetosInvestigacion/NuevoObjeto/ObjetoNuevoHeader'
 import HeaderObjetoNuevo from '../views/ObjetosInvestigacion/NuevoObjeto/HeaderObjetoNuevo'
 import ObjetoConstructor from '../views/ObjetosInvestigacion/NuevoObjeto/ObjetoConstructor'
 
+// Objeto detalles
 
+import ObjetoDetallesHeader from '../views/ObjetosInvestigacion/ObjetoDetalles/ObjetoDetallesHeader'
+import ObjetoDetalles from '../views/ObjetosInvestigacion/ObjetoDetalles/ObjetoDetalles'
+import ObjetoPredeterminados from '../views/ObjetosInvestigacion/ObjetoDetalles/ObjetoPredeterminados'
 
 
 // Cuenta
@@ -83,7 +85,6 @@ const routes = [
       [    
         { path: 'detalles/:id_project', name:'ProyectoDetalles', component: ProyectoDetalles }, 
         { path: 'objetos-de-investigacion/:id_project', name: 'MisObjetosInvestigacion', component: MisObjetosInvestigacion},
-        { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios},
         { path: 'integrantes/:id_project', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
       ] 
   },
@@ -108,8 +109,15 @@ const routes = [
     ]  
 },
 
+{ path: '/proyecto/objeto/detalle', name: 'ObjetoDetallesHeader', component: ObjetoDetallesHeader,
+children:
+  [
+    { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },  
+    { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },  
+    { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios},
+  ]   
+},
 
-  
 
 
   { path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,

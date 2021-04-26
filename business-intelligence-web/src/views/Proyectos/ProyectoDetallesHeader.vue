@@ -27,19 +27,14 @@
             GoBack: '/inicio',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/proyecto/ver/detalles/'+this.$route.params.id_project, nameRoute: 'Detalles',
-                  NavRight:
-                  [
-                     { LinkName: 'Editar', LinkType: 1, linkIcon: 'bx bxs-pencil', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_project },
-                     { LinkName: 'Compartir', LinkType: 2, linkIcon: 'bx bxs-share-alt', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_project },
-                  ]
+               { Linkroute: '/proyecto/ver/detalles/'+this.$route.params.id_project, nameRoute: 'Detalles'
+                  // NavRight:
+                  // [
+                  //    { LinkName: 'Editar', LinkType: 1, linkIcon: 'bx bxs-pencil', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_project },
+                  //    { LinkName: 'Compartir', LinkType: 2, linkIcon: 'bx bxs-share-alt', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_project },
+                  // ]
                },
-               { Linkroute: '/proyecto/ver/mis-formularios/'+this.$route.params.id_project, nameRoute: 'Mis formularios',
-                  NavRight:
-                     [
-                        { LinkName: 'Nuevo formulario', LinkType: 2, linkIcon: 'bx bxs-file', LinkRoute: "/proyecto/formulario/constructor/"+ this.$route.params.id_project },
-                     ]
-               },
+              
                { Linkroute: '/proyecto/ver/objetos-de-investigacion/'+this.$route.params.id_project, nameRoute: 'Objetos de investigación',
                   NavRight:
                      [
