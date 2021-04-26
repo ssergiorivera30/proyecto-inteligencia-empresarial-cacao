@@ -131,7 +131,7 @@
 
 
          <form @submit.prevent="AddInputEdit" v-if="editorBasicoForm == 1 && InputIdEidtAsigned != null"
-            autocomplete="off" class="my-10">
+            autocomplete="off" class="my-5">
             <span v-for="(inputEdit, index) in ArrayInputs[InputIdEidtAsigned]" :key="index">
                <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
                   <div class="block">
@@ -180,7 +180,7 @@
 
                <form @submit.prevent="AddOptionFormEdit()"
                   v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
-                  class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12"
+                  class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12"
                   autocomplete="off">
                   <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
                      <label class="grid grid-cols-3 gap-4">

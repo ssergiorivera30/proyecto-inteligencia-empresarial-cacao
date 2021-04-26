@@ -66,7 +66,7 @@
 import axios from "axios"
 import API_ROUTER from "./../../../services/SERVER_API"
  import PreviewForm from "./../../../components/Formularios/PreviewForm"
-   import PreviewFormSave from "./../PreviewFormSave"
+   import PreviewFormSave from "./../../../components/Formularios/PreviewFormSave"
 export default {
    components:{
          PreviewForm,

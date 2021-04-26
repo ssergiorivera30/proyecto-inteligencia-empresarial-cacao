@@ -5,48 +5,39 @@ import Home from '../views/Home.vue'
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
 import ServiciosHome from '../views/Servicios/ServiciosHome'
 
+// Maps
+
 import MapsHome from '../views/Maps/MapsHome'
 import MapsCreate from '../views/Maps/MapsCreate'
 
+// Proyecto Nuevo
 
+import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
 import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
-import ProyectosHome from '../views/Proyectos/ProyectosHome'
 
+// Proyecto detalles
 
 import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
-
 import ProyectoDetallesHeader from '../views/Proyectos/ProyectoDetallesHeader'
-
 import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIntegrantes'
 
-import Formularios from '../views/Formularios/Formularios'
+// Listar formularios
 
+import Formularios from '../views/Formularios/Formularios'
 
 // Formulario nuevo
 
 import FormularioNuevoHeader from '../views/Formularios/FormularioNuevo/FormularioNuevoHeader'
 import FromularioNuevo from '../views/Formularios/FormularioNuevo/FromularioNuevo'
 import FromularioEditor from '../views/Formularios/FormularioNuevo/FromularioEditor'
-
-
-
-
-
-
-
 import FromularioCompartir from '../views/Formularios/FromularioCompartir'
-import FromularioVistaPrevia from '../views/Formularios/FromularioVistaPrevia'
 
-
-
-
+// Formulario detalles
 
 import FormularioDetallesHeader from '../views/Formularios/FormularioDetalles/FormularioDetallesHeader'
 import FormularioDetalles from '../views/Formularios/FormularioDetalles/FormularioDetalles'
 import FormularioDatos from '../views/Formularios/FormularioDetalles/FormularioDatos'
 
-
-import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
 
 const routes = [
   { path: '/', redirect: 'inicio', component: Home  },
@@ -62,7 +53,6 @@ const routes = [
   { path: '/maps', name: 'MapsHome', component: MapsHome  },
   { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate  },
   
-
   { path: '/proyectos', name: 'ProyectosInicio', component: ProyectosInicio  },
 
   { path: '/proyecto/ver', name: 'ProyectoDetallesHeader', redirect:'/proyecto/ver/detalles', component: ProyectoDetallesHeader, 
@@ -80,7 +70,6 @@ const routes = [
       [
         { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },              
         { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
-        { path: 'ver/:id_project', name: 'FromularioVistaPrevia', component: FromularioVistaPrevia },
       ]  
   },
 
