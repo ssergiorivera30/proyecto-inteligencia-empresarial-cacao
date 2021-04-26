@@ -26,8 +26,7 @@
       },
       data() {
          return {
-            name: 'FormularioDetalles',
-            
+            name: 'FormularioDetalles',         
             OrderForm: 'load',
             NameForm: '',
             DescriptionForm: '',
@@ -43,22 +42,26 @@
 
          if(this.$route.params.type == 'ob'){
 
-            this.rutaFormBasic = ''
+            this.NameTable = 'z_object_'
+            this.rutaFormBasic = 'object_load.php'
+            this.rutaFormInfoBasic = 'objeto_info_basic.php'
 
          }
          if(this.$route.params.type == 'fo'){
+
+            this.NameTable = 'z_form_'
+            this.rutaFormBasic = 'form_load.php'
+            this.rutaFormInfoBasic = 'form_info_basic.php'
             
          }
 
          this.LoadInfoForm()
-         this.LoadFromBasic()
-         console.log(this.$route.params.id)
-         console.log(this.$route.params.type)
+         this.LoadFromBasic()     
 
       },
       methods: {
          LoadFromBasic: function () {
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_load.php",
+            axios.post(API_ROUTER.PHP7_CONTROLLER + this.rutaFormBasic,
                {
                   id_form: this.$route.params.id,
                   type: this.$route.params.type,
@@ -67,7 +70,7 @@
                })
          },
          LoadInfoForm: function () {
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
+            axios.post(API_ROUTER.PHP7_CONTROLLER + this.rutaFormInfoBasic,
                {
                   Form: this.$route.params.id,
                   OrderForm: this.OrderForm

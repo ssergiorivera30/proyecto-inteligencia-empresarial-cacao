@@ -81,8 +81,6 @@ import Noty from "noty";
 
 import API_ROUTER from "./../../services/SERVER_API"
 
-
-
    export default {
       components: {
        
@@ -93,6 +91,7 @@ import API_ROUTER from "./../../services/SERVER_API"
             name: 'PreviewFormSave',
             enabled: true,           
             dragging: false,
+            NameTable: '',
          }
       },
       props: {
@@ -101,6 +100,20 @@ import API_ROUTER from "./../../services/SERVER_API"
          ArrayInputs: Object,
       },
       mounted: function () {
+      
+           if(this.$route.params.type == 'ob'){
+
+            this.NameTable = 'z_object_'
+
+         }
+         if(this.$route.params.type == 'fo'){
+
+            this.NameTable = 'z_form_'
+            
+         }
+
+            console.log(this.NameTable)
+
 
       },
       methods: {
@@ -121,15 +134,14 @@ import API_ROUTER from "./../../services/SERVER_API"
       
              axios.post(API_ROUTER.PHP7_CONTROLLER + "form_regitred_data.php",
                {
-                  id_form: this.$route.params.id_formulario,
+                  id_form: this.$route.params.id,
+                  table: this.NameTable,
                   data: data
                }).then((response) => {
 
                   console.log(response)
 
-                
-
-                   new Noty({
+                                   new Noty({
                      theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
                      type: response.data.response, text: response.data.mensaje
                   }).show();

@@ -48,7 +48,7 @@ class Objects
 
 	function LoadInfoBasicObject($conection, $id_form){
 
-		// SELECT `obin_auto_id`, `obin_name`, `obin_description`, `obin_created`, `obin_updated`, `obin_status`, `obin_vigence` FROM `objects_initials` WHERE 1
+		// SELECT obin_auto_id, obin_name, obin_description, obin_created, obin_updated, obin_status, obin_vigence FROM objects_initials WHERE 1
 		
 		$sql = "SELECT obin_name as name, obin_description as description FROM objects_initials WHERE obin_auto_id=? and obin_vigence = 1 ";
 		$stm = $conection -> prepare( $sql );
@@ -67,15 +67,16 @@ class Objects
 		return $stm->fetchAll();
 	}
 
-	function LoadAdvancedForm($conection, $id_form){
-		
-		$sql = "SELECT mta_auto_id, mta_form_id, mta_date_created, mta_hour_created, mta_updated, mta_status, mta_vigence, mta_json FROM mother_tables WHERE mta_form_id=? limit 1";
+	function LoadAdvancedObjects($conection, $id_form){
+
+			
+		$sql = "SELECT mtao_auto_id, mtao_object_id, mtao_date_created, mtao_hour_created, mtao_updated, mtao_status, mtao_vigence, mtao_json FROM objects_mother_tables WHERE mtao_object_id=? limit 1";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $id_form);
 		$stm -> execute();
 		$mi_json = $stm->fetchAll();
 
-		$formulario = $mi_json[0]['mta_json'];
+		$formulario = $mi_json[0]['mtao_json'];
 
 
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $formulario );				

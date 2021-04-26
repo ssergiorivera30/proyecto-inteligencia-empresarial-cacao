@@ -24,13 +24,15 @@
             GoBack: 'history.back',
             GoBackTitle: 'Lista de formularios',
             RoutesNavs: [
-               { Linkroute: '/formulario/ver/detalles/' + this.$route.params.id + '/'+this.$route.params.type, nameRoute: 'Detalles del formulario',
+               { Linkroute: '/formulario/ver/datos/' + + this.$route.params.id + '/'+this.$route.params.type, nameRoute: 'Registros' },
+
+               { Linkroute: '/formulario/ver/detalles/' + this.$route.params.id + '/'+this.$route.params.type, nameRoute: 'Registrar',
                   NavRight:
                   [
                      { LinkName: 'Editar formulario', LinkType: 2, linkIcon: 'bx bxs-pencil', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id + '/'+this.$route.params.type, },
                   ]
                },
-               { Linkroute: '/formulario/ver/datos/' + + this.$route.params.id + '/'+this.$route.params.type, nameRoute: 'Datos' }
+              
             ],
          }
       },

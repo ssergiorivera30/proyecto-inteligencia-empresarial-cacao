@@ -17,8 +17,13 @@
     // const BASE_API = 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
     // const BASE_ASSETS = 'http://10.193.28.40/proyecto-inteligencia-empresarial-cacao/api/ui/';
 
-    const BASE_API = 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
-    const BASE_ASSETS = 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/ui/';
+    // const BASE_API = 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/php7/control/';
+    // const BASE_ASSETS = 'http://127.0.0.1/proyecto-inteligencia-empresarial-cacao/api/ui/';
+
+    const BASE_API = ' http://grupodeinvestigacionnova.com/cacao/software/api/php7/control/';
+    const BASE_ASSETS = ' http://grupodeinvestigacionnova.com/cacao/software/api/ui/';
+
+   
 
 
     new Vue({
@@ -33,8 +38,8 @@
         
         NewCount: 0,
         
-        UserEmail: 'syrivera89@misena.edu.co',
-        UserPassword:'123456',
+        UserEmail: '',
+        UserPassword:'',
         
         UserNames:'',
         UserNewEmail:'',

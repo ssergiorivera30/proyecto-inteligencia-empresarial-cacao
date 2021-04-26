@@ -16,8 +16,13 @@ $conection = $connect -> BDMysqlBigNovaSoftware();
 $response = new Response();
 
 $id_form = $array['id_form'];
+$table = $array['table'];
 
-$sql = "INSERT INTO z_form_$id_form  ";
+$name_table = $table.$id_form;
+
+
+
+$sql = "INSERT INTO $name_table  ";
 
 // foreach ($array['data'] as $key => $value) {
 
@@ -86,7 +91,7 @@ if( $stm->rowCount() > 0){
 
 echo json_encode( $response );
 
-var_dump($sql);
+// var_dump($sql);
 
 
 
