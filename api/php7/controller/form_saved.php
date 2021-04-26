@@ -46,7 +46,7 @@ if($registrar_formulario > 0){
 
 		// echo $sql_tabla_construida;
 
-		$ejecucion_consulta = $class_core_table->CreateTableTabla( $conection, $sql_tabla_construida );
+		$ejecucion_consulta = $class_core_table->CreateTableTabla( $conection, $sql_tabla_construida, $NAME_TABLE);
 
 			if($ejecucion_consulta > 0){
 				
@@ -66,7 +66,7 @@ if($registrar_formulario > 0){
 }else{
 
 
-		$message = 'El código de formulario ya existe';
+		$message = 'El código de este formulario ya se encuentra en uso.';
 		$icono = 'warning';
 
 }

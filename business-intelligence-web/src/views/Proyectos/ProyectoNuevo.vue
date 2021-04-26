@@ -11,7 +11,7 @@
          </div>
       </header>
 
-      <form @submit.prevent="RegisterNewProject()" ref="form" class="space-y-4 mt-5">       
+      <form @submit.prevent="RegisterNewProject()" ref="form" class="space-y-4 mt-5" autocomplete="off">       
                      
           <div class="grid grid-cols-1 gap-6">
               <div class="">

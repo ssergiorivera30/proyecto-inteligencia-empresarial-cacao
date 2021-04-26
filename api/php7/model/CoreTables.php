@@ -23,15 +23,10 @@ class CoreTables
 		return $stm->rowCount();
 	}
 
-	function CreateTableTabla($conection, $sql_tabla_construida){
-
-		$sql = $sql_tabla_construida;
-		$CREATE_TABLE = $conection -> prepare($sql);
-		$CREATE_TABLE -> execute();
-		echo $CREATE_TABLE->rowCount();
+	function CreateTableTabla($conection, $sql_tabla_construida, $NAME_TABLE){		
+		$stm = $conection -> prepare($sql_tabla_construida);
+		$stm -> execute();
+		return self::VeridicarExistenciaTabla($conection, $NAME_TABLE);
 	}
 
-
-
-	
 }

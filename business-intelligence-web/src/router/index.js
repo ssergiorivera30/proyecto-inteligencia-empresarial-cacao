@@ -21,7 +21,7 @@ import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIn
 
 import Formularios from '../views/Formularios/Formularios'
 
-import FormularioNuevo from '../views/Formularios/FormularioNuevo'
+import FormularioNuevoHeader from '../views/Formularios/FormularioNuevo/FormularioNuevoHeader'
 
 import FromularioConstructor from '../views/Formularios/FromularioConstructor'
 import FromularioEditor from '../views/Formularios/FromularioEditor'
@@ -67,7 +67,7 @@ const routes = [
   },
   
 
-  { path: '/proyecto/formulario', name: 'FormularioNuevo', component: FormularioNuevo,
+  { path: '/proyecto/formulario', name: 'FormularioNuevoHeader', component: FormularioNuevoHeader,
     children:
       [
         { path: 'constructor/:id_project', name: 'FromularioConstructor', component: FromularioConstructor },              

@@ -25,7 +25,7 @@
 export default {
     data(){
       return{
-         name: 'FromularioCreadorGeneral',
+         name: 'FormularioNuevoHeader',
       }
     },
     beforeMount: function () {

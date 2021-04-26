@@ -1,5 +1,5 @@
 <template>
-   <div class="px-4 py-1 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:container">
+   <div class="mt-0 px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-64">
 
       <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
 

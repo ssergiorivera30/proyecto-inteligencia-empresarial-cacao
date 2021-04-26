@@ -17,23 +17,23 @@ $response = new Response();
 
 $id_form = $array['id_form'];
 
-$sql = "INSERT INTO table_form_$id_form ( ";
+$sql = "INSERT INTO z_form_$id_form  ";
 
-foreach ($array['data'] as $key => $value) {
+// foreach ($array['data'] as $key => $value) {
 
-	if ($key === array_key_last($array['data'])){
+// 	if ($key === array_key_last($array['data'])){
 
-		$sql.= strtr($key, " ", "_") .' ) ' ;
+// 		$sql.= strtr($key, " ", "_") .' ) ' ;
 	
-	}else{
+// 	}else{
 
-		$sql.= strtr($key, " ", "_"). ' , ' ;
+// 		$sql.= strtr($key, " ", "_"). ' , ' ;
 
-	}
+// 	}
 
-}
+// }
 
-$sql.= ' VALUES ( ';
+$sql.= ' VALUES ( "", ';
 
  $size_sentence = sizeof( $array['data']);
 
@@ -86,7 +86,7 @@ if( $stm->rowCount() > 0){
 
 echo json_encode( $response );
 
-// var_dump($sql);
+var_dump($sql);
 
 
 

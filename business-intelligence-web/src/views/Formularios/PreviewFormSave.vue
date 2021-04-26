@@ -1,13 +1,13 @@
 <template>
    <div class="grid grid-cols-1 mb-10 ">
             
-      <form  ref="form" @submit.prevent="guardar" autocomplete="off">
+      <form  ref="form" @submit.prevent="guardar" autocomplete="off" >
           
          <div v-for="(input, index) in ArrayInputs" :key="index">
           
             <div class="block">
                <label class="grid grid-cols-5 gap-4 items-center">
-                  <span class="col-span-4 text-gray-700 font-medium  group flex items-center my-2">
+                  <span class="col-span-4 text-gray-700 font-medium  group flex items-center my-2 capitalize">
                      {{ input['input']['name'] }}</span>                  
                </label>
 
@@ -64,7 +64,7 @@
             </div>
          </div>
   
-         <div class="py-1 text-left my-2" v-if="ArrayInputs.length  > 0">
+         <div class="mt-5 py-1 text-left " v-if="ArrayInputs.length  > 0">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400">
                Guardar
             </button>
@@ -127,19 +127,17 @@ import API_ROUTER from "./../../services/SERVER_API"
 
                   console.log(response)
 
+                
+
                    new Noty({
                      theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
                      type: response.data.response, text: response.data.mensaje
                   }).show();
 
-                  // window.location.reload()
-
-           
-                  
-
-                  
-               })
-        
+                  if(response.data.response === 'success'){
+                     this.$refs.form.reset();
+                  }                
+               })        
          },
          DeleteOption: function (index) {
             this.$props.ArrayInputs.splice(index, 1);
