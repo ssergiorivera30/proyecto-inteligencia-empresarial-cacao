@@ -1,7 +1,7 @@
 <template>
    <div class="pl-4 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container">
 
-      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :SubTitleHeader="SubTitleHeader"/>
+      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader"/>
       <router-view />
    </div>
 </template>
@@ -20,7 +20,9 @@
       data() {
          return {
             name: 'ProyectoDetallesHeader',
+
             TitleHeader: 'Proyecto',
+            IconModulo: 'bx bxs-bullseye',
             SubTitleHeader: 'Detalles',
             GoBack: '/inicio',
             GoBackTitle: 'Ir al inicio',
@@ -30,13 +32,18 @@
                   [
                      { LinkName: 'Editar', LinkType: 1, linkIcon: 'bx bxs-pencil', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_project },
                      { LinkName: 'Compartir', LinkType: 2, linkIcon: 'bx bxs-share-alt', LinkRoute: "/proyecto/formulario/editor/"+ this.$route.params.id_project },
-
                   ]
                },
-               { Linkroute: '/proyecto/ver/recolecion-de-datos/'+this.$route.params.id_project, nameRoute: 'Recolección de datos',
+               { Linkroute: '/proyecto/ver/mis-formularios/'+this.$route.params.id_project, nameRoute: 'Mis formularios',
                   NavRight:
                      [
                         { LinkName: 'Nuevo formulario', LinkType: 2, linkIcon: 'bx bxs-file', LinkRoute: "/proyecto/formulario/constructor/"+ this.$route.params.id_project },
+                     ]
+               },
+               { Linkroute: '/proyecto/ver/objetos-de-investigacion/'+this.$route.params.id_project, nameRoute: 'Objetos de investigación',
+                  NavRight:
+                     [
+                        { LinkName: 'Nuevo objeto de investigación', LinkType: 2, linkIcon: 'bx bxs-file', LinkRoute: "/proyecto/objeto_nuevo/header/"+ this.$route.params.id_project },
                      ]
                },
                { Linkroute: '/proyecto/ver/integrantes/'+this.$route.params.id_project, nameRoute: 'Integrantes' },

@@ -23,7 +23,7 @@ import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIn
 
 // Listar formularios
 
-import Formularios from '../views/Formularios/Formularios'
+import MisFormularios from '../views/Formularios/FormularioListas/MisFormularios'
 
 // Formulario nuevo
 
@@ -38,15 +38,38 @@ import FormularioDetallesHeader from '../views/Formularios/FormularioDetalles/Fo
 import FormularioDetalles from '../views/Formularios/FormularioDetalles/FormularioDetalles'
 import FormularioDatos from '../views/Formularios/FormularioDetalles/FormularioDatos'
 
+// Objetos investigación
+
+import MisObjetosInvestigacion from '../views/ObjetosInvestigacion/ListaObjetos/MisObjetosInvestigacion'
+
+// Nuevos objetos de investigación
+
+
+
+import ObjetoNuevoHeader from '../views/ObjetosInvestigacion/NuevoObjeto/ObjetoNuevoHeader'
+import HeaderObjetoNuevo from '../views/ObjetosInvestigacion/NuevoObjeto/HeaderObjetoNuevo'
+import ObjetoConstructor from '../views/ObjetosInvestigacion/NuevoObjeto/ObjetoConstructor'
+
+
+
+
+// Cuenta
+
+import MyCuentaHeader from '../views/MyCuenta/MyCuentaHeader'
+import Cuenta from '../views/MyCuenta/Cuenta'
+import Personalizacion from '../views/MyCuenta/Personalizacion'
+import Seguridad from '../views/MyCuenta/Seguridad'
+
+
 
 const routes = [
   { path: '/', redirect: 'inicio', component: Home  },
   { path: '/inicio',  name: 'Home', component: Home  },
 
-  { path: '/servicios', redirect: '/servicios/home', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
+  { path: '/herraminetas', redirect: '/herraminetas/inicio/', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
     children:
       [
-        { path: 'home', name: 'ServiciosHome', component: ServiciosHome }, 
+        { path: 'inicio', name: 'ServiciosHome', component: ServiciosHome }, 
       ] 
   },  
 
@@ -59,10 +82,13 @@ const routes = [
     children:
       [    
         { path: 'detalles/:id_project', name:'ProyectoDetalles', component: ProyectoDetalles }, 
-        { path: 'recolecion-de-datos/:id_project', name: 'Formularios', component: Formularios},
+        { path: 'objetos-de-investigacion/:id_project', name: 'MisObjetosInvestigacion', component: MisObjetosInvestigacion},
+        { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios},
         { path: 'integrantes/:id_project', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
       ] 
   },
+  
+
   
 
   { path: '/proyecto/formulario', name: 'FormularioNuevoHeader', component: FormularioNuevoHeader,
@@ -74,26 +100,42 @@ const routes = [
   },
 
 
+  { path: '/proyecto/objeto_nuevo', name: 'ObjetoNuevoHeader', component: ObjetoNuevoHeader,
+  children:
+    [
+      { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },  
+      { path: 'constructor-objeto/:id_object', name: 'ObjetoConstructor', component: ObjetoConstructor },  
+    ]  
+},
+
+
+  
+
+
   { path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,
     children:
       [
-        { path: 'detalles/:id_formulario', name: 'FormularioDetalles', component: FormularioDetalles },              
-        { path: 'datos/:id_formulario', name: 'FormularioDatos', component: FormularioDatos },
+        { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },              
+        { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
       ]  
   },
 
   
 
-{ path: '/proyecto/formulario/editor/:id', name: 'FromularioEditor', component: FromularioEditor },
+{ path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
 
 
-
-
-
+{ path: '/cuenta/', name: 'MyCuentaHeader', redirect:'/cuenta/i', component: MyCuentaHeader,
+children:
+  [
+    { path: 'i/', name: 'Cuenta', component: Cuenta },              
+    { path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
+    { path: 'seguridad/', name: 'Seguridad', component: Seguridad },
+  ]  
+},
 
   { path: '/proyectos/nuevo-proyecto', name: 'ProyectoNuevo', component: ProyectoNuevo},
-  { path: '/hola', name: 'Hola', component: () => import('../views/Hola.vue') },
-  { path: '/ver', name: 'Ver', component: () => import('../views/Ver.vue') }
+ 
 ]
 
 const router = createRouter({

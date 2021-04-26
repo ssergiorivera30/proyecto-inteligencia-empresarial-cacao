@@ -1,14 +1,14 @@
 <template>
   <div class="px-0 pb-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pb-5">
     <div>
-      <div class="h-48 w-full bg-cover bg-black" :style="'background-image:url('+imagen_a+')'"></div>
+      <div class="h-48 w-full bg-cover bg-black" :style="'background-image:url('+imagen_portada_avatar+')'"></div>
       <div class="px-6 md:px-32 flex justify-between lg:flex-row flex-col">
-        <div class="flex lg:flex-row flex-col">
+        <div class="flex lg:flex-row flex-col ">
           <div class="w-36 h-36 bg-cover rounded-full bg-center absolute transform -translate-y-1/2 ring-4 ring-white"
-            :style="'background-image:url('+imagen_c+')'">
+            :style="'background-image:url('+avatar+')'">
           </div>
           <p class="lg:ml-36 mt-16 lg:mt-0 pl-4 text-3xl font-semibold py-5">
-            Sergio Rivera
+            {{ user_name }}
           </p>
         </div>
         <div class="py-5 lg:space-x-3 space-y-3 lg:space-y-0">
@@ -21,7 +21,7 @@
               </svg>
             </span>
             <span>
-              Message
+              Enviar e-mail
             </span>
           </button>
           <button
@@ -33,7 +33,7 @@
               </svg>
             </span>
             <span>
-              Call
+              Llamar
             </span>
           </button>
         </div>
@@ -42,15 +42,18 @@
   </div>
 
   <div class="px-3 pb-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pb-5">
-    <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" />
+      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader" />
+
+        <router-view />
+
   </div>
 </template>
 
 <script>
 
-  import API_ROUTER from './../services/SERVER_API'
-  import ServicesRecent from '../components/Servicios/ServicesRecent.vue'
-  import NavBarSecondary from './../components/Utilidades/NavBarSecondary.vue'
+  import API_ROUTER from './../../services/SERVER_API'
+  import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+  import axios from 'axios'
 
 
   export default {
@@ -59,24 +62,57 @@
     },
     data() {
       return {
-        name: 'Ver',
-        imagen_a: API_ROUTER.API_FILE_SYSTEMS + '1.jpg',
-        imagen_b: API_ROUTER.API_FILE_SYSTEMS + '2.jpg',
-        imagen_c: API_ROUTER.API_FILE_SYSTEMS + '3.jpg',
+        name: 'MyCuentaHeader',
 
+        user_state: '',
+        user_code: '',
+        user_name: '',
+
+        avatar: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
+        imagen_portada_avatar: API_ROUTER.API_FILE_SYSTEMS + 'portada_avatar/mapa_la_plata_huila.svg',
+
+        
+        
+
+        TitleHeader: 'Información básica',
+        IconModulo: 'bx bxs-user',
+        SubTitleHeader: 'Cuenta',
         GoBack: '/inicio',
+        GoBackTitle: 'Ir al inicio',
         RoutesNavs: [
-          { Linkroute: '/proyecto/ver/detalles', nameRoute: 'Mi cuenta' },
-          { Linkroute: '/proyecto/ver/recolecion-de-datos', nameRoute: 'Personalización' },
-          { Linkroute: '/proyecto/ver/integrantes', nameRoute: 'Seguridad' },
+          { Linkroute: '/cuenta/i/', nameRoute: 'Cuenta' },
+          { Linkroute: '/cuenta/personalizacion/', nameRoute: 'Personalización' },
+          { Linkroute: '/cuenta/seguridad/', nameRoute: 'Seguridad' },
         ]
-
       }
     },
     mounted: function () {
 
+      this.VerifySsesionWitchEmail()
+
     },
     methods: {
+      VerifySsesionWitchEmail :function(){
+         axios.get(API_ROUTER.API + "/php7/control/user_session.php").then((res) => {
+          if(res.data.user_state === false){
+            this.CloseDataSesion(res.data.path)            
+          }
+          this.AsignedDataSesion(res.data.user_state, res.data.user_code, res.data.user_name)
+          }).catch(() => {               
+            alert('Error de conexión')
+        })
+      },
+      AsignedDataSesion:function(state, code, name){
+        this.user_state = state
+        this.user_code = code
+        this.user_name = name
+      },
+      CloseDataSesion:function(path){
+        this.user_state = false
+        this.user_code = '...'
+        this.user_name = '...'
+        window.location.href = path
+      }
 
 
     }

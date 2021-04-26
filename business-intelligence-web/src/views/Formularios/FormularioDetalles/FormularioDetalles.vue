@@ -27,31 +27,41 @@
       data() {
          return {
             name: 'FormularioDetalles',
-            GoBack: 'history.back',
-            GoBackTitle: 'Lista de formularios',
-            RoutesNavs: [
-               { Linkroute: '/formulario/detalles/' + this.$route.params.id_formulario, nameRoute: 'Detalles del formulario' },
-               { Linkroute: '/formulario/datos/' + this.$route.params.id_formulario, nameRoute: 'Datos' }
-            ],
+            
             OrderForm: 'load',
             NameForm: '',
             DescriptionForm: '',
 
             ArrayInputs: [],
 
+            rutaFormBasic: '',
+            rutaFormInfoBasic: '',
+
          }
       },
       mounted: function () {
 
+         if(this.$route.params.type == 'ob'){
+
+            this.rutaFormBasic = ''
+
+         }
+         if(this.$route.params.type == 'fo'){
+            
+         }
+
          this.LoadInfoForm()
          this.LoadFromBasic()
+         console.log(this.$route.params.id)
+         console.log(this.$route.params.type)
 
       },
       methods: {
          LoadFromBasic: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "form_load.php",
                {
-                  id_form: this.$route.params.id_formulario,
+                  id_form: this.$route.params.id,
+                  type: this.$route.params.type,
                }).then((response) => {
                   this.ArrayInputs = JSON.parse(response.data.datos)
                })
@@ -59,12 +69,12 @@
          LoadInfoForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "form_info_basic.php",
                {
-                  Form: this.$route.params.id_formulario,
+                  Form: this.$route.params.id,
                   OrderForm: this.OrderForm
                }).then((response) => {
 
                   if (response.data.mensaje != 1) {
-                     window.history.back()
+                     // window.history.back()
                   }
 
                   this.NameForm = response['data']['datos'][0]['name']

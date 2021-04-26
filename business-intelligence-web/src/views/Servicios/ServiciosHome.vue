@@ -7,14 +7,18 @@
 
 import Tools from '../../components/Servicios/Tools.vue'
 
+import API_ROUTER from './../../services/SERVER_API'
+import ServicesRecent from '../../components/Servicios/ServicesRecent'
 
 export default {
   components: { 
+    ServicesRecent,
      Tools,
    },
     data(){
       return{
-         name: 'ServiciosHome',     
+         name: 'ServiciosHome',
+          
       }
     },
     beforeMount: function () {

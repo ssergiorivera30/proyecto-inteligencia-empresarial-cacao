@@ -1,26 +1,32 @@
 <template>
-   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-      <div class="pt-5 mb-8">
-         <ul class="list-reset flex border-b">
-            <li class="-mb-px mr-1">
-               <router-link to="/proyectos"
-                  class="text-blue-400 font-semibold inline-block py-2 px-4 bg-white border-l border-t border-r rounded-t text-blue-900">
-                  Servicios
-               </router-link>
-            </li>
-         </ul>
-      </div>
+   <div class="pl-4 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container">
+
+      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader" />
       <router-view />
-   </div>
+
+  </div>
 </template>
 
 <script>
 
-   export default {
+  import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
 
+   export default {
+      components: {
+      NavBarSecondary
+    },
       data() {
          return {
             name: 'ServiciosMenuPrincipal',
+            
+        TitleHeader: 'Herramientas',
+        IconModulo: 'bx bxs-category',
+        SubTitleHeader: 'Tablero',
+        GoBack: '/inicio',
+        GoBackTitle: 'Ir al inicio',
+        RoutesNavs: [
+          { Linkroute: '/herraminetas/inicio/', nameRoute: 'Herraminetas' },
+        ]
          }
       },
       beforeMount: function () {

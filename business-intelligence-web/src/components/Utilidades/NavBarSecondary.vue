@@ -1,6 +1,6 @@
 <template>
 
-  <HeaderModules :TitleHeader="TitleHeader" :SubTitleHeader="SubTitleHeader" :NavRight="NavRight" />
+  <HeaderModules :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader" :NavRight="NavRight" />
 
   <div class="pt-3 mb-2">
     <ul class="list-reset flex border-b-2 border-gray-100">
@@ -51,6 +51,7 @@ export default {
   },   
   props: {
   TitleHeader: String,
+  IconModulo: String,
   SubTitleHeader: String,
   RoutesNavs: Object,
   GoBack: String,
