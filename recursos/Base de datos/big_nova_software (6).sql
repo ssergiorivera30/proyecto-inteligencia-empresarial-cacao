@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2021 a las 16:42:25
+-- Tiempo de generación: 28-04-2021 a las 08:41:50
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -36,6 +36,13 @@ CREATE TABLE `forms_initials` (
   `fin_status` tinyint(1) NOT NULL DEFAULT 1,
   `fin_vigence` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `forms_initials`
+--
+
+INSERT INTO `forms_initials` (`fin_auto`, `fin_name`, `fin_description`, `fin_created`, `fin_updated`, `fin_status`, `fin_vigence`) VALUES
+(24, 'Instrumento 002', 'Descripción', '2021-04-26', '2021-04-26 17:02:22', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,8 @@ CREATE TABLE `log_user_sesions_success` (
 --
 
 INSERT INTO `log_user_sesions_success` (`uls_auto_id`, `uls_user_id`, `uls_email`, `uls_data`, `uls_data_cy`, `uls_date`, `uls_hour`, `uls_updated`) VALUES
-(3, 1, 'syrivera89@misena.edu.co', '1234567', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-25', '04:27:59', '2021-04-25 09:27:59');
+(3, 1, 'syrivera89@misena.edu.co', '1234567', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-25', '04:27:59', '2021-04-25 09:27:59'),
+(4, 1, 'syrivera89@misena.edu.co', '1234567', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-26', '11:31:00', '2021-04-26 16:31:00');
 
 -- --------------------------------------------------------
 
@@ -109,7 +117,7 @@ CREATE TABLE `mother_tables` (
   `mta_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `mta_status` tinyint(1) NOT NULL DEFAULT 1,
   `mta_vigence` tinyint(1) NOT NULL DEFAULT 1,
-  `mta_json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`mta_json`))
+  `mta_json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -133,7 +141,9 @@ CREATE TABLE `objects_initials` (
 --
 
 INSERT INTO `objects_initials` (`obin_auto_id`, `obin_name`, `obin_description`, `obin_created`, `obin_updated`, `obin_status`, `obin_vigence`) VALUES
-(1, 'Fincas cacaoteras', 'La Plata Huila', '2021-04-26 01:01:13', '2021-04-26 06:22:37', 1, 1);
+(1, 'Fincas cacaoteras', 'La Plata Huila', '2021-04-26 01:01:13', '2021-04-26 06:22:37', 1, 1),
+(2, 'Fincas cafeteras', 'Descripción', '2021-04-26 12:02:54', '2021-04-26 17:02:54', 1, 1),
+(3, 'Formulario 1', 'Breve descripción\n', '2021-04-26 15:03:49', '2021-04-26 20:03:49', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +159,7 @@ CREATE TABLE `objects_mother_tables` (
   `mtao_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `mtao_status` tinyint(1) NOT NULL DEFAULT 1,
   `mtao_vigence` tinyint(1) NOT NULL DEFAULT 1,
-  `mtao_json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`mtao_json`))
+  `mtao_json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -157,7 +167,7 @@ CREATE TABLE `objects_mother_tables` (
 --
 
 INSERT INTO `objects_mother_tables` (`mtao_auto_id`, `mtao_object_id`, `mtao_date_created`, `mtao_hour_created`, `mtao_updated`, `mtao_status`, `mtao_vigence`, `mtao_json`) VALUES
-(1, 1, '2021-04-26', '01:38:44', '2021-04-26 06:38:44', 1, 1, '[{\"input\":{\"name\":\"Instructor que dise\\u00f1o el instrumento de investigaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Municipio\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Vereda\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Nombre de la finca\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Coordenada Norte\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Coordenada Sur\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Propietario\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Celular\",\"type\":\"number\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Investigador que aplica el instrumento\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Fecha\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]');
+(1, 1, '2021-04-26', '01:38:44', '2021-04-26 16:43:10', 1, 1, '[{\"input\":{\"name\":\"Instructor que dise\\u00f1o el instrumento de investigaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Municipio\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Vereda\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Nombre de la finca\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Coordenada N\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Coordenada W\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Propietario\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Celular\",\"type\":\"number\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Investigador que aplica el instrumento\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Fecha\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]');
 
 -- --------------------------------------------------------
 
@@ -198,7 +208,9 @@ CREATE TABLE `objects_users` (
 --
 
 INSERT INTO `objects_users` (`obus_auto_id`, `obus_id_object`, `obus_id_user`, `obus_date_created`, `obus_hour_created`, `obus_updated`, `obus_status`, `obus_vigence`) VALUES
-(22, 1, 1, '2021-04-26', '01:01:13', '2021-04-26 06:01:13', 1, 1);
+(22, 1, 1, '2021-04-26', '01:01:13', '2021-04-26 06:01:13', 1, 1),
+(23, 1, 2, '2021-04-26', '01:01:13', '2021-04-26 06:01:13', 1, 1),
+(25, 3, 1, '2021-04-26', '15:03:49', '2021-04-26 20:03:49', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +233,8 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`pro_auto_id`, `pro_name`, `pro_date_create`, `pro_hour_create`, `pro_updated`, `pro_status`, `pro_vigence`) VALUES
-(2, 'Trazabilidad de cacao', '2021-04-25', '04:29:11', '2021-04-25 09:29:11', 1, 1);
+(2, 'Trazabilidad de cacao', '2021-04-25', '04:29:11', '2021-04-25 09:29:11', 1, 1),
+(3, 'Evaluación del proceso productivo del cacao, en municipios del sur del departamento del Huila', '2021-04-26', '15:19:49', '2021-04-26 20:19:49', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -241,7 +254,8 @@ CREATE TABLE `projects_codes` (
 --
 
 INSERT INTO `projects_codes` (`prco_auto_id`, `prco_project_id`, `prco_code`, `prco_entity`) VALUES
-(9, 2, 'SGPS-8635-2021', '');
+(9, 2, 'SGPS-8635-2021', ''),
+(10, 3, '6859-2019', 'SENA');
 
 -- --------------------------------------------------------
 
@@ -277,7 +291,33 @@ CREATE TABLE `projects_users` (
 --
 
 INSERT INTO `projects_users` (`pus_auto_id`, `pus_id_project`, `pus_id_user`, `pus_date_create`, `pus_hour_create`, `pus_updated`, `pus_status`, `pus_vigence`) VALUES
-(20, 2, 1, '2021-04-25', '04:29:11', '2021-04-25 09:29:11', 1, 1);
+(20, 2, 1, '2021-04-25', '04:29:11', '2021-04-25 09:29:11', 1, 1),
+(22, 3, 1, '2021-04-26', '15:19:49', '2021-04-26 20:19:49', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `system_status`
+--
+
+CREATE TABLE `system_status` (
+  `sys_auto_id` int(11) NOT NULL,
+  `sys_status` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `sys_description` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `sys_date_created` date NOT NULL,
+  `sys_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `sys_hour_create` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `system_status`
+--
+
+INSERT INTO `system_status` (`sys_auto_id`, `sys_status`, `sys_description`, `sys_date_created`, `sys_updated`, `sys_hour_create`) VALUES
+(1, 'Developer', 'Modo desarrollo', '2021-04-27', '2021-04-27 15:01:16', '09:58:31'),
+(2, 'Production', 'Modo produccion, estado del software es funcional al 100%', '2021-04-27', '2021-04-27 15:01:31', '09:00:00'),
+(3, 'Inactive', 'Software inactivo', '2021-04-27', '2021-04-27 14:59:30', '09:58:31'),
+(4, 'Mantinance', 'Software en mantenimiento', '2021-04-27', '2021-04-27 14:59:30', '09:58:31');
 
 -- --------------------------------------------------------
 
@@ -298,7 +338,8 @@ CREATE TABLE `users_avatars` (
 --
 
 INSERT INTO `users_avatars` (`usava_id_user`, `usava_avatar`, `usava_date_created`, `usava_hour_date`, `usava_updated`) VALUES
-(1, '0', '2021-04-25', '04:27:50', '2021-04-25 09:27:50');
+(1, '0', '2021-04-25', '04:27:50', '2021-04-25 09:27:50'),
+(2, '0', '2021-04-26', '11:35:06', '2021-04-26 16:35:06');
 
 -- --------------------------------------------------------
 
@@ -319,7 +360,8 @@ CREATE TABLE `users_credentials` (
 --
 
 INSERT INTO `users_credentials` (`usr_user_id`, `usr_count_id_type`, `usr_email`, `usr_password`, `usr_update`) VALUES
-(1, 1, 'syrivera89@misena.edu.co', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-25 09:27:50');
+(1, 1, 'syrivera89@misena.edu.co', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-25 09:27:50'),
+(2, 1, 'erendonr@sena.edu.co', '17ddbda737a6cf5e4d9e03e0b046b370d2588a0a', '2021-04-26 16:35:06');
 
 -- --------------------------------------------------------
 
@@ -342,7 +384,8 @@ CREATE TABLE `users_keys` (
 --
 
 INSERT INTO `users_keys` (`usk_auto_id`, `usk_name`, `usk_date_created`, `usk_hour_created`, `usk_updated`, `usk_status`, `usk_vigence`) VALUES
-(1, 'syrivera89@misena.edu.co', '2021-04-25', '11:04:50', '2021-04-25 09:27:50', 1, 1);
+(1, 'syrivera89@misena.edu.co', '2021-04-25', '11:04:50', '2021-04-25 09:27:50', 1, 1),
+(2, 'erendonr@sena.edu.co', '2021-04-26', '18:04:06', '2021-04-26 16:35:06', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -387,7 +430,8 @@ CREATE TABLE `user_data_personals` (
 --
 
 INSERT INTO `user_data_personals` (`udp_user_id`, `udp_name`, `udp_gender`, `udp_date_birth`, `udp_type_id`, `udp_numer_id`) VALUES
-(1, 'Sergio Rivera', 'Masculino', '0000-00-00', 'TI', 0);
+(1, 'Sergio Rivera', 'Masculino', '0000-00-00', 'TI', 0),
+(2, 'Elder Rendon Rengifo ', 'Masculino', '0000-00-00', 'TI', 0);
 
 -- --------------------------------------------------------
 
@@ -414,7 +458,12 @@ CREATE TABLE `z_object_1` (
 --
 
 INSERT INTO `z_object_1` (`id_z_object_1`, `instructor_que_diseno_el_instrumento_de_investigacion_0`, `municipio_1`, `vereda_2`, `nombre_de_la_finca_3`, `coordenada_norte_4`, `coordenada_sur_5`, `propietario_6`, `celular_7`, `investigador_que_aplica_el_instrumento_8`, `fecha_9`) VALUES
-(1, 'Daniel Rodríguez Acosta', 'Paicol', 'Matanzas', 'Buenos Aires', '2, 27, 50.97', '75, 47, 20.61', 'Algemiro Cabrera Vargas', 2147483647, 'Elder Rendon Rengifo', '2021-04-23');
+(1, 'Daniel Rodríguez Acosta', 'Paicol', 'Matanzas', 'Buenos Aires', '2, 27, 50.97', '75, 47, 20.61', 'Algemiro Cabrera Vargas', 2147483647, 'Elder Rendon Rengifo', '2021-04-23'),
+(2, 'Daniel Rodríguez Acosta ', 'Paicol ', 'Primavera ', 'Finca Agroturística Rancho Don Juan ', '2,24,8.25', '75,45,51.17', 'Juan Carlos Díaz Charri ', 2147483647, 'Sergio Yamit Rivera Flor ', '2021-04-23'),
+(3, 'Daniel Rodríguez Acosta ', 'La Plata Huila ', 'Cabuyal ', 'Villa lorena ', '0', '0', 'Salomón Pérez Pérez ', 0, 'Elder Rendon Rengifo ', '2021-04-21'),
+(4, 'Daniel Rodríguez Acosta	', 'La Plata Huila', 'Cabuyal', 'La unión', '2,23,51.74', '75,51,51.68', 'José Ramiro Rojas Rojas', 2147483647, 'Elder Rendon Rengifo', '2021-04-21'),
+(5, 'Daniel Rodríguez Acosta	', 'La Plata Huila', 'Cabuyal', 'San Pablo', '2,23,47.04', '75,51,45.65', 'Néider Henrique Trujillo', 2147483647, 'Elder Rendon Rengifo', '2021-04-22'),
+(6, 'Daniel Rodríguez Acosta ', 'La Plata Huila ', 'Cabuyal ', 'La Esmeralda ', '0', '0', 'Evaristo Pérez Pérez ', 2147483647, 'Elder Rendon Rengifo ', '2021-04-20');
 
 --
 -- Índices para tablas volcadas
@@ -513,6 +562,12 @@ ALTER TABLE `projects_users`
   ADD KEY `pus_id_user` (`pus_id_user`);
 
 --
+-- Indices de la tabla `system_status`
+--
+ALTER TABLE `system_status`
+  ADD PRIMARY KEY (`sys_auto_id`);
+
+--
 -- Indices de la tabla `users_avatars`
 --
 ALTER TABLE `users_avatars`
@@ -557,13 +612,13 @@ ALTER TABLE `z_object_1`
 -- AUTO_INCREMENT de la tabla `forms_initials`
 --
 ALTER TABLE `forms_initials`
-  MODIFY `fin_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `fin_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `forms_projects`
 --
 ALTER TABLE `forms_projects`
-  MODIFY `fpr_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `fpr_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `forms_users`
@@ -575,7 +630,7 @@ ALTER TABLE `forms_users`
 -- AUTO_INCREMENT de la tabla `log_user_sesions_success`
 --
 ALTER TABLE `log_user_sesions_success`
-  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `mother_tables`
@@ -587,7 +642,7 @@ ALTER TABLE `mother_tables`
 -- AUTO_INCREMENT de la tabla `objects_initials`
 --
 ALTER TABLE `objects_initials`
-  MODIFY `obin_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `obin_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `objects_mother_tables`
@@ -605,19 +660,19 @@ ALTER TABLE `objects_projects`
 -- AUTO_INCREMENT de la tabla `objects_users`
 --
 ALTER TABLE `objects_users`
-  MODIFY `obus_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `obus_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `pro_auto_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pro_auto_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `projects_codes`
 --
 ALTER TABLE `projects_codes`
-  MODIFY `prco_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `prco_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `projects_objetive_generals`
@@ -629,13 +684,19 @@ ALTER TABLE `projects_objetive_generals`
 -- AUTO_INCREMENT de la tabla `projects_users`
 --
 ALTER TABLE `projects_users`
-  MODIFY `pus_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `pus_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `system_status`
+--
+ALTER TABLE `system_status`
+  MODIFY `sys_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users_keys`
 --
 ALTER TABLE `users_keys`
-  MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `user_count_type`
@@ -647,7 +708,7 @@ ALTER TABLE `user_count_type`
 -- AUTO_INCREMENT de la tabla `z_object_1`
 --
 ALTER TABLE `z_object_1`
-  MODIFY `id_z_object_1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_z_object_1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -659,13 +720,6 @@ ALTER TABLE `z_object_1`
 ALTER TABLE `forms_projects`
   ADD CONSTRAINT `forms_projects_ibfk_1` FOREIGN KEY (`fpr_id_form`) REFERENCES `forms_initials` (`fin_auto`) ON DELETE CASCADE,
   ADD CONSTRAINT `forms_projects_ibfk_2` FOREIGN KEY (`fpr_id_projects`) REFERENCES `projects` (`pro_auto_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `forms_users`
---
-ALTER TABLE `forms_users`
-  ADD CONSTRAINT `forms_users_ibfk_1` FOREIGN KEY (`fous_id_form`) REFERENCES `forms_initials` (`fin_auto`) ON DELETE CASCADE,
-  ADD CONSTRAINT `forms_users_ibfk_2` FOREIGN KEY (`fous_id_user`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `log_user_sesions_success`
@@ -690,7 +744,6 @@ ALTER TABLE `objects_projects`
 -- Filtros para la tabla `objects_users`
 --
 ALTER TABLE `objects_users`
-  ADD CONSTRAINT `objects_users_ibfk_1` FOREIGN KEY (`obus_id_user`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `objects_users_ibfk_2` FOREIGN KEY (`obus_id_object`) REFERENCES `objects_initials` (`obin_auto_id`) ON DELETE CASCADE;
 
 --
@@ -709,8 +762,7 @@ ALTER TABLE `projects_objetive_generals`
 -- Filtros para la tabla `projects_users`
 --
 ALTER TABLE `projects_users`
-  ADD CONSTRAINT `projects_users_ibfk_1` FOREIGN KEY (`pus_id_project`) REFERENCES `projects` (`pro_auto_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `projects_users_ibfk_2` FOREIGN KEY (`pus_id_user`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `projects_users_ibfk_1` FOREIGN KEY (`pus_id_project`) REFERENCES `projects` (`pro_auto_id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `users_avatars`

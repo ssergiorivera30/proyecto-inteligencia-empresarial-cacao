@@ -90,8 +90,6 @@ const routes = [
   },
   
 
-  
-
   { path: '/proyecto/formulario', name: 'FormularioNuevoHeader', component: FormularioNuevoHeader,
     children:
       [

@@ -21,13 +21,6 @@
     //     LOGUIN: 'https://grupodeinvestigacionnova.com/cacao/software/', 
     // };
 
-
-
-
-
-
-
-
     export default API_ROUTER
 
 </script>
