@@ -40,7 +40,7 @@
          <div class="mt-6">
                     <p class="text-sm font-semibold text-indigo-700 leading-none text-right pb-1">73%</p>
                 </div>
-                <div class="w-full h-2 relative bg-gray-200 rounded-full">
+                <div class="w-full h-2 bg-gray-200 rounded-full">
                     <div class="h-2 w-60 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 rounded-full"></div>
                 </div>
         <button @click="this.$router.push('/proyecto/ver/detalles/'+ 1)" class="focus:outline-none text-indigo-700 hover:opacity-50 bg-gray-100 text-sm font-medium py-3 w-full rounded mt-5">Ver detalles del proyecto</button>

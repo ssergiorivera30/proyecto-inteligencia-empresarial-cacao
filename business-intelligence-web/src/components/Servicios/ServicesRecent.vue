@@ -12,22 +12,20 @@
   </div>
 </section>
 
-
-
    <header class="flex items-center justify-between px-2 my-5">
       <h2 class="text-lg font-bold leading-6 text-gray-800 dark:text-gray-100">Mis proyectos</h2>
 
        
     <div class="relative">
         <!-- Dropdown toggle button -->
-        <button class="relative z-10 flex p-2 bg-white rounded-md dark:bg-gray-800 focus:outline-none"  @click="DrowdownActionFunc"> Opciones
+        <button class=" flex p-2 bg-white rounded-md dark:bg-gray-800 focus:outline-none"  @click="DrowdownActionFunc"> Opciones
             <svg class="ml-2 w-5 h-5 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
         </button>
 
         <!-- Dropdown menu -->
-        <div class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800" :class="DrowdownAction">
+        <div class="absolute -right-1.5 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800" :class="DrowdownAction">
             <router-link to="/proyectos/nuevo-proyecto" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
                Crear proyecto
             </router-link>
@@ -58,7 +56,7 @@
 
 
 
-   <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 my-5 ">     
+   <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-5 ">     
 
       <div
          v-for="projects in ArrayProjects" :key="projects" 
@@ -93,7 +91,7 @@
                 <div class="mt-6">
                     <p class="text-sm font-semibold text-indigo-700 leading-none text-right pb-1">73%</p>
                 </div>
-                <div class="w-full h-2 relative bg-gray-200 rounded-full">
+                <div class="w-full h-2 bg-gray-200 rounded-full">
                     <div class="h-2 w-60 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 rounded-full"></div>
                 </div>
                 <button @click="this.$router.push('/proyecto/ver/detalles/'+ projects.id)" class="focus:outline-none text-indigo-700 hover:opacity-50 bg-gray-100 text-sm font-medium py-3 w-full rounded mt-5">Ver detalles del proyecto</button>
@@ -107,7 +105,7 @@
    </header>
 
 
-    <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5">
+    <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
       <div 
          v-for="projects in ArrayProjects" :key="projects" 
          class="md:w-96 rounded shadow-lg py-4 px-2 md:px-4 bg-white dark:bg-gray-800">
