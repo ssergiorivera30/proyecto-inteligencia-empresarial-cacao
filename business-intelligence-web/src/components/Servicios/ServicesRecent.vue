@@ -30,17 +30,8 @@
                Crear proyecto
             </router-link>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
-                Your projects
-            </a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
-                Help
-            </a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
-                Settings
-            </a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
-                Sign Out
-            </a>
+                Ocultar proyectos
+            </a>         
         </div>
     </div>
       <!-- <router-link to="/proyectos/nuevo-proyecto"

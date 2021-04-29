@@ -50,7 +50,7 @@
     </aside>
     <div class="flex-grow text-gray-800 ">
       <header
-        class="flex fixed items-center h-14 px-1 sm:px-10  bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 shadow-sm"
+        class="flex z-10 fixed items-center h-14 px-1 sm:px-10  bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 shadow-sm"
         style="width: 98.9%;">
         <button
           class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
