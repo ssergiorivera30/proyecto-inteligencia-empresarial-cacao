@@ -12,7 +12,7 @@
     </svg>
   </button>
   <div
-    class="fixed right-0 z-40 mt-2 md:mt-1 px-3 overflow-hidden bg-white shadow-2xl w-100 h-screen block md:rounded-t-md"
+    class="fixed right-0 z-40 mt-3 md:mt-1 px-3 overflow-hidden bg-white shadow-2xl w-100 h-screen block md:rounded-t-md"
     :class="DrowdownAction">
     <div class="py-4 h-4/6">
 
