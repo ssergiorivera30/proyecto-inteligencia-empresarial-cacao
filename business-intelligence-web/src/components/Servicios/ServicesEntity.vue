@@ -11,7 +11,7 @@
         </button>
         <!-- Dropdown menu -->
         <div class="absolute -right-1.5 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800" :class="DrowdownAction">
-            <router-link to="/proyectos/nuevo-proyecto" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
+            <router-link to="/create-service/" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
                Crear entidad
             </router-link>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">

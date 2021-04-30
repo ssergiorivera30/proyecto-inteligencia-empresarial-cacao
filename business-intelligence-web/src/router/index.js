@@ -63,10 +63,17 @@ import Personalizacion from '../views/MyCuenta/Personalizacion'
 import Seguridad from '../views/MyCuenta/Seguridad'
 
 
+import BuildFirsStep from '../views/BuildService/BuildFirsStep'
+
+
+
 
 const routes = [
   { path: '/', redirect: 'inicio', component: Home  },
   { path: '/inicio',  name: 'Home', component: Home  },
+  { path: '/create-service/',  name: 'BuildFirsStep', component: BuildFirsStep  },
+
+  
 
   { path: '/herraminetas', redirect: '/herraminetas/inicio/', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
     children:
