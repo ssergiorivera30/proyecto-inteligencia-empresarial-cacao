@@ -12,9 +12,9 @@
 
 
           <div class="flex items-baseline flex-wrap my-5">
-            <div class="flex">
+            <div class="flex border-l border-t border-b rounded">
                <a href="javascript:history.back()"
-                  class="text-base rounded-r-none focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -23,23 +23,24 @@
                      </svg>
                      <span class="hidden md:block">Atrás</span>
                   </div>
-               </a>        
+               </a>   
 
-               <button @click="open = true"
-                  class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer border ">
-                  <div class="flex leading-5">
+                <button @click="OrdenVisivility(1), open = true"
+                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
+                  <div class="flex leading-4">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-edit w-5 h-5 mr-1">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                      </svg>
-                     <span class="hidden md:block">Formulario</span>
+                     <span class="hidden md:block">Agregar campos</span>
                   </div>
-               </button>
+               </button>     
 
-               <button v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)"
-                  class="text-base rounded-l-none  rounded-r-none border-l-0 border-r-0 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+             
+               <button @click="OrdenVisivility(0)"
+                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -51,22 +52,11 @@
                   </div>
                </button>
 
-               <button v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)"
-                  class="text-base rounded-l-none rounded-r-none border-l-0 border-r-0 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
-                  <div class="flex leading-4">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-edit w-5 h-5 mr-1">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                     </svg>
-                     <span class="hidden md:block">Agregar campos</span>
-                  </div>
-               </button>
+              
 
 
                <button @click="AsSavedForm = 1"
-                  class="text-base rounded-l-none focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
                   <div class="flex leading-5">
 
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
@@ -81,14 +71,14 @@
                </button>
 
                <button v-if="AsSavedForm == 1" @click="AsSavedForm = 0 "
-                  class="text-base rounded-l-none bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base border-r bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
                      Aún no
                   </div>
                </button>
 
                <button v-if="AsSavedForm == 1" @click="SaveNewForm(); AsSavedForm = 0"
-                  class="text-base rounded-l-none bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
                      Si, guardar
                   </div>
