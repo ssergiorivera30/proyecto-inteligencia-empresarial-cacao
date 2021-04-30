@@ -102,7 +102,8 @@
       </header>
 
       <router-view 
-        :class=" CenterContent +' px-3 pt-20 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl sm:px-3 md:px-3 lg:px-8 mb-24'"/>
+        :class=" CenterContent +
+        ' px-3 pt-20 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl sm:px-3 md:px-3 lg:px-8 mb-24'"/>
 
      
 
