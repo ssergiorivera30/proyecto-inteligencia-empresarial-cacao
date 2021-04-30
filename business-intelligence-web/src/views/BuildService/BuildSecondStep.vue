@@ -1,16 +1,20 @@
 <template>
-   <div class="px-4 mb-10 pt-2 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
+   <div class="">
 
       <div class="grid grid-cols-1 mb-10 ">
 
-         <!-- hover:bg-gray-200  
-        bg-gray-100  -->
-         <div class="flex  items-baseline flex-wrap">
+        
 
-            <div class="flex m-2">
 
+      
+
+         <ServicePrevioBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
+
+
+          <div class="flex items-baseline flex-wrap my-5">
+            <div class="flex">
                <a href="javascript:history.back()"
-                  class="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-r-none focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -19,12 +23,10 @@
                      </svg>
                      <span class="hidden md:block">Atrás</span>
                   </div>
-               </a>
-
-               <!--   -->
+               </a>        
 
                <button @click="open = true"
-                  class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer border ">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -36,9 +38,8 @@
                   </div>
                </button>
 
-
                <button v-if="editorBasicoForm == 1" @click="OrdenVisivility(0)"
-                  class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-l-none  rounded-r-none border-l-0 border-r-0 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -51,7 +52,7 @@
                </button>
 
                <button v-if="editorBasicoForm == 0" @click="OrdenVisivility(1)"
-                  class="text-base rounded-l-none hover:bg-gray-200 rounded-r-none border-l-0 border-r-0 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-l-none rounded-r-none border-l-0 border-r-0 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-4">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -65,7 +66,7 @@
 
 
                <button @click="AsSavedForm = 1"
-                  class="text-base rounded-l-none  hover:bg-gray-200 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-l-none focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
 
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
@@ -80,14 +81,14 @@
                </button>
 
                <button v-if="AsSavedForm == 1" @click="AsSavedForm = 0 "
-                  class="text-base rounded-l-none bg-red-400  hover:bg-red-500 text-white hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-l-none bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
                      Aún no
                   </div>
                </button>
 
                <button v-if="AsSavedForm == 1" @click="SaveNewForm(); AsSavedForm = 0"
-                  class="text-base rounded-l-none bg-green-500  hover:bg-green-600 text-white hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base rounded-l-none bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 border ">
                   <div class="flex leading-5">
                      Si, guardar
                   </div>
@@ -97,34 +98,33 @@
             </div>
          </div>
 
-
-         <form v-if="editorBasicoForm == 0" @submit.prevent="UpdateInfoBasicForm(), OrdenVisivility(1)"
-            class="grid gap-x-4 gap-y-8 my-5">
+            <form 
+               v-if="editorBasicoForm == 0" 
+               @submit.prevent="UpdateInfoBasicForm(), OrdenVisivility(1)"
+               class="grid gap-x-4 gap-y-4">
             <div class="block">
-               <label><span class="text-gray-700">Nombre del formulario</span></label>
-               <input type="text" class="form-control2" required v-model="NameForm">
+               <label><span class="text-sm text-gray-700">Nombre del formulario</span></label>
+               <input type="text" class="form-control2" required v-model="ServiceName">
             </div>
             <div>
                <div class="block">
-                  <label><span class="text-gray-700">Descripción</span></label>
-                  <textarea rows="4" class="form-control2 py-2" required v-model="DescriptionForm"></textarea>
+                  <label><span class="text-sm text-gray-700">Descripción</span></label>
+                  <textarea rows="4" class="form-control2 py-2" required v-model="ServiceDescription"></textarea>
                </div>
                <p class="mt-1 text-sm text-gray-500">
                   * Formulario privado.
                </p>
             </div>
 
-            <div class="py-2 text-left">
+            <div class="my-1 text-left">
                <button type="submit" class="btn-indigo">
                   Actualizar
                </button>
             </div>
          </form>
 
-         <PreviewForm v-if="editorBasicoForm == 1" :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
-
          <PreviewFormEditor v-if="ArrayInputs.length && InputIdEidtAsigned == null && editorBasicoForm == 1 "
-            :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs"
+            :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" :ArrayInputs="ArrayInputs"
             @GetIdEdit="AsignedIdEdit" />
 
 
@@ -358,13 +358,14 @@
    import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
    import PreviewFormEditor from "./../../components/Formularios/PreviewFormEditor"
-   import PreviewForm from "./../../components/Formularios/PreviewForm"
+
+   import ServicePrevioBasicInfo from "./../../components/BuildServices/ServicePrevioBasicInfo"
 
 
    export default {
       components: {
          PreviewFormEditor,
-         PreviewForm,
+         ServicePrevioBasicInfo,
          Dialog,
          DialogOverlay,
          DialogTitle,
@@ -382,8 +383,8 @@
          return {
             name: 'BuildSecondStep',
             OrderForm: 'load',
-            NameForm: '',
-            DescriptionForm: '',
+            ServiceName: '',
+            ServiceDescription: '',
             editorBasicoForm: 1,
             MinMax: 0,
             Size: 0,
@@ -409,7 +410,7 @@
          }
       },
       mounted: function () {
-         this.LoadInfoObject()
+         this.LoadBasicInfoService()
       },
       methods: {
          SaveNewForm: function () {
@@ -460,8 +461,8 @@
             axios.post(API_ROUTER.PHP7_CONTROLLER + "objeto_update_basic.php",
                {
                   FormId: this.$route.params.id_service,
-                  NameForm: this.NameForm,
-                  DescriptionForm: this.DescriptionForm
+                  ServiceName: this.ServiceName,
+                  ServiceDescription: this.ServiceDescription
                }).then((response) => {
 
                   new Noty({
@@ -572,19 +573,18 @@
             this.ArrayOptions = []
 
          },
-         LoadInfoObject: function () {
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "objeto_info_basic.php",
+         LoadBasicInfoService: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "build/load_info_basic_service.php",
                {
-                  Form: this.$route.params.id_service,
-                  OrderForm: this.OrderForm
+                  id_service: this.$route.params.id_service,
                }).then((response) => {
 
                   if (response.data.mensaje != 1) {
                      // window.history.back()
                   }
 
-                  this.NameForm = response['data']['datos'][0]['name']
-                  this.DescriptionForm = response['data']['datos'][0]['description']
+                  this.ServiceName = response['data']['datos'][0]['name']
+                  this.ServiceDescription = response['data']['datos'][0]['description']
 
                }).catch(() => {
                   alert('Error de conexión')

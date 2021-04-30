@@ -20,7 +20,7 @@ $ServiceType = $array['ServiceType'];
 $ServiceName = $array['ServiceName'];
 $ServiceDescription = $array['ServiceDescription'];
 
-$create_array = (new Objects())->CreateObject($conection, $ServiceType, $ServiceName, $ServiceDescription);
+$create_array = (new Objects())->CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription);
 
 // $add_user = (new Objects())->UserAddObjects($conection, $create_array['id'], $USER_CODE);
 

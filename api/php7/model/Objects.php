@@ -2,7 +2,7 @@
 
 class Objects
 {
-	function CreateObject($conection, $ServiceType, $ServiceName, $ServiceDescription){
+	function CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription){
 
 		$sql = "INSERT INTO tbl_services(tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created)
 				VALUES (?,?,?, NOW(), NOW())";
@@ -18,6 +18,17 @@ class Objects
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_OBJECT );
 	}
 
+	function LoadInfoBasicService($conection, $id_service){
+
+		// SELECT `tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence` FROM `tbl_services` WHERE 1
+		
+		$sql = "SELECT tbse_name as name, tbse_description as description FROM tbl_services WHERE tbse_auto_id=? and tbse_vigence = 1 ";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $id_service);
+		$stm -> execute();		
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $stm->fetchAll() );				
+	}
 
 
 
@@ -26,7 +37,8 @@ class Objects
 
 
 
-	
+
+
 
 
 	function UserAddObjects($conection, $id_object, $USER_CODE){
@@ -53,16 +65,7 @@ class Objects
 		return $stm->rowCount();
 	}
 
-	function LoadInfoBasicObject($conection, $id_form){
 
-		// SELECT obin_auto_id, obin_name, obin_description, obin_created, obin_updated, obin_status, obin_vigence FROM objects_initials WHERE 1
-		
-		$sql = "SELECT obin_name as name, obin_description as description FROM objects_initials WHERE obin_auto_id=? and obin_vigence = 1 ";
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $id_form);
-		$stm -> execute();		
-		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $stm->fetchAll() );				
-	}
 
 
 
