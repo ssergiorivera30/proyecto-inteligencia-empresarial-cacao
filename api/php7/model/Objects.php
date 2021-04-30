@@ -2,24 +2,31 @@
 
 class Objects
 {
-	function CreateObject($conection, $name, $description, $id){
+	function CreateObject($conection, $ServiceType, $ServiceName, $ServiceDescription){
 
-		$sql = "INSERT INTO objects_initials(obin_name, obin_description, obin_created)VALUES(?,?, NOW() )";
+		$sql = "INSERT INTO tbl_services(tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created)
+				VALUES (?,?,?, NOW(), NOW())";
+
 		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $name);
-		$stm -> bindParam(2, $description);
+		$stm -> bindParam(1, $ServiceType);
+		$stm -> bindParam(2, $ServiceName);
+		$stm -> bindParam(3, $ServiceDescription);
 		$stm -> execute();
 
 		$ID_OBJECT =  $conection->lastInsertId();
 
-		$sql_pro = "INSERT INTO objects_projects(obpr_id_object, obpr_id_projects, obpr_date_created, obpr_hour_created ) VALUES ( ?,?, NOW(), NOW() )";
-		$stm_pro = $conection -> prepare( $sql_pro );
-		$stm_pro -> bindParam(1, $ID_OBJECT);
-		$stm_pro -> bindParam(2, $IdFormProject);
-		$stm_pro -> execute();
-
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_OBJECT );
 	}
+
+
+
+
+
+
+
+
+
+	
 
 
 	function UserAddObjects($conection, $id_object, $USER_CODE){

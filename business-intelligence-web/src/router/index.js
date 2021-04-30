@@ -64,6 +64,7 @@ import Seguridad from '../views/MyCuenta/Seguridad'
 
 
 import BuildFirsStep from '../views/BuildService/BuildFirsStep'
+import BuildSecondStep from '../views/BuildService/BuildSecondStep'
 
 
 
@@ -71,7 +72,10 @@ import BuildFirsStep from '../views/BuildService/BuildFirsStep'
 const routes = [
   { path: '/', redirect: 'inicio', component: Home  },
   { path: '/inicio',  name: 'Home', component: Home  },
+
+
   { path: '/create-service/',  name: 'BuildFirsStep', component: BuildFirsStep  },
+  { path: '/constructor-service/:id_service',  name: 'BuildSecondStep', component: BuildSecondStep  },
 
   
 

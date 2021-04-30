@@ -1,76 +1,86 @@
 <template>
-   <section class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-3">
-      <header class="flex items-center justify-between">
-         <h2 class="text-sm leading-6 font-medium text-black"></h2>
-         <div class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium py-2 cursor-pointer">
-            <a href="javascript:history.back()">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20"  class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>  
-            </a>        
-         </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <form
+      action="#"
+      method="POST"
+      class="space-y-6 mt-5"
+      @submit.prevent="SaveInitialForm()">
+      <header class="flex items-center justify-center">
+        <h2 class="text-lg leading-6 font-medium text-black">Crear entidad</h2>
       </header>
 
-      <form @submit.prevent="RegisterNewProject()" ref="form" class="space-y-4 mt-5" autocomplete="off">       
-                     
-          <div class="grid grid-cols-1 gap-6">
-              <div class="">
-                <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Nombre proyecto</label>                                
-                <input type="text" class="form-control2" placeholder="Nombre completo del proyecto" v-model="ProjectName" required >
-              </div>           
-            </div>
+      <div>
+        <label class="block text-gray-700">Nombre del objeto</label>
+        <input
+          type="text"
+          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          required
+          v-model="ServiceName"
+        />
+      </div>
 
-            <div class="grid grid-cols-3 gap-6">
-              <div class="">
-                <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Código del proyecto</label>                                
-                <input type="text" class="form-control2" placeholder="SGPS-8635-2021" v-model="ProjectCode">
-              </div>
+      <div>
+        <label class="block text-gray-700">Breve descripción</label>
+        <textarea
+          wrap="hard"
+          rows="4"
+          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          required
+          v-model="ServiceDescription"
+        ></textarea>
+        <p class="mt-1 text-sm text-gray-500">* Formulario privado.</p>
+      </div>
 
-              <div class="">
-                <label for="company_website" class="block text-sm font-medium text-gray-700 mb-2">Nombre entidad</label>                                
-                <input type="text" class="form-control2" placeholder="" v-model="ProjectEntity">
-              </div>                 
-              </div>
-            <div class="py-3 text-left">
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Guardar
-            </button>
-          </div>       
-      </form>
-   </section> 
+      <div class="py-2 text-left">
+        <button
+          type="submit"
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Continuar
+        </button>
+      </div>
+    </form>
+
+    <PreviewForm
+      v-if="ServiceName != ''"
+      :NameForm="ServiceName"
+      :DescriptionForm="ServiceDescription"
+    />
+
+    <div v-else class="flex justify-center">
+      <img class="w-2/3 p-10" :src="img_form_person" alt="" />
+    </div>
+  </div>
 </template>
-
 <script>
-
-import axios from 'axios';
+import axios from "axios";
 import Noty from "noty";
-import API_ROUTER from "./../../services/SERVER_API"
+import API_ROUTER from "./../../services/SERVER_API";
+import PreviewForm from "./../../components/Formularios/PreviewForm";
 
 export default {
-    data(){
-      return{
-        name: 'BuildFirsStep',
-        ProjectName: '',
-        ProjectCode: '',
-        ProjectEntity: '',
-      }
-    },
-    beforeMount: function () {
-
-    },
-    mounted: function(){ 
-      //  console.log(this.$params);
-
-    },
-    methods:{
-
-      RegisterNewProject: function(event){
-        axios.post(API_ROUTER.PHP7_CONTROLLER + "project_create.php",
-        {
-          ProjectName: this.ProjectName,
-          ProjectCode: this.ProjectCode,
-          ProjectEntity: this.ProjectEntity,
-        }).then((res) => {
+  components: {
+    PreviewForm,
+  },
+  data() {
+    return {
+      name: "BuildFirsStep",
+      img_form_person: API_ROUTER.API_UI + "/forms/new_form.svg",
+      ServiceType: 1,
+      ServiceName: "Servicio Nacional de Aprendizaje",
+      ServiceDescription: "SENA",
+    };
+  },
+  mounted: function () {},
+  methods: {
+    SaveInitialForm: function () {
+      axios
+        .post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_first_step.php", {
+          ServiceType: this.ServiceType,
+          ServiceName: this.ServiceName,
+          ServiceDescription: this.ServiceDescription,
+        })
+        .then((response) => {
 
           new Noty({
             theme: "sunset",
@@ -78,16 +88,13 @@ export default {
             progressBar: true,
             closeWith: ["click", "button"],
             timeout: 8000,
-            type: res.data.icono,
-            text: res.data.mensaje,
+            type: response.data.icono,
+            text: response.data.mensaje,
           }).show();
 
-          if(res.data.icono === 'success'){
-            this.$refs.form.reset();
-          }
-
-        })
-      }
-    }
-  }
+          this.$router.replace("/constructor-service/" + response.data.code);
+        });
+    },
+  },
+};
 </script>
