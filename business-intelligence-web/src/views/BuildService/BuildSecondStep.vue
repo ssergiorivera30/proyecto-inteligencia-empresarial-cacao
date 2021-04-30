@@ -8,7 +8,7 @@
 
       
 
-         <ServicePrevioBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
+         <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
 
 
           <div class="flex items-baseline flex-wrap my-5">
@@ -51,8 +51,7 @@
                      <span class="hidden md:block">Editar encabezado</span>
                   </div>
                </button>
-
-              
+         
 
 
                <button @click="AsSavedForm = 1"
@@ -113,7 +112,7 @@
             </div>
          </form>
 
-         <PreviewFormEditor v-if="ArrayInputs.length && InputIdEidtAsigned == null && editorBasicoForm == 1 "
+         <ServicePreviewFormEditor v-if="ArrayInputs.length && InputIdEidtAsigned == null && editorBasicoForm == 1 "
             :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" :ArrayInputs="ArrayInputs"
             @GetIdEdit="AsignedIdEdit" />
 
@@ -347,15 +346,15 @@
    import { ref } from 'vue'
    import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-   import PreviewFormEditor from "./../../components/Formularios/PreviewFormEditor"
+   import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
 
-   import ServicePrevioBasicInfo from "./../../components/BuildServices/ServicePrevioBasicInfo"
+   import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
 
 
    export default {
       components: {
-         PreviewFormEditor,
-         ServicePrevioBasicInfo,
+         ServicePreviewFormEditor,
+         ServicePreviewBasicInfo,
          Dialog,
          DialogOverlay,
          DialogTitle,
