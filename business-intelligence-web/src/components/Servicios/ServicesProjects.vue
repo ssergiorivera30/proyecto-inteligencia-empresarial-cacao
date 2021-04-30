@@ -23,11 +23,11 @@
 
 
 
-   <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-5 ">     
+   <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 my-5">     
 
       <div v-for="projects in ArrayProjects" :key="projects" 
          class="flex items-center justify-center py-2 px-0">
-            <div class="md:w-96 rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
+            <div class="rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
                 <h1 class="text-lg font-bold leading-6 text-gray-500">
                    <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
                   <span v-else>{{ projects.name }}.<br><br><br></span></h1>

@@ -82,8 +82,15 @@
 
             <NavNotificaciones />
 
+            <button @click="ClickCenterConter"
+              class="relative p-2 text-gray-400 hover:text-gray-600 focus:text-gray-600 rounded-full focus:outline-none">
+              <span class="sr-only">Screen</span>
+              <i v-if="CenterContent == ''" class="text-xl bx bx-fullscreen text-white"></i>
+              <i v-else class="text-xl bx bx-exit-fullscreen text-white"></i>
+            </button>
+
             <button @click="CloseSessionWitchEmail"
-              class="relative p-2 text-gray-400 hover:text-gray-600 focus:bg-blue-900 focus:text-gray-600 rounded-full focus:outline-none">
+              class="relative p-2 text-gray-400 hover:text-gray-600 focus:text-gray-600 rounded-full focus:outline-none">
               <span class="sr-only">Salir</span>
               <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-white">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -94,7 +101,8 @@
         </div>
       </header>
 
-      <router-view class="px-3 pt-20 md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 mb-24"/>
+      <router-view 
+        :class=" CenterContent +' px-3 pt-20 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl sm:px-3 md:px-3 lg:px-8 mb-24'"/>
 
      
 
@@ -120,6 +128,7 @@
     data() {
       return {
         name: 'app',
+        CenterContent: '',
         DrowdownAction: 'hidden',
         auth: firebase.auth(),
         user_photo: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
@@ -138,6 +147,13 @@
     },
     methods: {
 
+      ClickCenterConter: function(){
+        if(this.CenterContent == 'm-auto'){
+          this.CenterContent = ''
+        }else{
+          this.CenterContent = 'm-auto'
+        }
+      },
       VerifySsesionWitchEmail: function () {
         axios.get(API_ROUTER.API + "/php7/control/user_session.php").then((res) => {
           if (res.data.user_state === false) {

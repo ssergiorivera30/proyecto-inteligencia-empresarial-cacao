@@ -23,19 +23,21 @@
 
 
 
-   <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-5 ">   
+   <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 my-5">   
 
-         <div 
-         v-for="projects in ArrayProjects" :key="projects" 
-         class="md:w-72 rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
-         <div class="flex">
-            <div class="py-5 w-4/5">
-                  <h1 class="text-lg font-bold leading-6 text-gray-500 dark:text-gray-100">
-                  <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
+
+          <div v-for="projects in ArrayProjects" :key="projects" 
+         class="flex items-center justify-center py-2 px-0">
+            <div class="rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
+                <h1 class="items-center text-center text-lg font-bold leading-6 text-gray-500">
+                   <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
                   <span v-else>{{ projects.name }}.<br><br><br></span></h1>
-                  <h2 class="pt-2 text-xs leading-4 dark:text-gray-400 text-gray-600 dark:text-gray-500">Empresa: Servicio Nacional de Aprendizaje - SENA</h2>
-                  <p class="pt-4 text-xs leading-4 text-gray-600 dark:text-gray-500">Join Tailwind UI Kit’s discord community and kickstart your next project with beautiful, accessible user interfaces.</p>
-                  <div class="flex items-center pt-4">
+             
+
+                        <img class="my-6 mx-auto sm:w-1/3" src="http://grupodeinvestigacionnova.com/assets/images/logo-t.png">
+
+                <p class="pt-4 text-xs leading-4 text-gray-600">Join Tailwind UI Kit’s discord community and kickstart your next project with beautiful, accessible user interfaces.</p>
+                <div class="flex items-center pt-4">
                     <div class="w-6 h-6 mr-1 shadow rounded-full">
                         <img alt="img-1" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover object-center rounded-full" />
                     </div>
@@ -56,65 +58,20 @@
                         </svg>
                     </div>
                 </div>
-                
-            </div>
             
-            <div class="px-3 w-1/5	">
-               <img src="https://i.ibb.co/34gPtCT/bg.png" alt="medal" />
-            </div>
-         </div>
-         <div class="px-0">
-            <button 
-                @click="this.$router.push('/proyecto/ver/detalles/'+ projects.id)"
-                class="focus:outline-none text-indigo-700 hover:opacity-50 bg-gray-100 text-sm font-medium py-3 w-full rounded mt-5">
-                    Ver formulario
-            </button>
-         </div>
-         
-      </div>
-
-
-
-
-        <div v-for="projects in ArrayProjects" :key="projects" class="md:w-72 rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
-                <div class="flex w-full items-center justify-between">
-                    <h1 class="w-full items-center text-center text-lg font-bold leading-6 text-gray-500">
-                        <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
-                        <span v-else>{{ projects.name }}<br><br><br></span>
-                    </h1>                  
-                </div>
-
-                <img class="my-6 mx-auto sm:w-1/3" src="http://grupodeinvestigacionnova.com/assets/images/logo-t.png">
-
-                 <div class="flex items-center pt-2">
-                    <div class="w-6 h-6 mr-1 shadow rounded-full">
-                        <img alt="img-1" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover object-center rounded-full" />
-                    </div>
-                    <div class="w-6 h-6 mr-1 shadow rounded-full">
-                        <img alt="img-1" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover object-center rounded-full" />
-                    </div>
-                    <div class="w-6 h-6 mr-1 shadow rounded-full">
-                        <img alt="img-1" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="w-full h-full object-cover object-center rounded-full" />
-                    </div>
-                    <div class="w-6 h-6 mr-1 shadow rounded-full">
-                        <img alt="img-1" src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="w-full h-full object-cover object-center rounded-full" />
-                    </div>
-                    <div class="w-6 h-6 mr-1 border-dashed border flex items-center justify-center cursor-pointer rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#D1D5DB" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
-                    </div>
-                </div>
-
                 <button 
                     @click="this.$router.push('/proyecto/ver/detalles/'+ projects.id)"
-                    class="mt-8 focus:outline-none text-indigo-700 hover:opacity-50 bg-gray-100 text-sm font-medium py-3 w-full rounded">
-                        Ver grupo
+                    class="focus:outline-none text-indigo-700 hover:opacity-50 bg-gray-100 text-sm font-medium py-3 w-full rounded mt-5">
+                          Ver grupo
                     </button>
             </div>
-  
+        </div>
+
+     
+
+
+
+    
 
 
 
