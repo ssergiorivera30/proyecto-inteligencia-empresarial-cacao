@@ -85,8 +85,8 @@
             <button @click="ClickCenterConter"
               class="relative p-2 text-gray-400 hover:text-gray-600 focus:text-gray-600 rounded-full focus:outline-none">
               <span class="sr-only">Screen</span>
-              <i v-if="CenterContent == ''" class="text-xl bx bx-fullscreen text-white"></i>
-              <i v-else class="text-xl bx bx-exit-fullscreen text-white"></i>
+              <i v-if="CenterContent == ''" class="text-xl bx bx-exit-fullscreen text-white"></i>
+              <i v-else class="text-xl bx bx-fullscreen text-white"></i>
             </button>
 
             <button @click="CloseSessionWitchEmail"

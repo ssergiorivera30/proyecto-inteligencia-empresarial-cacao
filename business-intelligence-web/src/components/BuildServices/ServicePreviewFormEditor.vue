@@ -1,8 +1,6 @@
 <template>
    <div class="py-0">
 
-
-
       <form @submit.prevent="guardar" autocomplete="off">
 
          <draggable class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2"
@@ -12,47 +10,14 @@
                <div class="block">
                   <label class="grid grid-cols-5 gap-4 items-center">
                      <span class="col-span-4 text-gray-700 font-medium  group flex items-center">
-                        <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move">
-                        {{ input['input']['name'] }}</span>
-                     <div class="text-right">
+                     
+                     <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move">{{ input['input']['name'] }}</span>
 
-                    
-                           <Menu as="div" class="relative inline-block text-left">
-                           
-                                 <MenuButton class="inline-flex justify-center text-sm" aria-hidden="true" >                                  
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                    </svg> -->
-                                    hola
-                                 </MenuButton>
-                             
-
-                              <transition enter-active-class="transition duration-100 ease-out"
-                                 enter-from-class="transform scale-95 opacity-0"
-                                 enter-to-class="transform scale-100 opacity-100"
-                                 leave-active-class="transition duration-75 ease-in"
-                                 leave-from-class="transform scale-100 opacity-100"
-                                 leave-to-class="transform scale-95 opacity-0">
-                                 <MenuItems
-                                    class="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                    <div class="px-1 py-1">                                      
-
-                                       <MenuItem v-slot="{ active }">
-                                       <button :class="[ active ? 'bg-violet-500 text-gray-900' : 'text-gray-900', 'group flex rounded-md items-center w-full px-2 py-2 text-sm' ]"
-                                          @click="SendIdEdit(index)" title="Eliminar"><i class="fa fa-trash"></i>Editar</button>
-                                       </MenuItem>
-
-                                       <MenuItem v-slot="{ active }">
-                                       <button :class="[ active ? 'bg-violet-500 text-gray-900' : 'text-gray-900', 'group flex rounded-md items-center w-full px-2 py-2 text-sm' ]"
-                                          @click="DeleteOption(index)" title="Eliminar"><i class="fa fa-trash"></i>Eliminar</button>
-                                       </MenuItem>
-
-                                    </div>
-                                 </MenuItems>
-                              </transition>
-                           </Menu>
-                        
-                     </div>
+                        <div class="flex justify-end">
+                           <button class="group flex rounded-md items-center px-2 py-2 text-sm" @click="SendIdEdit(index)" title="Editar">Editar</button>
+                                     
+                           <button class="group flex rounded-md items-center px-2 py-2 text-sm" @click="DeleteOption(index)" title="Eliminar">Eliminar</button>
+                        </div>
                   </label>
 
                   <div class="mt-2" v-if="input['input']['type'] == 'radio'">
@@ -106,15 +71,7 @@
                </div>
             </div>
          </draggable>
-         <!-- <div class="py-1 text-left" v-if="ArrayInputs.length  > 0">
-                  <button type="submit"
-                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400">
-                     Guardar
-                  </button>
-               </div> -->
       </form>
-
-
 
       <details>
          <pre>{{ ArrayInputs  }}</pre>
@@ -126,16 +83,12 @@
 <script>
 
    import { VueDraggableNext } from 'vue-draggable-next'
-   import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+
 
 
    export default {
       components: {
-         draggable: VueDraggableNext,
-         Menu,
-         MenuButton,
-         MenuItems,
-         MenuItem,
+         draggable: VueDraggableNext,     
       },
 
       data() {

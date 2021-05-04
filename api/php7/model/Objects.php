@@ -2,10 +2,14 @@
 
 class Objects
 {
+
+	// Primer paso, crear el id del servicio, el tipo, el nombre y la descripción.
+
 	function CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription){
 
-		$sql = "INSERT INTO tbl_services(tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created)
-				VALUES (?,?,?, NOW(), NOW())";
+		$sql = "INSERT INTO tbl_services (tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created) 
+				VALUES
+				(?,?,?, NOW(), NOW())";
 
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $ServiceType);
@@ -20,8 +24,6 @@ class Objects
 
 	function LoadInfoBasicService($conection, $id_service){
 
-		// SELECT `tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence` FROM `tbl_services` WHERE 1
-		
 		$sql = "SELECT tbse_name as name, tbse_description as description FROM tbl_services WHERE tbse_auto_id=? and tbse_vigence = 1 ";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $id_service);
@@ -31,9 +33,26 @@ class Objects
 	}
 
 
+	// Primer paso, el caso del proyecto se guarda unicamente el archivo JASON para no crear una nueva tabla por cada grupo de trabajo registrado 
+
+	function CreateServiceMotherTable($conection, $id_service, $JSON_inputs ){
+
+		$JSON_inputs = json_encode($JSON_inputs);
+
+		$sql = "INSERT INTO tbl_service_mother_table (tbsede_id_service, tbsede_code_inputs) VALUES(?, ?)";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $id_service);
+		$stm -> bindParam(2, $JSON_inputs);
+		$stm -> execute();
+		return $stm->rowCount();
+	}
 
 
 
+
+
+
+// Aquí boy
 
 
 

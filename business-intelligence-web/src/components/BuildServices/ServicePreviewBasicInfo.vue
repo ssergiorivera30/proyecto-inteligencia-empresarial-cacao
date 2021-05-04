@@ -1,12 +1,16 @@
 <template>
-   <div class="py-6 bg-blue-300 rounded-md"> 
+   <div class="py-6 bg-purple-700 rounded-md"> 
       <div class="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-10 lg:px-8 lg:pt-3">            
          <div class="max-w-xl md:mx-auto sm:text-center lg:max-w-2xl">
-            <h2 class="mb-4 text-white font-sans text-3xl font-bold leading-6 tracking-tight md:mx-auto">
-               {{ ServiceName }}
-                  
+            <h2 class="mb-4 text-purple-50 font-sans text-3xl font-bold leading-6 tracking-tight md:mx-auto">
+               {{ ServiceName }}                  
             </h2>
-            <p class="mt-5 text-gray-600 font- text-base  md:text-md">
+            
+         </div>  
+      </div>
+   </div>
+
+   <p class="mt-5 text-gray-600 font- text-base  md:text-md">
                <span v-if="ServiceDescription.length >= 320 && ViewText == 0">{{ ServiceDescription.substring(0,320) }} 
                   <span @click="ViewText = 1" class="text-blue-900 font-bold cursor-pointer">...Ver más</span>
                </span>
@@ -15,9 +19,7 @@
                </span>
                <span v-if="ServiceDescription.length < 320 && ViewText == 0">{{ ServiceDescription }}</span>
             </p>
-         </div>  
-      </div>
-   </div>
+
 </template>
 
 <script>

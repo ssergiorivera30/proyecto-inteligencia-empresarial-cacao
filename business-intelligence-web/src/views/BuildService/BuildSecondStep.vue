@@ -1,12 +1,8 @@
 <template>
    <div class="">
 
-      <div class="grid grid-cols-1 mb-10 ">
-
-        
-
-
-      
+      <div class="grid grid-cols-1 mb-10 ">   
+     
 
          <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
 
@@ -169,15 +165,17 @@
 
                <form @submit.prevent="AddOptionFormEdit()"
                   v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
-                  class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-12"
+                  class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4"
                   autocomplete="off">
                   <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
-                     <label class="grid grid-cols-3 gap-4">
-                        <span class="text-gray-700 font-semibold">Opción </span>
-                        <span class="fa fa-trash cursor-pointer" @click="DeleteOptionEdit(index)"></span>
+                      
+                     <label class="grid grid-cols-5 gap-4">
+                        <span class="col-span-4 text-gray-700 font-semibold">Opcion {{ index + 1 }} </span>
+                         <div class="flex justify-end">
+                           <span class="cursor-pointer font-normal hover:font-semibold	group flex rounded-md items-center px-2 py-2 text-sm" @click="DeleteOptionEdit(index)">Eliminar opción</span>
+                         </div>
                      </label>
-                     <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']"
-                        required>
+                     <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
                   </div>
 
                   <button type="submit"
@@ -195,15 +193,8 @@
             </span>
          </form>
          <div>
-         </div>
-
-         <!-- <pre>{{ InputIdEidtAsigned }}</pre> -->
-
-         <!-- <pre>{{ ArrayInputs }}</pre>
-
-         <pre>{{ ArrayOptions }}</pre> -->
-
       </div>
+   </div>
 
       <TransitionRoot as="template" :show="open">
          <Dialog as="section" static class="fixed inset-0 overflow-hidden" @close="open = false" :open="open">
@@ -212,7 +203,7 @@
                   enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
                   <DialogOverlay class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                </TransitionChild>
-               <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+               <div class="pt-14 fixed inset-y-0 right-0 pl-10 max-w-full flex">
                   <TransitionChild as="template" enter="transform transition ease-in-out duration-500 sm:duration-700"
                      enter-from="translate-x-full" enter-to="translate-x-0"
                      leave="transform transition ease-in-out duration-500 sm:duration-700" leave-from="translate-x-0"
@@ -237,10 +228,10 @@
                         <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                            <div class="px-4 sm:px-6">
                               <DialogTitle class="text-lg font-medium text-gray-900">
-                                 Formulario
+                                 Crear entradas de información
                               </DialogTitle>
                            </div>
-                           <div class="mt-6 relative flex-1 px-4 sm:px-6">
+                           <div class="relative flex-1 px-4 sm:px-6">
                               <!-- Replace with your content -->
                               <div class="absolute inset-0 px-4 sm:px-6">
 
@@ -294,7 +285,6 @@
                                           <input type="text" class="form-control2" v-model="InputValue">
                                        </div>
                                     </div>
-
 
                                     <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionForm()"
                                        class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4">
@@ -406,10 +396,10 @@
 
             // this.AsSavedForm = 1
 
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "objeto_saved.php",
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_buid_second_step.php",
                {
-                  FormId: this.$route.params.id_service,
-                  ArrayInputs: this.ArrayInputs
+                  id_service: this.$route.params.id_service,
+                  JSON_inputs: this.ArrayInputs
                }).then((response) => {
 
                   new Noty({
@@ -424,6 +414,7 @@
          AsignedIdEdit: function (value) {
             this.InputIdEidtAsigned = value
          },
+
          AddOptionForm() {
             this.ArrayOptions.push({
                option: {
@@ -431,6 +422,7 @@
                }
             })
          },
+
          AddOptionFormEdit() {
             this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
                option: {
@@ -438,14 +430,15 @@
                }
             })
          },
+
          DeleteOptionEdit(index) {
-
             this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
-
          },
+
          DeleteOption: function (index) {
             this.ArrayOptions.splice(index, 1);
          },
+
          UpdateInfoBasicForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "objeto_update_basic.php",
                {
@@ -461,10 +454,10 @@
 
                }).catch(() => {
                   alert('Error de conexión')
-               })
+            })
          },
-         AddInput: function () {
 
+         AddInput: function () {
             this.ArrayInputs.push(
                {
                   input: {
@@ -495,9 +488,7 @@
             this.InputSize = ''
             this.InputMin = ''
             this.InputMax = ''
-
             this.ArrayOptions = []
-
          },
 
          AddInputEdit: function () {
@@ -522,13 +513,10 @@
          },
 
          SizeAndMaxLenght: function () {
-
             this.InputSize = this.InputMaxlength
-
          },
 
          AttributeInputVisivility: function () {
-
             this.MinMax = 0
             this.Size = 0
             this.SelectedTypeOptions = 0
@@ -562,6 +550,7 @@
             this.ArrayOptions = []
 
          },
+
          LoadBasicInfoService: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "build/load_info_basic_service.php",
                {
@@ -571,7 +560,6 @@
                   if (response.data.mensaje != 1) {
                      // window.history.back()
                   }
-
                   this.ServiceName = response['data']['datos'][0]['name']
                   this.ServiceDescription = response['data']['datos'][0]['description']
 

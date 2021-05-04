@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2021 a las 00:57:17
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Tiempo de generación: 04-05-2021 a las 19:32:19
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -343,7 +343,30 @@ CREATE TABLE `tbl_services` (
 
 INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence`) VALUES
 (4, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-04-30', '2021-04-30', '2021-04-30 21:32:42', 1, 1),
-(5, 1, 'Servicio Nacional de Aprendizaje', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n\r\nFacultada por el Estado para la inversión en infraestructura necesaria para mejorar el desarrollo social y técnico de los trabajadores en las diferentes regiones,  a través de formación profesional integral que logra incorporarse con las metas del Gobierno Nacional, mediante el cubrimiento de las necesidades específicas de recurso humano en las empresas, a través de la vinculación al mercado laboral -bien sea como empleado o subempleado-, con grandes oportunidades para el desarrollo empresarial, comunitario y tecnológico.  \r\n\r\nLa entidad más querida por los colombianos funciona en permanente alianza entre Gobierno, empresarios y trabajadores, desde su creación, con el firme propósito de lograr la competitividad de Colombia a través del incremento de la productividad en las empresas y regiones, sin dejar de lado la inclusión social, en articulación con la política nacional: Más empleo y menos pobreza. Por tal razón, se generan continuamente programas y proyectos de responsabilidad social, empresarial, formación, innovación, internacionalización y transferencia de conocimientos y tecnologías.', '2021-04-30', '2021-04-30', '2021-04-30 22:38:53', 1, 1);
+(5, 1, 'Servicio Nacional de Aprendizaje', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n\r\nFacultada por el Estado para la inversión en infraestructura necesaria para mejorar el desarrollo social y técnico de los trabajadores en las diferentes regiones,  a través de formación profesional integral que logra incorporarse con las metas del Gobierno Nacional, mediante el cubrimiento de las necesidades específicas de recurso humano en las empresas, a través de la vinculación al mercado laboral -bien sea como empleado o subempleado-, con grandes oportunidades para el desarrollo empresarial, comunitario y tecnológico.  \r\n\r\nLa entidad más querida por los colombianos funciona en permanente alianza entre Gobierno, empresarios y trabajadores, desde su creación, con el firme propósito de lograr la competitividad de Colombia a través del incremento de la productividad en las empresas y regiones, sin dejar de lado la inclusión social, en articulación con la política nacional: Más empleo y menos pobreza. Por tal razón, se generan continuamente programas y proyectos de responsabilidad social, empresarial, formación, innovación, internacionalización y transferencia de conocimientos y tecnologías.', '2021-04-30', '2021-04-30', '2021-04-30 22:38:53', 1, 1),
+(6, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-05-03', '2021-05-03', '2021-05-04 03:56:56', 1, 1),
+(7, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-05-04', '2021-05-04', '2021-05-04 14:08:15', 1, 1),
+(8, 2, 'Proyecto Servicio Nacional de Aprendizaje', 'Don\'t forget to include transparent and current if you\'d like those available in your project.\r\n\r\nAlthough each color has a specific name, you\'re encouraged to alias them however you like in your own projects. We even do this in the default configuration, aliasing coolGray to gray, violet to purple, amber to yellow, and emerald to green.\r\n\r\nSee our complete color palette reference to see the colors that are available to choose from by default.', '2021-05-04', '2021-05-04', '2021-05-04 14:49:46', 1, 1),
+(9, 1, 'Grupo de Investigación Nova', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n Don\'t forget to v-if=\"ServiceType == 2\" include transparent and current if you\'d like those available in your project.\r\n\r\nAlthough each color has a specific name, you\'re encouraged to alias them however you like in your own projects. We even do this in the default configuration, aliasing coolGray to gray, violet to purple, amber to yellow, and emerald to green.\r\n\r\nSee our complete color palette reference to see the colors that are available to choose from by default.', '2021-05-04', '2021-05-04', '2021-05-04 17:07:51', 1, 1),
+(10, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-05-04', '2021-05-04', '2021-05-04 17:08:57', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_service_mother_table`
+--
+
+CREATE TABLE `tbl_service_mother_table` (
+  `tbsede_id_service` int(11) NOT NULL,
+  `tbsede_code_inputs` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`tbsede_code_inputs`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_service_mother_table`
+--
+
+INSERT INTO `tbl_service_mother_table` (`tbsede_id_service`, `tbsede_code_inputs`) VALUES
+(9, '[{\"input\":{\"name\":\"Nombres\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Apellidos\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]');
 
 -- --------------------------------------------------------
 
@@ -600,6 +623,12 @@ ALTER TABLE `tbl_services`
   ADD PRIMARY KEY (`tbse_auto_id`);
 
 --
+-- Indices de la tabla `tbl_service_mother_table`
+--
+ALTER TABLE `tbl_service_mother_table`
+  ADD PRIMARY KEY (`tbsede_id_service`);
+
+--
 -- Indices de la tabla `users_avatars`
 --
 ALTER TABLE `users_avatars`
@@ -728,7 +757,7 @@ ALTER TABLE `system_status`
 -- AUTO_INCREMENT de la tabla `tbl_services`
 --
 ALTER TABLE `tbl_services`
-  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `users_keys`

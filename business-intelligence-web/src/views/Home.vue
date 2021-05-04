@@ -1,11 +1,12 @@
 <template>
-  <div class="">
-    <WelcomeSistema />
-    <ServicesEmpty />
-    <ServicesEntity :ArrayProjects="ArrayProjects" />
-    <ServicesProjects :ArrayProjects="ArrayProjects" />
-    <ServicesForms :ArrayProjects="ArrayProjects" />
+  <div>
+  <!-- <WelcomeSistema /> -->
+    <ServicesEmpty v-if="ArrayProjects.length == 0"/>  
+    <ServicesGroups v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
+    <ServicesProjects v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
+    <ServicesForms v-if="ArrayProjects.length  > 0" :ArrayProjects="ArrayProjects" />
   </div>
+
 </template>
 
 <script>
@@ -15,7 +16,7 @@
 
 import WelcomeSistema from "../components/Home/WelcomeSistema";
 import ServicesEmpty from "../components/Servicios/ServicesEmpty";
-import ServicesEntity from "../components/Servicios/ServicesEntity";
+import ServicesGroups from "../components/Servicios/ServicesGroups";
 import ServicesProjects from "../components/Servicios/ServicesProjects";
 import ServicesForms from "../components/Servicios/ServicesForms";
 
@@ -23,7 +24,7 @@ export default {
   components: {    
     WelcomeSistema,
     ServicesEmpty,
-    ServicesEntity,
+    ServicesGroups,
     ServicesProjects,
     ServicesForms,
   },

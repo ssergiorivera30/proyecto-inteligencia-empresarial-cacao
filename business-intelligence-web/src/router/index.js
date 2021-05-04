@@ -74,7 +74,7 @@ const routes = [
   { path: '/inicio',  name: 'Home', component: Home  },
 
 
-  { path: '/create-service/',  name: 'BuildFirsStep', component: BuildFirsStep  },
+  { path: '/create-service/:type_service',  name: 'BuildFirsStep', component: BuildFirsStep  },
   { path: '/constructor-service/:id_service',  name: 'BuildSecondStep', component: BuildSecondStep  },
 
   

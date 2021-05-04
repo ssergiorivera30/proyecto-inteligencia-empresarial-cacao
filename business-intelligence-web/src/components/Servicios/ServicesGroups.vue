@@ -1,7 +1,7 @@
 <template>
 
 <header class="flex items-center justify-between px-2 my-5">
-    <h2 class="text-lg font-bold leading-6 text-gray-800 dark:text-gray-100">Entidades</h2>      
+    <h2 class="text-lg font-bold leading-6 text-gray-800 dark:text-gray-100">Grupos</h2>      
     <div class="relative">
         <!-- Dropdown toggle button -->
         <button class=" flex p-2 bg-white rounded-md dark:bg-gray-800 focus:outline-none"  @click="DrowdownActionFunc"> Opciones
@@ -11,11 +11,11 @@
         </button>
         <!-- Dropdown menu -->
         <div class="absolute -right-1.5 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800" :class="DrowdownAction">
-            <router-link to="/create-service/" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
-               Crear entidad
+            <router-link to="/create-service/1" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
+               Crear nuevo grupo
             </router-link>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
-                Ocultar entidades
+                Ocultar Grupos
             </a>         
         </div>
     </div>
@@ -88,7 +88,7 @@
    export default {
       data() {
          return {
-            name: 'ServicesEntity',
+            name: 'ServicesGroups',
             DrowdownAction: 'hidden',
             RouteSrc: API_ROUTER.API_UI + 'icons/database.png',          
         }
