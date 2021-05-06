@@ -1,8 +1,8 @@
 <template>
   <div>
   <!-- <WelcomeSistema /> -->
-    <ServicesEmpty v-if="ArrayProjects.length == 0"/>  
-    <ServicesGroups v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
+    <ServicesEmpty v-if="ArrayProjects.length < 1"/>  
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
     <ServicesProjects v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
     <ServicesForms v-if="ArrayProjects.length  > 0" :ArrayProjects="ArrayProjects" />
   </div>
@@ -21,6 +21,7 @@ import ServicesProjects from "../components/Servicios/ServicesProjects";
 import ServicesForms from "../components/Servicios/ServicesForms";
 
 export default {
+  name: "Home",
   components: {    
     WelcomeSistema,
     ServicesEmpty,
@@ -29,26 +30,27 @@ export default {
     ServicesForms,
   },
   data() {
-    return {
-      name: "Home",
-      ArrayProjects: {}
+    return {      
+      ArrayGroups: [],
+      ArrayProjects: [],
     };
   },
   mounted: function () {
     this.LoadProjects()
+
+    
   },
   methods: {
     LoadProjects: function () {
-      axios.post(API_ROUTER.PHP7_CONTROLLER + "project_load.php",
-        {
-          UserService: 1,
-        }).then((res) => {
+      axios.get(API_ROUTER.PHP7_CONTROLLER + "home/home_services_load.php").then((res) => {
 
-          this.ArrayProjects = res.data
+          this.ArrayGroups = res.data.groups
+          this.ArrayProjects = res.data.projects
 
         }).catch(() => {
 
-          alert('Error de conexión')
+          console.log(this.ArrayGroups.length )
+          console.log(this.ArrayProjects.length )
 
       })
     },

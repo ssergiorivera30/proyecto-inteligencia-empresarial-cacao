@@ -2,6 +2,30 @@
 
 class Projects
 {
+	function LoadProjects($conection, $USER_CODE){
+
+		$datos = array();
+
+		$sql = "SELECT tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created, tbse_updated, tbse_status, tbse_vigence FROM tbl_services WHERE tbse_id_type_service = 2 and tbse_vigence = 1";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $USER_CODE);
+		$stm -> execute();
+
+		foreach ($stm->fetchAll() as $key => $value) {
+
+			$row['id'] = $value['tbse_auto_id'];
+			$row['name'] = $value['tbse_name'];
+			$row['description'] = $value['tbse_description'];
+			$row['create_date'] = $value['tbse_date_created'];
+			$row['create_hour'] = $value['tbse_hour_created'];
+			$datos[] = $row;		
+		}
+
+		return $datos;
+	}
+
+
+
 	function CreateProjects($conection, $ProjectName, $USER_CODE){
 		$sql = "INSERT projects(pro_name, pro_date_create, pro_hour_create)VALUES(?, NOW(), NOW() )";
 		$stm = $conection -> prepare( $sql );
@@ -29,26 +53,7 @@ class Projects
 		return $respuesta = array('respuesta' => $stm->rowCount());
 	}
 
-	function LoadProjects($conection, $USER_CODE){
 
-		$projects = array();
-
-		$sql = "SELECT pus_auto_id, pus_id_project, pus_id_user, pus_date_create, pus_hour_create, pus_updated, pus_status, pus_vigence, pro_auto_id, pro_name, pro_date_create, pro_hour_create FROM projects_users, projects WHERE pus_id_user=? and pus_id_project = pro_auto_id and pro_status = 1 and pro_vigence = 1 group by pro_auto_id";
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $USER_CODE);
-		$stm -> execute();
-
-		foreach ($stm->fetchAll() as $key => $value) {
-
-			$pro['id'] = $value['pro_auto_id'];
-			$pro['name'] = $value['pro_name'];
-			$pro['create_date'] = $value['pro_date_create'];
-			$pro['create_hour'] = $value['pro_hour_create'];
-			$projects[] = $pro;		
-		}
-
-		return $projects;
-	}
 
 	function LoadProjectsIdBasics($conection, $ProjectId){		 
 

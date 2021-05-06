@@ -129,7 +129,7 @@
     data() {
       return {
         name: 'app',
-        CenterContent: '',
+        CenterContent: localStorage.getItem("classContainer") == null ? "m-auto" : localStorage.getItem("classContainer"),
         DrowdownAction: 'hidden',
         auth: firebase.auth(),
         user_photo: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
@@ -144,16 +144,12 @@
       this.VerifySsesionWitchEmail()
     },
     mounted: function () {
-
     },
     methods: {
 
       ClickCenterConter: function(){
-        if(this.CenterContent == 'm-auto'){
-          this.CenterContent = ''
-        }else{
-          this.CenterContent = 'm-auto'
-        }
+        this.CenterContent == 'm-auto' ? localStorage.setItem("classContainer", '') : localStorage.setItem("classContainer", 'm-auto')
+        this.CenterContent = localStorage.getItem("classContainer")
       },
       VerifySsesionWitchEmail: function () {
         axios.get(API_ROUTER.API + "/php7/control/user_session.php").then((res) => {

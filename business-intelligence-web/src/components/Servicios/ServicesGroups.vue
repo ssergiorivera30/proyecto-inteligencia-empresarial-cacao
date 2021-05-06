@@ -26,17 +26,20 @@
    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 my-5">   
 
 
-          <div v-for="projects in ArrayProjects" :key="projects" 
+          <div v-for="group in ArrayGroups" :key="group" 
          class="flex items-center justify-center py-2 px-0">
             <div class="rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
                 <h1 class="items-center text-center text-lg font-bold leading-6 text-gray-500">
-                   <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
-                  <span v-else>{{ projects.name }}.<br><br><br></span></h1>
+                   <span v-if="group.name.length > 60">{{ group.name.substring(0,62) }}...</span>
+                    <span v-else>{{ group.name }}.<br><br></span>
+                </h1>
              
+                <img class="my-3 mx-auto sm:w-1/3" src="http://grupodeinvestigacionnova.com/assets/images/logo-t.png">
 
-                        <img class="my-6 mx-auto sm:w-1/3" src="http://grupodeinvestigacionnova.com/assets/images/logo-t.png">
-
-                <p class="pt-4 text-xs leading-4 text-gray-600">Join Tailwind UI Kit’s discord community and kickstart your next project with beautiful, accessible user interfaces.</p>
+                <p class="pt-4 text-xs leading-4 text-gray-600">
+                    <span v-if="group.description.length > 130">{{ group.description.substring(0,130) }}...</span>
+                    <span v-else>{{ group.description }}.<br><br><br></span>
+                </p>
                 <div class="flex items-center pt-4">
                     <div class="w-6 h-6 mr-1 shadow rounded-full">
                         <img alt="img-1" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover object-center rounded-full" />
@@ -60,7 +63,7 @@
                 </div>
             
                 <button 
-                    @click="this.$router.push('/proyecto/ver/detalles/'+ projects.id)"
+                    @click="this.$router.push('/grupo/detalle/'+ group.id)"
                     class="focus:outline-none text-indigo-700 hover:opacity-50 bg-gray-100 text-sm font-medium py-3 w-full rounded mt-5">
                           Ver grupo
                     </button>
@@ -94,7 +97,7 @@
         }
     },
     props:{
-        ArrayProjects: Object,
+        ArrayGroups: Object,
     },
     mounted: function () {
 

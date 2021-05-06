@@ -29,10 +29,13 @@
          class="flex items-center justify-center py-2 px-0">
             <div class="rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
                 <h1 class="text-lg font-bold leading-6 text-gray-500">
-                   <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
+                   <span v-if="projects.name.length > 75">{{ projects.name.substring(0,75) }}...</span>
                   <span v-else>{{ projects.name }}.<br><br><br></span></h1>
                 <h2 class="pt-2 text-xs leading-4 text-gray-600">Empresa: Servicio Nacional de Aprendizaje - SENA</h2>
-                <p class="pt-4 text-xs leading-4 text-gray-600">Join Tailwind UI Kit’s discord community and kickstart your next project with beautiful, accessible user interfaces.</p>
+                 <p class="pt-4 text-xs leading-4 text-gray-600">
+                    <span v-if="projects.description.length > 130">{{ projects.description.substring(0,130) }}...</span>
+                    <span v-else>{{ projects.description }}.<br><br><br></span>
+                </p>
                 <div class="flex items-center pt-4">
                     <div class="w-6 h-6 mr-1 shadow rounded-full">
                         <img alt="img-1" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover object-center rounded-full" />

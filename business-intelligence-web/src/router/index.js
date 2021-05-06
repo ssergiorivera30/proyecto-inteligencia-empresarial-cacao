@@ -1,6 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
+// Grupos
+
+import GrupoDetallesHeader from './../views/Grupos/GrupoDetallesHeader'
+
 
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
 import ServiciosHome from '../views/Servicios/ServiciosHome'
@@ -124,6 +128,13 @@ children:
     { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },  
     { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },  
     { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios},
+  ]   
+},
+
+{ path: '/grupo', name: 'GrupoDetallesHeader', component: GrupoDetallesHeader,
+children:
+  [
+    { path: 'detalle/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },  
   ]   
 },
 
