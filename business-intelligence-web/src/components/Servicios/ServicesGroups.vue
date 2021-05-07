@@ -27,19 +27,18 @@
 
 
           <div v-for="group in ArrayGroups" :key="group" 
-         class="flex items-center justify-center py-2 px-0">
+         class="flex  justify-center py-2 px-0">
             <div class="rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
-                <h1 class="items-center text-center text-lg font-bold leading-6 text-gray-500">
-                   <span v-if="group.name.length > 60">{{ group.name.substring(0,62) }}...</span>
-                    <span v-else>{{ group.name }}.<br><br></span>
-                </h1>
+                <h1 v-if="group.name.length > 56" class=" text-center text-lg font-bold leading-6 text-gray-500">{{ group.name.substring(0,56) }}...</h1>
+                <h1 v-else class=" text-center text-lg font-bold leading-6 text-gray-500">{{ group.name }}.<br></h1>
              
                 <img class="my-3 mx-auto sm:w-1/3" src="http://grupodeinvestigacionnova.com/assets/images/logo-t.png">
 
-                <p class="pt-4 text-xs leading-4 text-gray-600">
-                    <span v-if="group.description.length > 130">{{ group.description.substring(0,130) }}...</span>
-                    <span v-else>{{ group.description }}.<br><br><br></span>
-                </p>
+              
+
+                  <p v-if="group.description.length > 130" class="pt-4 text-xs leading-4 text-gray-600">{{ group.description.substring(0,130) }}...</p>
+                  <p v-else class="pt-4 text-xs leading-4 text-gray-600">{{ group.description }}.<br><br><br></p>
+
                 <div class="flex items-center pt-4">
                     <div class="w-6 h-6 mr-1 shadow rounded-full">
                         <img alt="img-1" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover object-center rounded-full" />
