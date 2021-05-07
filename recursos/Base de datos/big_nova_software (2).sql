@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2021 a las 19:32:19
+-- Tiempo de generación: 07-05-2021 a las 15:35:17
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -328,8 +328,10 @@ INSERT INTO `system_status` (`sys_auto_id`, `sys_status`, `sys_description`, `sy
 CREATE TABLE `tbl_services` (
   `tbse_auto_id` int(11) NOT NULL,
   `tbse_id_type_service` int(10) NOT NULL,
-  `tbse_name` varchar(120) COLLATE utf8_spanish_ci NOT NULL,
+  `tbse_name` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
   `tbse_description` text COLLATE utf8_spanish_ci NOT NULL,
+  `tbse_emp` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tbse_logo` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `tbse_date_created` date NOT NULL,
   `tbse_hour_created` date NOT NULL,
   `tbse_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -341,14 +343,12 @@ CREATE TABLE `tbl_services` (
 -- Volcado de datos para la tabla `tbl_services`
 --
 
-INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence`) VALUES
-(4, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-04-30', '2021-04-30', '2021-04-30 21:32:42', 1, 1),
-(5, 1, 'Servicio Nacional de Aprendizaje', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n\r\nFacultada por el Estado para la inversión en infraestructura necesaria para mejorar el desarrollo social y técnico de los trabajadores en las diferentes regiones,  a través de formación profesional integral que logra incorporarse con las metas del Gobierno Nacional, mediante el cubrimiento de las necesidades específicas de recurso humano en las empresas, a través de la vinculación al mercado laboral -bien sea como empleado o subempleado-, con grandes oportunidades para el desarrollo empresarial, comunitario y tecnológico.  \r\n\r\nLa entidad más querida por los colombianos funciona en permanente alianza entre Gobierno, empresarios y trabajadores, desde su creación, con el firme propósito de lograr la competitividad de Colombia a través del incremento de la productividad en las empresas y regiones, sin dejar de lado la inclusión social, en articulación con la política nacional: Más empleo y menos pobreza. Por tal razón, se generan continuamente programas y proyectos de responsabilidad social, empresarial, formación, innovación, internacionalización y transferencia de conocimientos y tecnologías.', '2021-04-30', '2021-04-30', '2021-04-30 22:38:53', 1, 1),
-(6, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-05-03', '2021-05-03', '2021-05-04 03:56:56', 1, 1),
-(7, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-05-04', '2021-05-04', '2021-05-04 14:08:15', 1, 1),
-(8, 2, 'Proyecto Servicio Nacional de Aprendizaje', 'Don\'t forget to include transparent and current if you\'d like those available in your project.\r\n\r\nAlthough each color has a specific name, you\'re encouraged to alias them however you like in your own projects. We even do this in the default configuration, aliasing coolGray to gray, violet to purple, amber to yellow, and emerald to green.\r\n\r\nSee our complete color palette reference to see the colors that are available to choose from by default.', '2021-05-04', '2021-05-04', '2021-05-04 14:49:46', 1, 1),
-(9, 1, 'Grupo de Investigación Nova', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n Don\'t forget to v-if=\"ServiceType == 2\" include transparent and current if you\'d like those available in your project.\r\n\r\nAlthough each color has a specific name, you\'re encouraged to alias them however you like in your own projects. We even do this in the default configuration, aliasing coolGray to gray, violet to purple, amber to yellow, and emerald to green.\r\n\r\nSee our complete color palette reference to see the colors that are available to choose from by default.', '2021-05-04', '2021-05-04', '2021-05-04 17:07:51', 1, 1),
-(10, 1, 'Servicio Nacional de Aprendizaje', 'SENA', '2021-05-04', '2021-05-04', '2021-05-04 17:08:57', 1, 1);
+INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_emp`, `tbse_logo`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence`) VALUES
+(4, 1, 'Grupo de Investigación Nova', 'Servicio Nacional de Aprendizaje', NULL, NULL, '2021-04-30', '2021-04-30', '2021-05-06 19:10:44', 1, 1),
+(5, 1, 'Grupo de Investigacion La Angostura', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n\r\nFacultada por el Estado para la inversión en infraestructura necesaria para mejorar el desarrollo social y técnico de los trabajadores en las diferentes regiones,  a través de formación profesional integral que logra incorporarse con las metas del Gobierno Nacional, mediante el cubrimiento de las necesidades específicas de recurso humano en las empresas, a través de la vinculación al mercado laboral -bien sea como empleado o subempleado-, con grandes oportunidades para el desarrollo empresarial, comunitario y tecnológico.  \r\n\r\nLa entidad más querida por los colombianos funciona en permanente alianza entre Gobierno, empresarios y trabajadores, desde su creación, con el firme propósito de lograr la competitividad de Colombia a través del incremento de la productividad en las empresas y regiones, sin dejar de lado la inclusión social, en articulación con la política nacional: Más empleo y menos pobreza. Por tal razón, se generan continuamente programas y proyectos de responsabilidad social, empresarial, formación, innovación, internacionalización y transferencia de conocimientos y tecnologías.', NULL, NULL, '2021-04-30', '2021-04-30', '2021-05-06 19:27:18', 1, 1),
+(11, 2, 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.', 'La cadena productiva del sector cacaotero presenta bajos niveles de competitividad en los mercados nacionales e internacionales, debido a prácticas de producción inadecuadas que afectan la calidad y el medio ambiente, por tanto, se plantea desarrollar un conjunto de estrategias que incluyen una plataforma tecnológica multidispositivo con IoT para el procesamiento de datos referentes a diagnósticos y caracterización de fincas cacaoteras, estos datos estarán ligados a los procesos de producción, beneficio, aprovechamiento, comercialización, sostenibilidad económica y ambiental. Mejorando con esto la toma de decisiones y la creación de estrategias de mejora continua en tiempo real que contribuirán al fortalecimiento de la cadena productiva del cultivo de cacao en el departamento del Huila.', NULL, NULL, '2021-05-06', '2021-05-06', '2021-05-06 19:17:24', 1, 1),
+(12, 2, 'Servicio Nacional de Aprendizaje', 'SENA', NULL, NULL, '2021-05-06', '2021-05-06', '2021-05-06 21:52:31', 1, 1),
+(13, 1, 'El grupo de Gilberto', 'Gilberto m.', NULL, NULL, '2021-05-06', '2021-05-06', '2021-05-06 21:53:37', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -757,7 +757,7 @@ ALTER TABLE `system_status`
 -- AUTO_INCREMENT de la tabla `tbl_services`
 --
 ALTER TABLE `tbl_services`
-  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `users_keys`
