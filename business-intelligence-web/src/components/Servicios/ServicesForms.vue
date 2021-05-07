@@ -30,9 +30,11 @@
          class=" rounded py-4 px-2 md:px-4 bg-white shadow-xl hover:shadow-2xl">
          <div class="flex">
             <div class="py-5 w-4/5">
-                  <h1 class="text-lg font-bold leading-6 text-gray-500 dark:text-gray-100">
-                  <span v-if="projects.name.length > 60">{{ projects.name.substring(0,62) }}...</span>
-                  <span v-else>{{ projects.name }}.<br><br><br></span></h1>
+
+                <h1 v-if="projects.name.length > 56" class="text-lg font-bold leading-6 text-gray-500">{{ projects.name.substring(0,56) }}...</h1>
+                <h1 v-else class="text-lg font-bold leading-6 text-gray-500">{{ projects.name }}.<br><br><br></h1>
+
+                  
                   <h2 class="pt-2 text-xs leading-4 dark:text-gray-400 text-gray-600 dark:text-gray-500">Empresa: Servicio Nacional de Aprendizaje - SENA</h2>
                   <p class="pt-4 text-xs leading-4 text-gray-600 dark:text-gray-500">Join Tailwind UI Kit’s discord community and kickstart your next project with beautiful, accessible user interfaces.</p>
                   <div class="flex items-center pt-4">
