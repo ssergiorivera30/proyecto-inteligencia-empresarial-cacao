@@ -1,6 +1,5 @@
 <template>
    <Tools />
-   <ServicesRecent />
 </template>
 <script>
 

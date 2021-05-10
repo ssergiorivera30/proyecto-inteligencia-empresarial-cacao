@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 // Grupos
 
 import GrupoDetallesHeader from './../views/Grupos/GrupoDetallesHeader'
+import GrupoResumen from './../views/Grupos/GrupoResumen'
 
 
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
@@ -134,7 +135,7 @@ children:
 { path: '/grupo', name: 'GrupoDetallesHeader', component: GrupoDetallesHeader,
 children:
   [
-    { path: 'detalle/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },  
+    { path: 'detalle/:id', name: 'GrupoResumen', component: GrupoResumen },  
   ]   
 },
 

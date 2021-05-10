@@ -1,10 +1,10 @@
 <template>
   <div>
   <!-- <WelcomeSistema /> -->
-    <ServicesEmpty v-if="ArrayProjects.length < 1"/>  
+    <ServicesEmpty v-if="RoadEmptyService == 1"/>  
     <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
     <ServicesProjects v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
-    <ServicesForms v-if="ArrayProjects.length  > 0" :ArrayProjects="ArrayProjects" />
+    <ServicesForms v-if="ArrayForms.length  > 0" :ArrayForms="ArrayForms" />
   </div>
 
 </template>
@@ -33,10 +33,17 @@ export default {
     return {      
       ArrayGroups: [],
       ArrayProjects: [],
+      ArrayForms: [],
+      RoadEmptyService: 0,
     };
   },
-  mounted: function () {
+
+  beforeMount() {
     this.LoadProjects()
+    
+  },
+  mounted: function () {
+    
 
     
   },
@@ -46,7 +53,13 @@ export default {
 
           this.ArrayGroups = res.data.groups
           this.ArrayProjects = res.data.projects
+          this.ArrayForms = res.data.projects
 
+          if( this.ArrayProjects.length < 1){
+
+              this.RoadEmptyService = 1
+              
+          }
         }).catch(() => {
 
           console.log('Error de conexión')

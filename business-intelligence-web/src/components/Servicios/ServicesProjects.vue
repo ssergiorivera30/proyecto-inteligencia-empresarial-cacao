@@ -3,8 +3,8 @@
 <header class="flex items-center justify-between px-2 my-5">
     <h2 class="text-lg font-bold leading-6 text-gray-800">Mis proyectos</h2>      
     <div class="relative">
-        <router-link to="/create-service/2" class=" flex p-2 rounded-md bg-indigo-700 hover:bg-indigo-600">
-            <span class="text-sm font-medium leading-none text-white">Nuevo proyecto</span>
+        <router-link to="/create-service/2" class=" flex p-2 rounded-md bg-blue-900">
+            <span class="text-xs font-medium leading-none text-white">Nuevo proyecto</span>
         </router-link >
     </div>
 </header>
@@ -16,8 +16,8 @@
             <div class="bg-white shadow overflow-y-auto">
                 <table class="w-full whitespace-nowrap">
                     <tbody class="w-full">
-                        <tr v-for="projects in ArrayProjects" :key="projects"
-                            @click="this.$router.push('/proyecto/ver/detalles/'+ projects.id)"
+                        <tr v-for="info in ArrayProjects" :key="info"
+                            @click="this.$router.push('/proyecto/ver/detalles/'+ info.id)"
                             class="cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100">
                             <td class="pl-4 cursor-pointer">
                                 <div class="flex items-center">
@@ -25,11 +25,11 @@
                                         <img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects.png" />
                                     </div>
                                     <div class="pl-4">
-                                        <p v-if="projects.name.length > 36" class="font-medium">{{ projects.name.substring(0,36) }}...</p>
-                                        <p v-else class="font-medium">{{ projects.name }}</p>
+                                        <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36) }}...</p>
+                                        <p v-else class="font-medium">{{ info.name }}</p>
 
-                                        <p  v-if="projects.description.length > 28" class="text-xs leading-3 text-gray-600 pt-2">{{ projects.description.substring(0,28) }}...</p>
-                                        <p v-else class="text-xs leading-3 text-gray-600 pt-2">{{ projects.description }}</p>
+                                        <p  v-if="info.description.length > 28" class="text-xs leading-3 text-gray-600 pt-2">{{ info.description.substring(0,28) }}...</p>
+                                        <p v-else class="text-xs leading-3 text-gray-600 pt-2">{{ info.description }}</p>
                                     </div>
                                 </div>
                             </td>

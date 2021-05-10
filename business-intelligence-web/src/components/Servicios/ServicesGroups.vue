@@ -4,8 +4,8 @@
 <header class="flex items-center justify-between px-2 my-5">
     <h2 class="text-lg font-bold leading-6 text-gray-800">Grupos</h2>      
     <div class="relative">
-        <router-link to="/create-service/1" class=" flex p-2 rounded-md bg-indigo-700 hover:bg-indigo-600">
-            <span class="text-sm font-medium leading-none text-white">Nuevo grupo</span>
+        <router-link to="/create-service/1" class=" flex p-2 rounded-md bg-blue-900">
+            <span class="text-xs font-medium leading-none text-white">Nuevo grupo</span>
         </router-link >
     </div>
 </header>

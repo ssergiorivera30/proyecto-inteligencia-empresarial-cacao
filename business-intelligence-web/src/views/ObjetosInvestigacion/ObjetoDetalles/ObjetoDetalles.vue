@@ -1,5 +1,5 @@
 <template>
-  <div class="pl-4 mt-5 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container">
+  <div class="pl-4 mt-5 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container bg-blue-900">
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 pb-24">
