@@ -21,7 +21,7 @@
          return {           
 
             TitleHeader: 'Grupo',
-            IconModulo: 'bx bxs-bullseye',
+            IconModulo: 'bx bxs-group',
             SubTitleHeader: 'Detalles',
             GoBack: '/inicio',
             GoBackTitle: 'Ir al inicio',

@@ -1,7 +1,7 @@
 <template>
 
   <button
-    class="relative p-2 text-gray-900 hover:text-gray-600 focus:bg-blue-900 focus:text-gray-600 rounded-full focus:outline-none"
+    class="relative p-2 text-white rounded-full focus:outline-none"
     @click="DrowdownActionNot">
     <span class="sr-only">Notificaciones</span>
     <span class="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-green-400 rounded-full"></span>
