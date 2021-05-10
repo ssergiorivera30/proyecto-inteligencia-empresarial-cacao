@@ -3,6 +3,56 @@
   <!-- <WelcomeSistema /> -->
     <ServicesEmpty v-if="RoadEmptyService == 1"/>  
     <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
     <ServicesProjects v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
     <ServicesForms v-if="ArrayForms.length  > 0" :ArrayForms="ArrayForms" />
   </div>
@@ -55,7 +105,7 @@ export default {
           this.ArrayProjects = res.data.projects
           this.ArrayForms = res.data.projects
 
-          if( this.ArrayProjects.length < 1){
+          if( this.ArrayProjects.length < 1 && this.ArrayGroups < 0 ){
 
               this.RoadEmptyService = 1
               

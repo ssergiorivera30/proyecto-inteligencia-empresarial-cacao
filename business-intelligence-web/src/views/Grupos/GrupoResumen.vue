@@ -21,7 +21,7 @@
             <div class="" v-for="project in InfoGroup" :key="project">
                <div class="px-1 py-3 sm:px-3">
                   <h3 class="text-lg leading-6 font-medium text-gray-900">
-                     Información del proyecto
+                     Información del grupo o equipo
                   </h3>
                   <p class="mt-3 max-w-2xl text-sm text-gray-500">
                      {{ project.pro_name }}
@@ -31,7 +31,7 @@
                   <dl>
                      <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
                         <dt class="text-sm font-medium text-gray-500">
-                           Códigos del proyecto
+                           Código
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                            {{ project.prco_code }} - {{ project.prco_entity }}
@@ -131,7 +131,7 @@
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
             <div class="px-4">
                <div class="flex items-center justify-center">
-                  <form id="form" class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+                  <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
                   <div><img class="" :src="Team" width="300" loading="lazy"/></div>
                   </form>
                </div>
@@ -142,7 +142,7 @@
             <div class="px-4">
                <div class="px-4">
                <div class="flex items-center justify-center">
-                  <form id="form" class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+                  <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
                   <div><img class="" :src="Grades" width="300" loading="lazy"/></div>
                   </form>
                </div>

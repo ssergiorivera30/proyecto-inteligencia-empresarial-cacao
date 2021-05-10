@@ -6,8 +6,11 @@
 
 <template>
 
-  <body class="bg-gray-50 flex min-h-screen">
-    <aside class="hidden sm:flex sm:flex-col fixed">
+
+    
+    <div class="bg-gray-50 min-h-screen flex-grow text-gray-800 ">
+
+    <aside class="hidden sm:flex sm:flex-col fixed min-h-screen">
       
       <div class="flex-grow flex flex-col justify-between text-gray-500 w-14 mt-14">
         <nav class="flex flex-col mx-4 my-2 space-y-3">
@@ -47,11 +50,8 @@
     </aside>
 
 
-
-    <div class="flex-grow text-gray-800 ">
       <!-- bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 -->
-      <header class="flex z-10 fixed items-center h-14 px-1 sm:pr-10 bg-blue-900 shadow-sm w-full"
-        >
+      <header class="flex sticky top-0	z-10  items-center h-14 px-1 sm:pr-10 bg-blue-900 shadow-sm w-full">
 
         <router-link to="/"
         class="hidden sm:hidden md:flex pt-1 justify-center h-10 w-14">
@@ -107,13 +107,13 @@
         </div>
       </header>
 
-      <router-view class=" CenterContent + ' ml-0 sm:ml-7 px-3 pt-12 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl sm:px-3 md:px-3 lg:px-8 mb-24'" />
+      <router-view :class=" CenterContent + ' px-3 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl sm:px-3 md:px-3 lg:px-8 mb-24'" />
 
      
 
 
     </div>
-  </body>
+ 
 
 </template>
 
@@ -133,7 +133,7 @@
     data() {
       return {
         name: 'app',
-        CenterContent: localStorage.getItem("classContainer") == null ? "m-auto" : localStorage.getItem("classContainer"),
+        CenterContent: localStorage.getItem("classContainer") == null ? "ml-12 md:ml-12 lg:m-auto" : localStorage.getItem("classContainer"),
         DrowdownAction: 'hidden',
         auth: firebase.auth(),
         user_photo: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
@@ -152,7 +152,7 @@
     methods: {
 
       ClickCenterConter: function(){
-        this.CenterContent == 'm-auto' ? localStorage.setItem("classContainer", ' ml-0 sm:ml-7 ') : localStorage.setItem("classContainer", 'm-auto')
+        this.CenterContent == 'ml-0 sm:ml-12 lg:m-auto' ? localStorage.setItem("classContainer", 'ml-0 md:ml-12 ') : localStorage.setItem("classContainer", 'ml-12 md:ml-12 lg:m-auto')
         this.CenterContent = localStorage.getItem("classContainer")
       },
       VerifySsesionWitchEmail: function () {

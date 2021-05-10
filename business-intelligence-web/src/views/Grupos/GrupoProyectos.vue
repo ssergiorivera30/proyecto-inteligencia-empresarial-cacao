@@ -1,7 +1,7 @@
 <template>
 
 <header class="flex items-center justify-between px-2 my-5">
-    <h2 class="text-lg font-bold leading-6 text-gray-600">Proyectos registradas</h2>      
+    <h2 class="text-lg font-bold leading-6 text-gray-600">Proyectos registrados</h2>      
     <div class="relative">
         <router-link to="/create-service/2" class=" flex p-2 rounded-md bg-gray-200">
             <span class="text-xs font-medium leading-none text-black">Nuevo proyecto</span>
