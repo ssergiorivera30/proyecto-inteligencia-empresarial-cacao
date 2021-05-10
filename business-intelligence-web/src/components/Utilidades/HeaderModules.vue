@@ -1,6 +1,6 @@
 <template>
 <div class="flex items-center justify-center">
-   <div class="w-full py-2 flex flex-col lg:space-y-0 space-y-5 lg:flex-row lg:items-center justify-between bg-white">
+   <div class="w-full py-2 flex flex-col lg:space-y-0 space-y-5 lg:flex-row lg:items-center justify-between">
       <div>
          <h3 class="font-bold tracking-wide text-2xl mb-2 text-gray-700"> {{ TitleHeader }} </h3>
          <div class="md:space-x-5 md:space-y-0 space-y-1  flex md:flex-row flex-col">

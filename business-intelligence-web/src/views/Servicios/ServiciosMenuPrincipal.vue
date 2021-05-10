@@ -1,5 +1,5 @@
 <template>
-   <div class="pl-4 mr-2 py-1 sm:max-w-xl md:max-w-full lg:container">
+   <div class="mt-5">
 
       <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader" />
       <router-view />

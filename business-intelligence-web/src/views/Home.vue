@@ -49,8 +49,7 @@ export default {
 
         }).catch(() => {
 
-          console.log(this.ArrayGroups.length )
-          console.log(this.ArrayProjects.length )
+          console.log('Error de conexión')
 
       })
     },
