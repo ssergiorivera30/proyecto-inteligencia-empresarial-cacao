@@ -51,12 +51,11 @@
 
 
       <!-- bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 -->
-      <header class="flex sticky top-0	z-10  items-center h-14 px-1 sm:pr-10 bg-blue-900 shadow-sm w-full">
+      <header class="flex sticky top-0 z-10 items-center h-14 px-1 sm:pr-10 bg-blue-900 shadow-sm w-full">
 
-        <router-link to="/"
-        class="hidden sm:hidden md:flex pt-1 justify-center h-10 w-14">
-        <img src="./assets/logo.png" class="h-8 w-8" alt="">
-      </router-link>
+        <router-link to="/" class="hidden sm:hidden md:flex pt-1 justify-center h-10 w-14">
+          <img src="./assets/logo.png" class="h-8 w-8" alt="">
+        </router-link>
 
         <button
           class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-white hover:bg-gray-100 hover:text-white focus:text-white rounded-full">
@@ -107,7 +106,7 @@
         </div>
       </header>
 
-      <router-view :class=" CenterContent + ' px-3 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl sm:px-3 md:px-3 lg:px-8 mb-24'" />
+      <router-view :class=" CenterContent + ' ml-0 sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-8 mb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl'" />
 
      
 
@@ -125,6 +124,8 @@
   import API_ROUTER from './services/SERVER_API'
   import NavNotificaciones from './components/NavBar/NavNotificaciones.vue'
 
+  const ContainerCenter = "lg:m-auto"
+
 
   export default {
     components: {
@@ -133,7 +134,7 @@
     data() {
       return {
         name: 'app',
-        CenterContent: localStorage.getItem("classContainer") == null ? "ml-12 md:ml-12 lg:m-auto" : localStorage.getItem("classContainer"),
+        CenterContent: localStorage.getItem("classContainer") == null ? ContainerCenter : localStorage.getItem("classContainer"),
         DrowdownAction: 'hidden',
         auth: firebase.auth(),
         user_photo: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
@@ -152,7 +153,7 @@
     methods: {
 
       ClickCenterConter: function(){
-        this.CenterContent == 'ml-0 sm:ml-12 lg:m-auto' ? localStorage.setItem("classContainer", 'ml-0 md:ml-12 ') : localStorage.setItem("classContainer", 'ml-12 md:ml-12 lg:m-auto')
+        this.CenterContent == ContainerCenter ? localStorage.setItem("classContainer", 'lg:ml-7 ') : localStorage.setItem("classContainer", ContainerCenter)
         this.CenterContent = localStorage.getItem("classContainer")
       },
       VerifySsesionWitchEmail: function () {

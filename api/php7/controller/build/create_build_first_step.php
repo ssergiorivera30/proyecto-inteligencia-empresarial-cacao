@@ -8,7 +8,7 @@ $array = json_decode($json, true);
 
 require_once "../../services/Conexion.php";
 require_once "../../services/Response.php";
-require_once "../../model/Objects.php";
+require_once "../../model/ServicesBuild.php";
 require_once "../../control/user_session_verify.php";
 
 $connect = new Conexion();
@@ -20,7 +20,7 @@ $ServiceType = $array['ServiceType'];
 $ServiceName = $array['ServiceName'];
 $ServiceDescription = $array['ServiceDescription'];
 
-$create_array = (new Objects())->CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription);
+$create_array = (new ServicesBuild())->CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription);
 
 // $add_user = (new Objects())->UserAddObjects($conection, $create_array['id'], $USER_CODE);
 
