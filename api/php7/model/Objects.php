@@ -48,6 +48,33 @@ class Objects
 	}
 
 
+	function LoadInfoBasicByService($conection, $type_service, $id_user){
+
+		$sql = "SELECT tbse_auto_id as id, tbse_name as name, tbse_description as description FROM tbl_services WHERE tbse_id_type_service=? and tbse_vigence = 1 ";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $type_service);
+		$stm -> execute();		
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $stm->fetchAll() );				
+	}
+
+
+	function LoadServiceForm($conection, $service_type, $service_id){
+
+			
+		$sql = "SELECT tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_emp, tbse_logo, tbse_date_created, tbse_hour_created, tbse_updated, tbse_status, tbse_vigence, tbsede_id_service, tbsede_code_inputs as mtao_json FROM tbl_services, tbl_service_mother_table WHERE tbse_auto_id = ? and tbse_auto_id = tbsede_id_service and tbse_status = 1 and tbse_vigence = 1";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $service_id);
+		$stm -> execute();
+		$mi_json = $stm->fetchAll();
+
+		$formulario = $mi_json[0]['mtao_json'];
+
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $formulario );				
+	}
+
+
 
 
 

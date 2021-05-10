@@ -2,7 +2,7 @@
    <div class="">
 
       <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_group }}</h2>
+         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_project }}</h2>
          <span 
             class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg width="12" height="20" fill="currentColor"
@@ -163,7 +163,7 @@ import axios from 'axios';
 import API_ROUTER from './../../services/SERVER_API'
 
    export default {
-      name: 'GrupoResumen',
+      name: 'ProyectoResumen',
       components: {
          NavBarSecondary
       },
@@ -195,7 +195,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadIdProject :function(){
          axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/load_basic_group.php",
             {
-               id_group: this.$route.params.id_group,
+               id_group: this.$route.params.id_project,
             }).then((res) => {
                
                this.InfoGroup = res.data

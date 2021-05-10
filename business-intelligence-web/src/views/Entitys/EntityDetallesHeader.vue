@@ -12,7 +12,7 @@
 
 
    export default {
-      name: 'GrupoDetallesHeader.vue',
+      name: 'EntityDetallesHeader.vue',
       components:{
 
          NavBarSecondary
@@ -26,9 +26,9 @@
             GoBack: '/inicio',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/grupo/detalle/'+this.$route.params.id_group, nameRoute: 'Detalles' },
-               { Linkroute: '/grupo/proyectos/'+this.$route.params.id_group, nameRoute: 'Proyectos' },              
-               { Linkroute: '/grupo/equipo/1/'+this.$route.params.id_group, nameRoute: 'Equipo' },
+               { Linkroute: '/entidad/registros/'+this.$route.params.id_entity, nameRoute: 'Registros' },
+               { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'Registrar' },   
+               { Linkroute: '/entidad/equipo/4/'+this.$route.params.id_entity, nameRoute: 'Equipo' },
             ]
          }
       },

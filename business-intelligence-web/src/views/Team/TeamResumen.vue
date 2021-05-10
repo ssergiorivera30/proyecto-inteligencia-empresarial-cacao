@@ -1,0 +1,56 @@
+<template>
+
+   <div class="px-6 flex items-center flex-no-wrap">
+      <div class="w-12 h-12 bg-cover bg-center rounded-md">
+         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" alt=""
+            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
+      </div>
+      <div class="w-12 h-12 bg-cover rounded-md -ml-2">
+         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_1.png" alt=""
+            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
+      </div>
+      <div class="w-12 h-12 bg-cover rounded-md bg-center -ml-2">
+         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_2.png" alt=""
+            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
+      </div>
+      <div class="w-12 h-12 bg-cover rounded-md -ml-2">
+         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_3.png" alt=""
+            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
+      </div>
+      <div class="w-12 h-12 bg-cover rounded-md -ml-2">
+         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
+            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
+      </div>
+   </div>
+
+</template>
+
+<script>
+
+
+   import axios from 'axios';
+   import API_ROUTER from './../../services/SERVER_API'
+
+   export default {
+      name: 'TeamResumen',
+
+      data() {
+         return {
+
+
+
+         }
+      },
+      beforeMount: function () {
+
+
+      },
+      mounted: function () {
+
+      },
+      methods: {
+
+
+      }
+   }
+</script>

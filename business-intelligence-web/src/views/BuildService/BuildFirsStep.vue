@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
     <form
       action="#"
       method="POST"
@@ -8,6 +8,8 @@
       <header class="flex items-center justify-center">
         <h2 v-if="ServiceType == 1" class="text-lg leading-6 font-medium text-black">Crear nuevo grupo</h2>
         <h2 v-if="ServiceType == 2" class="text-lg leading-6 font-medium text-black">Crear nuevo proyecto</h2>
+        <h2 v-if="ServiceType == 3" class="text-lg leading-6 font-medium text-black">Crear nueva entidad</h2>
+        <h2 v-if="ServiceType == 4" class="text-lg leading-6 font-medium text-black">Crear nuevo formulario</h2>
       </header>
 
       <div>
@@ -48,11 +50,10 @@
           required
           v-model="ServiceDescription"
         ></textarea>
-        <p class="mt-1 text-sm text-gray-500">* Descripción resumida del grupo o equipo de trabajo</p>
       </div>
 
 
-      <div>
+      <div v-if="ServiceType == 1 || ServiceType == 2 || ServiceType == 4"> 
         <label class="block text-gray-700">Integrantes</label>
         <input
           type="text"
@@ -97,9 +98,9 @@ export default {
     return {
       img_form_person: API_ROUTER.API_UI + "/forms/new_form.svg",
       ServiceType: this.$route.params.type_service,
-      ServiceName: "Servicio Nacional de Aprendizaje",
+      ServiceName: "Name service",
       ServiceNameEntity: null,
-      ServiceDescription: "SENA",
+      ServiceDescription: "Descripción",
     };
   },
   mounted: function () {},

@@ -5,6 +5,33 @@ import Home from '../views/Home.vue'
 
 import GrupoDetallesHeader from './../views/Grupos/GrupoDetallesHeader'
 import GrupoResumen from './../views/Grupos/GrupoResumen'
+import GrupoProyectos from './../views/Grupos/GrupoProyectos'
+
+
+import ProyectosDetallesHeader from './../views/Projects/ProyectosDetallesHeader'
+import ProyectoResumen from './../views/Projects/ProyectoResumen'
+import ProyectoEntidades from './../views/Projects/ProyectoEntidades'
+
+
+
+import EntityDetallesHeader from './../views/Entitys/EntityDetallesHeader'
+import EntityRegistros from './../views/Entitys/EntityRegistros'
+import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
+
+
+
+import TeamResumen from './../views/Team/TeamResumen'
+
+
+
+
+
+
+
+
+
+
+
 
 
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
@@ -132,12 +159,60 @@ children:
   ]   
 },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 { path: '/grupo', name: 'GrupoDetallesHeader', component: GrupoDetallesHeader,
-children:
-  [
-    { path: 'detalle/:id', name: 'GrupoResumen', component: GrupoResumen },  
-  ]   
+  children:
+    [
+      { path: 'detalle/:id_group', name: 'GrupoResumen', component: GrupoResumen },  
+      { path: 'proyectos/:id_group', name: 'GrupoProyectos', component: GrupoProyectos },     
+      { path: 'equipo/1/:id_service', component: TeamResumen }, 
+    ]   
 },
+
+{ path: '/p', name: 'ProyectosDetallesHeader', component: ProyectosDetallesHeader,
+  children:
+    [
+      { path: 'detalle/:id_project', name: 'ProyectoResumen', component: ProyectoResumen }, 
+      { path: 'entidades/:id_project', name: 'ProyectoEntidades', component: ProyectoEntidades }, 
+      { path: 'equipo/:type/:id_service', component: TeamResumen }, 
+    ]   
+},
+
+{ path: '/entidad', name: 'EntityDetallesHeader', component: EntityDetallesHeader,
+  children:
+    [
+      { path: 'registros/:id_entity', name: 'EntityRegistros', component: EntityRegistros },
+      { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },      
+      { path: 'equipo/:type/:id_service', component: TeamResumen },
+    ]   
+},
+
+
+
+
+
+
+
+
+
+
+
 
 
 
