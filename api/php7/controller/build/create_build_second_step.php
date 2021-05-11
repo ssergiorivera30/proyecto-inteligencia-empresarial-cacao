@@ -55,25 +55,25 @@ if( $verificar_existencia_tabla > 0 ){
 
 
 
-// if( $ingrese_json_inputs >= 1 && $verificar_existencia_tabla < 1 ){
+if( $ingrese_json_inputs >= 1 && $verificar_existencia_tabla < 1 )
+{	
+	
+	$sql_tabla_construida = $class_constructor ->GeneratorSqlTable($NAME_TABLE, $JSON_inputs);
 
-// 	ResponseSystem('✨ Consulta SQL de la tabla generada correctamente', 'success');
-
-// 	
-// 	$sql_tabla_construida = $class_constructor ->GeneratorSqlTable($NAME_TABLE, $ArrayInputs);
+	// ResponseSystem($sql_tabla_construida , 'success');
 
 
-// 	$ejecucion_consulta = $class_core_table->CreateTableTabla( $conection, $sql_tabla_construida, $NAME_TABLE);
+	$ejecucion_consulta = $class_core_table->CreateTableTabla( $conection, $sql_tabla_construida, $NAME_TABLE);
 
-// 	if( $ejecucion_consulta > 0 ){				
+	if( $ejecucion_consulta > 0 ){				
 			
-// 		ResponseSystem('✨ Excelente! Tu objeto fue creado correctamente', 'success');
+		ResponseSystem('✨ Excelente! Tu objeto fue creado correctamente', 'success');
 
-// 	} else {
+	} else {
 
-// 		ResponseSystem('Error al crear el registro', 'warning');
-// 	}		
-// }
+		ResponseSystem('Error al crear el registro', 'warning');
+	}		
+}
 
 
 function ResponseSystem($message, $icono){

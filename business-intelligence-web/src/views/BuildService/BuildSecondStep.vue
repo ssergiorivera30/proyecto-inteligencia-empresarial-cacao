@@ -138,10 +138,11 @@
 
 
 
-         <form @submit.prevent="AddInputEdit" v-if="editorBasicoForm == 1 && InputIdEidtAsigned != null"
+         <span v-if="editorBasicoForm == 1 && InputIdEidtAsigned != null">
+            <form @submit.prevent="AddInputEdit" v-for="(inputEdit, index) in ArrayInputs[InputIdEidtAsigned]" :key="index" :id="index"
             autocomplete="off" class="my-5">
-            <span v-for="(inputEdit, index) in ArrayInputs[InputIdEidtAsigned]" :key="index">
-               <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
+           
+               <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-3">
                   <div class="block">
                      <label><span class="text-gray-700 font-semibold">Tipo de campo</span></label>
                      <select class="form-control2" required v-model="inputEdit.type" @change="AttributeInputVisivility">
@@ -188,6 +189,7 @@
 
                <form @submit.prevent="AddOptionFormEdit()"
                   v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
+                  :id="'a_'+index"
                   class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4"
                   autocomplete="off">
                   <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
@@ -208,13 +210,14 @@
                   </button>
                </form>
 
-               <div v-if="inputEdit.type != '' && inputEdit.name != '' " class="py-10 text-left ">
+               <div v-if="inputEdit.type != '' && inputEdit.name != '' " class="py-5 text-left ">
                   <button type="submit" class="mr-3 btn-indigo">
                      Actualizar
                   </button>
                </div>
-            </span>
-         </form>
+           
+            </form>
+          </span>
          <div>
       </div>
    </div>

@@ -14,9 +14,9 @@
                      <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move">{{ input['input']['name'] }}</span>
 
                         <div class="flex justify-end">
-                           <button class="group flex rounded-md items-center px-2 py-2 text-sm" @click="SendIdEdit(index)" title="Editar">Editar</button>
+                           <button type="button" class="group flex rounded-md items-center px-2 py-2 text-sm" @click="SendIdEdit(index)" title="Editar">Editar</button>
                                      
-                           <button class="group flex rounded-md items-center px-2 py-2 text-sm" @click="DeleteOption(index)" title="Eliminar">Eliminar</button>
+                           <button type="button" class="group flex rounded-md items-center px-2 py-2 text-sm" @click="DeleteOption(index)" title="Eliminar">Eliminar</button>
                         </div>
                   </label>
 
