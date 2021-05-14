@@ -7,9 +7,9 @@
     <ServicesForms v-if="ArrayForms.length  > 0" :ArrayForms="ArrayForms" /> -->
 
       
-    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['groups']" ServiceName="grupos" ServiceNameLink="Nuevo grupo" ServiceID="1"/>
-    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['projects']" ServiceName="proyectos" ServiceNameLink="Nuevo proyecto" ServiceID="2"/>
-    <!-- <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['forms']" ServiceName="formularios" ServiceNameLink="Nuevo formulario" ServiceID="3"/> -->
+    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['groups']" ServiceName="grupos" ServiceNameLink="Añadir grupo" ServiceID="1"/>
+    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['projects']" ServiceName="proyectos" ServiceNameLink="Añadir proyecto" ServiceID="2"/>
+    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['forms']" ServiceName="formularios" ServiceNameLink="Añadir formulario" ServiceID="3"/>
 
       
   </div>
@@ -18,8 +18,8 @@
 
 <script>
 
-  import axios from 'axios';
-  import API_ROUTER from './../services/SERVER_API'
+import axios from 'axios';
+import API_ROUTER from './../services/SERVER_API'
 
 import WelcomeSistema from "../components/Home/WelcomeSistema";
 import ServicesEmpty from "../components/Servicios/ServicesEmpty";
@@ -27,8 +27,6 @@ import ServicesGroups from "../components/Servicios/ServicesGroups";
 import ServicesProjects from "../components/Servicios/ServicesProjects";
 import ServicesForms from "../components/Servicios/ServicesForms";
 import ServicesList from "../components/Servicios/ServicesList";
-
-
 
 
 export default {
@@ -68,9 +66,9 @@ export default {
       axios.get(API_ROUTER.PHP7_CONTROLLER + "home/home_services_load.php").then((res) => {
 
 
-          this.ArrayServices['projects'] = Object.entries(res.data.projects).length === 0  ? [] : res.data.projects
-          // this.ArrayServices['groups'] = Object.entries(res.data.groups).length === 0  ? [] : res.data.groups
-          this.ArrayServices['forms'] = Object.entries(res.data.forms).length === 0  ? [] : res.data.forms
+          this.ArrayServices['projects'] = Object.entries(res.data.projects).length === 0  ? null : res.data.projects
+          this.ArrayServices['groups'] = Object.entries(res.data.groups).length === 0  ? null : res.data.groups
+          this.ArrayServices['forms'] = Object.entries(res.data.forms).length === 0  ? null : res.data.forms
 
           // console.log(this.ArrayServices['groups'].length )
           console.log(this.ArrayServices['projects'].length )
