@@ -23,7 +23,9 @@ $ListGroups = (new Groups())->GroupsLoad($conection, $USER_CODE);
 
 $ListProjects = (new Projects())->LoadProjects($conection, $USER_CODE);
 
-$arrayName = array('groups' => $ListGroups, 'projects' => $ListProjects );
+$ListForms = array();
+
+$arrayName = array('groups' => $ListGroups, 'projects' => $ListProjects, 'forms' => $ListForms );
 
 $response = new Response();
 $response -> ResponseInfiniteObjects( $arrayName );

@@ -21,7 +21,7 @@
                             class="cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100">
                             <td class="pl-4 cursor-pointer">
                                 <div class="flex items-center">
-                                    <div class="w-10 h-10">
+                                    <div class="w-10 items-center">
                                         <img class="w-full" src="http://grupodeinvestigacionnova.com/assets/images/logo-t.png" />
                                     </div>
                                     <div class="pl-4">
@@ -51,7 +51,7 @@
                                 <p class="font-medium">22.12.21</p>
                                 <p class="text-xs leading-3 text-gray-600 mt-2">34 days</p>
                             </td>
-                            <td class="hidden pl-16">
+                            <td class="pl-16">
                                 <div class="flex items-center">
                                     <img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" />
                                     <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" />

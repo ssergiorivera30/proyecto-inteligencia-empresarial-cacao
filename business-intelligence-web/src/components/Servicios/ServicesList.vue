@@ -1,22 +1,34 @@
 <template>
 
 <header class="flex items-center justify-between px-2 my-5">
-    <h2 class="text-lg font-bold leading-6 text-gray-800">Mis proyectos</h2>      
+    <h2 class="text-lg font-bold leading-6 text-gray-800">Mis {{ ServiceName }}</h2>      
     <div class="relative">
-        <router-link to="/create-service/2" class=" flex p-2 rounded-md bg-blue-900">
-            <span class="text-xs font-medium leading-none text-white">Nuevo proyecto</span>
+        <router-link :to="'/create-service/'+ ServiceID " class=" flex p-2 rounded-md bg-blue-900">
+            <span class="text-xs font-medium leading-none text-white">{{ ServiceNameLink }}</span>
         </router-link >
     </div>
 </header>
 
+<pre>
+    {{ ArrayServices  }}
+</pre>
+
+<section v-if="1 == 1" class="max-w-lg px-4 py-12 mx-auto">
+        <img class="mx-auto sm:w-1/4" :src="EmptyService" />
+        <h2 class="mt-2 text-lg font-medium text-center text-gray-800">Tienes (0) {{ ServiceName }} registrados 
+            <router-link :to="'/create-service/'+ ServiceID " class="w-full py-2 text-blue-900 font-bold ">{{ ServiceNameLink }}</router-link>
+
+        </h2>
+    </section>
+
     
 
-        <div class="w-full">
+        <div v-else class="w-full">
             
             <div class="bg-white shadow overflow-y-auto">
                 <table class="w-full whitespace-nowrap">
                     <tbody class="w-full">
-                        <tr v-for="info in ArrayProjects" :key="info"
+                        <tr v-for="info in ArrayServices" :key="info"
                             @click="this.$router.push('/proyecto/ver/detalles/'+ info.id)"
                             class="cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100">
                             <td class="pl-4 cursor-pointer">
@@ -70,26 +82,26 @@
 
 <script>
 
-   import API_ROUTER from './../../services/SERVER_API'
+import API_ROUTER from './../../services/SERVER_API'
 
-   export default {
-      data() {
-         return {
-            name: 'ServicesProjects',
-            DrowdownAction: 'hidden',
-            RouteSrc: API_ROUTER.API_UI + 'icons/database.png',          
+export default {
+    name: 'ServicesList',
+    data() {
+        return {
+            RouteSrc: API_ROUTER.API_UI + 'icons/database.png',  
+            EmptyService: API_ROUTER.API_UI + 'empty-services.png',        
         }
     },
     props:{
-        ArrayProjects: Object,
+        ArrayServices: Object,
+        ServiceName: String,
+        ServiceNameLink: String ,
+        ServiceID: String,
     },
     mounted: function () {
 
     },
-    methods: {
-        DrowdownActionFunc(){
-            this.DrowdownAction = this.DrowdownAction === 'hidden' ? 'block' : 'hidden'
-        }, 
+    methods: { 
     }
 }
 </script>

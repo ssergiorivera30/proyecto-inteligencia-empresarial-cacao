@@ -2,9 +2,16 @@
   <div>
   <!-- <WelcomeSistema /> -->
     <ServicesEmpty v-if="RoadEmptyService == 1"/>  
-    <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
+    <!-- <ServicesGroups v-if="ArrayGroups.length > 0" :ArrayGroups="ArrayGroups" />
     <ServicesProjects v-if="ArrayProjects.length > 0" :ArrayProjects="ArrayProjects" />
-    <ServicesForms v-if="ArrayForms.length  > 0" :ArrayForms="ArrayForms" />
+    <ServicesForms v-if="ArrayForms.length  > 0" :ArrayForms="ArrayForms" /> -->
+
+      
+    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['groups']" ServiceName="grupos" ServiceNameLink="Nuevo grupo" ServiceID="1"/>
+    <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['projects']" ServiceName="proyectos" ServiceNameLink="Nuevo proyecto" ServiceID="2"/>
+    <!-- <ServicesList v-if="ArrayServices.length  > 0" :ArrayServices="ArrayServices['forms']" ServiceName="formularios" ServiceNameLink="Nuevo formulario" ServiceID="3"/> -->
+
+      
   </div>
 
 </template>
@@ -19,6 +26,10 @@ import ServicesEmpty from "../components/Servicios/ServicesEmpty";
 import ServicesGroups from "../components/Servicios/ServicesGroups";
 import ServicesProjects from "../components/Servicios/ServicesProjects";
 import ServicesForms from "../components/Servicios/ServicesForms";
+import ServicesList from "../components/Servicios/ServicesList";
+
+
+
 
 export default {
   name: "Home",
@@ -28,22 +39,27 @@ export default {
     ServicesGroups,
     ServicesProjects,
     ServicesForms,
+    ServicesList, 
   },
   data() {
     return {      
-      ArrayGroups: [],
-      ArrayProjects: [],
-      ArrayForms: [],
+
+      
+      ArrayServices: [{
+        groups: [],
+        projects: [],
+        forms: []
+      }],
       RoadEmptyService: 0,
     };
   },
 
   beforeMount() {
-    this.LoadProjects()
+    
     
   },
   mounted: function () {
-    
+    this.LoadProjects()
 
     
   },
@@ -51,15 +67,20 @@ export default {
     LoadProjects: function () {
       axios.get(API_ROUTER.PHP7_CONTROLLER + "home/home_services_load.php").then((res) => {
 
-          this.ArrayGroups = res.data.groups
-          this.ArrayProjects = res.data.projects
-          this.ArrayForms = res.data.projects
 
-          if( this.ArrayProjects.length < 1 && this.ArrayGroups < 0 ){
+          this.ArrayServices['projects'] = Object.entries(res.data.projects).length === 0  ? [] : res.data.projects
+          // this.ArrayServices['groups'] = Object.entries(res.data.groups).length === 0  ? [] : res.data.groups
+          this.ArrayServices['forms'] = Object.entries(res.data.forms).length === 0  ? [] : res.data.forms
 
-              this.RoadEmptyService = 1
+          // console.log(this.ArrayServices['groups'].length )
+          console.log(this.ArrayServices['projects'].length )
+
+
+          // if( this.ArrayProjects.length < 1 && this.ArrayGroups < 0 ){
+
+          //     this.RoadEmptyService = 1
               
-          }
+          // }
         }).catch(() => {
 
           console.log('Error de conexión')
