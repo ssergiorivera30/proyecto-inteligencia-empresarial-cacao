@@ -137,7 +137,7 @@
         CenterContent: localStorage.getItem("classContainer") == null ? ContainerCenter : localStorage.getItem("classContainer"),
         DrowdownAction: 'hidden',
         auth: firebase.auth(),
-        user_photo: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
+        user_photo: API_ROUTER.PUBLIC + 'avatars/default.png',
         user_code: false,
         user_state: false,
         user_name: '...',

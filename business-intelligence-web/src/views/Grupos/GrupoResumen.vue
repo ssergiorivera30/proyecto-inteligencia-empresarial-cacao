@@ -190,6 +190,9 @@ import API_ROUTER from './../../services/SERVER_API'
       },
       mounted: function () {
          this.LoadIdProject()
+         console.log(this.$route)
+         console.log(this.$props.mi_nombre)
+         console.log('09')
       },
       methods: {
          LoadIdProject :function(){

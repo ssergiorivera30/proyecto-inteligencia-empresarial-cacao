@@ -25,12 +25,14 @@
                 <table class="w-full whitespace-nowrap">
                     <tbody class="w-full">
                         <tr v-for="info in ArrayServices" :key="info"
-                            @click="this.$router.push('/proyecto/ver/detalles/'+ info.id)"
+                            @click="this.$router.push(RouteLink + info.id)"
                             class="cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100">
                             <td class="pl-4 cursor-pointer">
                                 <div class="flex items-center">
-                                    <div class="w-10 h-10">
-                                        <img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects.png" />
+                                    <div class="w-10 h-full">
+                                        <img v-if="this.$props.ServiceID == 1" class="w-full h-full" :src="SrcPublic+info.logo" />
+                                        <img v-if="this.$props.ServiceID == 2" class="w-full h-full" :src="SrcPublic+'default.svg'" />
+                                        <img v-if="this.$props.ServiceID == 3" class="w-full h-full" :src="SrcPublic+'default.svg'" />
                                     </div>
                                     <div class="pl-4">
                                         <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36) }}...</p>
@@ -59,7 +61,7 @@
                                 <p class="font-medium">22.12.21</p>
                                 <p class="text-xs leading-3 text-gray-600 mt-2">34 days</p>
                             </td>
-                            <td class=" pl-16">
+                            <td class="pl-16">
                                 <div class="flex items-center">
                                     <img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" />
                                     <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" />
@@ -85,17 +87,19 @@ export default {
     data() {
         return {
             RouteSrc: API_ROUTER.API_UI + 'icons/database.png',  
-            EmptyService: API_ROUTER.API_UI + 'empty-services.png',        
+            EmptyService: API_ROUTER.API_UI + 'empty-services.png',
+            SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg    
         }
     },
     props:{
-        ArrayServices: Object,
-        ServiceName: String,
+        ArrayServices: Object,        
         ServiceNameLink: String ,
+        RouteLink: String,
         ServiceID: String,
+        ServiceName: String,
+        FilePathImg: String,
     },
     mounted: function () {
-
     },
     methods: { 
     }

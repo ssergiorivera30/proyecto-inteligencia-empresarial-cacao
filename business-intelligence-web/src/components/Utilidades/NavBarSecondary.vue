@@ -18,6 +18,10 @@
                class="row-span-2 bg-gray-200 rounded w-6 flex flex-wrap content-center justify-center ">
                <i class='bx bx-chevron-left font-bold'></i>
             </a>  
+
+              <div class="row-span-2 w-10 flex flex-wrap content-center justify-center">
+                <img class="w-full rounded" src="http://192.168.1.4/proyecto-inteligencia-empresarial-cacao/api/public/grupos/default.svg" />
+            </div> 
          
             <div class="row-span-2 h-16 flex flex-wrap content-center justify-center">
                <h3 class="font-bold tracking-wide text-lg text-gray-600"> {{ TitleHeader }}  </h3>

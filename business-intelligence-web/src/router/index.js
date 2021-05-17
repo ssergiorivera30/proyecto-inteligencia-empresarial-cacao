@@ -1,18 +1,24 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
-// Grupos
+
+// CONSTRUCTOR DE ENTRADAS PERSONALIZADAS
+
+
+import BuildFirsStep from '../views/BuildService/BuildFirsStep'
+import BuildSecondStep from '../views/BuildService/BuildSecondStep'
+
+// GRUPOS
 
 import GrupoDetallesHeader from './../views/Grupos/GrupoDetallesHeader'
 import GrupoResumen from './../views/Grupos/GrupoResumen'
 import GrupoProyectos from './../views/Grupos/GrupoProyectos'
 
+// PROYECTOS
 
 import ProyectosDetallesHeader from './../views/Projects/ProyectosDetallesHeader'
 import ProyectoResumen from './../views/Projects/ProyectoResumen'
 import ProyectoEntidades from './../views/Projects/ProyectoEntidades'
-
-
 
 import EntityDetallesHeader from './../views/Entitys/EntityDetallesHeader'
 import EntityRegistros from './../views/Entitys/EntityRegistros'
@@ -21,6 +27,8 @@ import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
 
 
 import TeamResumen from './../views/Team/TeamResumen'
+
+
 
 
 
@@ -95,8 +103,7 @@ import Personalizacion from '../views/MyCuenta/Personalizacion'
 import Seguridad from '../views/MyCuenta/Seguridad'
 
 
-import BuildFirsStep from '../views/BuildService/BuildFirsStep'
-import BuildSecondStep from '../views/BuildService/BuildSecondStep'
+
 
 
 
@@ -106,10 +113,7 @@ const routes = [
   { path: '/inicio',  name: 'Home', component: Home  },
 
 
-  { path: '/create-service/:type_service',  name: 'BuildFirsStep', component: BuildFirsStep  },
-  { path: '/constructor-service/:id_service',  name: 'BuildSecondStep', component: BuildSecondStep  },
-
-  
+ 
 
   { path: '/herraminetas', redirect: '/herraminetas/inicio/', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
     children:
@@ -173,15 +177,15 @@ children:
 
 
 
+{ path: '/create-service/:type_service',  name: 'BuildFirsStep', component: BuildFirsStep  },
+{ path: '/constructor-service/:id_service',  name: 'BuildSecondStep', component: BuildSecondStep  },
 
-
-
-{ path: '/grupo', name: 'GrupoDetallesHeader', component: GrupoDetallesHeader,
+{ path: '/grupo/ver', name: 'GrupoDetallesHeader', component: GrupoDetallesHeader,
   children:
     [
       { path: 'detalle/:id_group', name: 'GrupoResumen', component: GrupoResumen },  
       { path: 'proyectos/:id_group', name: 'GrupoProyectos', component: GrupoProyectos },     
-      { path: 'equipo/1/:id_service', component: TeamResumen }, 
+      { path: 'equipo/:id_service', component: TeamResumen }, 
     ]   
 },
 

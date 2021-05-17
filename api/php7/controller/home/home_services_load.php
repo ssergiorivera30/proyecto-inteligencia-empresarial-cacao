@@ -12,6 +12,7 @@ require_once "../../services/Response.php";
 
 require_once "../../model/Projects.php";
 require_once "../../model/Groups.php";
+require_once "../../model/Forms.php";
 
 $USER_CODE = $_SESSION['USER_CODE'];
 
@@ -23,7 +24,7 @@ $ListGroups = (new Groups())->GroupsLoad($conection, $USER_CODE);
 
 $ListProjects = (new Projects())->LoadProjects($conection, $USER_CODE);
 
-$ListForms = array();
+$ListForms =  (new Forms())->FormsLoad($conection, $USER_CODE);
 
 $arrayName = array('groups' => $ListGroups, 'projects' => $ListProjects, 'forms' => $ListForms );
 
