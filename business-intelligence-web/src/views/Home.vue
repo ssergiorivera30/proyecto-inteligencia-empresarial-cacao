@@ -3,13 +3,17 @@
   <!-- <WelcomeSistema /> -->
     <ServicesEmpty v-if="RoadEmptyService == 1"/>
 
+    <ServicesTitles ServiceName="Mis grupos" ServiceLink="/create-service/1" ServiceNameLink="Añadir grupo" />
+
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['groups']" 
       ServiceName="grupos" 
       RouteLink="/grupo/ver/detalle/"
       FilePathImg="grupos/"
       ServiceNameLink="Añadir grupo" 
-      ServiceID="1"/>
+      ServiceID="1" />
+
+    <ServicesTitles ServiceName="Mis proyectos" ServiceLink="/create-service/2" ServiceNameLink="Añadir proyecto" />
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['projects']" 
@@ -17,7 +21,9 @@
       RouteLink="/proyecto/ver/detalles/"
       FilePathImg="proyectos/"
       ServiceNameLink="Añadir proyecto" 
-      ServiceID="2"/>
+      ServiceID="2" />
+
+    <ServicesTitles ServiceName="Mis formularios" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['forms']" 
@@ -25,7 +31,7 @@
       RouteLink="/formulario/ver/detalles/"
       FilePathImg="formularios/"
       ServiceNameLink="Añadir formulario" 
-      ServiceID="3"/>
+      ServiceID="3" />
       
   </div>
 
@@ -38,6 +44,7 @@ import API_ROUTER from './../services/SERVER_API'
 
 import WelcomeSistema from "../components/Home/WelcomeSistema";
 import ServicesEmpty from "../components/Servicios/ServicesEmpty";
+import ServicesTitles from "../components/Titles/ServicesTitles";
 
 
 
@@ -49,6 +56,7 @@ export default {
   components: {    
     WelcomeSistema,
     ServicesEmpty,
+    ServicesTitles,
     ServicesList, 
   },
   data() {

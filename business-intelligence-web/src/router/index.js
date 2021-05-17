@@ -165,16 +165,35 @@ children:
 
 
 
+{ path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,
+children:
+  [
+    { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },              
+    { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
+  ]  
+},
 
 
 
+{ path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
 
 
+{ path: '/cuenta/', name: 'MyCuentaHeader', redirect:'/cuenta/i', component: MyCuentaHeader,
+children:
+[
+{ path: 'i/', name: 'Cuenta', component: Cuenta },              
+{ path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
+{ path: 'seguridad/', name: 'Seguridad', component: Seguridad },
+]  
+},
+
+{ path: '/proyectos/nuevo-proyecto', name: 'ProyectoNuevo', component: ProyectoNuevo},
 
 
-
-
-
+// ******************************************************************************************** //
+// ******************************************************************************************** //
+// ******************************************************************************************** //
+// ******************************************************************************************** //
 
 
 { path: '/create-service/:type_service',  name: 'BuildFirsStep', component: BuildFirsStep  },
@@ -219,30 +238,6 @@ children:
 
 
 
-
-  { path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,
-    children:
-      [
-        { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },              
-        { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
-      ]  
-  },
-
-  
-
-{ path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
-
-
-{ path: '/cuenta/', name: 'MyCuentaHeader', redirect:'/cuenta/i', component: MyCuentaHeader,
-children:
-  [
-    { path: 'i/', name: 'Cuenta', component: Cuenta },              
-    { path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
-    { path: 'seguridad/', name: 'Seguridad', component: Seguridad },
-  ]  
-},
-
-  { path: '/proyectos/nuevo-proyecto', name: 'ProyectoNuevo', component: ProyectoNuevo},
  
 ]
 
