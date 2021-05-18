@@ -14,7 +14,6 @@
    export default {
       name: 'GrupoDetallesHeader',
       components:{
-
          NavBarSecondary
       },
       data() {
