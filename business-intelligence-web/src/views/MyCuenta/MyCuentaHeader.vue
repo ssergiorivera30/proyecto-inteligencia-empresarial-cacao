@@ -68,8 +68,8 @@
         user_code: '',
         user_name: '',
 
-        avatar: API_ROUTER.API_FILE_SYSTEMS + 'avatars/default.png',
-        imagen_portada_avatar: API_ROUTER.API_FILE_SYSTEMS + 'portada_avatar/mapa_la_plata_huila.svg',
+        avatar: API_ROUTER.API_PUBLIC + 'avatars/default.png',
+        imagen_portada_avatar: API_ROUTER.API_PUBLIC + 'portada_avatar/mapa_la_plata_huila.svg',
 
         
         
@@ -80,9 +80,9 @@
         GoBack: '/inicio',
         GoBackTitle: 'Ir al inicio',
         RoutesNavs: [
-          { Linkroute: '/cuenta/i/', nameRoute: 'Cuenta' },
-          { Linkroute: '/cuenta/personalizacion/', nameRoute: 'Personalización' },
-          { Linkroute: '/cuenta/seguridad/', nameRoute: 'Seguridad' },
+          { Linkroute: '/cuenta/ver/info', nameRoute: 'Cuenta' },
+          { Linkroute: '/cuenta/ver/personalizacion/', nameRoute: 'Personalización' },
+          { Linkroute: '/cuenta/ver/seguridad/', nameRoute: 'Seguridad' },
         ]
       }
     },

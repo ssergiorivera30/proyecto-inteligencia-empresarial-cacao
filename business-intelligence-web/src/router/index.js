@@ -50,17 +50,6 @@ import ServiciosHome from '../views/Servicios/ServiciosHome'
 import MapsHome from '../views/Maps/MapsHome'
 import MapsCreate from '../views/Maps/MapsCreate'
 
-// Proyecto Nuevo
-
-import ProyectoNuevo from '../views/Proyectos/ProyectoNuevo'
-import ProyectosInicio from '../views/Proyectos/ProyectosInicio'
-
-// Proyecto detalles
-
-import ProyectoDetalles from '../views/Proyectos/ProyectosDetalles/ProyectoDetalles'
-import ProyectoDetallesHeader from '../views/Proyectos/ProyectoDetallesHeader'
-import ProyectoIntegrantes from '../views/Proyectos/ProyectosDetalles/ProyectoIntegrantes'
-
 // Listar formularios
 
 import MisFormularios from '../views/Formularios/FormularioListas/MisFormularios'
@@ -125,17 +114,8 @@ const routes = [
   { path: '/maps', name: 'MapsHome', component: MapsHome  },
   { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate  },
   
-  { path: '/proyectos', name: 'ProyectosInicio', component: ProyectosInicio  },
 
-  { path: '/proyecto/ver', name: 'ProyectoDetallesHeader', redirect:'/proyecto/ver/detalles', component: ProyectoDetallesHeader, 
-    children:
-      [    
-        { path: 'detalles/:id_project', name:'ProyectoDetalles', component: ProyectoDetalles }, 
-        { path: 'objetos-de-investigacion/:id_project', name: 'MisObjetosInvestigacion', component: MisObjetosInvestigacion},
-        { path: 'integrantes/:id_project', name: 'ProyectoIntegrantes', component: ProyectoIntegrantes},
-      ] 
-  },
-  
+
 
   { path: '/proyecto/formulario', name: 'FormularioNuevoHeader', component: FormularioNuevoHeader,
     children:
@@ -146,7 +126,7 @@ const routes = [
   },
 
 
-  { path: '/proyecto/objeto_nuevo', name: 'ObjetoNuevoHeader', component: ObjetoNuevoHeader,
+{ path: '/proyecto/objeto_nuevo', name: 'ObjetoNuevoHeader', component: ObjetoNuevoHeader,
   children:
     [
       { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },  
@@ -162,9 +142,6 @@ children:
     { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios},
   ]   
 },
-
-
-
 { path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,
 children:
   [
@@ -173,21 +150,18 @@ children:
   ]  
 },
 
-
-
 { path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
 
-
-{ path: '/cuenta/', name: 'MyCuentaHeader', redirect:'/cuenta/i', component: MyCuentaHeader,
-children:
-[
-{ path: 'i/', name: 'Cuenta', component: Cuenta },              
-{ path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
-{ path: 'seguridad/', name: 'Seguridad', component: Seguridad },
-]  
+{ path: '/cuenta/ver', name: 'MyCuentaHeader', redirect:'/cuenta/ver/info', component: MyCuentaHeader,
+  children:
+    [
+      { path: 'info/', name: 'Cuenta', component: Cuenta },              
+      { path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
+      { path: 'seguridad/', name: 'Seguridad', component: Seguridad },
+    ]  
 },
 
-{ path: '/proyectos/nuevo-proyecto', name: 'ProyectoNuevo', component: ProyectoNuevo},
+
 
 
 // ******************************************************************************************** //
@@ -208,21 +182,23 @@ children:
     ]   
 },
 
-{ path: '/p', name: 'ProyectosDetallesHeader', component: ProyectosDetallesHeader,
+{ path: '/proyecto/ver', name: 'ProyectosDetallesHeader', redirect:'/proyecto/ver/detalle', component: ProyectosDetallesHeader,
   children:
     [
       { path: 'detalle/:id_project', name: 'ProyectoResumen', component: ProyectoResumen }, 
       { path: 'entidades/:id_project', name: 'ProyectoEntidades', component: ProyectoEntidades }, 
-      { path: 'equipo/:type/:id_service', component: TeamResumen }, 
+      { path: 'equipo/:id_service', component: TeamResumen }, 
     ]   
 },
 
-{ path: '/entidad', name: 'EntityDetallesHeader', component: EntityDetallesHeader,
+
+
+{ path: '/entidad', name: 'EntityDetallesHeader', redirect:'/entidad/registros', component: EntityDetallesHeader,
   children:
     [
       { path: 'registros/:id_entity', name: 'EntityRegistros', component: EntityRegistros },
       { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },      
-      { path: 'equipo/:type/:id_service', component: TeamResumen },
+      { path: 'equipo/:id_service', component: TeamResumen },
     ]   
 },
 

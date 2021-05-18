@@ -18,7 +18,7 @@
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['projects']" 
       ServiceName="proyectos" 
-      RouteLink="/proyecto/ver/detalles/"
+      RouteLink="/proyecto/ver/detalle/"
       FilePathImg="proyectos/"
       ServiceNameLink="Añadir proyecto" 
       ServiceID="2" />

@@ -35,7 +35,7 @@
           </router-link>
 
 
-          <router-link to="/cuenta"
+          <router-link to="/cuenta/ver"
             class="inline-flex items-center justify-center py-2 hover:text-purple-900 focus:text-purple-900 rounded-lg">
             <span class="sr-only">Settings</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -137,7 +137,7 @@
         CenterContent: localStorage.getItem("classContainer") == null ? ContainerCenter : localStorage.getItem("classContainer"),
         DrowdownAction: 'hidden',
         auth: firebase.auth(),
-        user_photo: API_ROUTER.PUBLIC + 'avatars/default.png',
+        user_photo: API_ROUTER.API_PUBLIC + 'avatars/default.png',
         user_code: false,
         user_state: false,
         user_name: '...',
