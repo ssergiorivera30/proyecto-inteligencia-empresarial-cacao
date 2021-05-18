@@ -1,17 +1,17 @@
 <template>
    
         <div class="xl:w-3/4 2xl:w-4/5 w-full">
-            <div class="px-4 md:px-10 py-4 md:py-7">
+            <div class="py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
                     <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Files</p>
                     <div class="mt-4 sm:mt-0">
-                        <button class="inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                        <button class="inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-my-primary focus:outline-none rounded">
                             <p class="text-sm font-medium leading-none text-white">Download All</p>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="bg-white px-4 md:px-10 pb-5">
+            <div class="pb-5">
                 <div class="overflow-x-auto">
                     <table class="w-full whitespace-nowrap">
                         <tbody>

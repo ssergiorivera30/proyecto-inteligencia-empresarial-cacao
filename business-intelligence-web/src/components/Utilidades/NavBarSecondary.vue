@@ -23,9 +23,13 @@
                 <img class="w-full rounded" src="http://192.168.1.4/proyecto-inteligencia-empresarial-cacao/api/public/grupos/default.svg" />
             </div> 
          
-            <div class="row-span-2 h-16 flex flex-wrap content-center justify-center">
-               <h3 class="font-bold tracking-wide text-lg text-gray-600"> {{ TitleHeader }}  </h3>
-            </div>          
+            <div class="row-span-2 h-16 block flex-wrap content-center justify-center">
+               <div class="pl-1 py-0">
+                  <h3 class="font-bold text-lg text-gray-600"> Estrategis tecnologicas para la gestión...  </h3>
+                  <h4 class="font-semibold text-sm text-gray-400"> {{ TitleHeader }}  </h4>
+               </div>
+            </div> 
+     
          </div>
 
 

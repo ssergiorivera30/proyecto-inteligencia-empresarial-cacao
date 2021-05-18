@@ -20,7 +20,7 @@
       data() {
          return {           
 
-            TitleHeader: 'Grupo',
+            TitleHeader: 'Entidad',
             IconModulo: 'bx bxs-group',
             SubTitleHeader: 'Detalles',
             GoBack: '/inicio',
@@ -28,7 +28,7 @@
             RoutesNavs: [
                { Linkroute: '/entidad/registros/'+this.$route.params.id_entity, nameRoute: 'Registros' },
                { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'Registrar' },   
-               { Linkroute: '/entidad/equipo/4/'+this.$route.params.id_entity, nameRoute: 'Equipo' },
+               { Linkroute: '/entidad/equipo/'+this.$route.params.id_entity, nameRoute: 'Equipo' },
             ]
          }
       },
