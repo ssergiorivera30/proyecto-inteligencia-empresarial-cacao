@@ -1,7 +1,7 @@
 <template>
   <div>
   <!-- <WelcomeSistema /> -->
-    <ServicesEmpty v-if="RoadEmptyService == 1"/>
+    <ServicesEmpty v-if="RoadEmptyService === 1"/>
 
     <ServicesTitles ServiceName="Mis grupos" ServiceLink="/create-service/1" ServiceNameLink="Añadir grupo" />
 

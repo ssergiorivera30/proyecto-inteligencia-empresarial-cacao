@@ -15,7 +15,7 @@
       <div class="flex-grow flex flex-col justify-between text-gray-500 w-14 mt-14">
         <nav class="flex flex-col mx-4 my-2 space-y-3">
           <router-link to="/inicio"
-            class="inline-flex items-center justify-center py-2 hover:text-purple-900 focus:text-purple-900 rounded-lg">
+            class="inline-flex items-center justify-center py-2 hover:text-principal-color-ui focus:text-principal-color-ui rounded-lg">
             <span class="sr-only">Inicio</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
               class="h-6 w-6">
@@ -24,7 +24,7 @@
             </svg>
           </router-link>
           <router-link to="/herraminetas"
-            class="inline-flex items-center justify-center py-2 hover:text-purple-900 focus:text-purple-900 rounded-lg"
+            class="inline-flex items-center justify-center py-2 hover:text-principal-color-ui focus:text-principal-color-ui rounded-lg"
             title="Herramientas">
             <span class="sr-only">Herramientas</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -36,7 +36,7 @@
 
 
           <router-link to="/cuenta/ver"
-            class="inline-flex items-center justify-center py-2 hover:text-purple-900 focus:text-purple-900 rounded-lg">
+            class="inline-flex items-center justify-center py-2 hover:text-principal-color-ui focus:text-principal-color-ui rounded-lg">
             <span class="sr-only">Settings</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -51,7 +51,7 @@
 
 
       <!-- bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 -->
-      <header class="flex sticky top-0 z-10 items-center h-14 px-1 sm:pr-10 bg-blue-900 shadow-sm w-full">
+      <header class="flex sticky top-0 z-10 items-center h-14 px-1 sm:pr-10 bg-principal-color-ui shadow-sm w-full">
 
         <router-link to="/" class="hidden sm:hidden md:flex pt-1 justify-center h-10 w-14">
           <img src="./assets/logo.png" class="h-8 w-8" alt="">
@@ -69,7 +69,7 @@
             class="text-sm md:text-md h-8 py-2 pl-2 pr-4 w-full text-white placeholder-gray-600 bg-gray-100 focus:bg-white rounded-md focus:outline-none" />
         </div>
         <div class="flex flex-shrink-0 items-center ml-auto mr-2">
-          <button class="inline-flex items-center p-2 hover:text-purple-900 rounded-lg focus:outline-none">
+          <button class="inline-flex items-center p-2 hover:text-principal-color-ui rounded-lg focus:outline-none">
             <span class="sr-only">Menu</span>
             <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
               <span class="text-sm font-semibold text-white">{{ user_name }}</span>
@@ -106,7 +106,7 @@
         </div>
       </header>
 
-      <router-view :class=" CenterContent + ' ml-0 sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-8 mb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl'" />
+      <router-view :class=" CenterContent + ' ml-0  sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-8 pb-24 mb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl'" />
 
      
 

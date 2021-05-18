@@ -1,5 +1,5 @@
 <template>
-  <p>Seguridad</p>
+  <div>Seguridad</div>
 </template>
 
 <script>

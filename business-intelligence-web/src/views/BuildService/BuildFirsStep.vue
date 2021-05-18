@@ -3,50 +3,50 @@
     <form
       action="#"
       method="POST"
-      class="space-y-6 mt-5"
+      class="space-y-2 mt-5"
       @submit.prevent="SaveInitialForm()">
       <header class="flex items-center justify-center">
-        <h2 v-if="ServiceType == 1" class="text-lg leading-6 font-medium text-black">Crear nuevo grupo</h2>
-        <h2 v-if="ServiceType == 2" class="text-lg leading-6 font-medium text-black">Crear nuevo proyecto</h2>
-        <h2 v-if="ServiceType == 3" class="text-lg leading-6 font-medium text-black">Crear nueva entidad</h2>
-        <h2 v-if="ServiceType == 4" class="text-lg leading-6 font-medium text-black">Crear nuevo formulario</h2>
+        <h2 v-if="ServiceType == 1" class="text-lg leading-6 font-medium text-black">Creación de <span class="font-bold border-b border-black">grupo</span></h2>
+        <h2 v-if="ServiceType == 2" class="text-lg leading-6 font-medium text-black">Creación de <span class="font-bold border-b border-black">proyecto</span></h2>
+        <h2 v-if="ServiceType == 3" class="text-lg leading-6 font-medium text-black">Creación de <span class="font-bold border-b border-black">entidad</span></h2>
+        <h2 v-if="ServiceType == 4" class="text-lg leading-6 font-medium text-black">Creación de <span class="font-bold border-b border-black">formulario</span></h2>
       </header>
 
       <div>
-        <label class="block text-gray-700">Nombre</label>
+        <label class="text-gray-700 font-semibold text-xs">Nombre</label>
         <input
           type="text"
-          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          class="form-control2"
           required
           v-model="ServiceName"
         />
       </div>
 
       <div v-if="ServiceType == 2">
-        <label class="block text-gray-700">Nombre de la Empresa, entidad o programa de formación</label>
+        <label class="text-gray-700 font-semibold text-xs">Nombre de la Empresa, entidad o programa de formación</label>
         <input
           type="text"
-          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          class="form-control2"
           required
           v-model="ServiceNameEntity"
         />
       </div>
 
       <div v-if="ServiceType == 1">
-        <label class="block text-gray-700">Logo</label>
+        <label class="text-gray-700 font-semibold text-xs">Logo</label>
         <input
           type="file"
-          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          class="form-control2"
           required
         />
       </div>
 
       <div>
-        <label class="block text-gray-700">Breve descripción</label>
+        <label class="text-gray-700 font-semibold text-xs">Breve descripción</label>
         <textarea
           wrap="hard"
           rows="7"
-          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          class="form-control2"
           required
           v-model="ServiceDescription"
         ></textarea>
@@ -54,10 +54,10 @@
 
 
       <div v-if="ServiceType == 1 || ServiceType == 2 || ServiceType == 4"> 
-        <label class="block text-gray-700">Integrantes</label>
+        <label class="text-gray-700 font-semibold text-xs">Integrantes</label>
         <input
           type="text"
-          class="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+          class="form-control2"
           required
         />
       </div>
@@ -65,7 +65,7 @@
       <div class="py-2 text-left">
         <button
           type="submit"
-          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          class="inline-flex justify-center py-1 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-my-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Continuar
         </button>
@@ -79,7 +79,10 @@
     />
 
     <div v-else class="flex justify-center">
-      <img class="w-2/3 p-10" :src="img_form_person" alt="" />
+      <img v-if="this.$route.params.type_service == 1" class="w-2/3 p-10" :src="service_group" alt="" />
+      <img v-if="this.$route.params.type_service == 2" class="w-2/3 p-10" :src="service_project" alt="" />
+      <img v-if="this.$route.params.type_service == 3" class="w-2/3 p-10" :src="service_entity" alt="" />
+      <img v-if="this.$route.params.type_service == 4" class="w-2/3 p-10" :src="service_form" alt="" />
     </div>
   </div>
 </template>
@@ -96,11 +99,15 @@ export default {
   },
   data() {
     return {
-      img_form_person: API_ROUTER.API_UI + "/forms/new_form.svg",
+      service_group: API_ROUTER.API_UI + "services/team.svg",
+      service_project: API_ROUTER.API_UI + "services/projects.svg",
+      service_form: API_ROUTER.API_UI + "services/forms.svg",
+      service_entity: API_ROUTER.API_UI + "services/entity.svg",
+
       ServiceType: this.$route.params.type_service,
-      ServiceName: "Name service",
+      ServiceName: "",
       ServiceNameEntity: null,
-      ServiceDescription: "Descripción",
+      ServiceDescription: "",
     };
   },
   mounted: function () {},
