@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2021 a las 15:35:17
+-- Tiempo de generación: 19-05-2021 a las 16:53:29
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -330,8 +330,9 @@ CREATE TABLE `tbl_services` (
   `tbse_id_type_service` int(10) NOT NULL,
   `tbse_name` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
   `tbse_description` text COLLATE utf8_spanish_ci NOT NULL,
-  `tbse_emp` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tbse_business` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `tbse_logo` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tbse_json_input_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `tbse_date_created` date NOT NULL,
   `tbse_hour_created` date NOT NULL,
   `tbse_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -343,12 +344,14 @@ CREATE TABLE `tbl_services` (
 -- Volcado de datos para la tabla `tbl_services`
 --
 
-INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_emp`, `tbse_logo`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence`) VALUES
-(4, 1, 'Grupo de Investigación Nova', 'Servicio Nacional de Aprendizaje', NULL, NULL, '2021-04-30', '2021-04-30', '2021-05-06 19:10:44', 1, 1),
-(5, 1, 'Grupo de Investigacion La Angostura', 'Somos un establecimiento público del orden nacional, con personería jurídica, patrimonio propio e independiente, y autonomía administrativa;  Adscrito al Ministerio del Trabajo de Colombia. Ofrece formación gratuita a millones de colombianos que se benefician con programas técnicos, tecnológicos y complementarios que enfocados en el desarrollo económico, tecnológico y social del país, entran a engrosar las actividades productivas de las empresas y de la industria, para obtener mejor competitividad y producción con los mercados globalizados. \r\n\r\nFacultada por el Estado para la inversión en infraestructura necesaria para mejorar el desarrollo social y técnico de los trabajadores en las diferentes regiones,  a través de formación profesional integral que logra incorporarse con las metas del Gobierno Nacional, mediante el cubrimiento de las necesidades específicas de recurso humano en las empresas, a través de la vinculación al mercado laboral -bien sea como empleado o subempleado-, con grandes oportunidades para el desarrollo empresarial, comunitario y tecnológico.  \r\n\r\nLa entidad más querida por los colombianos funciona en permanente alianza entre Gobierno, empresarios y trabajadores, desde su creación, con el firme propósito de lograr la competitividad de Colombia a través del incremento de la productividad en las empresas y regiones, sin dejar de lado la inclusión social, en articulación con la política nacional: Más empleo y menos pobreza. Por tal razón, se generan continuamente programas y proyectos de responsabilidad social, empresarial, formación, innovación, internacionalización y transferencia de conocimientos y tecnologías.', NULL, NULL, '2021-04-30', '2021-04-30', '2021-05-06 19:27:18', 1, 1),
-(11, 2, 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.', 'La cadena productiva del sector cacaotero presenta bajos niveles de competitividad en los mercados nacionales e internacionales, debido a prácticas de producción inadecuadas que afectan la calidad y el medio ambiente, por tanto, se plantea desarrollar un conjunto de estrategias que incluyen una plataforma tecnológica multidispositivo con IoT para el procesamiento de datos referentes a diagnósticos y caracterización de fincas cacaoteras, estos datos estarán ligados a los procesos de producción, beneficio, aprovechamiento, comercialización, sostenibilidad económica y ambiental. Mejorando con esto la toma de decisiones y la creación de estrategias de mejora continua en tiempo real que contribuirán al fortalecimiento de la cadena productiva del cultivo de cacao en el departamento del Huila.', NULL, NULL, '2021-05-06', '2021-05-06', '2021-05-06 19:17:24', 1, 1),
-(12, 2, 'Servicio Nacional de Aprendizaje', 'SENA', NULL, NULL, '2021-05-06', '2021-05-06', '2021-05-06 21:52:31', 1, 1),
-(13, 1, 'El grupo de Gilberto', 'Gilberto m.', NULL, NULL, '2021-05-06', '2021-05-06', '2021-05-06 21:53:37', 1, 1);
+INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_business`, `tbse_logo`, `tbse_json_input_data`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence`) VALUES
+(1, 1, 'Grupo de Investigación NOVA', 'El Grupo de Investigación NOVA del centro de Desarrollo Agroempresarial y Turístico del Huila...', NULL, '1.png', '[{\"input\":{\"name\":\"Gran \\u00e1rea\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Dato de prueba no 1\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Clasificaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Grupo reconocido\",\"type\":\"radio\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"S\\u00ed\"}},{\"option\":{\"value\":\"No\"}}]}},{\"input\":{\"name\":\"Correo electr\\u00f3nico\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"P\\u00e1gina Web\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"L\\u00edneas de investigaci\\u00f3n\",\"type\":\"textarea\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Instituciones asociadas\",\"type\":\"textarea\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]', '2021-05-10', '2021-05-10', '2021-05-19 03:54:51', 1, 1),
+(2, 2, 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.', 'La cadena productiva del sector cacaotero presenta bajos niveles de competitividad en los mercados nacionales e internacionales, debido a prácticas de producción inadecuadas que afectan la calidad y el medio ambiente, por tanto, se plantea desarrollar un conjunto de estrategias que incluyen una plataforma tecnológica multidispositivo con IoT para el procesamiento de datos referentes a diagnósticos y caracterización de fincas cacaoteras, estos datos estarán ligados a los procesos de producción, beneficio, aprovechamiento, comercialización, sostenibilidad económica y ambiental. Mejorando con esto la toma de decisiones y la creación de estrategias de mejora continua en tiempo real que contribuirán al fortalecimiento de la cadena productiva del cultivo de cacao en el departamento del Huila.', NULL, NULL, '[{\"input\":{\"name\":\"C\\u00f3digo SGPS\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]', '2021-05-10', '2021-05-10', '2021-05-19 03:55:37', 1, 1),
+(3, 3, 'Fincas productoras de cacao (La Plata y Paicol Huila )', 'Recolección de datos de fincas productoras de cacao.', NULL, NULL, NULL, '2021-05-10', '2021-05-10', '2021-05-19 02:43:56', 1, 1),
+(4, 4, 'Fincas productoras de cacao (La Plata y Paicol Huila )', 'Recolección de datos de fincas productoras de cacao.', NULL, NULL, NULL, '2021-05-10', '2021-05-10', '2021-05-19 02:44:00', 1, 1),
+(5, 1, 'Grupo de Investigación de La Angostura', 'La Angostura', NULL, NULL, NULL, '2021-05-17', '2021-05-17', '2021-05-19 02:44:03', 1, 1),
+(6, 2, 'Proyecto de prueba no. 1', 'Breve descripción\n', NULL, NULL, NULL, '2021-05-18', '2021-05-18', '2021-05-19 02:44:05', 1, 1),
+(7, 1, 'Proyecto', 'Este modelo de formularios te permitirá personalizar las entradas de información al sistema, este es.', NULL, NULL, '[{\"input\":{\"name\":\"Nombres\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Sergio Yamit\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Apellidos\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Rivera Flor\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Edad\",\"type\":\"number\",\"required\":false,\"placeholder\":\"\",\"value\":\"28\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Fecha de nacimiento\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"2021-04-14\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]', '2021-05-18', '2021-05-18', '2021-05-19 03:50:07', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -366,7 +369,37 @@ CREATE TABLE `tbl_service_mother_table` (
 --
 
 INSERT INTO `tbl_service_mother_table` (`tbsede_id_service`, `tbsede_code_inputs`) VALUES
-(9, '[{\"input\":{\"name\":\"Nombres\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Apellidos\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]');
+(1, '[{\"input\":{\"name\":\"Gran \\u00e1rea\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Dato de prueba no 1\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Clasificaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Grupo reconocido\",\"type\":\"radio\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"S\\u00ed\"}},{\"option\":{\"value\":\"No\"}}]}},{\"input\":{\"name\":\"Correo electr\\u00f3nico\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"P\\u00e1gina Web\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"L\\u00edneas de investigaci\\u00f3n\",\"type\":\"textarea\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Instituciones asociadas\",\"type\":\"textarea\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]'),
+(2, '[{\"input\":{\"name\":\"C\\u00f3digo SGPS\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]'),
+(3, '[{\"input\":{\"name\":\"Nombres\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Apellidos\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Edad\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"N\\u00famero de identificaci\\u00f3n\",\"type\":\"number\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]'),
+(6, '[{\"input\":{\"name\":\"Fecha de inicio\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"2021-02-11\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Fecha final\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"2021-12-31\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}},{\"input\":{\"name\":\"Nombre del responsable\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Sergio Yamit Rivera Flor\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[]}}]');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_type_service`
+--
+
+CREATE TABLE `tbl_type_service` (
+  `tbtse_auto_id` int(11) NOT NULL,
+  `tbtse_prefix` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `tbtse_name` varchar(120) COLLATE utf8_spanish_ci NOT NULL,
+  `tbtse_description` text COLLATE utf8_spanish_ci NOT NULL,
+  `tbtse_date_created` date NOT NULL,
+  `tbtse_hour_created` time NOT NULL,
+  `tbtse_status` tinyint(1) NOT NULL DEFAULT 1,
+  `tbtse_vigence` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_type_service`
+--
+
+INSERT INTO `tbl_type_service` (`tbtse_auto_id`, `tbtse_prefix`, `tbtse_name`, `tbtse_description`, `tbtse_date_created`, `tbtse_hour_created`, `tbtse_status`, `tbtse_vigence`) VALUES
+(1, 'z_groups', 'Grupos de investigacion', 'Grupos de investigacion o equipos de trabajo', '2021-05-10', '14:49:09', 1, 1),
+(2, 'z_projects', 'Proyectos', 'Proyectos', '2021-05-10', '14:49:09', 1, 1),
+(3, 'z_entitys', 'Entidades', 'Objeto o concepto ', '2021-05-10', '14:53:04', 1, 1),
+(4, 'z_forms', 'Formularios', 'Espacios para la recoleccion personalizadas de datos', '2021-05-10', '14:53:04', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -481,6 +514,43 @@ CREATE TABLE `user_data_personals` (
 INSERT INTO `user_data_personals` (`udp_user_id`, `udp_name`, `udp_gender`, `udp_date_birth`, `udp_type_id`, `udp_numer_id`) VALUES
 (1, 'Sergio Rivera', 'Masculino', '0000-00-00', 'TI', 0),
 (2, 'Elder Rendon Rengifo ', 'Masculino', '0000-00-00', 'TI', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `z2_project_6`
+--
+
+CREATE TABLE `z2_project_6` (
+  `id_z2_project_6` int(11) NOT NULL,
+  `fecha_de_inicio_0` date DEFAULT NULL,
+  `fecha_final_1` date DEFAULT NULL,
+  `nombre_del_responsable_2` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `z2_project_6_hour_created` time NOT NULL,
+  `z2_project_6_date_created` date NOT NULL,
+  `z2_project_6_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `z2_project_6_status` tinyint(1) NOT NULL DEFAULT 1,
+  `z2_project_6_vigence` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `z_entity_3`
+--
+
+CREATE TABLE `z_entity_3` (
+  `id_z_entity_3` int(11) NOT NULL,
+  `nombres_0` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `apellidos_1` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `edad_2` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `numero_de_identificacion_3` int(10) DEFAULT NULL,
+  `z_entity_3_hour_created` time NOT NULL,
+  `z_entity_3_date_created` date NOT NULL,
+  `z_entity_3_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `z_entity_3_status` tinyint(1) NOT NULL DEFAULT 1,
+  `z_entity_3_vigence` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -629,6 +699,12 @@ ALTER TABLE `tbl_service_mother_table`
   ADD PRIMARY KEY (`tbsede_id_service`);
 
 --
+-- Indices de la tabla `tbl_type_service`
+--
+ALTER TABLE `tbl_type_service`
+  ADD PRIMARY KEY (`tbtse_auto_id`);
+
+--
 -- Indices de la tabla `users_avatars`
 --
 ALTER TABLE `users_avatars`
@@ -658,6 +734,18 @@ ALTER TABLE `user_count_type`
 --
 ALTER TABLE `user_data_personals`
   ADD PRIMARY KEY (`udp_user_id`);
+
+--
+-- Indices de la tabla `z2_project_6`
+--
+ALTER TABLE `z2_project_6`
+  ADD PRIMARY KEY (`id_z2_project_6`);
+
+--
+-- Indices de la tabla `z_entity_3`
+--
+ALTER TABLE `z_entity_3`
+  ADD PRIMARY KEY (`id_z_entity_3`);
 
 --
 -- Indices de la tabla `z_object_1`
@@ -757,7 +845,13 @@ ALTER TABLE `system_status`
 -- AUTO_INCREMENT de la tabla `tbl_services`
 --
 ALTER TABLE `tbl_services`
-  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_type_service`
+--
+ALTER TABLE `tbl_type_service`
+  MODIFY `tbtse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users_keys`
@@ -770,6 +864,18 @@ ALTER TABLE `users_keys`
 --
 ALTER TABLE `user_count_type`
   MODIFY `ucty_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `z2_project_6`
+--
+ALTER TABLE `z2_project_6`
+  MODIFY `id_z2_project_6` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `z_entity_3`
+--
+ALTER TABLE `z_entity_3`
+  MODIFY `id_z_entity_3` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `z_object_1`
@@ -830,6 +936,12 @@ ALTER TABLE `projects_objetive_generals`
 --
 ALTER TABLE `projects_users`
   ADD CONSTRAINT `projects_users_ibfk_1` FOREIGN KEY (`pus_id_project`) REFERENCES `projects` (`pro_auto_id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `tbl_service_mother_table`
+--
+ALTER TABLE `tbl_service_mother_table`
+  ADD CONSTRAINT `tbl_service_mother_table_ibfk_1` FOREIGN KEY (`tbsede_id_service`) REFERENCES `tbl_services` (`tbse_auto_id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `users_avatars`
