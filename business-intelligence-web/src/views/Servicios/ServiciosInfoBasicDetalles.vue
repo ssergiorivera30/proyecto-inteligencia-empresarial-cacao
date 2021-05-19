@@ -1,41 +1,50 @@
 <template>
    <div class="">
-
       <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_service }} - Información general</h2>
-          <router-link :to="'/constructor-service/'+ this.$route.params.id_service"
-            class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" 
-                  stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-            Actualizar información
-         </router-link>
+         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_service }} - Información
+            general</h2>
+
+         <div class="flex">
+            <a href="javascript:history.back()"
+               class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
+               <svg xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+               </svg>
+               Atrás
+            </a>
+
+            <router-link :to="'/constructor-service/'+ this.$route.params.id_service"
+               class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
+               <svg xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+               </svg>
+               Actualizar información
+            </router-link>
+         </div>
       </header>
-   
-   
 
+      <div class="grid grid-rows-1 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-3">
+         <div class="col-span-2 row-span-3 bg-white shadow overflow-hidden rounded-sm">
 
-
-       <div class="grid grid-rows-1 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-3">
-         <div  class="col-span-2 row-span-3 bg-white shadow overflow-hidden rounded-sm">            
-   
-            <div class="" >               
+            <div class="">
                <div class="px-3 py-3 ">
                   <h3 class="text-lg leading-6 font-medium text-gray-600">
-                     {{ ServiceName}}
+                     {{ ServiceName }}
                   </h3>
-                  <p class="mt-3 max-w-2xl text-sm text-gray-500">
+                  <p class="mt-3 text-sm text-gray-500">
                      {{ ServiceDescription }}
                   </p>
                </div>
                <div class="border-t border-gray-200">
                   <dl>
-                     <div v-for="(info, index) in arrayInfoResumenCustom" :key="info">    
+                     <div v-for="(info, index) in arrayInfoResumenCustom" :key="info">
 
-           
-                        <div v-if="index % 2 == true"                      
-                           class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
+                        <div v-if="index % 2 == true" class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
                            <dt class="text-sm font-medium text-gray-500">
                               {{ info['input']['name'] }}
                            </dt>
@@ -45,8 +54,7 @@
                         </div>
 
 
-                        <div v-else                      
-                           class="bg-gray-50 px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
+                        <div v-else class="bg-gray-50 px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
                            <dt class="text-sm font-medium text-gray-500">
                               {{ info['input']['name'] }}
                            </dt>
@@ -54,12 +62,9 @@
                               {{ info['input']['value'] }}
                            </dd>
                         </div>
-
-
                      </div>
 
 
-                     
                      <div class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm font-medium text-gray-500">
                            Adjuntos
@@ -87,7 +92,6 @@
                               </li>
                               <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                  <div class="w-0 flex-1 flex items-center">
-                                    <!-- Heroicon name: solid/paper-clip -->
                                     <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                        <path fill-rule="evenodd"
@@ -111,16 +115,16 @@
                </div>
             </div>
          </div>
-         </div>
+      </div>
 
    </div>
 </template>
 
 <script>
 
-import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
-import axios from 'axios';
-import API_ROUTER from './../../services/SERVER_API'
+   import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+   import axios from 'axios';
+   import API_ROUTER from './../../services/SERVER_API'
 
    export default {
       name: 'ServiciosInfoBasicDetalles',
@@ -129,7 +133,7 @@ import API_ROUTER from './../../services/SERVER_API'
       },
       data() {
          return {
-           
+
             RoutesNavs: [
                { Linkroute: '/proyecto/detalles', nameRoute: 'Detalles' },
                { Linkroute: '/proyecto/formularios', nameRoute: 'Recolección de datos' },
@@ -141,38 +145,38 @@ import API_ROUTER from './../../services/SERVER_API'
             Text: API_ROUTER.API_UI + "chart/text.svg",
 
             arrayInfoResumenCustom: [],
-            ServiceName : '',
-            ServiceDescription : '',
+            ServiceName: '',
+            ServiceDescription: '',
             ShowInfoBasic: 0,
          }
       },
       beforeMount: function () {
 
-   
+
 
       },
       mounted: function () {
          this.LoadIdProject()
       },
       methods: {
-         LoadIdProject :function(){
-         axios.post(API_ROUTER.PHP7_CONTROLLER + "projects/load_project_resumen.php",
-            {
-               id_service: this.$route.params.id_service,
-            }).then((res) => {
+         LoadIdProject: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "projects/load_project_resumen.php",
+               {
+                  id_service: this.$route.params.id_service,
+               }).then((res) => {
 
-               this.ServiceName = res.data[0]['name']
-               this.ServiceDescription = res.data[0]['description']
-               
-               this.arrayInfoResumenCustom = JSON.parse(res.data[0]['json_input_data'])
-               this.ShowInfoBasic = 1
+                  this.ServiceName = res.data[0]['name']
+                  this.ServiceDescription = res.data[0]['description']
 
-            }).catch(() => {
-               
-               this.ShowInfoBasic = 0
+                  this.arrayInfoResumenCustom = JSON.parse(res.data[0]['json_input_data'])
+                  this.ShowInfoBasic = 1
 
-         })
-      },
+               }).catch(() => {
+
+                  this.ShowInfoBasic = 0
+
+               })
+         },
       }
    }
 </script>

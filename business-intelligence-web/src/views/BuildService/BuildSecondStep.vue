@@ -214,6 +214,9 @@
                   <button type="submit" class="mr-3 btn-indigo">
                      Actualizar
                   </button>
+                  <button type="submit" class="mr-3 btn-light">
+                     Cancelar
+                  </button>
                </div>
            
             </form>

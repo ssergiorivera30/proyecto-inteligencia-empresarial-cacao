@@ -23,7 +23,7 @@
                   <div class="mt-2" v-if="input['input']['type'] == 'radio'">
                      <div v-for="option in input['input']['options']" :key="option">
                         <label class="inline-flex items-center">
-                           <input type="radio" :name="input['input']['name']">
+                           <input type="radio" :name="input['input']['name']" v-model="input['input']['value']">
                            <span class="ml-2">{{ option['option']['value']}}</span>
                         </label>
                      </div>
@@ -58,15 +58,28 @@
 
                   <span v-else>
 
-                     <input v-if="input['input']['required'] == 'true'" :type="input['input']['type']"
-                        :placeholder="input['input']['placeholder']" :value="input['input']['value']"
-                        :minlength="input['input']['minlength']" :maxlength="input['input']['maxlength']"
-                        :min="input['input']['min']" :max="input['input']['max']" required class="form-control2 py-3">
+                     <input v-if="input['input']['required'] == 'true'" 
+                        :type="input['input']['type']"
+                        v-model="input['input']['value']"
+                        :placeholder="input['input']['placeholder']"
+                        :value="input['input']['value']"
+                        :minlength="input['input']['minlength']" 
+                        :maxlength="input['input']['maxlength']"
+                        :min="input['input']['min']"
+                        :max="input['input']['max']"
+                        required 
+                        class="form-control2 py-3">
 
-                     <input v-else :type="input['input']['type']" :placeholder="input['input']['placeholder']"
-                        :value="input['input']['value']" :minlength="input['input']['minlength']"
-                        :maxlength="input['input']['maxlength']" :min="input['input']['min']"
-                        :max="input['input']['max']" class="form-control2 py-3">
+                     <input v-else 
+                        :type="input['input']['type']" 
+                        :placeholder="input['input']['placeholder']"
+                        v-model="input['input']['value']"                       
+                        :value="input['input']['value']" 
+                        :minlength="input['input']['minlength']"                        
+                        :maxlength="input['input']['maxlength']" 
+                        :min="input['input']['min']"
+                        :max="input['input']['max']" 
+                        class="form-control2 py-3">
                   </span>
                </div>
             </div>

@@ -35,7 +35,7 @@
                            <dt class="text-sm font-medium text-gray-500">
                               {{ info['input']['name'] }}
                            </dt>
-                           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                           <dd class="pl-2 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                               {{ info['input']['value'] }}
                            </dd>
                         </div>
@@ -46,17 +46,14 @@
                            <dt class="text-sm font-medium text-gray-500">
                               {{ info['input']['name'] }}
                            </dt>
-                           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                           <dd class="pl-2 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                               {{ info['input']['value'] }}
                            </dd>
                         </div>
                         </div>
-
                      </div>
 
-
-                  <router-link to="/service/info/basic/8"> Ver</router-link>
-                     
+                                  
                      <div class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm font-medium text-gray-500">
                            Adjuntos
@@ -104,6 +101,12 @@
                            </ul>
                         </dd>
                      </div>
+
+                     <router-link 
+                        :to="'/service/info/basic/'+this.$route.params.id_project" 
+                        class="mx-2 my-5 bg-gray-200 flex justify-center  hover:bg-gray-300 rounded text-gray-700 px-6 py-2 text-sm font-semibold">
+                           Ver más
+                     </router-link>
                   </dl>
                </div>
             </div>
