@@ -7,8 +7,7 @@
         </h2>
     </section>    
 
-        <div v-else class="w-full">
-            
+        <div v-else class="w-full">            
             <div class="bg-white shadow overflow-y-auto">
                 <table class="w-full whitespace-nowrap">
                     <tbody class="w-full">
@@ -25,7 +24,6 @@
                                     <div class="pl-4">
                                         <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36) }}...</p>
                                         <p v-else class="font-medium">{{ info.name }}</p>
-
                                         <p  v-if="info.description.length > 28" class="text-xs leading-3 text-gray-600 pt-2">{{ info.description.substring(0,28) }}...</p>
                                         <p v-else class="text-xs leading-3 text-gray-600 pt-2">{{ info.description }}</p>
                                     </div>
@@ -57,13 +55,11 @@
                                     <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" />
                                 </div>
                             </td>                           
-                        </tr>
-                     
+                        </tr>                     
                     </tbody>
                 </table>
             </div>
-        </div>
-      
+        </div>      
 </template>
 
 <script>

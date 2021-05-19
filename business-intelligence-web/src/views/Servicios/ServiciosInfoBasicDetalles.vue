@@ -2,8 +2,8 @@
    <div class="">
 
       <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_project }} - Información general</h2>
-          <router-link :to="'/constructor-service/'+ this.$route.params.id_project"
+         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_service }} - Información general</h2>
+          <router-link :to="'/constructor-service/'+ this.$route.params.id_service"
             class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                <path stroke-linecap="round" stroke-linejoin="round" 
@@ -55,7 +55,6 @@
                      </div>
 
 
-<router-link to="/service/info/basic/"> Ver</router-link>
                      
                      <div class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm font-medium text-gray-500">
@@ -258,7 +257,7 @@ import axios from 'axios';
 import API_ROUTER from './../../services/SERVER_API'
 
    export default {
-      name: 'ProyectoResumen',
+      name: 'ServiciosInfoBasicDetalles',
       components: {
          NavBarSecondary
       },
@@ -293,7 +292,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadIdProject :function(){
          axios.post(API_ROUTER.PHP7_CONTROLLER + "projects/load_project_resumen.php",
             {
-               id_service: this.$route.params.id_project,
+               id_service: this.$route.params.id_service,
             }).then((res) => {
 
                this.ServiceName = res.data[0]['name']

@@ -25,7 +25,8 @@
          
             <div class="row-span-2 h-16 block flex-wrap content-center justify-center">
                <div class="pl-1 py-0">
-                  <h3 class="font-bold text-lg text-gray-600">{{ TitleHeader }}</h3>
+                  <h3 v-if="TitleHeader.length > 40" class="font-bold text-lg text-gray-600">{{ TitleHeader.substring(0,40) }}...</h3>
+                  <h3 v-else class="font-bold text-lg text-gray-600">{{ TitleHeader }}</h3>
                   <h4 class="font-semibold text-sm text-gray-400">{{ SubTitleHeader }} {{ breadcrumb }}</h4>
                </div>
             </div> 

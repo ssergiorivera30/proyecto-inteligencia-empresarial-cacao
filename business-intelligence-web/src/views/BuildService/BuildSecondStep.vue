@@ -563,7 +563,7 @@
                   }).show();
 
                }).catch(() => {
-                  alert('Error de conexión')
+                  alert('Error de conexión al guardar el servicio')
                })
          },
 
@@ -583,7 +583,7 @@
                   }).show();
 
                }).catch(() => {
-                  alert('Error de conexión')
+                  alert('Error de conexión al actualizar el servicio')
             })
          },
 
@@ -597,16 +597,16 @@
                      // window.history.back()
                   }
                   this.ServiceName = response['data']['datos'][0]['name']
-                  this.ServiceDescription = response['data']['datos'][0]['description']
-                  this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
+                  this.ServiceDescription = response['data']['datos'][0]['description']                 
 
-                  if(this.ArrayInputs.length > 0){
+                  if(response['data']['datos'][0]['data_json'] != null){
+                     this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
                      this.OrderInfoBasicForm = 'Actualizar'
 
                   }                  
 
                }).catch(() => {
-                  alert('Error de conexión')
+                  alert('Error de conexión al cargar el servicio')
                })
          },
 

@@ -27,6 +27,7 @@ import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
 
 
 import TeamResumen from './../views/Team/TeamResumen'
+import ServiciosInfoBasicDetalles from './../views/Servicios/ServiciosInfoBasicDetalles'
 
 
 
@@ -205,6 +206,7 @@ children:
 
 
 
+{ path: '/service/info/basic/:id_service', name: 'ServiciosInfoBasicDetalles', component: ServiciosInfoBasicDetalles },
 
 
 
