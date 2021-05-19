@@ -34,13 +34,12 @@ class Groups
 		$datos = array();
 
 		$sql = "SELECT 
-					tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_business, tbse_logo, tbse_date_created, tbse_hour_created,
-					tbse_updated, tbse_status, tbse_vigence,
-					tbsede_id_service, tbsede_code_inputs 
+					tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_business, tbse_logo, tbse_json_input_data, tbse_date_created, tbse_hour_created,
+					tbse_updated, tbse_status, tbse_vigence
 				FROM 
-					tbl_services, tbl_service_mother_table
+					tbl_services
 				WHERE 
-					tbse_auto_id=? and tbsede_id_service = tbse_auto_id and tbse_vigence = 1";
+					tbse_auto_id=? and tbse_vigence = 1";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $id_group);
 		$stm -> execute();
@@ -58,7 +57,7 @@ class Groups
 			$row['updated'] = $value['tbse_updated'];
 			$row['status'] = $value['tbse_status'];
 
-			$row['data_json'] = $value['tbsede_code_inputs'];
+			$row['data_json'] = $value['tbse_json_input_data'];
 			$datos[] = $row;		
 		}
 

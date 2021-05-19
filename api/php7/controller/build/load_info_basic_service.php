@@ -8,7 +8,7 @@ $array = json_decode($json, true);
 
 require_once "../../services/Conexion.php";
 require_once "../../services/Response.php";
-require_once "../../model/Objects.php";
+require_once "../../model/ServicesBuild.php";
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
@@ -18,5 +18,5 @@ $response = new Response();
 $id_service = $array['id_service'];
 
 
-$respuesta = (new Objects())->LoadInfoBasicService($conection, $id_service);
+$respuesta = (new ServicesBuild())->GetFullService($conection, $id_service);
 $response_view = $response -> ResponseMsgObject($respuesta['respuesta'], $respuesta['object']);

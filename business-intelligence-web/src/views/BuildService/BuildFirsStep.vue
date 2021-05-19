@@ -131,7 +131,11 @@ export default {
             text: response.data.mensaje,
           }).show();
 
-          this.$router.replace("/constructor-service/" + response.data.code);
+          if(response.data.icono == 'success'){
+            this.$router.replace("/constructor-service/" + response.data.code);
+          }
+
+          
         });
     },
   },

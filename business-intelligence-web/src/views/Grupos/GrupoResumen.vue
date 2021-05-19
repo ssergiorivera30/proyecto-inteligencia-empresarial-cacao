@@ -190,10 +190,10 @@ import API_ROUTER from './../../services/SERVER_API'
 
       },
       mounted: function () {
-         this.LoadIdProject()
+         this.LoadInfoService()
       },
       methods: {
-         LoadIdProject :function(){
+         LoadInfoService :function(){
          axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/service_group_load_resumen.php",
             {
                id_service: this.$route.params.id_group,

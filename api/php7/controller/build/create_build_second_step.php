@@ -6,43 +6,44 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 $json = file_get_contents('php://input'); 
 $array = json_decode($json, true);
 
-// #####################################################
-
 require_once "../../services/Conexion.php";
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
 
-// #####################################################
-
-require_once "../../model/ServicesBuild.php";
-
-$class_object = new ServicesBuild();
-
-// #####################################################
-
-require_once "../../model/CoreTables.php";
-$class_core_table = new CoreTables();
-
-// #####################################################
-
-require_once "../../model/ConstructorTable.php";
-$class_constructor = new ConstructorTable();
-
-// #####################################################
+// ****************************************************** //
 
 $id_service = $array['id_service'];
 $JSON_inputs = $array['JSON_inputs'];
 
 
-// AQUÍ GUARDAMOS EL JSON EN LA TABLA => tbl_service_mother_table
+// ****************************************************** //
 
-$ingrese_json_inputs = $class_object->CreateServiceMotherTable( $conection, $id_service, $JSON_inputs );
+
+
+
+
+
+
+
+require_once "../../model/ServicesBuild.php";
+
+$class_object = new ServicesBuild();
+
+// AQUÍ GUARDAMOS EL JSON EN LA TABLA => tbl_services
+
+$ingrese_json_inputs = $class_object->UpdateJSONServices( $conection, $id_service, $JSON_inputs );
 
 if( $ingrese_json_inputs < 1 ){
 
-	ResponseSystem('El código de este objeto ya se encuentra en uso', 'warning');
+	ResponseSystem('😬 Sin cambios registrados', 'warning');
 }
+
+
+
+
+
+
 
 // LA SIGUIENTE CONDICIÓN ES PARA FILTRAR LOS SERVICIOS A LOS QUE NO SE LES CREA TABLA EN MYSQL, ES DECIR 
 // QUE LOS DATOS SE ALMACENARÁN EN EL MISMO JSON
@@ -53,6 +54,21 @@ if($type_service['id'] == 1 || $type_service['id'] == 2){
 
 	ResponseSystem('✨ Excelente! Entradas creadas correctamente', 'success');
 }
+
+
+
+
+
+
+
+
+
+
+
+// ****************************************************** //
+
+require_once "../../model/CoreTables.php";
+$class_core_table = new CoreTables();
 
 
 // NOBRE DE LOS SERVICIOS DISPONIBLES EN EL SOFTWARE
@@ -72,8 +88,25 @@ $verificar_existencia_tabla = $class_core_table->VeridicarExistenciaTabla( $cone
 
 if( $verificar_existencia_tabla > 0 ){
 
-	ResponseSystem('El objeto ya existe', 'error');
+	ResponseSystem('😬 El objeto ya existe', 'error');
 }
+
+
+
+
+
+
+
+
+
+
+
+// ****************************************************** //
+
+require_once "../../model/ConstructorTable.php";
+$class_constructor = new ConstructorTable();
+
+// ****************************************************** //
 
 
 // SI NO EXISTE LA TABLA, GENERAMOS LA CONSULTA SQL DE LA TABLA
@@ -93,11 +126,22 @@ if( $ingrese_json_inputs >= 1 && $verificar_existencia_tabla < 1 )
 
 	} else {
 
-		ResponseSystem('Error al crear el registro', 'warning');
+		ResponseSystem('😬 Error al crear el registro', 'warning');
 	}		
 }
 
 
+
+
+
+
+
+
+
+// ****************************************************** //
+
+
+// FUNCIÓN QUE ENVIA LA RESPUESTA AL USUARIO
 
 function ResponseSystem($message, $icono){
 	require_once "../../services/Response.php";

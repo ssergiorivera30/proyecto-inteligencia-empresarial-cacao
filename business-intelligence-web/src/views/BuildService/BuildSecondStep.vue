@@ -62,21 +62,21 @@
                         <polyline points="17 21 17 13 7 13 7 21"></polyline>
                         <polyline points="7 3 7 8 15 8"></polyline>
                      </svg>
-                     <span class="hidden md:block">Guardar</span>
+                     <span class="hidden md:block">{{ OrderInfoBasicForm }}</span>
                   </div>
                </button>
 
                <button v-if="AsSavedForm == 1" @click="AsSavedForm = 0 "
-                  class="text-base border-r bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base border-r bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-red-400 ">
                   <div class="flex leading-5">
                      Aún no
                   </div>
                </button>
 
                <button v-if="AsSavedForm == 1" @click="SaveNewForm(); AsSavedForm = 0"
-                  class="text-base bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 border ">
+                  class="text-base bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-green-500  ">
                   <div class="flex leading-5">
-                     Si, guardar
+                     Si, {{ OrderInfoBasicForm }}
                   </div>
                </button>
 
@@ -109,18 +109,18 @@
             <form 
                v-if="editorBasicoForm == 0" 
                @submit.prevent="UpdateInfoBasicForm(), OrdenVisivility(1)"
-               class="grid gap-x-4 gap-y-4">
+               class="grid gap-x-4 gap-y-1">
             <div class="block">
-               <label><span class="text-sm text-gray-700">Nombre del formulario</span></label>
+               <label><span class="text-gray-700 font-semibold text-xs">Nombre</span></label>
                <input type="text" class="form-control2" required v-model="ServiceName">
             </div>
             <div>
                <div class="block">
-                  <label><span class="text-sm text-gray-700">Descripción</span></label>
+                  <label><span class="text-gray-700 font-semibold text-xs">Descripción</span></label>
                   <textarea rows="4" class="form-control2 py-2" required v-model="ServiceDescription"></textarea>
                </div>
                <p class="mt-1 text-sm text-gray-500">
-                  * Formulario privado.
+                  * Esta información se puede actualizar posteriormente.
                </p>
             </div>
 
@@ -183,7 +183,7 @@
                   <div class="block"
                      v-if="inputEdit.type != 'checkbox' && inputEdit.type != 'radio' && inputEdit.type !='select' ">
                      <label><span class="text-gray-700 font-semibold">Valor por defecto </span></label>
-                     <input type="text" class="form-control2" v-model="inputEdit.value">
+                     <input :type="inputEdit.type" class="form-control2" v-model="inputEdit.value">
                   </div>
                </div>
 
@@ -195,7 +195,7 @@
                   <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
                       
                      <label class="grid grid-cols-5 gap-4">
-                        <span class="col-span-4 text-gray-700 font-semibold">Opcion {{ index + 1 }} </span>
+                        <span class="col-span-4 text-gray-700 font-semibold">Opción {{ index + 1 }} </span>
                          <div class="flex justify-end">
                            <span class="cursor-pointer font-normal hover:font-semibold	group flex rounded-md items-center px-2 py-2 text-sm" @click="DeleteOptionEdit(index)">Eliminar opción</span>
                          </div>
@@ -389,7 +389,7 @@
       data() {
          return {
             name: 'BuildSecondStep',
-            OrderForm: 'load',
+            OrderInfoBasicForm: 'Guardar',
             ServiceName: '',
             ServiceDescription: '',
             editorBasicoForm: 1,
@@ -420,25 +420,7 @@
          this.LoadBasicInfoService()
       },
       methods: {
-         SaveNewForm: function () {
-
-            // this.AsSavedForm = 1
-
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_second_step.php",
-               {
-                  id_service: parseInt(this.$route.params.id_service),
-                  JSON_inputs: this.ArrayInputs
-               }).then((response) => {
-
-                  new Noty({
-                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
-                     type: response.data.icono, text: response.data.mensaje
-                  }).show();
-
-               }).catch(() => {
-                  alert('Error de conexión')
-               })
-         },
+         
          AsignedIdEdit: function (value) {
             this.InputIdEidtAsigned = value
          },
@@ -467,23 +449,7 @@
             this.ArrayOptions.splice(index, 1);
          },
 
-         UpdateInfoBasicForm: function () {
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "objeto_update_basic.php",
-               {
-                  FormId: this.$route.params.id_service,
-                  ServiceName: this.ServiceName,
-                  ServiceDescription: this.ServiceDescription
-               }).then((response) => {
-
-                  new Noty({
-                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
-                     type: response.data.icono, text: response.data.mensaje
-                  }).show();
-
-               }).catch(() => {
-                  alert('Error de conexión')
-            })
-         },
+        
 
          AddInput: function () {
             this.ArrayInputs.push(
@@ -579,6 +545,48 @@
 
          },
 
+// PETICIONES A LA BASES DE DATOS
+
+         SaveNewForm: function () {
+
+            // this.AsSavedForm = 1
+
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_second_step.php",
+               {
+                  id_service: parseInt(this.$route.params.id_service),
+                  JSON_inputs: this.ArrayInputs
+               }).then((response) => {
+
+                  new Noty({
+                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                     type: response.data.icono, text: response.data.mensaje
+                  }).show();
+
+               }).catch(() => {
+                  alert('Error de conexión')
+               })
+         },
+
+
+
+         UpdateInfoBasicForm: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_update_basic.php",
+               {
+                  serviceId: parseInt(this.$route.params.id_service),
+                  ServiceName: this.ServiceName,
+                  ServiceDescription: this.ServiceDescription
+               }).then((response) => {
+
+                  new Noty({
+                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                     type: response.data.icono, text: response.data.mensaje
+                  }).show();
+
+               }).catch(() => {
+                  alert('Error de conexión')
+            })
+         },
+
          LoadBasicInfoService: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "build/load_info_basic_service.php",
                {
@@ -590,6 +598,12 @@
                   }
                   this.ServiceName = response['data']['datos'][0]['name']
                   this.ServiceDescription = response['data']['datos'][0]['description']
+                  this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
+
+                  if(this.ArrayInputs.length > 0){
+                     this.OrderInfoBasicForm = 'Actualizar'
+
+                  }                  
 
                }).catch(() => {
                   alert('Error de conexión')
