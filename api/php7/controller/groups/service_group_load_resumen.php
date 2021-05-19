@@ -8,15 +8,16 @@ $array = json_decode($json, true);
 
 require_once "../../services/Conexion.php";
 require_once "../../services/Response.php";
-require_once "../../model/Objects.php";
+require_once "../../model/Groups.php";
 
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
 
 $response = new Response();
 
-$service_type = $array['service_type'];
-$service_id = $array['service_id'];
+$id_group = $array['id_service'];
 
-$respuesta = (new Objects())->LoadServiceForm($conection, $service_type, $service_id);
-$response_view = $response -> ResponseMsgObject($respuesta['respuesta'], $respuesta['object']);
+
+$respuesta = (new Groups())->GroupLoadInfoBasic($conection, $id_group);
+
+$response -> ResponseInfiniteObjects( $respuesta );

@@ -2,7 +2,7 @@
    <div class="">
 
       <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_project }}</h2>
+         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_project }} - Información general</h2>
          <span 
             class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
             <svg width="12" height="20" fill="currentColor"
@@ -129,6 +129,14 @@
          </div>
 
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
+            <div class="px-3 py-3">
+                  <h3 class="text-lg leading-6 font-medium text-gray-600">
+                     Estadísticas del proyecto
+                  </h3>
+                  <p class="mt-3 max-w-2xl text-sm text-gray-500">
+                     Información general
+                  </p>
+               </div>
             <div class="px-4">
                <div class="flex items-center justify-center">
                   <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
@@ -139,10 +147,18 @@
          </div>
          
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
+            <div class="px-3 py-3">
+                  <h3 class="text-lg leading-6 font-medium text-gray-600">
+                     Actividad reciente
+                  </h3>
+                  <p class="mt-3 max-w-2xl text-sm text-gray-500">
+                     Actividad de usuarios del proyecto
+                  </p>
+               </div>
             <div class="px-4">
-               <div class="px-4">
-               <div class="flex items-center justify-center">
-                  <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+               <div class="">
+               <div class="flex items-center">
+                  <form class="bg-white rounded pt-6 pb-8 mb-4">
                   <div><img class="" :src="Grades" width="300" loading="lazy"/></div>
                   </form>
                </div>
@@ -193,9 +209,9 @@ import API_ROUTER from './../../services/SERVER_API'
       },
       methods: {
          LoadIdProject :function(){
-         axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/load_basic_group.php",
+         axios.post(API_ROUTER.PHP7_CONTROLLER + "projects/load_project_resumen.php",
             {
-               id_group: this.$route.params.id_project,
+               id_service: this.$route.params.id_project,
             }).then((res) => {
                
                this.InfoGroup = res.data
@@ -206,8 +222,6 @@ import API_ROUTER from './../../services/SERVER_API'
 
          })
       },
-
-
       }
    }
 </script>

@@ -2,81 +2,61 @@
    <div class="">
 
       <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_group }}</h2>
+         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_group }} - Información general</h2>
          <span 
             class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
-            <svg width="12" height="20" fill="currentColor"
-               class="group-hover:text-light-blue-600 text-light-blue-500 mr-2">
-               <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" 
+                  stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
-            Ayuda
+            Actualizar información
          </span>
       </header>
    
       <div class="grid grid-rows-3 grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-3">
-         <div class="col-span-2 row-span-3 bg-white shadow overflow-hidden rounded-sm">
-            
-            <!-- This example requires Tailwind CSS v2.0+ -->
-            <div class="" v-for="project in InfoGroup" :key="project">
-               <div class="px-1 py-3 sm:px-3">
-                  <h3 class="text-lg leading-6 font-medium text-gray-900">
-                     Información del grupo o equipo
+         <div v-if="ShowInfoBasic == 1" class="col-span-2 row-span-3 bg-white shadow overflow-hidden rounded-sm">            
+   
+            <div class="" >               
+               <div class="px-3 py-3 ">
+                  <h3 class="text-lg leading-6 font-medium text-gray-600">
+                     {{ GroupName}}
                   </h3>
                   <p class="mt-3 max-w-2xl text-sm text-gray-500">
-                     {{ project.pro_name }}
+                     {{ GroupDescription }}
                   </p>
                </div>
                <div class="border-t border-gray-200">
                   <dl>
-                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-                        <dt class="text-sm font-medium text-gray-500">
-                           Código
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                           {{ project.prco_code }} - {{ project.prco_entity }}
-                        </dd>
+                     <div v-for="(info, index) in arrayInfoResumenCustom" :key="info">    
+
+           
+                        <div v-if="index % 2 == true"                      
+                           class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
+                           <dt class="text-sm font-medium text-gray-500">
+                              {{ info['input']['name'] }}
+                           </dt>
+                           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                              {{ info['input']['value'] }}
+                           </dd>
+                        </div>
+
+
+                        <div v-else                      
+                           class="bg-gray-50 px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
+                           <dt class="text-sm font-medium text-gray-500">
+                              {{ info['input']['name'] }}
+                           </dt>
+                           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                              {{ info['input']['value'] }}
+                           </dd>
+                        </div>
+
+
                      </div>
-                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-                        <dt class="text-sm font-medium text-gray-500">
-                           Autores
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                           ...
-                        </dd>
-                     </div>
-                     <div class="bg-white px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-                        <dt class="text-sm font-medium text-gray-500">
-                           Equipo Ejecutor
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                           ...
-                        </dd>
-                     </div>
-                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-                        <dt class="text-sm font-medium text-gray-500">
-                           Áreas de conocimiento
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                           ...
-                        </dd>
-                     </div>
-                     <div class="bg-white px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-                        <dt class="text-sm font-medium text-gray-500">
-                           Valor total del proyecto
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                           ...
-                        </dd>
-                     </div>
-                     <div class="bg-gray-50 px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-                        <dt class="text-sm font-medium text-gray-500">
-                           Objetivo general
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">...
-                        </dd>
-                     </div>
-                     <div class="bg-white px-1 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
+
+
+                     
+                     <div class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm font-medium text-gray-500">
                            Adjuntos
                         </dt>
@@ -129,6 +109,14 @@
          </div>
 
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
+            <div class="px-3 py-3">
+                  <h3 class="text-lg leading-6 font-medium text-gray-600">
+                     Estadísticas del grupo
+                  </h3>
+                  <p class="mt-3 max-w-2xl text-sm text-gray-500">
+                     Información general
+                  </p>
+               </div>
             <div class="px-4">
                <div class="flex items-center justify-center">
                   <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
@@ -139,10 +127,18 @@
          </div>
          
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
+            <div class="px-3 py-3">
+                  <h3 class="text-lg leading-6 font-medium text-gray-600">
+                     Actividad reciente
+                  </h3>
+                  <p class="mt-3 max-w-2xl text-sm text-gray-500">
+                     Actividad de usuarios del grupo
+                  </p>
+               </div>
             <div class="px-4">
-               <div class="px-4">
-               <div class="flex items-center justify-center">
-                  <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+               <div class="">
+               <div class="flex items-center">
+                  <form class="bg-white rounded pt-6 pb-8 mb-4">
                   <div><img class="" :src="Grades" width="300" loading="lazy"/></div>
                   </form>
                </div>
@@ -169,6 +165,8 @@ import API_ROUTER from './../../services/SERVER_API'
       },
       data() {
          return {
+
+            ClassColored: 'bg-gray-50',
            
             RoutesNavs: [
                { Linkroute: '/proyecto/detalles', nameRoute: 'Detalles' },
@@ -176,11 +174,14 @@ import API_ROUTER from './../../services/SERVER_API'
                { Linkroute: '/proyecto/integrantes', nameRoute: 'Integrantes' },
             ],
 
-             Team: API_ROUTER.API_UI + "chart/chart.svg",
-             Grades: API_ROUTER.API_UI + "chart/grades.svg",
-             Text: API_ROUTER.API_UI + "chart/text.svg",
+            Team: API_ROUTER.API_UI + "chart/chart.svg",
+            Grades: API_ROUTER.API_UI + "chart/grades.svg",
+            Text: API_ROUTER.API_UI + "chart/text.svg",
 
-             InfoGroup: [],
+            GroupName: '',
+            GroupDescription: '',
+            arrayInfoResumenCustom: [],
+            ShowInfoBasic: 0,
          }
       },
       beforeMount: function () {
@@ -193,16 +194,21 @@ import API_ROUTER from './../../services/SERVER_API'
       },
       methods: {
          LoadIdProject :function(){
-         axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/load_basic_group.php",
+         axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/service_group_load_resumen.php",
             {
-               id_group: this.$route.params.id_group,
+               id_service: this.$route.params.id_group,
             }).then((res) => {
                
-               this.InfoGroup = res.data
+               this.GroupName = res.data[0]['name']
+               this.GroupDescription = res.data[0]['description']
+
+               this.arrayInfoResumenCustom = JSON.parse(res.data[0]['data_json'])
+
+               this.ShowInfoBasic = 1
 
             }).catch(() => {
                
-               alert('Error de conexión')
+               this.ShowInfoBasic = 0
 
          })
       },

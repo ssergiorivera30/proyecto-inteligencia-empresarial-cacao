@@ -33,7 +33,7 @@ class Objects
 	}
 
 
-	// Primer paso, el caso del proyecto se guarda unicamente el archivo JASON para no crear una nueva tabla por cada grupo de trabajo registrado 
+	// Primer paso, el caso del proyecto se guarda unicamente el archivo JSON para no crear una nueva tabla por cada grupo de trabajo registrado 
 
 	function CreateServiceMotherTable($conection, $id_service, $JSON_inputs ){
 

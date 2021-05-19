@@ -107,7 +107,7 @@ import API_ROUTER from './../../services/SERVER_API'
 
       },
       mounted: function () {
-         this.LoadIdProject()
+        //  this.LoadIdProject()
       },
       methods: {
          LoadIdProject :function(){

@@ -19,7 +19,6 @@ $USER_CODE = $_SESSION['USER_CODE'];
 $connect = new Conexion();
 $conection = $connect -> BDMysqlBigNovaSoftware();
 
-
 $ListGroups = (new Groups())->GroupsLoad($conection, $USER_CODE);
 
 $ListProjects = (new Projects())->LoadProjects($conection, $USER_CODE);

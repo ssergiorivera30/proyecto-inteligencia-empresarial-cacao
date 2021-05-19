@@ -7,6 +7,8 @@ class ServicesBuild
 
 	function CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription){
 
+		
+
 		$sql = "INSERT INTO tbl_services (tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created) 
 				VALUES
 				(?,?,?, NOW(), NOW())";
@@ -34,5 +36,20 @@ class ServicesBuild
 		$stm -> bindParam(2, $JSON_inputs);
 		$stm -> execute();
 		return $stm->rowCount();
+	}
+
+	// TERCER PASO => VERIFICAR EL TIPO DE SERVICIO A CREAR => tbl_services.
+
+	function GetTypeService($conection, $ServiceType){		
+
+		$sql = "SELECT tbse_auto_id, tbse_id_type_service FROM tbl_services WHERE tbse_auto_id=?";
+
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $ServiceType);
+		$stm -> execute();
+
+		$type_service = $stm->fetchAll();
+
+		return $respuesta = array('id' => intval($type_service[0]['tbse_id_type_service']) );
 	}
 }

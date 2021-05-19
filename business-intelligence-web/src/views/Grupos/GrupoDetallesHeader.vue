@@ -7,9 +7,9 @@
 
 <script>
 
-
-   import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
-
+import axios from 'axios'
+import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+import API_ROUTER from './../../services/SERVER_API'
 
    export default {
       name: 'GrupoDetallesHeader',
@@ -19,8 +19,8 @@
       data() {
          return {
             TitleHeader: 'Grupo',
-            IconModulo: 'bx bxs-group',
-            SubTitleHeader: 'Detalles',
+            IconModulo: '',
+            SubTitleHeader: 'Grupo',
             GoBack: '/inicio',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
@@ -34,11 +34,24 @@
 
       },
       mounted: function () {
-
+         this.LoadInfoBasic()
       },
       methods: {
+         LoadInfoBasic :function(){
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_load_info_basic.php",
+               {
+                  service_id: this.$route.params.id_group,
+               }).then((res) => {
+                  
+                  this.TitleHeader = res.data['datos'][0]['name']
+                  this.IconModulo = 'grupos/' + res.data['datos'][0]['logo']
 
+               }).catch(() => {
+                  
+                  alert('Error de conexión header grupos')
 
+            })
+         },
       }
    }
 </script>

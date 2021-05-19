@@ -7,6 +7,36 @@ class ServiceInfoBasic
 
 	// Aquí voy
 
+	function LoadInfoBasicOneService($conection, $service_id, $id_user){
+
+		$datos = array();
+
+		$sql = "SELECT 
+					tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_logo, tbse_status
+				FROM 
+					tbl_services
+				WHERE 
+					tbse_auto_id = ? and tbse_vigence = 1 ";
+
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $service_id);
+		$stm -> execute();		
+
+		foreach ($stm->fetchAll() as $key => $value) {
+
+			$row['id'] = $value['tbse_auto_id'];
+			$row['type_service'] = $value['tbse_id_type_service'];
+			$row['name'] = $value['tbse_name'];
+			$row['description'] = $value['tbse_description'];
+			$row['logo'] = $value['tbse_logo'] == null ? 'default.svg' : $value['tbse_logo'];
+			$row['status'] = $value['tbse_status'];
+			$datos[] = $row;		
+		}
+
+		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $datos );				
+	}
+
+
 
 	function LoadInfoBasicByService($conection, $type_service, $id_user){
 

@@ -20,13 +20,13 @@
             </a>  
 
               <div class="row-span-2 w-10 flex flex-wrap content-center justify-center">
-                <img class="w-full rounded" src="http://192.168.1.4/proyecto-inteligencia-empresarial-cacao/api/public/grupos/default.svg" />
+                <img v-if="IconModulo != ''" class="w-full rounded" :src="SrcIconModulo + IconModulo" />
             </div> 
          
             <div class="row-span-2 h-16 block flex-wrap content-center justify-center">
                <div class="pl-1 py-0">
-                  <h3 class="font-bold text-lg text-gray-600"> Estrategis tecnologicas para la gestión...  </h3>
-                  <h4 class="font-semibold text-sm text-gray-400"> {{ TitleHeader }}  </h4>
+                  <h3 class="font-bold text-lg text-gray-600">{{ TitleHeader }}</h3>
+                  <h4 class="font-semibold text-sm text-gray-400">{{ SubTitleHeader }} {{ breadcrumb }}</h4>
                </div>
             </div> 
      
@@ -59,11 +59,11 @@
           v-for="routes in RoutesNavs"
           :key="routes" 
           :to="routes.Linkroute" 
-          @click="SubTitleHeader = routes.nameRoute, NavRight = routes.NavRight "
+          @click="breadcrumb =  ' / '+ routes.nameRoute, NavRight = routes.NavRight "
           :title="'Ir a '+routes.nameRoute"
           class="py-1 -mb-px px-4 text-gray-600 font-semibold inline-block 	whitespace-nowrap" 
           active-class="text-blue-900 border-b-2 border-blue-900">
-            {{ routes.nameRoute }}         
+            {{ routes.nameRoute }}
         </router-link>
     </ul>
   </div>
@@ -71,6 +71,7 @@
 
 <script>
 
+import API_ROUTER from './../../services/SERVER_API'
 
 
 export default {
@@ -79,6 +80,8 @@ export default {
     return {
       name: 'NavBarSecondary',
       NavRight: [],
+      breadcrumb: '',
+      SrcIconModulo: API_ROUTER.API_PUBLIC,
     }
   },   
   props: {

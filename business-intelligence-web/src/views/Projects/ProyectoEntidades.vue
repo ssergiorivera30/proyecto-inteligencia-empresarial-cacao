@@ -25,7 +25,7 @@
                             <td class="pl-4 cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-10 h-10">
-                                         <img class="w-full h-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects.png" />
+                                         <img class="w-full h-full" :src="SrcIcon" />
                                     </div>
                                     <div class="pl-4">
                                         <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36) }}...</p>
@@ -120,7 +120,8 @@ export default {
     data(){
       return{
          
-         Entitys: {}
+         Entitys: {},
+         SrcIcon: API_ROUTER.API_PUBLIC + 'entidades/default.svg'
       }
     },    
     mounted: function(){      

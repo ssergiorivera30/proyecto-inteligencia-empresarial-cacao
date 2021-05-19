@@ -8,7 +8,9 @@
 <script>
 
 
-   import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+import axios from 'axios'
+import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+import API_ROUTER from './../../services/SERVER_API'
 
 
    export default {
@@ -21,8 +23,8 @@
          return {           
 
             TitleHeader: 'Proyecto',
-            IconModulo: 'bx bxs-group',
-            SubTitleHeader: 'Detalles',
+            IconModulo: '',
+            SubTitleHeader: 'Proyecto',
             GoBack: 'history.back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
@@ -36,11 +38,24 @@
 
       },
       mounted: function () {
-
+         this.LoadInfoBasic()
       },
       methods: {
+         LoadInfoBasic :function(){
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_load_info_basic.php",
+               {
+                  service_id: this.$route.params.id_project,
+               }).then((res) => {
+                  
+                  this.TitleHeader = res.data['datos'][0]['name']
+                  this.IconModulo = 'proyectos/' + res.data['datos'][0]['logo']
 
+               }).catch(() => {
+                  
+                  alert('Error de conexión')
 
+            })
+         },
       }
    }
 </script>

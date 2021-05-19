@@ -308,7 +308,7 @@
 
                                        <div class="block" v-if="SelectedTypeOptions == 0">
                                           <label class="text-gray-700 font-semibold text-xs">Valor por defecto</label>
-                                          <input type="text" class="form-control2" v-model="InputValue">
+                                          <input :type="InputType" class="form-control2" v-model="InputValue">
                                        </div>
                                     </div>
 
