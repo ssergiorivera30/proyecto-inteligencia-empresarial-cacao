@@ -66,6 +66,21 @@
             </div>
         </div> 
 
+         <div class="">
+            <div class="flex-col  flex justify-center items-center">
+                <div class="flex-shrink-0">
+                    <span class="block relative">
+                        <img alt="profil" src="https://informesinternet.com/wp-content/uploads/2019/07/iot.png" class="mx-auto object-cover h-12 w-12 "/>
+                    </span>
+                </div>
+                <div class="mt-2 text-center flex flex-col">
+                    <span class="text-gray-600 dark:text-white text-sm font-medium">
+                        IoT
+                    </span>
+                </div>
+            </div>
+        </div> 
+
         <div class="">
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
