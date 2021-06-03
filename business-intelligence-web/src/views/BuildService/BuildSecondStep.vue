@@ -8,10 +8,10 @@
          <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
 
 
-          <div class="flex items-baseline flex-wrap my-5">
+          <div class="flex items-baseline flex-wrap my-5 justify-center md:justify-start ">
             <div class="flex border-l border-t border-b rounded">
                <a href="javascript:history.back()"
-                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
+                  class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -23,7 +23,7 @@
                </a>   
 
                 <button @click="OrdenVisivility(1), open = true"
-                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
+                  class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-4">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -37,7 +37,7 @@
 
              
                <button @click="OrdenVisivility(0)"
-                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
+                  class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-5">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -52,7 +52,7 @@
 
 
                <button @click="AsSavedForm = 1"
-                  class="text-base border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
+                  class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
                   <div class="flex leading-5">
 
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
@@ -67,14 +67,14 @@
                </button>
 
                <button v-if="AsSavedForm == 1" @click="AsSavedForm = 0 "
-                  class="text-base border-r bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-red-400 ">
+                  class="text-sm border-r bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-red-400 ">
                   <div class="flex leading-5">
                      Aún no
                   </div>
                </button>
 
                <button v-if="AsSavedForm == 1" @click="SaveNewForm(); AsSavedForm = 0"
-                  class="text-base bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-green-500  ">
+                  class="text-sm bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-green-500  ">
                   <div class="flex leading-5">
                      Si, {{ OrderInfoBasicForm }}
                   </div>
@@ -85,23 +85,24 @@
          </div>
 
 
-         <div class="flex items-center justify-center px-4 sm:px-0 ">
+         <div class="flex items-center justify-center sm:px-0 ">
             <div id="alert" class="bg-gray-100 w-full transition duration-150 ease-in-out shadow rounded-md md:flex justify-between items-center top-0 my-4 py-4 px-4">
                   <div class="sm:flex items-center ">
-                     <div class="flex items-end">
+                     <div class="flex items-center">
                         <div class="mr-2 mt-0.5 sm:mt-0 text-green-600">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                                  <path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1zm0-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                               </svg>
                         </div>
-                        <p class="mr-2 text-base font-bold text-gray-700">Información</p>
-                     </div>
-                     <div class="h-1 w-1 bg-gray-700 rounded-full mr-2 hidden xl:block"></div>
-                     <p class="text-base text-gray-700">Este modelo de formularios te permitirá personalizar las entradas de información al sistema.</p>
+                        <p class="text-base text-gray-700">
+                           <span class="mr-1 text-base font-bold text-gray-700">Información:</span>
+                           Este modelo de formularios te permitirá personalizar las entradas de información al sistema.
+                        </p>                       
+                     </div>                     
                   </div>
                   <div class="flex justify-end mt-4 md:mt-0 md:pl-4 lg:pl-0">
-                     <!-- <span class="text-sm mr-4 font-bold cursor-pointer text-gray-700">Detalles</span>
-                     <span class="text-sm cursor-pointer text-gray-500">Cerrar</span> -->
+                     <span class="text-sm mr-4 font-bold cursor-pointer text-gray-700">Detalles</span>
+                     <span class="text-sm mr-4 font-bold cursor-pointer text-gray-700">Cerrar</span>
                   </div>
             </div>
          </div>

@@ -77,7 +77,7 @@
         </div>
       </header>
 
-      <router-view :class=" CenterContent + ' ml-0  sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-8 pb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl'" />
+      <router-view :class=" CenterContent + ' ml-0  sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-9 pb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl'" />
 
      
 
@@ -96,7 +96,7 @@
   import NavNotificaciones from './components/HeaderApp/NavNotificaciones.vue'
   import NavAside from './components/HeaderApp/NavAside.vue'
 
-  const ContainerCenter = "lg:m-auto"
+  const ContainerCenter = "3xl:m-auto"
 
 
   export default {

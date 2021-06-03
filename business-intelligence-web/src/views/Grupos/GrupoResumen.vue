@@ -1,11 +1,19 @@
 <template>
    <div class="">
 
-      <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-semibold text-gray-600">#{{ this.$route.params.id_group }} &nbsp; 
-            <span v-if="ServiceStatus == 1" class="px-3 py-px text-xs font-semibold  text-gray-900 rounded-full bg-green-400">Grupo activo </span>
-            <span v-else class="px-3 py-px text-xs font-semibold  text-white rounded-full bg-red-400">Grupo Inactivo </span>
-         </h2>
+         <header class="flex items-center justify-between">
+
+            <div class="flex">
+
+                <h2 class="px-3 text-lg leading-6 font-semibold text-gray-600">#{{ this.$route.params.id_group }} &nbsp;</h2>
+
+         <span v-if="ServiceStatus == 1" class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none bg-green-200 text-green-800 rounded-full"><span class="hidden md:flex mr-1" >Grupo</span>activo</span>
+         
+         <span v-else class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">Grupo Inactivo</span>
+
+            </div>
+        
+        
 
          <div class="flex">
                 <div class="px-6 flex items-center flex-no-wrap">
@@ -29,11 +37,11 @@
 
          <router-link :to="'/constructor-service/'+ this.$route.params.id_group"
             class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                <path stroke-linecap="round" stroke-linejoin="round" 
                   stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
-            Actualizar información
+           <span class="hidden md:flex"> Actualizar información</span>
          </router-link>
                 </div>
 

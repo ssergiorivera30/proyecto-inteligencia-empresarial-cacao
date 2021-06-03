@@ -5,14 +5,14 @@ module.exports = {
       extend: {
         colors:{
           'principal-color-ui': {
-            light: '#323c79',
-            DEFAULT: '#323c79',
-            dark: '#323c79'
+            light: '#1ca78d',
+            DEFAULT: '#1ca78d',
+            dark: '#1ca78d'
           },
           'my-primary':{
-            light: '#323c79',
-            DEFAULT: '#323c79',
-            dark: '#323c79'
+            light: '#1ca78d',
+            DEFAULT: '#1ca78d',
+            dark: '#1ca78d'
           },
           'my-secondary':{
             light: '#6495ed',
@@ -34,6 +34,9 @@ module.exports = {
             DEFAULT: '#6495ed',
             dark: '#6495ed'
           }
+        },
+        screens: {
+          '3xl': '1600px',
         },
       },
     },
