@@ -4,20 +4,9 @@
       <div class="w-full pt-2 flex justify-between">
 
          <div class="grid grid-rows-1 grid-flow-col gap-2">
-            <router-link 
-               v-if="GoBack !== 'history.back'"
-               :to="GoBack"
-               :title="GoBackTitle"
-               class="row-span-2 bg-gray-200 rounded w-6 flex flex-wrap content-center justify-center ">
-               <i class="bx bx-chevron-left text-gray-700 font-bold "></i>
-            </router-link>
+                <div class="row-span-2 bg-gray-200 rounded w-6 flex flex-wrap content-center justify-center "></div>
 
-            <a v-else
-               href="javascript:history.back()" 
-               :title="GoBackTitle" 
-               class="row-span-2 bg-gray-200 rounded w-6 flex flex-wrap content-center justify-center ">
-               <i class='bx bx-chevron-left font-bold'></i>
-            </a>  
+          
 
               <div class="row-span-2 w-10 flex flex-wrap content-center justify-center">
                 <img v-if="IconModulo != ''" class="w-full rounded" :src="SrcIconModulo + IconModulo" />
@@ -55,6 +44,22 @@
 
   <div class="mt-3 mb-2">
     <ul class="list-reset flex border-b-2 border-gray-100 	 overscroll-x-auto	 overflow-y-hidden whitespace-nowrap">    
+
+
+        <router-link 
+               v-if="GoBack !== 'history.back'"
+               :to="GoBack"
+               :title="GoBackTitle"
+               class="row-span-2 bg-gray-200 rounded w-6 flex flex-wrap content-center justify-center ">
+               <i class="bx bx-chevron-left text-gray-700 font-bold "></i>
+            </router-link>
+
+            <a v-else
+               href="javascript:history.back()" 
+               :title="GoBackTitle" 
+               class="row-span-2 bg-gray-200 rounded w-6 flex flex-wrap content-center justify-center ">
+               <i class='bx bx-chevron-left font-bold'></i>
+            </a>  
         
         <router-link 
           v-for="routes in RoutesNavs"

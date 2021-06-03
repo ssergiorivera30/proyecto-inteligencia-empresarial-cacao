@@ -36,8 +36,8 @@
           </svg>
         </button>
         <div class="hidden md:flex relative w-full max-w-md sm:ml-2">
-          <input type="text" role="search" placeholder="Buscar..."
-            class="text-sm md:text-md h-8 py-2 pl-2 pr-4 w-full text-white placeholder-gray-600 bg-gray-100 focus:bg-white rounded-md focus:outline-none" />
+          <input type="text" placeholder="Buscar..."
+            class="text-sm md:text-xs h-6 py-1 pl-2 pr-4 w-full font-bold text-black placeholder-white bg-principal-color-ui focus:text-black focus:bg-white rounded-md focus:outline-none" />
         </div>
         <div class="print-none flex flex-shrink-0 items-center ml-auto mr-2">
           <button class="inline-flex items-center p-2 hover:text-principal-color-ui rounded-lg focus:outline-none">
