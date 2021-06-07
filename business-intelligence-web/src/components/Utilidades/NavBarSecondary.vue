@@ -1,7 +1,7 @@
 <template> 
    <div class="flex items-center justify-center mt-1">
-      <div class="w-full pt-1 flex justify-between">
-         <div class="grid grid-rows-1 grid-flow-col gap-2 border-b-2 border-dotted">
+      <div class="w-full pt-1 flex justify-between border-gray-300 border-b-2 border-dotted">
+         <div class="grid grid-rows-1 grid-flow-col gap-2">
               <div class="row-span-2 w-10 flex flex-wrap content-start justify-start">
                 <img v-if="IconModulo != ''" class="w-full rounded pt-2" :src="SrcIconModulo + IconModulo" />
             </div>         
@@ -56,7 +56,7 @@
             @click="breadcrumb =  ' / '+ routes.nameRoute, NavRight = routes.NavRight "
             :title="'Ir a '+routes.nameRoute"
             class="pb-1 -mb-px px-4 text-gray-600 font-semibold inline-block whitespace-nowrap" 
-            active-class=" text-principal-color-ui font-bold border-b-2 border-principal-color-ui rounded-tr-lg border-dotted	">
+            active-class=" text-principal-color-ui font-bold border-b-2 border-principal-color-ui rounded-tr-lg 	">
                {{ routes.nameRoute }}
          </router-link>
     </ul>
