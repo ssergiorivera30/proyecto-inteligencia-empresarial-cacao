@@ -10,15 +10,18 @@
       </div>
    </div>
 
-   <p class="mt-5 text-gray-600 font- text-base  md:text-md">
-               <span v-if="ServiceDescription.length >= 320 && ViewText == 0">{{ ServiceDescription.substring(0,320) }} 
-                  <span @click="ViewText = 1" class="text-blue-900 font-bold cursor-pointer">...Ver más</span>
-               </span>
-               <span v-if="ServiceDescription.length >= 320 && ViewText == 1">{{ ServiceDescription }} 
-                  <span @click="ViewText = 0" class="text-blue-900 font-bold cursor-pointer"> Ver menos</span>
-               </span>
-               <span v-if="ServiceDescription.length < 320 && ViewText == 0">{{ ServiceDescription }}</span>
-            </p>
+   <div class="mt-5 text-gray-600 text-base md:text-md">
+      <p v-if="ServiceDescription.length >= 320 && ViewText == 0">{{ ServiceDescription.substring(0,320) }}
+         <span @click="ViewText = 1" class="text-blue-900 font-bold cursor-pointer">...Ver más</span>
+      </p>
+      
+      <p v-if="ServiceDescription.length >= 320 && ViewText == 1">{{ ServiceDescription }}
+         <span @click="ViewText = 0" class="text-blue-900 font-bold cursor-pointer"> Ver menos</span>
+      </p>
+      
+      <p v-if="ServiceDescription.length < 320 && ViewText == 0">{{ ServiceDescription }}</p>
+
+   </div>
 
 </template>
 

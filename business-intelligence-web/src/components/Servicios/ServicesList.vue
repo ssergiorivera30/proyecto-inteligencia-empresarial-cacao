@@ -49,10 +49,10 @@
                             </td>
                             <td class="pl-16">
                                 <div class="flex items-center">
-                                    <img class="shadow-md w-8 h-8 rounded-full" src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png" />
-                                    <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png" />
-                                    <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png" />
-                                    <img class="shadow-md w-8 h-8 rounded-full -ml-2" src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png" />
+                                    <img class="shadow-md w-8 h-8 rounded-full" :src="imagen_a" />
+                                    <img class="shadow-md w-8 h-8 rounded-full -ml-2" :src="imagen_b" />
+                                    <img class="shadow-md w-8 h-8 rounded-full -ml-2" :src="imagen_a" />
+                                    <img class="shadow-md w-8 h-8 rounded-full -ml-2" :src="imagen_b" />
                                 </div>
                             </td>                           
                         </tr>                     
@@ -72,7 +72,9 @@ export default {
         return {
             RouteSrc: API_ROUTER.API_UI + 'icons/database.png',  
             EmptyService: API_ROUTER.API_UI + 'empty-services.png',
-            SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg    
+            SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg,
+            imagen_a: API_ROUTER.API_PUBLIC+'a.webp',
+            imagen_b: API_ROUTER.API_PUBLIC+'b.jpg',
         }
     },
     props:{

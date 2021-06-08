@@ -25,25 +25,25 @@
 
           <router-link to="/cuenta/ver" class="cursor-pointer mb-4">
 						<div class="bg-white h-6 w-6 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden">
-							<img src="https://cdn.discordapp.com/embed/avatars/2.png" alt="">
+							<img :src="imagen_a" alt="">
             </div>
 					</router-link>
 
           <router-link to="/cuenta/ver" class="cursor-pointer mb-4">
 						<div class="bg-white h-6 w-6 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden">
-							<img src="https://cdn.discordapp.com/embed/avatars/1.png" alt="">
+							<img :src="imagen_a" alt="">
             </div>
 					</router-link>
 
           <router-link to="/cuenta/ver" class="cursor-pointer mb-4">
 						<div class="bg-white h-6 w-6 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden">
-							<img src="https://cdn.discordapp.com/embed/avatars/3.png" alt="">
+							<img :src="imagen_a" alt="">
             </div>
 					</router-link>
 
           <router-link to="/cuenta/ver" class="cursor-pointer mb-4">
 						<div class="bg-white h-6 w-6 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden">
-							<img src="https://cdn.discordapp.com/embed/avatars/4.png" alt="">
+							<img :src="imagen_a" alt="">
             </div>
 					</router-link>
 
@@ -73,12 +73,13 @@
 
 <script>
 
-
+   import API_ROUTER from "./../../services/SERVER_API"
 
   export default {
+    name: 'NavAside',
     data() {
       return {
-        name: 'NavAside',
+        imagen_a: API_ROUTER.API_PUBLIC+'1.png',
       }
     },
     props: {
