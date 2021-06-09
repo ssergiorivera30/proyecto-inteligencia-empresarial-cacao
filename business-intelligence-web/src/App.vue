@@ -2,7 +2,6 @@
   @import "~noty/lib/noty.css";
   @import "~noty/lib/themes/sunset.css";
   @import "./assets/boxicons-2.0.7/css/boxicons.min.css";
-
   @media print {
     /* Aquí irían tus reglas CSS específicas para imprimir */
     .print-none{
@@ -11,17 +10,11 @@
 }
 </style>
 
-<template>
-
-
-    
+<template>    
     <div class="bg-gray-50 min-h-screen flex-grow text-gray-800 ">
 
       <NavAside />
 
-
-
-      <!-- bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 -->
       <header class="print-none flex sticky top-0 z-10 items-center h-14 px-1 sm:pr-10 bg-principal-color-ui shadow-sm w-full">
 
         <router-link to="/" class="hidden sm:hidden md:flex pt-1 justify-center h-10 w-14">
@@ -35,10 +28,12 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
           </svg>
         </button>
+
         <div class="hidden md:flex relative w-full max-w-md sm:ml-2">
           <input type="text" placeholder="Buscar..."
             class="text-sm md:text-xs h-6 py-1 pl-2 pr-4 w-full font-bold text-black placeholder-white bg-principal-color-ui focus:text-black focus:bg-white rounded-md focus:outline-none" />
         </div>
+        
         <div class="print-none flex flex-shrink-0 items-center ml-auto mr-2">
           <button class="inline-flex items-center p-2 hover:text-principal-color-ui rounded-lg focus:outline-none">
             <span class="sr-only">Menu</span>
@@ -77,21 +72,10 @@
         </div>
       </header>
 
-      <div 
-        :class=" CenterContent" 
-        class="ml-0 sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-9 pb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl">
-          <router-view />
+      <router-view :class=" CenterContent + ' ml-0  sm:ml-12 md:ml-12 pt-2 px-3 sm:px-3 md:px-3 lg:px-9 pb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl'" />
+
       </div>
-
-      
-
-     
-
-
-    </div>
- 
-
-</template>
+ </template>
 
 <script>
 
