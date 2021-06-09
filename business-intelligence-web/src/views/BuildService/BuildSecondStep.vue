@@ -44,7 +44,7 @@
                   </div>
                </button>
 
-               <button @click="AsSavedForm = 1"
+               <button @click="SaveNewForm()"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
                   <div class="flex leading-5">
 
@@ -59,19 +59,7 @@
                   </div>
                </button>
 
-               <button v-if="AsSavedForm == 1" @click="AsSavedForm = 0 "
-                  class="text-sm border-r bg-red-400 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-red-400 ">
-                  <div class="flex leading-5">
-                     Aún no
-                  </div>
-               </button>
-
-               <button v-if="AsSavedForm == 1" @click="SaveNewForm(); AsSavedForm = 0"
-                  class="text-sm bg-green-500 text-white focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer border-2 border-green-500  ">
-                  <div class="flex leading-5">
-                     Si, {{ OrderInfoBasicForm }}
-                  </div>
-               </button>
+               
             </div>
          </div>
 
@@ -138,7 +126,7 @@
             @GetIdEdit="AsignedIdEdit" />
 
          <div class="py-5 text-left ">
-            <button @click="SaveNewForm(); AsSavedForm = 0" type="button" class="mr-3 btn-indigo">{{ OrderInfoBasicForm }}</button>
+            <button @click="SaveNewForm()" type="button" class="mr-3 btn-indigo">{{ OrderInfoBasicForm }}</button>
          </div>
 
          <div>
@@ -437,8 +425,7 @@
             ArrayOptions: [],
 
             InputIdEidtAsigned: null,
-
-            AsSavedForm: 0,
+          
          }
       },
       mounted: function () {
@@ -574,8 +561,6 @@
          // PETICIONES A LA BASES DE DATOS
 
          SaveNewForm: function () {
-
-            // this.AsSavedForm = 1
 
             axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_second_step.php",
                {

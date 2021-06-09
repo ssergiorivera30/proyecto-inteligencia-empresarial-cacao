@@ -5,14 +5,14 @@ module.exports = {
       extend: {
         colors:{
           'principal-color-ui': {
-            light: '#1ca78d',
-            DEFAULT: '#1ca78d',
-            dark: '#1ca78d'
+            light: '#3c3e89',
+            DEFAULT: '#3c3e89',
+            dark: '#3c3e89'
           },
           'my-primary':{
-            light: '#1ca78d',
-            DEFAULT: '#1ca78d',
-            dark: '#1ca78d'
+            light: '#3c3e89',
+            DEFAULT: '#3c3e89',
+            dark: '#3c3e89'
           },
           'my-secondary':{
             light: '#6495ed',
