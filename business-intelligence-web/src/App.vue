@@ -164,8 +164,6 @@
           else {
             this.logged = 0
           }
-
-
         })
       },
       CloseSessionWitchGoogleGmail() {
