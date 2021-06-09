@@ -14,6 +14,7 @@
     "core-js": "^3.6.5",
     "firebase": "^8.2.9",
     "noty": "^3.2.0-beta-deprecated",
+    "notyf": "^3.10.0",
     "postcss": "^7.0.35",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",

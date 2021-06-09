@@ -20,12 +20,6 @@ $JSON_inputs = $array['JSON_inputs'];
 // ****************************************************** //
 
 
-
-
-
-
-
-
 require_once "../../model/ServicesBuild.php";
 
 $class_object = new ServicesBuild();
@@ -36,12 +30,8 @@ $ingrese_json_inputs = $class_object->UpdateJSONServices( $conection, $id_servic
 
 if( $ingrese_json_inputs < 1 ){
 
-	ResponseSystem('😬 Sin cambios registrados', 'warning');
+	ResponseSystem('Sin cambios registrados', 'warning');
 }
-
-
-
-
 
 
 
@@ -52,16 +42,8 @@ $type_service = $class_object->GetTypeService( $conection, $id_service );
 
 if($type_service['id'] == 1 || $type_service['id'] == 2){
 
-	ResponseSystem('✨ Excelente! Entradas creadas correctamente', 'success');
+	ResponseSystem('Excelente! Entradas creadas correctamente', 'success');
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -74,11 +56,11 @@ $class_core_table = new CoreTables();
 // NOBRE DE LOS SERVICIOS DISPONIBLES EN EL SOFTWARE
 
 
-
 $NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
 								2 => 'z2_project_'.$id_service,
 								3 => 'z3_entity_'.$id_service,
 								4 => 'z4_form_'.$id_service  );
+
 
 $NAME_TABLE = $NAME_TABLES_SERVICES[$type_service['id']];
 
@@ -88,7 +70,7 @@ $verificar_existencia_tabla = $class_core_table->VeridicarExistenciaTabla( $cone
 
 if( $verificar_existencia_tabla > 0 ){
 
-	ResponseSystem('😬 El objeto ya existe', 'error');
+	ResponseSystem('El objeto ya existe', 'error');
 }
 
 
@@ -122,11 +104,11 @@ if( $ingrese_json_inputs >= 1 && $verificar_existencia_tabla < 1 )
 
 	if( $ejecucion_consulta > 0 ){				
 			
-		ResponseSystem('✨ Excelente! Entradas creadas correctamente', 'success');
+		ResponseSystem('Excelente! Entradas creadas correctamente', 'success');
 
 	} else {
 
-		ResponseSystem('😬 Error al crear el registro', 'warning');
+		ResponseSystem('Error al crear el registro', 'warning');
 	}		
 }
 
