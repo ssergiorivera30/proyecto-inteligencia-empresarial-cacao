@@ -594,7 +594,7 @@
                   JSON_inputs: this.ArrayInputs
                }).then((response) => {               
 
-                  ArlertBasic.methods.AlertBasic(response.data.icono, response.data.mensaje, 99000, true)
+                  ArlertBasic.methods.AlertBasic(response.data.icono, response.data.mensaje, 2000, true)                  
 
                }).catch(() => {
                   alert('Error de conexión al guardar el servicio')
@@ -611,10 +611,7 @@
                   ServiceDescription: this.ServiceDescription
                }).then((response) => {
 
-                  new Noty({
-                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
-                     type: response.data.icono, text: response.data.mensaje
-                  }).show();
+                  ArlertBasic.methods.AlertBasic(response.data.icono, response.data.mensaje, 2000, true)
 
                }).catch(() => {
                   alert('Error de conexión al actualizar el servicio')
