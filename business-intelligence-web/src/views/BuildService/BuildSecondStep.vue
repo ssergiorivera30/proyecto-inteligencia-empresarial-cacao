@@ -249,8 +249,8 @@
 
 
 
-                                    <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionForm()"
-                                       class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4">
+                                    <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionInputJSON('add')" 
+                                       class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4" autocomplete="off">
 
                                        <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
                                           <label class="grid grid-cols-2 gap-4">
@@ -269,51 +269,45 @@
                                                 <label class="inline-flex items-center">
                                                    <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == 'otro'" checked>
                                                    <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = 'otro'">
-                                                   <span class="ml-2">Opción simple</span>
+                                                   <span class="ml-2 text-xs">Opción simple</span>
                                                 </label>                                         
 
                                                 <label class="inline-flex items-center">
                                                    <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == 'otros'" checked>
                                                    <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = 'otros'">
-                                                   <span class="ml-2">Opciónes multiples</span>
+                                                   <span class="ml-2 text-xs">Opciónes multiples</span>
                                                 </label>
 
                                              </div>
 
                                              <div class="block" v-if="ACheck['option']['value'] == 'otro'">
                                                 <label class="text-gray-700 font-semibold text-xs">¿Cual?</label>
-                                                <input type="text" class="form-control2" placeholder="Respuesta opcional del usuario" disabled>
+                                                <input type="text" class="form-control2" placeholder="Una respuesta opcional del usuario" >
                                              </div>
 
                                              <div class="block" v-if="ACheck['option']['value'] == 'otros'">
-                                                <label class="text-gray-700 font-semibold text-xs">El usuario puede agregar multiples respuestas de tipo texto</label>
-                                                
-                                                <div class="grid grid-cols-9 gap-2 mt-2">                                               
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-plus p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-file-blank p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-folder p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-pdf p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-doc p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-file p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-png p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-json p-2 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-table p-2 text-gray-400"></i></div>
+                                                <label class="text-gray-700 font-semibold text-xs">El usuario puede agregar multiples respuestas de tipo: texto</label>                                                
+                                                <div class="grid grid-cols-6 gap-1 mt-2">
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200"><i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200"><i class="text-xl bx bx-folder p-3 text-gray-400 hover:text-blue-900"></i></div>
+                                                </div>
+                                                <div class="grid grid-cols-6 gap-1 mt-2">
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
                                                 </div>
                                              </div>
+                                          </div>                                          
+                                       </div>  
 
-                                             
-                                             
-                                          </div>                                         
-
-                                       </div>    
-
-                                                                
-
-                                        
-
-                                       <button type="submit" v-if="SelectedTypeOptions == 1" class="btn-gray">
+                                    
+                                       <button type="submit" v-if="SelectedTypeOptions == 1 " class="btn-gray">
                                           <i class="bx bx-plus pt-1 mr-2"></i> Agregar opción
-                                       </button>
+                                       </button>                                      
+
                                     </form>
 
 
@@ -327,14 +321,12 @@
                                  </form>
 
 
-
-
-
-                                 <!-- Editar -->
+                                 <!-- EDITAR -->
 
                                  <div v-if="InputIdEidtAsigned != null">
 
-                                    <form @submit.prevent="open = false, SaveNewForm()"
+                                    <form 
+                                       @submit.prevent="open = false, SaveNewForm()"
                                        v-for="(inputEdit, index) in ArrayInputs[InputIdEidtAsigned]" 
                                        :key="index"
                                        :id="index" 
@@ -393,10 +385,9 @@
                                        </div>
 
 
-                                       <form @submit.prevent="AddOptionFormEdit()"
+                                       <form @submit.prevent="AddOptionInputJSON('edit')"
                                           v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
-                                          :id="'a_'+index"
-                                          
+                                          :id="'a_'+index"                                          
                                           autocomplete="off">
 
                                           <draggable :list="inputEdit.options" class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-3">
@@ -546,7 +537,9 @@
 
             ArrayInputs: [],
             ArrayOptions: [],
-            ArraySubOptions: [],
+
+            ArraySubOptionsValues: [],
+            ArraySubOptionsTypes: [],
 
             InputIdEidtAsigned: null,
           
@@ -562,21 +555,27 @@
             this.open = true
          },
 
-         AddOptionForm() {
-            this.ArrayOptions.push({
-               option: {
-                  value: ''
-               }
-            })
+         AddOptionInputJSON(order) {
+
+            if(oreder === 'add'){
+               this.ArrayOptions.push({
+                  option: {
+                     value: ''
+                  }
+               })
+            }
+
+            if(oreder === 'edit'){
+               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
+                  option: {
+                     value: ''
+                  }
+               })
+            }
+            
          },
 
-         AddOptionFormEdit() {
-            this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
-               option: {
-                  value: ''
-               }
-            })
-         },
+         
 
          DeleteOptionEdit(index) {
             this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
@@ -608,7 +607,9 @@
                      'max': this.InputMax,
                      'edit': 0,
                      'options': this.ArrayOptions,
-                     'sub_options': this.ArraySubOptions,
+                     'sub_options_exec': false,
+                     'sub_options_values': this.ArraySubOptionsValues,
+                     'sub_options_types': this.ArraySubOptionsTypes,
                   }
 
                }

@@ -7,7 +7,7 @@
               
                <div class="block">
                   <label class="grid grid-cols-5 gap-4 items-center">
-                     <div class="col-span-4 text-gray-700 font-medium  group flex items-center">                     
+                     <div class="col-span-4 text-gray-700 font-medium text-white group flex items-center">                     
                         <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" @mousedown="HoverDragg(index)" />{{ input['input']['name'] }} 
                      </div>
                      <div class="flex justify-end">
@@ -20,16 +20,16 @@
                      <div v-for="option in input['input']['options']" :key="option">
                         <label class="inline-flex items-center">
                            <input type="radio" :name="input['input']['name']" v-model="input['input']['value']">
-                           <span class="ml-2">{{ option['option']['value']}}</span>
+                            <span class="rounded-full px-3 py-1 ml-2 text- text-sm capitalize">{{ option['option']['value']}}</span>
                         </label>
                      </div>
                   </div>
 
                   <div class="mt-2" v-if="input['input']['type'] == 'checkbox'">
-                     <div v-for="option in input['input']['options']" :key="option">
-                        <label class="inline-flex items-center">
+                     <div v-for="(option, index) in input['input']['options']" :key="index">
+                        <label class="inline-flex items-center my-2">
                            <input type="checkbox">
-                           <span class="ml-2">{{ option['option']['value']}}</span>
+                           <span class="rounded-full px-3 py-1 ml-2 text- text-sm capitalize">{{ option['option']['value']}}</span>
                         </label>
                      </div>
                   </div>
@@ -38,9 +38,11 @@
                <!-- SECCION DE CAMPOS ESPECIALES -->
 
                <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
+
                   <span v-if="input['input']['type'] == 'textarea'">
                      <textarea :placeholder="input['input']['placeholder']" v-model="input['input']['value']" cols="30" rows="10" class="form-control2 py-3"></textarea>
                   </span>
+                  
                   <span v-else-if="input['input']['type'] == 'select'">
                      <select :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
                         <option value="" selected>Seleccionar opción</option>
@@ -103,6 +105,30 @@
             name: 'ServicePreviewFormEditor',
             enabled: true,
             dragging: false,
+            BgColors:{
+               0: 'bg-purple-400',
+               1: 'bg-blue-500',
+               2: 'bg-indigo-400',
+               3: 'bg-pink-500',
+               4: 'bg-purple-500',
+               5: 'bg-gray-600',
+               6: 'bg-red-300',
+               7: 'bg-yellow-600',
+               8: 'bg-green-500',
+               9: 'bg-blue-600',
+               10: 'bg-purple-400',
+               11: 'bg-pink-600',
+               12: 'bg-red-400',
+               13: 'bg-green-400',
+               14: 'bg-purple-500',
+               15: 'bg-blue-400',
+               16: 'bg-gray-400',
+               17: 'bg-yellow-400',
+               18: 'bg-pink-400',
+               19: 'bg-indigo-400',
+               19: 'bg-green-400',
+               19: 'bg-gray-900',
+            }
          }
       },
       props: {
