@@ -1,7 +1,7 @@
 <template> 
-   <div class="flex items-center justify-center mt-1">
+   <div class="flex items-center justify-center">
       <div class="w-full pt-1 flex justify-between border-gray-300">
-         <div class="grid grid-rows-1 grid-flow-col gap-2 border-b-2 border-dotted">
+         <div class="grid grid-rows-1 grid-flow-col gap-3 p-1">
               <div class="row-span-2 w-10 flex flex-wrap content-start justify-start">
                 <img v-if="IconModulo != ''" class="w-full rounded pt-2" :src="SrcIconModulo + IconModulo" />
             </div>         
@@ -32,7 +32,7 @@
       </div>
    </div>
 
-  <div class="mt-1 mb-2">
+  <div class="mt-2 mb-2">
     <ul class="list-reset flex pb-2 overscroll-x-auto overflow-y-hidden whitespace-nowrap">       
         <router-link 
             v-if="GoBack !== 'history.back'"

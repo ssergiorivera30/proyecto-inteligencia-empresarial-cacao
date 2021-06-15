@@ -4,8 +4,7 @@
          <div class="max-w-xl md:mx-auto sm:text-center lg:max-w-2xl">
             <h2 class="mb-4 text-purple-50 font-sans text-2xl font-semibold leading-8 md:mx-auto">
                {{ ServiceName }}                  
-            </h2>
-            
+            </h2>            
          </div>  
       </div>
    </div>
@@ -20,9 +19,7 @@
       </p>
       
       <p v-if="ServiceDescription.length < 320 && ViewText == 0">{{ ServiceDescription }}</p>
-
    </div>
-
 </template>
 
 <script>

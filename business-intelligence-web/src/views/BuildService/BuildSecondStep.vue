@@ -42,6 +42,19 @@
                   </div>
                </a>
 
+               <button @click="EditHeaderTitleDescriptionService = EditHeaderTitleDescriptionService ? false : true"
+                  class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
+                  <div class="flex leading-5">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-edit w-5 h-5 mr-1">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                     </svg>
+                     <span class="hidden md:block">Editar encabezado</span>
+                  </div>
+               </button>
+
                <button @click="OrdenVisivility(true), InputIdEidtAsigned = null, open = true"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-4">
@@ -55,18 +68,7 @@
                   </div>
                </button>
 
-               <button @click="EditHeaderTitleDescriptionService = false"
-                  class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
-                  <div class="flex leading-5">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-edit w-5 h-5 mr-1">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                     </svg>
-                     <span class="hidden md:block">Editar encabezado</span>
-                  </div>
-               </button>
+               
 
                <button @click="SaveNewForm()"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
@@ -149,7 +151,7 @@
             :ArrayInputs="ArrayInputs"
             @GetIdEdit="AsignedIdEdit" />
 
-         <div class="py-5 text-left ">
+         <div class="py-5 text-left " v-if="EditHeaderTitleDescriptionService === true">
             <button @click="SaveNewForm()" type="button" class="mr-3 btn-indigo">{{ OrderInfoBasicForm }}</button>
          </div>
 
@@ -197,8 +199,14 @@
 
                                  <!--  crear  -->
 
-                                 <form @submit.prevent="AddInput" v-if="InputIdEidtAsigned == null" autocomplete="off" class="my-10">
+                                 <form @submit.prevent="AddInput" v-if="InputIdEidtAsigned == null" autocomplete="off" class="my-10 pb-10">
                                     <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-x-4 gap-y-2">
+                                       
+                                       <div class="block">
+                                          <label class="text-gray-700 font-semibold text-xs">Nombre del campo</label>
+                                          <input type="text" class="form-control2" placeholder="" required v-model="InputName">
+                                       </div>
+
                                        <div class="block">
                                           <label class="text-gray-700 font-semibold text-xs">Tipo de campo</label>
                                           <select class="form-control2" required v-model="InputType"
@@ -221,11 +229,6 @@
                                        </div>
 
                                        <div class="block">
-                                          <label class="text-gray-700 font-semibold text-xs">Nombre del campo</label>
-                                          <input type="text" class="form-control2" placeholder="" required v-model="InputName">
-                                       </div>
-
-                                       <div class="block">
                                           <label class="text-gray-700 font-semibold text-xs">Obligatorio</label>
                                           <select class="form-control2" required v-model="InputRequired">
                                              <option value="false">No</option>
@@ -244,31 +247,88 @@
                                        </div>
                                     </div>
 
+
+
                                     <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionForm()"
-                                       class="relative mt-8 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4">
+                                       class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4">
 
                                        <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
-                                          <label class="grid grid-cols-3 gap-4">
-                                             <span class="text-gray-700 font-semibold">Opción</span>
-                                             <span class="fa fa-trash cursor-pointer"
-                                                @click="DeleteOption(index)"></span>
+                                          <label class="grid grid-cols-2 gap-4">
+                                             <span class="text-gray-700 font-semibold text-xs">Opción</span>
+                                             <span class="bx bxs-trash cursor-pointer text-gray-500 justify-self-end" @click="DeleteOption(index)"></span>
                                           </label>
-                                          <input type="text" :name="'name'+index" class="form-control2"
-                                             v-model="ACheck['option']['value']" required>
-                                       </div>
 
-                                       <button type="submit" v-if="SelectedTypeOptions == 1" class="mt-5 btn-gray">
-                                          <i class="fa fa-plus pt-1 mr-2"></i> Agregar opción
+                                          <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
+
+                                          <!-- <div>{{ ACheck }}</div> -->
+                                          
+                                          <div v-if="ACheck['option']['value'] == 'otro' || ACheck['option']['value'] == 'otros'"  >
+
+                                             <div class="grid grid-cols-2 gap-2 my-3">
+
+                                                <label class="inline-flex items-center">
+                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == 'otro'" checked>
+                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = 'otro'">
+                                                   <span class="ml-2">Opción simple</span>
+                                                </label>                                         
+
+                                                <label class="inline-flex items-center">
+                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == 'otros'" checked>
+                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = 'otros'">
+                                                   <span class="ml-2">Opciónes multiples</span>
+                                                </label>
+
+                                             </div>
+
+                                             <div class="block" v-if="ACheck['option']['value'] == 'otro'">
+                                                <label class="text-gray-700 font-semibold text-xs">¿Cual?</label>
+                                                <input type="text" class="form-control2" placeholder="Respuesta opcional del usuario" disabled>
+                                             </div>
+
+                                             <div class="block" v-if="ACheck['option']['value'] == 'otros'">
+                                                <label class="text-gray-700 font-semibold text-xs">El usuario puede agregar multiples respuestas de tipo texto</label>
+                                                
+                                                <div class="grid grid-cols-9 gap-2 mt-2">                                               
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-plus p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-file-blank p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-folder p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-pdf p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-doc p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-file p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-png p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bxs-file-json p-2 text-gray-400"></i></div>
+                                                      <div class="justify-self-center border border-gray-200 rounded"><i class="text-xl bx bx-table p-2 text-gray-400"></i></div>
+                                                </div>
+                                             </div>
+
+                                             
+                                             
+                                          </div>                                         
+
+                                       </div>    
+
+                                                                
+
+                                        
+
+                                       <button type="submit" v-if="SelectedTypeOptions == 1" class="btn-gray">
+                                          <i class="bx bx-plus pt-1 mr-2"></i> Agregar opción
                                        </button>
                                     </form>
 
-                                    <div v-if="InputType != '' && InputName != '' " class="py-10 text-left ">
+
+
+                                    <div v-if="InputType != '' && InputName != '' " class="my-4 text-left ">
                                        <button type="submit" class="mr-3 btn-indigo">
                                           Crear entrada de datos
                                        </button>
                                        <!-- <button type="submit" class=" btn-green2">Terminar y guardar </button> -->
                                     </div>
                                  </form>
+
+
+
+
 
                                  <!-- Editar -->
 
@@ -279,9 +339,15 @@
                                        :key="index"
                                        :id="index" 
                                        autocomplete="off" 
-                                       class="my-10">
+                                       class="my-10 pb-10">
 
                                        <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-x-4 gap-y-2">
+                                          
+                                          <div class="block">
+                                             <label  class="text-gray-700 font-semibold text-xs">Nombre del campo</label>
+                                             <input type="text" class="form-control2" placeholder="" required v-model="inputEdit.name">
+                                          </div>
+
                                           <div class="block">
                                              <label class="text-gray-700 font-semibold text-xs">Tipo de campo</label>
                                              <select class="form-control2" required v-model="inputEdit.type"
@@ -302,10 +368,7 @@
                                                 <option value="color">Color</option>
                                              </select>
                                           </div>
-                                          <div class="block">
-                                             <label  class="text-gray-700 font-semibold text-xs">Nombre del campo</label>
-                                             <input type="text" class="form-control2" placeholder="" required v-model="inputEdit.name">
-                                          </div>
+
                                           <div class="block">
                                              <label  class="text-gray-700 font-semibold text-xs">Obligatorio</label>
                                              <select class="form-control2" required v-model="inputEdit.required">
@@ -330,34 +393,45 @@
                                        </div>
 
 
-
-
                                        <form @submit.prevent="AddOptionFormEdit()"
                                           v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
                                           :id="'a_'+index"
-                                          class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4"
+                                          
                                           autocomplete="off">
+
+                                          <draggable :list="inputEdit.options" class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-3">
+
+
                                           <div v-for="(ACheck, index) in inputEdit.options" :key="index" class="block">
 
-                                             <label class="grid grid-cols-5 gap-4">
-                                                <span class="col-span-3 text-gray-700 font-semibold text-xs">Opción {{ index + 1 }} </span>
-                                                <div class="col-span-2 flex justify-end">
-                                                <span 
-                                                   class="cursor-pointer font-normal hover:font-semibold	group flex rounded-md items-center px-2 py-2 text-sm"
-                                                   @click="DeleteOptionEdit(index)">Eliminar opción</span>
+                                        
+                                             <label class="grid grid-cols-5 gap-4 items-center">
+                                                <div class="col-span-4 group flex items-center text-gray-700 font-semibold text-xs ">                     
+                                                   <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" />Opción {{ index + 1 }}
+                                                </div>
+                                                <div class="flex justify-end">
+                                                     <span class="bx bxs-trash text-gray-500 cursor-pointer justify-self-end" @click="DeleteOptionEdit(index)"></span>
                                                 </div>
                                              </label>
+
+                                            
                                              
                                              <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
 
 
                                           </div>
 
+                                          </draggable>
+
+                                         
+
                                           <button type="submit"
                                              v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
-                                             class="mt-5 btn-gray">
-                                             <i class="fa fa-plus pt-1 mr-2"></i> Agregar opción
+                                             class="mt-5 btn-gray w-full">
+                                             <i class="bx bx-plus pt-1 mr-2"></i> Agregar opción
                                           </button>
+
+
                                        </form>
 
                                        <div v-if="inputEdit.type != '' && inputEdit.name != '' "
@@ -365,7 +439,7 @@
                                           <button type="submit" class="mr-3 btn-indigo">
                                              Actualizar
                                           </button>
-                                          <button type="submit" class="mr-3 btn-light">
+                                          <button type="button" class="mr-3 btn-light" @click="open = false">
                                              Cancelar
                                           </button>
                                        </div>
@@ -406,6 +480,28 @@
 
    import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
 
+  import { VueDraggableNext } from 'vue-draggable-next'
+
+//    var AHORA = new Date();
+
+// console.log(AHORA.getFullYear())
+// // 
+// console.log(AHORA.getDate())
+// console.log(AHORA.getDay())
+// console.log(AHORA.getMonth())
+// // 
+// console.log(AHORA.getHours())
+// console.log(AHORA.getUTCHours())
+// console.log(AHORA.getMinutes())
+// console.log(AHORA.getSeconds())
+
+// console.log(AHORA.getTime())
+
+
+//     var TokenValue = 
+//     this.$route.params.id_service + NowData.getFullYear()+ NowData.getMonth() + NowData.getDate() 
+//     + NowData.getHours() + NowData.getMinutes() + NowData.getSeconds() +  NowData.getTime() + NowNumber;
+
 
    export default {
       components: {
@@ -416,7 +512,8 @@
          DialogTitle,
          TransitionChild,
          TransitionRoot,
-         ArlertBasic
+         ArlertBasic,
+         draggable: VueDraggableNext,    
       },
       setup() {
          const open = ref(false)
@@ -449,6 +546,7 @@
 
             ArrayInputs: [],
             ArrayOptions: [],
+            ArraySubOptions: [],
 
             InputIdEidtAsigned: null,
           
@@ -488,9 +586,12 @@
             this.ArrayOptions.splice(index, 1);
          },
 
-
-
          AddInput: function () {
+
+            var NowData = new Date();
+            var NowNumber = Math.floor(Math.random() * (111 - 999)) + 999;
+            var TokenValue = this.$route.params.id_service + NowData.getDate() + NowData.getHours() + NowData.getMinutes() + NowData.getSeconds() +  NowData.getTime() + NowNumber;
+
             this.ArrayInputs.push(
                {
                   input: {
@@ -499,6 +600,7 @@
                      'required': this.InputRequired,
                      'placeholder': this.InputPlaceholder,
                      'value': this.InputValue,
+                     'token': TokenValue,
                      'minlength': this.InputMinlength,
                      'maxlength': this.InputMaxlength,
                      'size': this.InputSize,
@@ -506,6 +608,7 @@
                      'max': this.InputMax,
                      'edit': 0,
                      'options': this.ArrayOptions,
+                     'sub_options': this.ArraySubOptions,
                   }
 
                }
@@ -522,6 +625,7 @@
             this.InputMin = ''
             this.InputMax = ''
             this.ArrayOptions = []
+            this.ArraySubOptions = []
          },
 
          AddInputEdit: function () {

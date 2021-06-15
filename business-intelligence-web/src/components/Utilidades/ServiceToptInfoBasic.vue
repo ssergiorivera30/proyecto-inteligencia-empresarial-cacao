@@ -10,34 +10,31 @@
                Grupo activo
             </span>
 
-            <span v-else class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+            <span v-else class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-yellow-100 bg-yellow-400 rounded-full">
                Grupo Inactivo
             </span>
-
          </div>
-
-
 
          <div class="flex">
             <div class="px-6 flex items-center flex-no-wrap">
                <div class="w-12 h-12 bg-cover bg-center rounded-md">
-                  <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" alt=""
+                  <img :src="imagen_a" alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
                </div>
                <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-                  <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_1.png" alt=""
+                  <img :src="imagen_b"  alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
                </div>
                <div class="w-12 h-12 bg-cover rounded-md bg-center -ml-2">
-                  <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_2.png" alt=""
+                  <img :src="imagen_c"  alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
                </div>
                <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-                  <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_3.png" alt=""
+                  <img :src="imagen_d" alt=""
                      class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
                </div>
                <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-                  <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
+                  <img :src="imagen_e" alt=""
                      class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
                </div>
             </div>
@@ -66,6 +63,11 @@ export default {
   data() {
     return {      
       SrcIconModulo: API_ROUTER.API_PUBLIC,
+      imagen_a: API_ROUTER.API_PUBLIC+'users/a_4_0.png',
+      imagen_b: API_ROUTER.API_PUBLIC+'users/a_4_1.png',
+      imagen_c: API_ROUTER.API_PUBLIC+'users/a_4_2.png',
+      imagen_d: API_ROUTER.API_PUBLIC+'users/a_4_3.png',
+      imagen_e: API_ROUTER.API_PUBLIC+'users/a_4_4.png',
     }
   },   
   props: {
