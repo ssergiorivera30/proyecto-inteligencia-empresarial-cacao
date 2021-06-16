@@ -36,7 +36,6 @@
     @apply inline-flex justify-center py-1 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-my-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
 }
 
-
 .label-intro{
     @apply border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1;
 }

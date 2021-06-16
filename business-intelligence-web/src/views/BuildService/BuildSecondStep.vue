@@ -55,7 +55,7 @@
                   </div>
                </button>
 
-               <button @click="OrdenVisivility(true), InputIdEidtAsigned = null, open = true"
+               <button @click="InputIdEidtAsigned = null, open = true"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-4">
                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
@@ -197,6 +197,23 @@
                               <!-- Replace with your content -->
                               <div class="absolute inset-0 px-4 sm:px-6">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                  <!--  crear  -->
 
                                  <form @submit.prevent="AddInput" v-if="InputIdEidtAsigned == null" autocomplete="off" class="my-10 pb-10">
@@ -247,70 +264,92 @@
                                        </div>
                                     </div>
 
-
-
-                                    <form v-if="SelectedTypeOptions == 1" @submit.prevent="AddOptionInputJSON('add')" 
+                                    <form v-if="SelectedTypeOptions === 1" @submit.prevent="CRUDOptionInputJSON('add', null)" 
                                        class="relative mt-3 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-4" autocomplete="off">
 
                                        <div v-for="(ACheck, index) in ArrayOptions" :key="index" class="block">
                                           <label class="grid grid-cols-2 gap-4">
                                              <span class="text-gray-700 font-semibold text-xs">Opción</span>
-                                             <span class="bx bxs-trash cursor-pointer text-gray-500 justify-self-end" @click="DeleteOption(index)"></span>
+                                             <span class="bx bxs-trash cursor-pointer text-gray-500 justify-self-end" @click="CRUDOptionInputJSON('delete_option_list_create', index)"></span>
                                           </label>
 
-                                          <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
+                                          <input type="text" :name="'name'+index" class="form-control2" 
+                                                v-model="ACheck['option']['value']" 
+                                                required 
+                                                @keyup="CRUDSubOptions('edit_other', ACheck['option']['value'])" />
 
-                                          <!-- <div>{{ ACheck }}</div> -->
                                           
-                                          <div v-if="ACheck['option']['value'] == 'otro' || ACheck['option']['value'] == 'otros'"  >
+                                          <div v-if="ACheck['option']['value'] == '/otro' || ACheck['option']['value'] == '/otros'"  >
 
                                              <div class="grid grid-cols-2 gap-2 my-3">
 
                                                 <label class="inline-flex items-center">
-                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == 'otro'" checked>
-                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = 'otro'">
+                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == '/otro'" checked>
+                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = '/otro', CRUDSubOptions('edit_other', '/otro')">
                                                    <span class="ml-2 text-xs">Opción simple</span>
                                                 </label>                                         
 
                                                 <label class="inline-flex items-center">
-                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == 'otros'" checked>
-                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = 'otros'">
-                                                   <span class="ml-2 text-xs">Opciónes multiples</span>
+                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == '/otros'" checked>
+                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = '/otros', CRUDSubOptions('edit_other', '/otros')">
+                                                   <span class="ml-2 text-xs">Opciones multiples</span>
                                                 </label>
 
                                              </div>
 
-                                             <div class="block" v-if="ACheck['option']['value'] == 'otro'">
+                                             <div class="block" v-if="ACheck['option']['value'] == '/otro'">
                                                 <label class="text-gray-700 font-semibold text-xs">¿Cual?</label>
                                                 <input type="text" class="form-control2" placeholder="Una respuesta opcional del usuario" >
                                              </div>
 
-                                             <div class="block" v-if="ACheck['option']['value'] == 'otros'">
-                                                <label class="text-gray-700 font-semibold text-xs">El usuario puede agregar multiples respuestas de tipo: texto</label>                                                
+                                             <div class="block" v-if="ACheck['option']['value'] === '/otros'">
+                                                <label class="text-gray-700 font-semibold text-xs">El usuario puede agregar multiples respuestas de tipo: texto</label>
+
                                                 <div class="grid grid-cols-6 gap-1 mt-2">
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200"><i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200"><i class="text-xl bx bx-folder p-3 text-gray-400 hover:text-blue-900"></i></div>
+
+                                                      <div v-if="ArraySubOptionsTypes.option1.state === false" @click="CRUDSubOptions('activate_type_text', 'text')" 
+                                                         class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200 cursor-pointer" >
+                                                         <i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-else @click="CRUDSubOptions('inactive_type_text', 'text')" 
+                                                         class="justify-self-center border-2 rounded w-12 h-12 border-blue-500 cursor-pointer" >
+                                                         <i class="text-xl bx bx-text p-3 text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === false" @click="CRUDSubOptions('activate_type_file', 'file')"
+                                                         class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200 cursor-pointer">
+                                                         <i class="text-xl bx bx-folder p-3 text-gray-400 hover:text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-else @click="CRUDSubOptions('inactive_type_file', 'file')" 
+                                                         class="justify-self-center border-2 rounded w-12 h-12 border-blue-500 cursor-pointer" >
+                                                         <i class="text-xl bx bx-folder p-3 text-blue-900"></i>
+                                                      </div>
                                                 </div>
-                                                <div class="grid grid-cols-6 gap-1 mt-2">
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
-                                                      <div class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
+
+
+                                                <div class="grid grid-cols-6 gap-1 mt-2">  
+
+                                                      <div v-if="ArraySubOptionsTypes.option1.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200">
+                                                         <i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
+                                                      
                                                 </div>
                                              </div>
                                           </div>                                          
                                        </div>  
-
-                                    
-                                       <button type="submit" v-if="SelectedTypeOptions == 1 " class="btn-gray">
+                                                                       
+                                       <button type="submit" v-if="SelectedTypeOptions === 1 && sub_option_other === 0" class="btn-gray">
                                           <i class="bx bx-plus pt-1 mr-2"></i> Agregar opción
-                                       </button>                                      
-
+                                       </button>
                                     </form>
-
-
 
                                     <div v-if="InputType != '' && InputName != '' " class="my-4 text-left ">
                                        <button type="submit" class="mr-3 btn-indigo">
@@ -319,6 +358,32 @@
                                        <!-- <button type="submit" class=" btn-green2">Terminar y guardar </button> -->
                                     </div>
                                  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                                  <!-- EDITAR -->
@@ -385,7 +450,7 @@
                                        </div>
 
 
-                                       <form @submit.prevent="AddOptionInputJSON('edit')"
+                                       <form @submit.prevent="CRUDOptionInputJSON('edit', null)"
                                           v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
                                           :id="'a_'+index"                                          
                                           autocomplete="off">
@@ -401,13 +466,85 @@
                                                    <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" />Opción {{ index + 1 }}
                                                 </div>
                                                 <div class="flex justify-end">
-                                                     <span class="bx bxs-trash text-gray-500 cursor-pointer justify-self-end" @click="DeleteOptionEdit(index)"></span>
+                                                     <span class="bx bxs-trash text-gray-500 cursor-pointer justify-self-end" @click="CRUDOptionInputJSON('delete_option_list_edit', index)"></span>
                                                 </div>
                                              </label>
 
                                             
                                              
-                                             <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required>
+                                             <!-- <input type="text" :name="'name'+index" class="form-control2" v-model="ACheck['option']['value']" required> -->
+
+                                                 <input type="text" :name="'name'+index" class="form-control2" 
+                                                v-model="ACheck['option']['value']" 
+                                                required 
+                                                @keyup="CRUDSubOptions('edit_other', ACheck['option']['value'])" />
+
+                                          
+                                          <div v-if="ACheck['option']['value'] == '/otro' || ACheck['option']['value'] == '/otros'"  >
+
+                                             <div class="grid grid-cols-2 gap-2 my-3">
+
+                                                <label class="inline-flex items-center">
+                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == '/otro'" checked>
+                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = '/otro', CRUDSubOptions('edit_other', '/otro')">
+                                                   <span class="ml-2 text-xs">Opción simple</span>
+                                                </label>                                         
+
+                                                <label class="inline-flex items-center">
+                                                   <input type="radio" :name="'name'+index" v-if="ACheck['option']['value'] == '/otros'" checked>
+                                                   <input type="radio" :name="'name'+index" v-else @click="ACheck['option']['value'] = '/otros', CRUDSubOptions('edit_other', '/otros')">
+                                                   <span class="ml-2 text-xs">Opciones multiples</span>
+                                                </label>
+
+                                             </div>
+
+                                             <div class="block" v-if="ACheck['option']['value'] == '/otro'">
+                                                <label class="text-gray-700 font-semibold text-xs">¿Cual?</label>
+                                                <input type="text" class="form-control2" placeholder="Una respuesta opcional del usuario" >
+                                             </div>
+
+                                             <div class="block" v-if="ACheck['option']['value'] === '/otros'">
+                                                <label class="text-gray-700 font-semibold text-xs">El usuario puede agregar multiples respuestas de tipo: texto</label>
+
+                                                <div class="grid grid-cols-6 gap-1 mt-2">
+
+                                                      <div v-if="ArraySubOptionsTypes.option1.state === false" @click="CRUDSubOptions('activate_type_text', 'text')" 
+                                                         class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200 cursor-pointer" >
+                                                         <i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-else @click="CRUDSubOptions('inactive_type_text', 'text')" 
+                                                         class="justify-self-center border-2 rounded w-12 h-12 border-blue-500 cursor-pointer" >
+                                                         <i class="text-xl bx bx-text p-3 text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === false" @click="CRUDSubOptions('activate_type_file', 'file')"
+                                                         class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200 cursor-pointer">
+                                                         <i class="text-xl bx bx-folder p-3 text-gray-400 hover:text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-else @click="CRUDSubOptions('inactive_type_file', 'file')" 
+                                                         class="justify-self-center border-2 rounded w-12 h-12 border-blue-500 cursor-pointer" >
+                                                         <i class="text-xl bx bx-folder p-3 text-blue-900"></i>
+                                                      </div>
+                                                </div>
+
+
+                                                <div class="grid grid-cols-6 gap-1 mt-2">  
+
+                                                      <div v-if="ArraySubOptionsTypes.option1.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200">
+                                                         <i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i>
+                                                      </div>
+
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
+                                                      
+                                                </div>
+                                             </div>
+                                          </div> 
 
 
                                           </div>
@@ -417,7 +554,7 @@
                                          
 
                                           <button type="submit"
-                                             v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' "
+                                             v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' && sub_option_other == 0 "
                                              class="mt-5 btn-gray w-full">
                                              <i class="bx bx-plus pt-1 mr-2"></i> Agregar opción
                                           </button>
@@ -436,10 +573,20 @@
                                        </div>
 
                                     </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
                                  </div>
-
-
-
                               </div>
                               <!-- /End replace -->
                            </div>
@@ -466,33 +613,9 @@
 
    import { ref } from 'vue'
    import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-
    import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
-
    import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
-
   import { VueDraggableNext } from 'vue-draggable-next'
-
-//    var AHORA = new Date();
-
-// console.log(AHORA.getFullYear())
-// // 
-// console.log(AHORA.getDate())
-// console.log(AHORA.getDay())
-// console.log(AHORA.getMonth())
-// // 
-// console.log(AHORA.getHours())
-// console.log(AHORA.getUTCHours())
-// console.log(AHORA.getMinutes())
-// console.log(AHORA.getSeconds())
-
-// console.log(AHORA.getTime())
-
-
-//     var TokenValue = 
-//     this.$route.params.id_service + NowData.getFullYear()+ NowData.getMonth() + NowData.getDate() 
-//     + NowData.getHours() + NowData.getMinutes() + NowData.getSeconds() +  NowData.getTime() + NowNumber;
-
 
    export default {
       components: {
@@ -508,7 +631,6 @@
       },
       setup() {
          const open = ref(false)
-
          return {
             open,
          }
@@ -538,8 +660,21 @@
             ArrayInputs: [],
             ArrayOptions: [],
 
+            sub_option_other: 0,
+
+            ArraySubOptionsTypes: {
+               option1: {
+                  type: 'text',
+                  state: false,
+                  limit: 10
+               },
+               option2: {
+                  type: 'file',
+                  state: false,
+                  limit: 10
+               }
+            },
             ArraySubOptionsValues: [],
-            ArraySubOptionsTypes: [],
 
             InputIdEidtAsigned: null,
           
@@ -548,16 +683,42 @@
       mounted: function () {
          this.LoadBasicInfoService()      
       },
-      methods: {
+      methods: {   
+         CRUDSubOptions: function(order, type){
 
-         AsignedIdEdit: function (value) {
-            this.InputIdEidtAsigned = value
-            this.open = true
+            var existOtro = false;
+            var existOtroNumero = 0;
+       
+           this.ArrayOptions.forEach((element, index) => {
+               if (element.option.value == '/otro' || element.option.value == '/otros'){
+                  existOtro = true;
+                  existOtroNumero = existOtroNumero + 1;
+                  if(existOtroNumero > 1){
+                     this.ArrayOptions.splice(index, 1)                  
+                  }
+               }
+            });
+   
+
+            if( order === 'edit_other' && type == '/otro'){ this.sub_option_other = 1 }
+
+            if( order === 'edit_other' && type == '/otros'){ this.sub_option_other = 2 }
+
+            if( order === 'edit_other' && type != '/otro' && type != '/otros' && existOtro == false ){ this.sub_option_other = 0 }
+
+            if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.state = true }
+
+            if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.state = false }
+
+            if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.state = true }
+
+            if( order === 'inactive_type_file' ){ this.ArraySubOptionsTypes.option2.state = false }
+
          },
 
-         AddOptionInputJSON(order) {
+         CRUDOptionInputJSON: function(order, index) {         
 
-            if(oreder === 'add'){
+            if( order === 'add' && this.sub_option_other == 0 ){
                this.ArrayOptions.push({
                   option: {
                      value: ''
@@ -565,26 +726,25 @@
                })
             }
 
-            if(oreder === 'edit'){
+            if(order === 'edit'){
                this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
                   option: {
                      value: ''
                   }
                })
             }
-            
+
+            if(order === 'delete_option_list_create'){
+
+               this.ArrayOptions.splice(index, 1);
+            }
+
+            if(order === 'delete_option_list_edit'){
+
+               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
+            }            
          },
-
-         
-
-         DeleteOptionEdit(index) {
-            this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
-         },
-
-         DeleteOption: function (index) {
-            this.ArrayOptions.splice(index, 1);
-         },
-
+       
          AddInput: function () {
 
             var NowData = new Date();
@@ -607,11 +767,10 @@
                      'max': this.InputMax,
                      'edit': 0,
                      'options': this.ArrayOptions,
-                     'sub_options_exec': false,
-                     'sub_options_values': this.ArraySubOptionsValues,
+                     'sub_option_other': this.sub_option_other,
                      'sub_options_types': this.ArraySubOptionsTypes,
+                     'sub_options_values': this.ArraySubOptionsValues,                     
                   }
-
                }
             );
 
@@ -626,32 +785,21 @@
             this.InputMin = ''
             this.InputMax = ''
             this.ArrayOptions = []
+            this.sub_option_other = 0
             this.ArraySubOptions = []
          },
 
          AddInputEdit: function () {
 
-            // console.log(this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'])
-
             if (this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'checkbox' &&
                this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'radio' &&
                this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'select') {
 
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'] = []
+                  this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'] = []
             }
 
             this.InputType = 'text'
             this.InputIdEidtAsigned = null
-
-
-         },
-
-         OrdenVisivility: function (orden) {
-            // this.EditHeaderTitleDescriptionService = orden
-         },
-
-         SizeAndMaxLenght: function () {
-            this.InputSize = this.InputMaxlength
          },
 
          AttributeInputVisivility: function () {
@@ -689,6 +837,11 @@
 
          },
 
+         AsignedIdEdit: function (value) {
+            this.InputIdEidtAsigned = value
+            this.open = true
+         },
+
          // PETICIONES A LA BASES DE DATOS
 
          SaveNewForm: function () {
@@ -705,8 +858,6 @@
                   alert('Error de conexión al guardar el servicio')
                })
          },
-
-
 
          UpdateInfoBasicForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_update_basic.php",
@@ -738,16 +889,12 @@
                   if (response['data']['datos'][0]['data_json'] != null) {
                      this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
                      this.OrderInfoBasicForm = 'Guardar cambios'
-
                   }
 
                }).catch(() => {
                   alert('Error de conexión al cargar el servicio')
-               })
+            })
          },
-
-
-
       }
    }
 </script>
