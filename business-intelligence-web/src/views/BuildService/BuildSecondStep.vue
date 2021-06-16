@@ -551,10 +551,12 @@
 
                                           </draggable>
 
+                                          <!-- <pre>{{ inputEdit['sub_option_other'] }}</pre> -->
+
                                          
 
                                           <button type="submit"
-                                             v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' && sub_option_other == 0 "
+                                             v-if="inputEdit.type == 'checkbox' || inputEdit.type == 'radio' || inputEdit.type =='select' && inputEdit['sub_option_other'] == 0 "
                                              class="mt-5 btn-gray w-full">
                                              <i class="bx bx-plus pt-1 mr-2"></i> Agregar opción
                                           </button>
