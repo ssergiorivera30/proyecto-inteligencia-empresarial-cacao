@@ -331,15 +331,15 @@
 
                                                 <div class="grid grid-cols-6 gap-1 mt-2">  
 
-                                                      <div v-if="ArraySubOptionsTypes.option1.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200">
+                                                      <div v-if="ArraySubOptionsTypes.option1.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200" title="Tipo Texto">
                                                          <i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i>
                                                       </div>
 
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo archivo"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo PDF"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo DOC, DOCX"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo PNG, JPEG, JPG"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo JSON"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
                                                       
                                                 </div>
                                              </div>
@@ -532,15 +532,15 @@
 
                                                 <div class="grid grid-cols-6 gap-1 mt-2">  
 
-                                                      <div v-if="ArraySubOptionsTypes.option1.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200">
+                                                      <div v-if="ArraySubOptionsTypes.option1.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12 hover:border-blue-200" >
                                                          <i class="text-xl bx bx-text p-3 text-gray-400 hover:text-blue-900"></i>
                                                       </div>
 
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
-                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo archivo"><i class="text-xl bx bx-file p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo PDF"><i class="text-xl bx bxs-file-pdf p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo DOC, DOCX"><i class="text-xl bx bxs-file-doc p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo PNG, JPEG, JPG"><i class="text-xl bx bxs-file-png p-3 text-gray-400"></i></div>
+                                                      <div v-if="ArraySubOptionsTypes.option2.state === true" class="justify-self-center border border-gray-200 rounded w-12 h-12" title="Tipo JSON"><i class="text-xl bx bxs-file-json p-3 text-gray-400"></i></div>
                                                       
                                                 </div>
                                              </div>
