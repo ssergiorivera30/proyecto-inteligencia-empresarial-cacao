@@ -194,27 +194,13 @@
                               <DialogTitle v-else class="text-lg font-medium text-gray-900">Editar entrada de datos</DialogTitle>
                            </div>
                            <div class="relative flex-1 px-4 sm:px-6">
+
                               <!-- Replace with your content -->
+                              
                               <div class="absolute inset-0 px-4 sm:px-6">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                 <!--  crear  -->
+                                <!--  CREAR  -->
 
                                  <form @submit.prevent="AddInput" v-if="InputIdEidtAsigned == null" autocomplete="off" class="my-10 pb-10">
                                     <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-x-4 gap-y-2">
@@ -358,19 +344,6 @@
                                        <!-- <button type="submit" class=" btn-green2">Terminar y guardar </button> -->
                                     </div>
                                  </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -6,6 +6,8 @@
               
               
                <div class="block">
+
+
                   <label class="grid grid-cols-5 gap-4 items-center">
                      <div class="col-span-4 text-gray-700 font-medium text-white group flex items-center">                     
                         <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" @mousedown="HoverDragg(index)" />{{ input['input']['name'] }} 
@@ -16,6 +18,8 @@
                      </div>
                   </label>
 
+
+
                   <div class="mt-2" v-if="input['input']['type'] == 'radio'">
                      <div v-for="option in input['input']['options']" :key="option">
                         <label class="inline-flex items-center">
@@ -24,6 +28,8 @@
                         </label>
                      </div>
                   </div>
+
+
 
                   <div class="mt-2" v-if="input['input']['type'] == 'checkbox'">
                      <div v-for="(option, index) in input['input']['options']" :key="index">
@@ -37,20 +43,65 @@
 
                <!-- SECCION DE CAMPOS ESPECIALES -->
 
-               <div class="block" v-if="input['input']['type'] != 'checkbox' && input['input']['type'] != 'radio'">
-
-                  <span v-if="input['input']['type'] == 'textarea'">
+               <div class="block" v-if="input['input']['type'] == 'textarea'">
+                  <div>
                      <textarea :placeholder="input['input']['placeholder']" v-model="input['input']['value']" cols="30" rows="10" class="form-control2 py-3"></textarea>
-                  </span>
-                  
-                  <span v-else-if="input['input']['type'] == 'select'">
-                     <select :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
-                        <option value="" selected>Seleccionar opción</option>
-                        <option v-for="option in input['input']['options']" :key="option" value="">{{ option['option']['value'] }}</option>
-                     </select>
-                  </span>
+                  </div>
+               </div>
 
-                  <span v-else>
+               <div class="block" v-if="input['input']['type'] == 'select'">
+                   <div>
+                     <select v-if="input['input']['sub_option_other'] === 1" :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
+                        <option value="" selected>Seleccionar opción</option>
+                        <option v-for="option in input['input']['options']" :key="option" :value="option['option']['value']">{{ option['option']['value'] == '/otro' ? option['option']['value'].slice(1) : option['option']['value'] }}</option>
+                     </select>
+
+                      <select v-if="input['input']['sub_option_other'] === 2" :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
+                        <option value="" selected>Seleccionar opción</option>
+                        <option v-for="option in input['input']['options']" :key="option" :value="option['option']['value']">{{ option['option']['value'] == '/otros' ? option['option']['value'].slice(1) : option['option']['value'] }}</option>
+                     </select>
+                  </div>
+
+                  <div v-if="input['input']['sub_option_other'] === 1" class="grid grid-cols-12 gap-4 items-center">
+                     <div class="col-span-12">
+                        <input type="text" class="form-control2 py-3" placeholder="¿Cual?" />
+                     </div>                    
+                  </div>
+
+                  <div v-if=" input['input']['sub_option_other'] === 2 " class="grid grid-cols-12 gap-4 items-center">
+                     <div class="col-span-8">
+                        <input type="text" class="form-control2 py-3" placeholder="Agregar opción" />
+                     </div>
+
+                     <div class="col-span-3 flex justify-end">
+                        <select :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3 capitalize">
+                           <option value="" selected>Tipo de dato</option>
+                           <option v-for="SubTypeOption in input['input']['sub_options_types']" :key="SubTypeOption" >{{ SubTypeOption['type'] }}</option>
+                        </select>
+                     </div>
+
+                     <div class="col-span-1 flex justify-end">
+                         <span class="bx bxs-trash pt-3 cursor-pointer text-gray-500 justify-self-end mr-4"></span>
+                    
+                         <span class="bx bx-plus pt-3 cursor-pointer text-gray-500 justify-self-end"></span>
+                     </div>
+                  </div>                     
+               </div>
+
+
+
+               <div class="block" 
+                  v-if="input['input']['type'] === 'text' ||
+                        input['input']['type'] === 'number' ||
+                        input['input']['type'] === 'email' ||
+                        input['input']['type'] === 'password' ||
+                        input['input']['type'] === 'url' ||
+                        input['input']['type'] === 'date' ||
+                        input['input']['type'] === 'datetime-local' ||
+                        input['input']['type'] === 'time' ||
+                        input['input']['type'] === 'file' ||
+                        input['input']['type'] === 'color' ">
+
 
                      <input v-if="input['input']['required'] == 'true'" 
                         :type="input['input']['type']"
@@ -74,7 +125,7 @@
                         :min="input['input']['min']"
                         :max="input['input']['max']" 
                         class="form-control2 py-3">
-                  </span>
+               
                </div>
 
             </div>
