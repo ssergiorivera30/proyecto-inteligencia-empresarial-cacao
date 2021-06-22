@@ -20,9 +20,13 @@ import ProyectosDetallesHeader from './../views/Projects/ProyectosDetallesHeader
 import ProyectoResumen from './../views/Projects/ProyectoResumen'
 import ProyectoEntidades from './../views/Projects/ProyectoEntidades'
 
+// ENTIDADES
+
 import EntityDetallesHeader from './../views/Entitys/EntityDetallesHeader'
 import EntityRegistros from './../views/Entitys/EntityRegistros'
 import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
+import EntityData from './../views/Entitys/EntityData'
+import EntityExplotacion from './../views/Entitys/EntityExplotacion'
 
 
 
@@ -99,114 +103,140 @@ import Seguridad from '../views/MyCuenta/Seguridad'
 
 
 const routes = [
-  { path: '/', redirect: 'inicio', component: Home  },
-  { path: '/inicio',  name: 'Home', component: Home  },
-
-
- 
-
-  { path: '/herraminetas', redirect: '/herraminetas/inicio/', name: 'ServiciosMenuPrincipal', component: ServiciosMenuPrincipal,
-    children:
-      [
-        { path: 'inicio', name: 'ServiciosHome', component: ServiciosHome }, 
-      ] 
-  },  
-
-  { path: '/maps', name: 'MapsHome', component: MapsHome  },
-  { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate  },
-  
-
-
-
-  { path: '/proyecto/formulario', name: 'FormularioNuevoHeader', component: FormularioNuevoHeader,
-    children:
-      [
-        { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },              
-        { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
-      ]  
-  },
-
-
-{ path: '/proyecto/objeto_nuevo', name: 'ObjetoNuevoHeader', component: ObjetoNuevoHeader,
-  children:
-    [
-      { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },  
-      { path: 'constructor-objeto/:id_object', name: 'ObjetoConstructor', component: ObjetoConstructor },  
-    ]  
-},
-
-{ path: '/proyecto/objeto/detalle', name: 'ObjetoDetallesHeader', component: ObjetoDetallesHeader,
-children:
-  [
-    { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },  
-    { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },  
-    { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios},
-  ]   
-},
-{ path: '/formulario/ver/', name: 'FormularioDetallesHeader', component: FormularioDetallesHeader,
-children:
-  [
-    { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },              
-    { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
-  ]  
-},
-
-{ path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
-
-{ path: '/cuenta/ver', name: 'MyCuentaHeader', redirect:'/cuenta/ver/info', component: MyCuentaHeader,
-  children:
-    [
-      { path: 'info/', name: 'Cuenta', component: Cuenta },              
-      { path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
-      { path: 'seguridad/', name: 'Seguridad', component: Seguridad },
-    ]  
-},
+    { path: '/', redirect: 'inicio', component: Home },
+    { path: '/inicio', name: 'Home', component: Home },
 
 
 
 
-// ******************************************************************************************** //
-// ******************************************************************************************** //
-// ******************************************************************************************** //
-// ******************************************************************************************** //
+    {
+        path: '/herraminetas',
+        redirect: '/herraminetas/inicio/',
+        name: 'ServiciosMenuPrincipal',
+        component: ServiciosMenuPrincipal,
+        children: [
+            { path: 'inicio', name: 'ServiciosHome', component: ServiciosHome },
+        ]
+    },
 
-
-{ path: '/create-service/:type_service',  name: 'BuildFirsStep', component: BuildFirsStep  },
-{ path: '/constructor-service/:id_service',  name: 'BuildSecondStep', component: BuildSecondStep  },
-
-{ path: '/grupo/ver', name: 'GrupoDetallesHeader', component: GrupoDetallesHeader,
-  children:
-    [
-      { path: 'detalle/:id_group', name: 'GrupoResumen', component: GrupoResumen },  
-      { path: 'proyectos/:id_group', name: 'GrupoProyectos', component: GrupoProyectos },     
-      { path: 'equipo/:id_service', component: TeamResumen }, 
-    ]   
-},
-
-{ path: '/proyecto/ver', name: 'ProyectosDetallesHeader', redirect:'/proyecto/ver/detalle', component: ProyectosDetallesHeader,
-  children:
-    [
-      { path: 'detalle/:id_project', name: 'ProyectoResumen', component: ProyectoResumen }, 
-      { path: 'entidades/:id_project', name: 'ProyectoEntidades', component: ProyectoEntidades }, 
-      { path: 'equipo/:id_service', component: TeamResumen }, 
-    ]   
-},
-
-
-
-{ path: '/entidad', name: 'EntityDetallesHeader', redirect:'/entidad/registros', component: EntityDetallesHeader,
-  children:
-    [
-      { path: 'registros/:id_entity', name: 'EntityRegistros', component: EntityRegistros },
-      { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },      
-      { path: 'equipo/:id_service', component: TeamResumen },
-    ]   
-},
+    { path: '/maps', name: 'MapsHome', component: MapsHome },
+    { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate },
 
 
 
 
-{ path: '/service/info/basic/:id_service', name: 'ServiciosInfoBasicDetalles', component: ServiciosInfoBasicDetalles },
+    {
+        path: '/proyecto/formulario',
+        name: 'FormularioNuevoHeader',
+        component: FormularioNuevoHeader,
+        children: [
+            { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },
+            { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
+        ]
+    },
+
+
+    {
+        path: '/proyecto/objeto_nuevo',
+        name: 'ObjetoNuevoHeader',
+        component: ObjetoNuevoHeader,
+        children: [
+            { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },
+            { path: 'constructor-objeto/:id_object', name: 'ObjetoConstructor', component: ObjetoConstructor },
+        ]
+    },
+
+    {
+        path: '/proyecto/objeto/detalle',
+        name: 'ObjetoDetallesHeader',
+        component: ObjetoDetallesHeader,
+        children: [
+            { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },
+            { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },
+            { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios },
+        ]
+    },
+    {
+        path: '/formulario/ver/',
+        name: 'FormularioDetallesHeader',
+        component: FormularioDetallesHeader,
+        children: [
+            { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },
+            { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
+        ]
+    },
+
+    { path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
+
+    {
+        path: '/cuenta/ver',
+        name: 'MyCuentaHeader',
+        redirect: '/cuenta/ver/info',
+        component: MyCuentaHeader,
+        children: [
+            { path: 'info/', name: 'Cuenta', component: Cuenta },
+            { path: 'personalizacion/', name: 'Personalizacion', component: Personalizacion },
+            { path: 'seguridad/', name: 'Seguridad', component: Seguridad },
+        ]
+    },
+
+
+
+
+    // ******************************************************************************************** //
+    // ******************************************************************************************** //
+    // ******************************************************************************************** //
+    // ******************************************************************************************** //
+
+
+    { path: '/create-service/:type_service', name: 'BuildFirsStep', component: BuildFirsStep },
+    { path: '/constructor-service/:id_service', name: 'BuildSecondStep', component: BuildSecondStep },
+
+    {
+        path: '/grupo/ver',
+        name: 'GrupoDetallesHeader',
+        component: GrupoDetallesHeader,
+        children: [
+            { path: 'detalle/:id_group', name: 'GrupoResumen', component: GrupoResumen },
+            { path: 'proyectos/:id_group', name: 'GrupoProyectos', component: GrupoProyectos },
+            { path: 'equipo/:id_service', component: TeamResumen },
+        ]
+    },
+
+    {
+        path: '/proyecto/ver',
+        name: 'ProyectosDetallesHeader',
+        redirect: '/proyecto/ver/detalle',
+        component: ProyectosDetallesHeader,
+        children: [
+            { path: 'detalle/:id_project', name: 'ProyectoResumen', component: ProyectoResumen },
+            { path: 'entidades/:id_project', name: 'ProyectoEntidades', component: ProyectoEntidades },
+            { path: 'equipo/:id_service', component: TeamResumen },
+        ]
+    },
+
+
+
+    {
+        path: '/entidad',
+        name: 'EntityDetallesHeader',
+        redirect: '/entidad/registros',
+        component: EntityDetallesHeader,
+        children: [
+            { path: 'registros/:id_entity', name: 'EntityRegistros', component: EntityRegistros },
+            { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },
+            { path: 'data/:id_entity', name: 'EntityData', component: EntityData },
+            { path: 'explotacion/:id_entity', name: 'EntityExplotacion', component: EntityExplotacion },
+
+
+            { path: 'equipo/:id_service', component: TeamResumen },
+        ]
+    },
+
+
+
+
+    { path: '/service/info/basic/:id_service', name: 'ServiciosInfoBasicDetalles', component: ServiciosInfoBasicDetalles },
 
 
 
@@ -216,12 +246,12 @@ children:
 
 
 
- 
+
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+    history: createWebHashHistory(),
+    routes
 })
 
 
