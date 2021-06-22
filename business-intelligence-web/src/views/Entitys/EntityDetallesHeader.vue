@@ -29,7 +29,8 @@ import API_ROUTER from './../../services/SERVER_API'
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
                { Linkroute: '/entidad/registros/'+this.$route.params.id_entity, nameRoute: 'Registros' },
-               { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'Registrar' },   
+               { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'data' },   
+               { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'Explotación' },   
                { Linkroute: '/entidad/equipo/'+this.$route.params.id_entity, nameRoute: 'Equipo' },
             ]
          }
