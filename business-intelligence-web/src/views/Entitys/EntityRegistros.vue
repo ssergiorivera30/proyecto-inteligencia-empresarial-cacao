@@ -3,7 +3,7 @@
         <div class="xl:w-3/4 2xl:w-4/5 w-full">
             <div class="py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
-                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Files</p>
+                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Data</p>
                     <div class="mt-4 sm:mt-0">
                         <button class="inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-my-primary focus:outline-none rounded">
                             <p class="text-sm font-medium leading-none text-white">Download All</p>
@@ -11,6 +11,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-2">
+  <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+  <apexchart width="500" type="radar" :options="options" :series="series"></apexchart>
+</div>
+
             <div class="pb-5">
                 <div class="overflow-x-auto">
                     <table class="w-full whitespace-nowrap">
@@ -99,6 +105,22 @@ import API_ROUTER from './../../services/SERVER_API'
              Text: API_ROUTER.API_UI + "chart/text.svg",
 
              InfoGroup: [],
+            
+            options: {
+                chart: {
+                id: 'vuechart-example'
+                },
+                 colors: ["#323c79"],
+                xaxis: {
+                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+                }
+            },
+            series: [{
+                name: 'series-1',
+                data: [30, 40, 45, 50, 49, 60, 70, 91]
+            }], 
+
+
          }
       },
       beforeMount: function () {

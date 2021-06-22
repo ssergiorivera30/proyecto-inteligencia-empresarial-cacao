@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import '@/assets/styles/app.css'
-// import './registerServiceWorker'
+import './registerServiceWorker'
+import VueApexCharts from "vue3-apexcharts";
 import router from './router'
 import store from './store'
 
@@ -20,4 +21,8 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App)
+.use(store)
+.use(router)
+.use(VueApexCharts)
+.mount('#app')
