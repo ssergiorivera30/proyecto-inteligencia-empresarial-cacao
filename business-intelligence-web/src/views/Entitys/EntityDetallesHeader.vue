@@ -25,7 +25,7 @@ import API_ROUTER from './../../services/SERVER_API'
             TitleHeader: 'Entidad',
             IconModulo: '',
             SubTitleHeader: 'Entidad, concepto u objeto',
-            GoBack: '/inicio',
+            GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
                { Linkroute: '/entidad/registros/'+this.$route.params.id_entity, nameRoute: 'Registros' },

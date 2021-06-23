@@ -35,7 +35,7 @@
   <div class="mt-2 mb-2">
     <ul class="list-reset flex pb-2 overscroll-x-auto overflow-y-hidden whitespace-nowrap">       
         <router-link 
-            v-if="GoBack !== 'history.back'"
+            v-if="GoBack !== 'back'"
             :to="GoBack"
             :title="GoBackTitle"
             class="mr-2 row-span-2 w-6 flex flex-wrap content-center justify-center ">
@@ -47,7 +47,9 @@
             :title="GoBackTitle" 
             class="mr-2 row-span-2 w-6 flex flex-wrap content-center justify-center ">
             <i class='bx bx-chevron-left font-bold'></i>
-         </a>  
+         </a> 
+         
+          
         
          <router-link 
             v-for="routes in RoutesNavs"

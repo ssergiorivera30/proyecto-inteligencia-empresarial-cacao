@@ -21,7 +21,7 @@ import API_ROUTER from './../../services/SERVER_API'
             TitleHeader: 'Grupo',
             IconModulo: '',
             SubTitleHeader: 'Grupo',
-            GoBack: '/inicio',
+            GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
                { Linkroute: '/grupo/ver/detalle/'+this.$route.params.id_group, nameRoute: 'Detalles' },

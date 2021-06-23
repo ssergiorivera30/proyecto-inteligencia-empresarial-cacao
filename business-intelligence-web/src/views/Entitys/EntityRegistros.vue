@@ -1,6 +1,9 @@
 <template>
+<div>
+     <ServiceToptInfoBasic :ServiceStatus="parseInt(ServiceStatus)" :IdService="parseInt(this.$route.params.id_entity)"/>
+
    
-        <div class="xl:w-3/4 2xl:w-4/5 w-full">
+        <div class="w-full">
             <div class="py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
                     <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Data</p>
@@ -74,19 +77,21 @@
                 </div>
             </div>
         </div>
-    
+    </div>
 </template>
 
 <script>
 
-import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
+
 import axios from 'axios';
 import API_ROUTER from './../../services/SERVER_API'
+
+   import ServiceToptInfoBasic from './../../components/Utilidades/ServiceToptInfoBasic.vue'
 
    export default {
       name: 'EntityRegistros',
       components: {
-         NavBarSecondary
+        ServiceToptInfoBasic,
       },
       data() {
          return {
@@ -102,6 +107,8 @@ import API_ROUTER from './../../services/SERVER_API'
              Text: API_ROUTER.API_UI + "chart/text.svg",
 
              InfoGroup: [],
+
+              ServiceStatus: 1,
             
             
 
@@ -120,7 +127,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadIdProject :function(){
          axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/load_basic_group.php",
             {
-               id_group: this.$route.params.id_group,
+               id_group: this.$route.params.id_entity,
             }).then((res) => {
                
                this.InfoGroup = res.data

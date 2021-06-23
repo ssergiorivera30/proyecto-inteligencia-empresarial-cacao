@@ -25,7 +25,7 @@ import API_ROUTER from './../../services/SERVER_API'
             TitleHeader: 'Proyecto',
             IconModulo: '',
             SubTitleHeader: 'Proyecto',
-            GoBack: 'history.back',
+            GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
                { Linkroute: '/proyecto/ver/detalle/'+this.$route.params.id_project, nameRoute: 'Detalles' },
