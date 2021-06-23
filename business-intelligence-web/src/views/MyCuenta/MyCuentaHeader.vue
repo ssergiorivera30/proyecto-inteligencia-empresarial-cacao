@@ -1,7 +1,7 @@
 <template>
-  <div class="px-0 pb-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pb-5">
+  <div class="">
    
-      <div class="h-48 w-full bg-cover bg-blue-900 rounded-sm" :style="'background-image:url('+imagen_portada_avatar+')'"></div>
+      <div class="h-48 w-full bg-cover bg-gray-200 rounded-md" :style="'background-image:url('+imagen_portada_avatar+')'"></div>
       <div class="px-6 md:px-32 flex justify-between lg:flex-row flex-col">
         <div class="flex lg:flex-row flex-col ">
           <div class="w-36 h-36 bg-cover rounded-full bg-center absolute transform -translate-y-1/2 ring-4 ring-white"
@@ -12,8 +12,8 @@
           </p>
         </div>
         <div class="py-5 lg:space-x-3 space-y-3 lg:space-y-0">
-          <a href="#"
-            class="lg:w-auto inline-flex w-full font-semibold tracking-wide justify-center items-center text-gray-600 space-x-1.5 border border-gray-400 focus:ring-1 focus:ring-gray-300 focus:ring-offset-2 hover:bg-gray-100 focus:outline-none px-4 py-2 text-sm rounded-lg">
+
+          <a class="lg:w-auto inline-flex w-full font-semibold tracking-wide justify-center items-center text-gray-600 space-x-1.5 border border-gray-400 focus:ring-1 focus:ring-gray-300 focus:ring-offset-2 hover:bg-gray-100 focus:outline-none px-4 py-2 text-sm rounded-lg">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path
@@ -24,8 +24,8 @@
               Enviar e-mail
             </span>
           </a>
-          <a href="#"
-            class="lg:w-auto inline-flex w-full font-semibold tracking-wide justify-center items-center text-gray-600 space-x-1.5 border border-gray-400 focus:ring-1 focus:ring-gray-300 focus:ring-offset-2 hover:bg-gray-100 focus:outline-none px-4 py-2 text-sm rounded-lg">
+
+          <a class="lg:w-auto inline-flex w-full font-semibold tracking-wide justify-center items-center text-gray-600 space-x-1.5 border border-gray-400 focus:ring-1 focus:ring-gray-300 focus:ring-offset-2 hover:bg-gray-100 focus:outline-none px-4 py-2 text-sm rounded-lg">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path
@@ -36,12 +36,13 @@
               Llamar
             </span>
           </a>
+
         </div>
       </div>
 
   </div>
 
-  <div class="px-3 pb-5 mx-auto  md:max-w-full lg:max-w-screen-xl sm:px-3 md:px-3 lg:px-8 lg:pb-5">
+ 
       <NavBarSecondary 
         :RoutesNavs="RoutesNavs" 
         :GoBack="GoBack" 
@@ -49,10 +50,9 @@
         :TitleHeader="TitleHeader" 
         :IconModulo="IconModulo" 
         :SubTitleHeader="SubTitleHeader" />
-
         <router-view />
 
-  </div>
+
 </template>
 
 <script>
@@ -79,7 +79,7 @@
         imagen_portada_avatar: API_ROUTER.API_PUBLIC + 'portada_avatar/hand-3044387_1280.jpg',                
 
         TitleHeader: 'Información básica',
-        IconModulo: 'bx bxs-user',
+        IconModulo: 'avatars/default.png',
         SubTitleHeader: 'Cuenta',
         GoBack: '/inicio',
         GoBackTitle: 'Ir al inicio',

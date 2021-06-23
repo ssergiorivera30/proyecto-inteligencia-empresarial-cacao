@@ -1,5 +1,5 @@
 <template>
-  <div>diversonalizacion</div>
+  <div>Personalizacion</div>
 </template>
 
 <script>

@@ -16,7 +16,7 @@
          </div>
 
          <div class="flex">
-            <div class="px-6 flex items-center flex-no-wrap">
+            <!-- <div class="px-6 flex items-center flex-no-wrap">
                <div class="w-12 h-12 bg-cover bg-center rounded-md">
                   <img :src="imagen_a" alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
@@ -37,7 +37,7 @@
                   <img :src="imagen_e" alt=""
                      class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
                </div>
-            </div>
+            </div> -->
 
 
             <router-link :to="'/constructor-service/'+ IdService"

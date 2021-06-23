@@ -20,7 +20,7 @@
             name: 'ServiciosMenuPrincipal',
             
         TitleHeader: 'Herramientas',
-        IconModulo: 'bx bxs-category',
+        IconModulo: 'tools/defaults.png',
         SubTitleHeader: 'Tablero',
         GoBack: '/inicio',
         GoBackTitle: 'Ir al inicio',

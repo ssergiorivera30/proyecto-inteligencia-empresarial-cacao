@@ -35,7 +35,7 @@
                         </div>
                      </div>
                      
-                     <div class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                     <!-- <div class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm font-medium text-gray-500">
                            Adjuntos
                         </dt>
@@ -43,7 +43,7 @@
                            <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
                               <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                  <div class="w-0 flex-1 flex items-center">
-                                    <!-- Heroicon name: solid/paper-clip -->
+                             
                                     <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                        <path fill-rule="evenodd"
@@ -62,7 +62,7 @@
                               </li>
                               <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                  <div class="w-0 flex-1 flex items-center">
-                                    <!-- Heroicon name: solid/paper-clip -->
+                                    
                                     <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                        <path fill-rule="evenodd"
@@ -81,7 +81,7 @@
                               </li>
                            </ul>
                         </dd>
-                     </div>
+                     </div> -->
 
                       <router-link 
                         :to="'/service/info/basic/'+ IdService" 

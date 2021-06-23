@@ -14,67 +14,68 @@ class ConstructorTable
 
 		foreach ($JSON_inputs as $key => $value) {
 
+			$input_name = $value['input']['token'].'_'.$key;
+
 
 			if( $value['input']['type'] == 'text'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(120) ');
 			}
 
 			if( $value['input']['type'] == 'number'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' INT(10) ');				
-			}
-			
+			}			
 
 			if( $value['input']['type'] == 'textarea'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' TEXT(600) ');		
 			}
 
 			if( $value['input']['type'] == 'email'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(50) ');				
 			}
 
 			if( $value['input']['type'] == 'tel'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(15) ');				
 			}
 
 
 			if( $value['input']['type'] == 'file'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(120) ');				
 			}
 
 
 			if( $value['input']['type'] == 'password'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(120) ');				
 			}
 
 			if( $value['input']['type'] == 'url'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(200) ');				
 			}
 
 			if( $value['input']['type'] == 'date'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' DATE ');				
 			}
 
 			if( $value['input']['type'] == 'datetime-local'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' DATETIME ');
 			}
 
 			if( $value['input']['type'] == 'time'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' TIME ');				
 			}
 
 			if( $value['input']['type'] == 'color'){
-				$input_name = self::ClearAcentNames($value['input']['name'].'_'.$key);
+				
 				array_push($QUERY_TABLE, ', '.$input_name.' VARCHAR(8) ');				
 			}
 

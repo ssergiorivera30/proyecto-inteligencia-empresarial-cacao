@@ -1,13 +1,20 @@
 <template>
    <div class="mt-0 px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-64">
 
-      <PreviewForm :NameForm="NameForm" :DescriptionForm="DescriptionForm" />
 
-      <header class="flex items-center justify-center mb-5">
-         <h2 class="text-lg leading-6 font-medium text-black">Nuevo registro</h2>
-      </header>
+       <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
 
-      <PreviewFormSave :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" />
+      
+
+
+    
+
+      <!-- <ServicePreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" /> -->
+
+      <ServicePreviewFormEditor 
+            :ServiceName="ServiceName"
+            :ServiceDescription="ServiceDescription"
+            :ArrayInputs="ArrayInputs" />
 
    </div>
 </template>
@@ -16,21 +23,26 @@
 
    import axios from "axios"
    import API_ROUTER from "./../../services/SERVER_API"
-   import PreviewForm from "./../../components/Formularios/PreviewForm"
-   import PreviewFormSave from "./../../components/Formularios/PreviewFormSave"
+
+
+
+      import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
+
+      import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
 
    export default {
       name: 'EntytiRegistrar', 
       components: {
-         PreviewForm,
-         PreviewFormSave,
+   
+         ServicePreviewFormEditor,
+         ServicePreviewBasicInfo,
       },
       data() {
          return {
                     
             OrderForm: 'load',
-            NameForm: '',
-            DescriptionForm: '',
+            ServiceName: '',
+            ServiceDescription: '',
 
             ArrayInputs: [],
 
@@ -56,11 +68,32 @@
             
          // }
 
-         this.LoadFromBasic()
+         this.LoadBasicInfoService()
       
 
       },
       methods: {
+          LoadBasicInfoService: function () {
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "build/load_info_basic_service.php",
+               {
+                  id_service: this.$route.params.id_entity,
+               }).then((response) => {
+
+                  // if (response.data.mensaje != 1) {
+                  //    // window.history.back()
+                  // }
+                  this.ServiceName = response['data']['datos'][0]['name']
+                  this.ServiceDescription = response['data']['datos'][0]['description']
+
+                  if (response['data']['datos'][0]['data_json'] != null) {
+                     this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
+                     // this.OrderInfoBasicForm = 'Guardar cambios'
+                  }
+
+               }).catch(() => {
+                  alert('Error de conexión al cargar el servicio')
+            })
+         },
          LoadFromBasic: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + 'service/service_form_load.php',
                {
