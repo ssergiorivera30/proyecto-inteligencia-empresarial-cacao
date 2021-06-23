@@ -23,7 +23,7 @@
             </svg>
           </router-link>
 
-          <router-link to="/cuenta/ver" class="cursor-pointer mb-4">
+          <!-- <router-link to="/cuenta/ver" class="cursor-pointer mb-4">
 						<div class="bg-white h-6 w-6 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden">
 							<img :src="imagen_a" alt="">
             </div>
@@ -45,7 +45,7 @@
 						<div class="bg-white h-6 w-6 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden">
 							<img :src="imagen_a" alt="">
             </div>
-					</router-link>
+					</router-link> -->
 
 
           <router-link to="/cuenta/ver"

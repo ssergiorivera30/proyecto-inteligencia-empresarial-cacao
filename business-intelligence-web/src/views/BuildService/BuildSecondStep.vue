@@ -559,8 +559,6 @@
 
 
 
-
-
                                  </div>
                               </div>
                               <!-- /End replace -->
@@ -640,13 +638,9 @@
             ArraySubOptionsTypes: {
                option1: {
                   type: 'text',
-                  state: false,
-                  limit: 10
                },
                option2: {
                   type: 'file',
-                  state: false,
-                  limit: 10
                }
             },
             ArraySubOptionsValues: [],
@@ -681,13 +675,13 @@
 
             if( order === 'edit_other' && type != '/otro' && type != '/otros' && existOtro == false ){ this.sub_option_other = 0 }
 
-            if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.state = true }
+            if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.type = 'text' }
 
-            if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.state = false }
+            if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.type = '' }
 
-            if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.state = true }
+            if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.type = 'file' }
 
-            if( order === 'inactive_type_file' ){ this.ArraySubOptionsTypes.option2.state = false }
+            if( order === 'inactive_type_file' ){ this.ArraySubOptionsTypes.option2.type = '' }
 
          },
 

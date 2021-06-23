@@ -87,7 +87,7 @@
       </div>
 
 
-      <div class="py-2 text-left">
+      <div class="text-left">
         <button type="submit" class="btn-primary">
           Continuar
         </button>

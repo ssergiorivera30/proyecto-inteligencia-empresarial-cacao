@@ -9,7 +9,7 @@
 
 
                   <label class="grid grid-cols-5 gap-4 items-center">
-                     <div class="col-span-4 text-gray-700 font-medium text-white group flex items-center">                     
+                     <div class="col-span-4 text-gray-700 font-medium group flex items-center">                     
                         <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" @mousedown="HoverDragg(index)" />{{ input['input']['name'] }} 
                      </div>
                      <div class="flex justify-end">
@@ -69,23 +69,27 @@
                   </div>
 
                   <div v-if=" input['input']['sub_option_other'] === 2 " class="grid grid-cols-12 gap-4 items-center">
-                     <div class="col-span-8">
-                        <input type="text" class="form-control2 py-3" placeholder="Agregar opción" />
-                     </div>
 
                      <div class="col-span-3 flex justify-end">
-                        <select :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3 capitalize">
-                           <option value="" selected>Tipo de dato</option>
-                           <option v-for="SubTypeOption in input['input']['sub_options_types']" :key="SubTypeOption" >{{ SubTypeOption['type'] }}</option>
+                        <select :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
+                           <option value="" selected>Tipo de dato</option>                   
+                           <option v-for="(SubTypeOption, index) in input['input']['sub_options_types']" :key="index"> {{ SubTypeOption['type'] }}</option>                                                     
                         </select>
-                     </div>
+                     </div>   
+
+                     <div class="col-span-8">
+                        <input type="text" class="form-control2 py-3" placeholder="Agregar opción" />
+                     </div>                                       
 
                      <div class="col-span-1 flex justify-end">
-                         <span class="bx bxs-trash pt-3 cursor-pointer text-gray-500 justify-self-end mr-4"></span>
+                         <span class="bx bxs-trash pt-3 cursor-pointer text-gray-500 justify-self-end mr-4" title="Eliminar opción"></span>
                     
-                         <span class="bx bx-plus pt-3 cursor-pointer text-gray-500 justify-self-end"></span>
+                         <span class="bx bx-plus pt-3 cursor-pointer text-gray-500 justify-self-end" title="Agregar opción"></span>
                      </div>
-                  </div>                     
+                  </div>
+
+
+
                </div>
 
 
