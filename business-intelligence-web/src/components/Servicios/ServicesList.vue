@@ -36,13 +36,13 @@
                             </div>
                         </div>
 
-                        <div class="hidden md:flex col-span-3 justify-center ml-4">
+                        <div class="hidden md:flex col-span-1 justify-center ml-4">
                             <div class="flex items-center">
-                                                                
+
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex col-span-6 md:col-span-3  justify-between ml-12 md:ml-4">
+                        <div class="hidden sm:flex col-span-6 md:col-span-5  justify-between ml-12 md:ml-4">
                             <div class="flex items-center">
                                 <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow"
                                     :src="imagen_a" />

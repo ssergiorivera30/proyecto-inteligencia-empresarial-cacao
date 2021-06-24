@@ -42,8 +42,13 @@
       FilePathImg="formularios/"
       ServiceNameLink="Añadir formulario" 
       ServiceID="3" />
+
+       <!-- <FileUpload :target="file" action="POST"/> -->
+       <!-- <FileUpload :target="file" action="POST" v-on:progress="progress" v-on:start="startUpload" v-on:finish="finishUpload" /> -->
       
   </div>
+
+
 
 </template>
 
@@ -56,6 +61,7 @@ import WelcomeSistema from "../components/Home/WelcomeSistema";
 import ServicesEmpty from "../components/Servicios/ServicesEmpty";
 import ServicesTitles from "../components/Titles/ServicesTitles";
 
+import FileUpload from 'vue-simple-upload/dist/FileUpload'
 
 
 import ServicesList from "../components/Servicios/ServicesList";
@@ -68,6 +74,7 @@ export default {
     ServicesEmpty,
     ServicesTitles,
     ServicesList, 
+    FileUpload
   },
   data() {
     return {            
@@ -77,6 +84,7 @@ export default {
         forms: []
       }],
       RoadEmptyService: 0,
+      file: API_ROUTER.API_PUBLIC
     };
   },
 

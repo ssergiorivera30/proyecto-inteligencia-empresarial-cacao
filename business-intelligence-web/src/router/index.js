@@ -23,7 +23,7 @@ import ProyectoEntidades from './../views/Projects/ProyectoEntidades'
 // ENTIDADES
 
 import EntityDetallesHeader from './../views/Entitys/EntityDetallesHeader'
-import EntityRegistros from './../views/Entitys/EntityRegistros'
+import EntityDetalles from './../views/Entitys/EntityDetalles'
 import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
 import EntityData from './../views/Entitys/EntityData'
 import EntityExplotacion from './../views/Entitys/EntityExplotacion'
@@ -223,7 +223,7 @@ const routes = [
         redirect: '/entidad/registros',
         component: EntityDetallesHeader,
         children: [
-            { path: 'registros/:id_entity', name: 'EntityRegistros', component: EntityRegistros },
+            { path: 'detalles/:id_entity', name: 'EntityDetalles', component: EntityDetalles },
             { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },
             { path: 'data/:id_entity', name: 'EntityData', component: EntityData },
             { path: 'explotacion/:id_entity', name: 'EntityExplotacion', component: EntityExplotacion },
