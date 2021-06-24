@@ -38,9 +38,7 @@
 
                         <div class="hidden md:flex col-span-3 justify-center ml-4">
                             <div class="flex items-center">
-
-                                 <apexchart class="col-span-1 h-10	" type="area" :options="chartOptions" :series="series" ></apexchart>
-                                
+                                                                
                             </div>
                         </div>
 
@@ -84,47 +82,9 @@
                 imagen_d: API_ROUTER.API_PUBLIC + 'users/a_4_3.png',
                 imagen_e: API_ROUTER.API_PUBLIC + 'users/a_4_4.png',
 
-                series: [{
-            name: 'Network',
-            data: [{
-                x: 'Dec 23 2017',
-                y: null
-              },
-              {
-                x: 'Dec 24 2017',
-                y: 44
-              },
-              {
-                x: 'Dec 25 2017',
-                y: 31
-              },
-          
-            ],
-          }],
+               
 
-        
-           chartOptions: {
-            chart: {
-              type: 'area',
-              height: 350,
-              zoom: {
-                enabled: false
-              }
-            },
-             theme: {
-      mode: 'light', 
-      palette: 'palette1', 
-      monochrome: {
-          enabled: false,
-          color: '#255aee',
-          shadeTo: 'light',
-          shadeIntensity: 0.65
-      },
-  }
-          },
-
-
-        }
+            }
         },
         props: {
             ArrayServices: Object,
