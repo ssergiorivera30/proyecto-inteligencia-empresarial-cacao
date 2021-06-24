@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2021 a las 18:50:09
+-- Tiempo de generación: 24-06-2021 a las 16:03:37
 -- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.5
+-- Versión de PHP: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -97,9 +97,28 @@ CREATE TABLE `tbl_services` (
 --
 
 INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`, `tbse_description`, `tbse_business`, `tbse_logo`, `tbse_json_input_data`, `tbse_date_created`, `tbse_hour_created`, `tbse_updated`, `tbse_status`, `tbse_vigence`) VALUES
-(12, 1, 'Grupo de investigación NOVA', 'Grupo de Investigación NOVA - Centro de Desarrollo Agroempresarial y Turístico del Huila', NULL, NULL, '[{\"input\":{\"name\":\"Direcci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"#5-1 a, Cra. 7 #591, La Plata, Huila\",\"token\":\"12231112271624464747070903\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-23 16:12:32', 1, 1),
-(13, 2, 'Trazabilidad de cacao', 'Cacao', NULL, NULL, '[{\"input\":{\"name\":\"Linea program\\u00e1tica\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Innovaci\\u00f3n\",\"token\":\"13231115191624464919160130\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-23 16:15:23', 1, 1),
-(14, 3, 'Componente Ambiental', 'Ambiental', NULL, NULL, NULL, '2021-06-23', '2021-06-23', '2021-06-23 16:16:17', 1, 1);
+(15, 1, 'Grupo de Investigación NOVA', 'CDATH', NULL, NULL, '[]', '2021-06-23', '2021-06-23', '2021-06-23 18:52:38', 1, 0),
+(16, 1, 'Grupo de Investigación de La Angostura', 'Campoalegre (H)', NULL, NULL, '[{\"input\":{\"name\":\"aS\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"16232137551624502275914641\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"as\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"sdfsdf\",\"type\":\"checkbox\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"16232142271624502547540255\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"sdfsdf\"}},{\"option\":{\"value\":\"dsfsdf\"}},{\"option\":{\"value\":\"sdf\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-24 02:42:54', 1, 1),
+(17, 2, 'By default, only responsive variants are generated for vertical-alignment utilities.  You can control which variants are generated for the vertical-alignment utilities by modifying the verticalAlign property in the variants section of your tailwind.config.js file.  For example, this config will also', '-', NULL, NULL, NULL, '2021-06-23', '2021-06-23', '2021-06-24 02:25:18', 1, 1),
+(20, 3, 'Componente ambiental', 'Theobroma cacao L. es el nombre científico que recibe el árbol del cacao o cacaotero, nativo de regiones tropicales y subtropicales de América: América tropical, planta de hoja perenne de la familia Malvaceae. Theobroma significa, en griego, «alimento de los dioses»', NULL, NULL, '[{\"input\":{\"name\":\"Instructor que dise\\u00f1o el instrumento de investigaci\\u00f3n\",\"type\":\"select\",\"required\":false,\"placeholder\":\"\",\"value\":\"on\",\"token\":\"20231441381624477298201376\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"A\"}},{\"option\":{\"value\":\"B\"}},{\"option\":{\"value\":\"C\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Titulo de proyecto\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231441501624477310090255\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Municipio\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231442161624477336789520\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Vereda\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231448581624477738228734\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre de la finca\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231449151624477755893958\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Coordenadas geogr\\u00e1ficas del predio N:\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231449491624477789065204\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Coordenadas geogr\\u00e1ficas del predio W:\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231450331624477833781403\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre del propietario\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231451161624477876657628\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre del investigador que aplica el instrumento\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"20231451381624477898107201\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-24 04:56:12', 1, 1),
+(21, 3, 'Componente empresarial', 'w', NULL, NULL, NULL, '2021-06-23', '2021-06-23', '2021-06-23 19:45:06', 1, 1),
+(22, 3, 'Componente de Lixiviados', 's', NULL, NULL, NULL, '2021-06-23', '2021-06-23', '2021-06-23 19:45:20', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_service_permissions`
+--
+
+CREATE TABLE `tbl_service_permissions` (
+  `tbsep_auto_id` int(11) NOT NULL,
+  `tbsep_id_service` int(11) NOT NULL,
+  `tbsep_id_user` int(11) NOT NULL,
+  `tbsep_create` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_read` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_update` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_delete` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -237,6 +256,30 @@ CREATE TABLE `user_data_personals` (
 INSERT INTO `user_data_personals` (`udp_user_id`, `udp_name`, `udp_gender`, `udp_date_birth`, `udp_type_id`, `udp_numer_id`) VALUES
 (1, 'Sergio Rivera', 'Masculino', '0000-00-00', 'TI', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `z3_entity_20`
+--
+
+CREATE TABLE `z3_entity_20` (
+  `id_z3_entity_20` int(11) NOT NULL,
+  `20231441381624477298201376_0` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231441501624477310090255_1` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231442161624477336789520_2` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231448581624477738228734_3` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231449151624477755893958_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231449491624477789065204_5` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231450331624477833781403_6` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231451161624477876657628_7` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `20231451381624477898107201_8` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `z3_entity_20_hour_created` time NOT NULL,
+  `z3_entity_20_date_created` date NOT NULL,
+  `z3_entity_20_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `z3_entity_20_status` tinyint(1) NOT NULL DEFAULT 1,
+  `z3_entity_20_vigence` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -260,6 +303,12 @@ ALTER TABLE `system_status`
 ALTER TABLE `tbl_services`
   ADD PRIMARY KEY (`tbse_auto_id`),
   ADD KEY `tbl_services_ibfk_1` (`tbse_id_type_service`);
+
+--
+-- Indices de la tabla `tbl_service_permissions`
+--
+ALTER TABLE `tbl_service_permissions`
+  ADD PRIMARY KEY (`tbsep_auto_id`);
 
 --
 -- Indices de la tabla `tbl_type_service`
@@ -299,6 +348,12 @@ ALTER TABLE `user_data_personals`
   ADD PRIMARY KEY (`udp_user_id`);
 
 --
+-- Indices de la tabla `z3_entity_20`
+--
+ALTER TABLE `z3_entity_20`
+  ADD PRIMARY KEY (`id_z3_entity_20`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -318,7 +373,13 @@ ALTER TABLE `system_status`
 -- AUTO_INCREMENT de la tabla `tbl_services`
 --
 ALTER TABLE `tbl_services`
-  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_service_permissions`
+--
+ALTER TABLE `tbl_service_permissions`
+  MODIFY `tbsep_auto_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_type_service`
@@ -337,6 +398,12 @@ ALTER TABLE `users_keys`
 --
 ALTER TABLE `user_count_type`
   MODIFY `ucty_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `z3_entity_20`
+--
+ALTER TABLE `z3_entity_20`
+  MODIFY `id_z3_entity_20` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
