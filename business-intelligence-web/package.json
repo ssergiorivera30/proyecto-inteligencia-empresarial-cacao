@@ -9,6 +9,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@fnando/sparkline": "^0.3.10",
     "@headlessui/vue": "^1.0.0",
     "apexcharts": "^3.27.1",
     "axios": "^0.21.1",
@@ -16,7 +17,7 @@
     "firebase": "^8.2.9",
     "noty": "^3.2.0-beta-deprecated",
     "notyf": "^3.10.0",
-    "postcss": "^7.0.35",
+    "postcss": "^7.0.36",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "vue": "^3.0.0",

@@ -28,7 +28,7 @@
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['forms']" 
       ServiceName="Entidades"
-      RouteLink="/entidad/registros/"
+      RouteLink="/entidad/detalles/"
       FilePathImg="entidades/"
       ServiceNameLink="Añadir formulario" 
       ServiceID="3" />

@@ -12,10 +12,11 @@
         <div class="bg-white shadow overflow-hidden	">
             <div class="w-full whitespace-nowrap">
                 <div class="w-full">
-                    <div v-for="info in ArrayServices" :key="info" @click="this.$router.push(RouteLink + info.id)"
-                        class="grid grid-cols-12 cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100  pl-4 ">
+                    <div v-for="info in ArrayServices" :key="info"
+                        class="grid grid-cols-12 h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100  pl-4 ">
 
-                        <div class="col-span-6 flex justify-between cursor-pointer">
+                        <div class="col-span-5 flex justify-between cursor-pointer"
+                            @click="this.$router.push(RouteLink + info.id)">
                             <div class="flex items-center">
                                 <div class="w-10 h-full">
                                     <img v-if="this.$props.ServiceID == 1" class="w-full h-full"
@@ -36,8 +37,25 @@
                             </div>
                         </div>
 
-                        <div class="hidden md:flex col-span-1 justify-center ml-4">
+                        <div class="hidden md:flex col-span-2 justify-center ml-4">
                             <div class="flex items-center">
+
+                                <svg class="_418c4939 flex-none" width="100" height="40" stroke-width="3"
+                                    stroke="#003976" fill="rgba(137, 86, 255, .2)">
+                                    <path class="sparkline--fill"
+                                        d="M4 24.43 L 4 24.43 L 7.764705882352941 26.28 L 11.529411764705882 27.16 L 15.294117647058822 25.12 L 19.058823529411764 25 L 22.823529411764707 24.78 L 26.588235294117645 25.87 L 30.352941176470587 25.18 L 34.11764705882353 24.96 L 37.88235294117647 25.98 L 41.64705882352941 26.18 L 45.411764705882355 25.32 L 49.17647058823529 25.05 L 52.94117647058823 25.11 L 56.705882352941174 27.19 L 60.470588235294116 26.68 L 64.23529411764706 24.72 L 68 23.14 L 71.76470588235294 25.73 L 75.52941176470588 5 L 79.29411764705883 12.89 L 83.05882352941177 15.67 L 86.82352941176471 25.43 L 90.58823529411765 22.19 L 94.35294117647058 14.49 L 98.11764705882352 13.82 L 101.88235294117646 16.31 L 105.6470588235294 21.32 L 109.41176470588235 22.36 L 113.17647058823529 21.73 L 116.94117647058823 20.86 L 120.70588235294117 24.52 L 124.47058823529412 23.78 L 128.23529411764707 25.62 L 132 24.79 L 135.76470588235293 21.78 L 139.52941176470588 23.14 L 143.2941176470588 20.69 L 147.05882352941177 22.63 L 150.8235294117647 23.11 L 154.58823529411765 24.71 L 158.35294117647058 22.45 L 162.11764705882354 24.13 L 165.88235294117646 23.4 L 169.64705882352942 25.51 L 173.41176470588235 21.83 L 177.1764705882353 23.47 L 180.94117647058823 26.82 L 184.70588235294116 24.37 L 188.47058823529412 23.38 L 192.23529411764704 20.82 L 196 22.99 V 40 L 4 40 Z"
+                                        stroke="none"></path>
+                                    <path class="sparkline--line"
+                                        d="M4 24.43 L 4 24.43 L 7.764705882352941 26.28 L 11.529411764705882 27.16 L 15.294117647058822 25.12 L 19.058823529411764 25 L 22.823529411764707 24.78 L 26.588235294117645 25.87 L 30.352941176470587 25.18 L 34.11764705882353 24.96 L 37.88235294117647 25.98 L 41.64705882352941 26.18 L 45.411764705882355 25.32 L 49.17647058823529 25.05 L 52.94117647058823 25.11 L 56.705882352941174 27.19 L 60.470588235294116 26.68 L 64.23529411764706 24.72 L 68 23.14 L 71.76470588235294 25.73 L 75.52941176470588 5 L 79.29411764705883 12.89 L 83.05882352941177 15.67 L 86.82352941176471 25.43 L 90.58823529411765 22.19 L 94.35294117647058 14.49 L 98.11764705882352 13.82 L 101.88235294117646 16.31 L 105.6470588235294 21.32 L 109.41176470588235 22.36 L 113.17647058823529 21.73 L 116.94117647058823 20.86 L 120.70588235294117 24.52 L 124.47058823529412 23.78 L 128.23529411764707 25.62 L 132 24.79 L 135.76470588235293 21.78 L 139.52941176470588 23.14 L 143.2941176470588 20.69 L 147.05882352941177 22.63 L 150.8235294117647 23.11 L 154.58823529411765 24.71 L 158.35294117647058 22.45 L 162.11764705882354 24.13 L 165.88235294117646 23.4 L 169.64705882352942 25.51 L 173.41176470588235 21.83 L 177.1764705882353 23.47 L 180.94117647058823 26.82 L 184.70588235294116 24.37 L 188.47058823529412 23.38 L 192.23529411764704 20.82 L 196 22.99"
+                                        fill="none"></path>
+                                    <line class="sparkline--cursor" x1="-1000" x2="-1000" y1="0" y2="40"
+                                        stroke-width="2"></line>
+                                    <circle class="sparkline--spot" cx="-1000" cy="24.37" r="2"></circle>
+                                    <rect width="200" height="40" style="fill: transparent; stroke: transparent"
+                                        class="sparkline--interaction-layer">
+                                    </rect>
+                                </svg>
+
 
                             </div>
                         </div>
@@ -66,10 +84,12 @@
 </template>
 
 <script>
-
     import API_ROUTER from './../../services/SERVER_API'
-
+    
     export default {
+        components: {
+
+        },
         name: 'ServicesList',
         data() {
             return {
@@ -81,9 +101,6 @@
                 imagen_c: API_ROUTER.API_PUBLIC + 'users/a_4_2.png',
                 imagen_d: API_ROUTER.API_PUBLIC + 'users/a_4_3.png',
                 imagen_e: API_ROUTER.API_PUBLIC + 'users/a_4_4.png',
-
-               
-
             }
         },
         props: {
@@ -95,8 +112,10 @@
             FilePathImg: String,
         },
         mounted: function () {
+
         },
         methods: {
+           
         }
     }
 </script>
