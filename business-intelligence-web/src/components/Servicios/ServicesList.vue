@@ -2,96 +2,141 @@
 
     <section v-if="ArrayServices === null" class="max-w-lg px-4 py-12 mx-auto">
         <img class="mx-auto sm:w-1/4" :src="EmptyService" />
-        <h2 class="mt-2 text-lg font-medium text-center text-gray-800">Tienes (0) {{ ServiceName }},  
-            <router-link :to="'/create-service/'+ ServiceID " class="w-full py-2 text-blue-900 font-bold capitalize">{{ ServiceNameLink }}</router-link>
+        <h2 class="mt-2 text-lg font-medium text-center text-gray-800">Tienes (0) {{ ServiceName }},
+            <router-link :to="'/create-service/'+ ServiceID " class="w-full py-2 text-blue-900 font-bold capitalize">{{
+                ServiceNameLink }}</router-link>
         </h2>
-    </section>    
+    </section>
 
-        <div v-else class="w-full">            
-            <div class="bg-white shadow overflow-y-auto">
-                <table class="w-full whitespace-nowrap">
-                    <tbody class="w-full">
-                        <tr v-for="info in ArrayServices" :key="info"
-                            @click="this.$router.push(RouteLink + info.id)"
-                            class="cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100">
-                            <td class="pl-4 cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-10 h-full">
-                                        <img v-if="this.$props.ServiceID == 1" class="w-full h-full" :src="SrcPublic+info.logo" />
-                                        <img v-if="this.$props.ServiceID == 2" class="w-full h-full" :src="SrcPublic+'default.svg'" />
-                                        <img v-if="this.$props.ServiceID == 3" class="w-full h-full" :src="SrcPublic+'default.svg'" />
-                                    </div>
-                                    <div class="pl-4">
-                                        <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36) }}...</p>
-                                        <p v-else class="font-medium">{{ info.name }}</p>
-                                        <p  v-if="info.description.length > 28" class="text-xs leading-3 text-gray-600 pt-2">{{ info.description.substring(0,28) }}...</p>
-                                        <p v-else class="text-xs leading-3 text-gray-600 pt-2">{{ info.description }}</p>
-                                    </div>
+    <div v-else class="w-full">
+        <div class="bg-white shadow overflow-hidden	">
+            <div class="w-full whitespace-nowrap">
+                <div class="w-full">
+                    <div v-for="info in ArrayServices" :key="info" @click="this.$router.push(RouteLink + info.id)"
+                        class="grid grid-cols-12 cursor-pointer h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100  pl-4 ">
+
+                        <div class="col-span-6 flex justify-between cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="w-10 h-full">
+                                    <img v-if="this.$props.ServiceID == 1" class="w-full h-full"
+                                        :src="SrcPublic+info.logo" />
+                                    <img v-if="this.$props.ServiceID == 2" class="w-full h-full"
+                                        :src="SrcPublic+'default.svg'" />
+                                    <img v-if="this.$props.ServiceID == 3" class="w-full h-full"
+                                        :src="SrcPublic+'default.svg'" />
                                 </div>
-                            </td>
-                            <td class="hidden pl-12">
-                                <p class="text-sm font-medium leading-none text-gray-800">72%</p>
-                                <div class="w-24 h-3 bg-gray-100 rounded-full mt-2">
-                                    <div class="w-20 h-3 bg-green-progress rounded-full"></div>
+                                <div class="pl-4">
+                                    <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36)
+                                        }}...</p>
+                                    <p v-else class="font-medium">{{ info.name }}</p>
+                                    <p v-if="info.description.length > 28" class="text-xs leading-3 text-gray-600 pt-2">
+                                        {{ info.description.substring(0,28) }}...</p>
+                                    <p v-else class="text-xs leading-3 text-gray-600 pt-2">{{ info.description }}</p>
                                 </div>
-                            </td>
-                            <td class="hidden pl-12">
-                                <p class="font-medium">32/47</p>
-                                <p class="text-xs leading-3 text-gray-600 mt-2">5 tasks pending</p>
-                            </td>
-                            <td class="hidden pl-20">
-                                <p class="font-medium">$13,000</p>
-                                <p class="text-xs leading-3 text-gray-600 mt-2">$4,200 left</p>
-                            </td>
-                            <td class="hidden pl-20">
-                                <p class="font-medium">22.12.21</p>
-                                <p class="text-xs leading-3 text-gray-600 mt-2">34 days</p>
-                            </td>
-                            <td class="pl-16">
-                                <div class="flex items-center">
-                                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow" :src="imagen_a" />
-                                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2" :src="imagen_b" />
-                                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2" :src="imagen_c" />
-                                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2" :src="imagen_d" />
-                                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2" :src="imagen_e" />
-                                </div>
-                            </td>                           
-                        </tr>                     
-                    </tbody>
-                </table>
+                            </div>
+                        </div>
+
+                        <div class="hidden md:flex col-span-3 justify-center ml-4">
+                            <div class="flex items-center">
+
+                                 <apexchart class="col-span-1 h-10	" type="area" :options="chartOptions" :series="series" ></apexchart>
+                                
+                            </div>
+                        </div>
+
+                        <div class="hidden sm:flex col-span-6 md:col-span-3  justify-between ml-12 md:ml-4">
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow"
+                                    :src="imagen_a" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
+                                    :src="imagen_b" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
+                                    :src="imagen_c" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
+                                    :src="imagen_d" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
+                                    :src="imagen_e" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
-        </div>      
+        </div>
+    </div>
 </template>
 
 <script>
 
-import API_ROUTER from './../../services/SERVER_API'
+    import API_ROUTER from './../../services/SERVER_API'
 
-export default {
-    name: 'ServicesList',
-    data() {
-        return {
-            RouteSrc: API_ROUTER.API_UI + 'icons/database.png',  
-            EmptyService: API_ROUTER.API_UI + 'empty-services.png',
-            SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg,
-            imagen_a: API_ROUTER.API_PUBLIC+'users/a_4_0.png',
-            imagen_b: API_ROUTER.API_PUBLIC+'users/a_4_1.png',
-            imagen_c: API_ROUTER.API_PUBLIC+'users/a_4_2.png',
-            imagen_d: API_ROUTER.API_PUBLIC+'users/a_4_3.png',
-            imagen_e: API_ROUTER.API_PUBLIC+'users/a_4_4.png',
+    export default {
+        name: 'ServicesList',
+        data() {
+            return {
+                RouteSrc: API_ROUTER.API_UI + 'icons/database.png',
+                EmptyService: API_ROUTER.API_UI + 'empty-services.png',
+                SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg,
+                imagen_a: API_ROUTER.API_PUBLIC + 'users/a_4_0.png',
+                imagen_b: API_ROUTER.API_PUBLIC + 'users/a_4_1.png',
+                imagen_c: API_ROUTER.API_PUBLIC + 'users/a_4_2.png',
+                imagen_d: API_ROUTER.API_PUBLIC + 'users/a_4_3.png',
+                imagen_e: API_ROUTER.API_PUBLIC + 'users/a_4_4.png',
+
+                series: [{
+            name: 'Network',
+            data: [{
+                x: 'Dec 23 2017',
+                y: null
+              },
+              {
+                x: 'Dec 24 2017',
+                y: 44
+              },
+              {
+                x: 'Dec 25 2017',
+                y: 31
+              },
+          
+            ],
+          }],
+
+        
+           chartOptions: {
+            chart: {
+              type: 'area',
+              height: 350,
+              zoom: {
+                enabled: false
+              }
+            },
+             theme: {
+      mode: 'light', 
+      palette: 'palette1', 
+      monochrome: {
+          enabled: false,
+          color: '#255aee',
+          shadeTo: 'light',
+          shadeIntensity: 0.65
+      },
+  }
+          },
+
+
         }
-    },
-    props:{
-        ArrayServices: Object,        
-        ServiceNameLink: String ,
-        RouteLink: String,
-        ServiceID: String,
-        ServiceName: String,
-        FilePathImg: String,
-    },
-    mounted: function () {
-    },
-    methods: { 
+        },
+        props: {
+            ArrayServices: Object,
+            ServiceNameLink: String,
+            RouteLink: String,
+            ServiceID: String,
+            ServiceName: String,
+            FilePathImg: String,
+        },
+        mounted: function () {
+        },
+        methods: {
+        }
     }
-}
 </script>

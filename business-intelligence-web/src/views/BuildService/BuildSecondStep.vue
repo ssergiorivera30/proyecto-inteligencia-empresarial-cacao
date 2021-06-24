@@ -146,6 +146,7 @@
 
          <ServicePreviewFormEditor 
             v-show="ArrayInputs.length && EditHeaderTitleDescriptionService == true "
+            FormType='edit'
             :ServiceName="ServiceName"
             :ServiceDescription="ServiceDescription"
             :ArrayInputs="ArrayInputs"

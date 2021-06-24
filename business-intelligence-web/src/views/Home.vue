@@ -23,6 +23,16 @@
       ServiceNameLink="Añadir proyecto" 
       ServiceID="2" />
 
+      <ServicesTitles ServiceName="Mis entidades" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
+
+    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
+      :ArrayServices="ArrayServices['forms']" 
+      ServiceName="Entidades"
+      RouteLink="/entidad/registros/"
+      FilePathImg="entidades/"
+      ServiceNameLink="Añadir formulario" 
+      ServiceID="3" />
+
     <ServicesTitles ServiceName="Mis formularios" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 

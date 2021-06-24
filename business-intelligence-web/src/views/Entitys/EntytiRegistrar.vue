@@ -12,6 +12,7 @@
       <!-- <ServicePreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" /> -->
 
       <ServicePreviewFormEditor 
+            FormType="save"
             :ServiceName="ServiceName"
             :ServiceDescription="ServiceDescription"
             :ArrayInputs="ArrayInputs" />

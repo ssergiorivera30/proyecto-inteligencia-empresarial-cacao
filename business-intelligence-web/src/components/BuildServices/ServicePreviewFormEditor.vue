@@ -12,7 +12,7 @@
                      <div class="col-span-4 text-gray-700 font-medium group flex items-center">                     
                         <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" @mousedown="HoverDragg(index)" />{{ input['input']['name'] }} 
                      </div>
-                     <div class="flex justify-end">
+                     <div class="flex justify-end" v-if="FormType === 'edit'">
                         <span class="group cursor-pointer flex rounded-md items-center px-2 py-2 text-sm" @click="SendIdEdit(index)" title="Editar">Editar</span>                                     
                         <span class="group cursor-pointer flex rounded-md items-center px-2 py-2 text-sm" @click="DeleteOption(index)" title="Eliminar">Eliminar</span>
                      </div>
@@ -51,6 +51,12 @@
 
                <div class="block" v-if="input['input']['type'] == 'select'">
                    <div>
+
+                      <select v-if="input['input']['sub_option_other'] === 0" :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
+                        <option value="" selected>Seleccionar opción</option>
+                        <option v-for="option in input['input']['options']" :key="option" :value="option['option']['value']">{{ option['option']['value'] == '/otro' ? option['option']['value'].slice(1) : option['option']['value'] }}</option>
+                     </select>
+
                      <select v-if="input['input']['sub_option_other'] === 1" :placeholder="input['input']['placeholder']" :value="input['input']['value']" class="form-control2 py-3">
                         <option value="" selected>Seleccionar opción</option>
                         <option v-for="option in input['input']['options']" :key="option" :value="option['option']['value']">{{ option['option']['value'] == '/otro' ? option['option']['value'].slice(1) : option['option']['value'] }}</option>
@@ -166,6 +172,7 @@
          NameForm: String,
          DescriptionForm: String,
          ArrayInputs: Object,
+         FormType: String,
       },
       mounted: function () {
 
