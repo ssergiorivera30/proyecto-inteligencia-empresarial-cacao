@@ -31,8 +31,7 @@
                         </TransitionChild>
                         <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                            <div class="px-4 sm:px-6">
-                              <DialogTitle v-if="InputIdEidtAsigned == null" class="text-lg font-medium text-gray-900">Crear entrada de datos</DialogTitle>
-                              <DialogTitle v-else class="text-lg font-medium text-gray-900">Editar entrada de datos</DialogTitle>
+                              <DialogTitle class="text-lg font-medium text-gray-900">Editar entrada de datos</DialogTitle>
                            </div>
                            <div class="relative flex-1 px-4 sm:px-6">
 
