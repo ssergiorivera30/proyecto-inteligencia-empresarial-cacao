@@ -2,8 +2,8 @@
 
 <!-- {{ Input_Asigned_By_Edit }} -->
 
-      <TransitionRoot as="template" :show="Input_Asigned_By_Edit != null" @click="Deactive_Input_Asigned_Edit(null)">
-         <Dialog as="section" static class="fixed inset-0 overflow-hidden" @close="open = false" :open="open">
+      <TransitionRoot as="template" :show="Input_Asigned_By_Edit != null">
+         <Dialog as="section" static class="fixed inset-0 overflow-hidden" @close="open = false, Deactive_Input_Asigned_Edit(null)" :open="open">
             <div class="absolute inset-0 overflow-hidden">
                <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
                   enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
@@ -21,7 +21,7 @@
                            <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
                               <button
                                  class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                                 @click="open = false">
+                                 @click="open = false, Deactive_Input_Asigned_Edit(null)">
                                  <span class="sr-only">Close panel</span>
                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" aria-hidden="true" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
