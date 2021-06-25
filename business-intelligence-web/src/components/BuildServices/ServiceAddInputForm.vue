@@ -30,20 +30,20 @@
                         </TransitionChild>
                         <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                            <div class="px-4 sm:px-6">
-                              <DialogTitle class="text-lg font-medium text-gray-900">Crear entrada de datos</DialogTitle>
+                              <DialogTitle class="text-lg font-medium text-gray-900">Crear entrada de datosasd</DialogTitle>
                            </div>
                            <div class="relative flex-1 px-4 sm:px-6">
 
                               <!-- Replace with your content -->
                               
                               <div class="absolute inset-0 px-4 sm:px-6">
-
+asd
 
                                 <!--  CREAR  -->
-
-                                 <form @submit.prevent="AddInput" v-if="InputIdEidtAsigned == null" autocomplete="off" class="my-10 pb-10">
+asd
+                                 <form @submit.prevent="AddInput" autocomplete="off" class="my-10 pb-10">
                                     <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-x-4 gap-y-2">
-                                       
+                                       asd
                                        <div class="block">
                                           <label class="text-gray-700 font-semibold text-xs">Nombre del campo</label>
                                           <input type="text" class="form-control2" placeholder="" required v-model="InputName">

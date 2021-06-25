@@ -45,7 +45,7 @@
 
                                  <!-- EDITAR -->
 
-                                 <div v-if="InputIdEidtAsigned != null">
+                                 <div v-if="Input_Asigned_By_Edit != null">
 
                                     <form 
                                        @submit.prevent="open = false, SaveNewForm()"
@@ -253,6 +253,7 @@
 
    import { ref } from 'vue'
    import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+    import { VueDraggableNext } from 'vue-draggable-next'
 
 
 
@@ -264,6 +265,7 @@
          DialogTitle,
          TransitionChild,
          TransitionRoot,
+         draggable: VueDraggableNext,
       },
       setup() {
          const open = ref(false)
@@ -285,7 +287,7 @@
             InputMin: '',
             InputMax: '',
 
-            ArrayInputs: [],
+        
             ArrayOptions: [],
 
             InputIdEidtAsigned: null,
@@ -295,6 +297,8 @@
          }
       },
       props: {
+         ArrayInputs: Object,
+         Input_Asigned_By_Edit:Number
      
       },
       mounted: function () {

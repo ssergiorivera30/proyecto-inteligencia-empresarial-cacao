@@ -52,7 +52,7 @@
                      <span class="hidden md:block">Editar encabezado</span>
                   </div>
                </button>
-                  <!-- @click="InputIdEidtAsigned = null, open = true" -->
+                  <!-- @click="Input_Asigned_By_Edit = null, open = true" -->
 
 
                <button 
@@ -122,7 +122,7 @@
             :ServiceName="ServiceName"
             :ServiceDescription="ServiceDescription"
             :ArrayInputs="ArrayInputs"
-            @GetIdEdit="AsignedIdEdit" />
+            @GetIdEdit="Select_Edit_Input_JSON" />
 
          <div class="py-5 text-left " v-if="EditHeaderTitleDescriptionService === true">
             <button @click="SaveNewForm()" type="button" class="mr-3 btn-indigo">{{ OrderInfoBasicForm }}</button>
@@ -133,7 +133,7 @@
    </div>
 
    <ServiceAddInputForm v-if="AgregarAparte === true" @Get_Input_JSON_Mayor="Get_Input_JSON_Mayor" />
-   <ServiceEditInputForm v-if="editarAparte === true" @Get_Input_JSON_Mayor="Get_Input_JSON_Mayor" />
+   <ServiceEditInputForm v-if="editarAparte === true" :ArrayInputs="ArrayInputs" :Input_Asigned_By_Edit="Input_Asigned_By_Edit" />
 
    
 
@@ -216,7 +216,7 @@
             },
             ArraySubOptionsValues: [],
 
-            InputIdEidtAsigned: null,
+            Input_Asigned_By_Edit: null,
 
             editarAparte: false,
             AgregarAparte: false
@@ -270,7 +270,7 @@
             }
 
             if(order === 'edit'){
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
+               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].push({
                   option: {
                      value: ''
                   }
@@ -284,22 +284,22 @@
 
             if(order === 'delete_option_list_edit'){
 
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
+               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].splice(index, 1)
             }            
          },
    
 
          AddInputEdit: function () {
 
-            if (this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'checkbox' &&
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'radio' &&
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['type'] != 'select') {
+            if (this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['type'] != 'checkbox' &&
+               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['type'] != 'radio' &&
+               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['type'] != 'select') {
 
-                  this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'] = []
+                  this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'] = []
             }
 
             this.InputType = 'text'
-            this.InputIdEidtAsigned = null
+            this.Input_Asigned_By_Edit = null
          },
 
          AttributeInputVisivility: function () {
@@ -341,9 +341,11 @@
             this.ArrayInputs = NewInputs
 
          },
-         AsignedIdEdit: function (value) {
-            this.InputIdEidtAsigned = value
-            this.open = true
+         Select_Edit_Input_JSON: function (value) {
+            this.Input_Asigned_By_Edit = value
+            this.editarAparte = true
+            console.log(value)
+         
          },
 
          // PETICIONES A LA BASES DE DATOS
