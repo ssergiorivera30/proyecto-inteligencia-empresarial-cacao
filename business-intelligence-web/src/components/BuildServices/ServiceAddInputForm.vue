@@ -1,5 +1,5 @@
 <template>
-   <TransitionRoot as="template" :show="open">
+   <TransitionRoot as="template" :show="open" @click="Desactive_Input_Creator(false)">
          <Dialog as="section" static class="fixed inset-0 overflow-hidden" @close="open = false" :open="open">
             <div class="absolute inset-0 overflow-hidden">
                <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
@@ -30,20 +30,20 @@
                         </TransitionChild>
                         <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                            <div class="px-4 sm:px-6">
-                              <DialogTitle class="text-lg font-medium text-gray-900">Crear entrada de datosasd</DialogTitle>
+                              <DialogTitle class="text-lg font-medium text-gray-900">Crear entrada de datos</DialogTitle>
                            </div>
                            <div class="relative flex-1 px-4 sm:px-6">
 
                               <!-- Replace with your content -->
                               
                               <div class="absolute inset-0 px-4 sm:px-6">
-asd
+
 
                                 <!--  CREAR  -->
-asd
+
                                  <form @submit.prevent="AddInput" autocomplete="off" class="my-10 pb-10">
                                     <div class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-x-4 gap-y-2">
-                                       asd
+                                       
                                        <div class="block">
                                           <label class="text-gray-700 font-semibold text-xs">Nombre del campo</label>
                                           <input type="text" class="form-control2" placeholder="" required v-model="InputName">
@@ -222,7 +222,7 @@ asd
          TransitionRoot,
       },
       setup() {
-         const open = ref(false)
+         const open = ref(true)
          return {
             open,
          }
@@ -255,10 +255,18 @@ asd
       },
       mounted: function () {
 
-         this.open = true
+console.log('Hola')
+   
 
       },
       methods: {
+         Desactive_Input_Creator: function (Desactive) {
+            // JSON_INPUT
+            this.open = false            
+            this.$emit('Desactive_Input_Creator', Desactive)
+         },
+
+
          Send_Input_JSON_Mayor: function () {
 
             // JSON_INPUT

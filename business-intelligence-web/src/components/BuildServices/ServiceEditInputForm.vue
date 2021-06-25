@@ -1,6 +1,8 @@
 <template>
 
-      <TransitionRoot as="template" :show="open">
+<!-- {{ Input_Asigned_By_Edit }} -->
+
+      <TransitionRoot as="template" :show="Input_Asigned_By_Edit != null" @click="Deactive_Input_Asigned_Edit(null)">
          <Dialog as="section" static class="fixed inset-0 overflow-hidden" @close="open = false" :open="open">
             <div class="absolute inset-0 overflow-hidden">
                <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
@@ -40,15 +42,10 @@
                               <div class="absolute inset-0 px-4 sm:px-6">
 
 
-                               
-
-                                 <!-- EDITAR -->
-
-                                 <div v-if="Input_Asigned_By_Edit != null">
 
                                     <form 
                                        @submit.prevent="open = false, SaveNewForm()"
-                                       v-for="(inputEdit, index) in ArrayInputs[InputIdEidtAsigned]" 
+                                       v-for="(inputEdit, index) in ArrayInputs[Input_Asigned_By_Edit]" 
                                        :key="index"
                                        :id="index" 
                                        autocomplete="off" 
@@ -232,7 +229,7 @@
 
                                     </form>
 
-                                 </div>
+                             
                               </div>
                           
                            </div>
@@ -267,7 +264,7 @@
          draggable: VueDraggableNext,
       },
       setup() {
-         const open = ref(false)
+         const open = ref(true)
          return {
             open,
          }
@@ -289,7 +286,7 @@
         
             ArrayOptions: [],
 
-            InputIdEidtAsigned: null,
+         
 
             SelectedTypeOptions: 0,
           
@@ -302,15 +299,26 @@
       },
       mounted: function () {
 
-         this.open = true
+         // 
+
+
+         console.log('edit' + this.$props.Input_Asigned_By_Edit )
 
       },
       methods: {
-         Send_Input_JSON_Mayor: function () {
+
+         Deactive_Input_Asigned_Edit: function (Desactive) {
 
             // JSON_INPUT
-            this.$emit('Get_Input_JSON_Mayor', this.ArrayInputs)
+            this.open = false            
+            this.$emit('Deactive_Input_Edit', Desactive)
          },
+
+         // Send_Input_JSON_Mayor: function () {
+
+         //    // JSON_INPUT
+         //    this.$emit('Get_Input_JSON_Mayor', this.ArrayInputs)
+         // },
 
          CRUDOptionInputJSON: function(order, index) {   
 
@@ -323,7 +331,7 @@
             }
 
             if(order === 'edit'){
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
+               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].push({
                   option: {
                      value: ''
                   }
@@ -337,7 +345,7 @@
 
             if(order === 'delete_option_list_edit'){
 
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
+               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].splice(index, 1)
             }            
          },
    
@@ -387,7 +395,7 @@
             this.sub_option_other = 0
             this.ArraySubOptions = []
 
-            this.Send_Input_JSON_Mayor()
+            // this.Send_Input_JSON_Mayor()
          },
          AttributeInputVisivility: function () {
             this.MinMax = 0

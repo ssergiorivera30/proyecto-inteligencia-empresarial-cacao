@@ -55,16 +55,13 @@
                   <!-- @click="Input_Asigned_By_Edit = null, open = true" -->
 
 
-               <button 
-                  @click="editarAparte = true"
-
-                  
+               <button @click="AddInputExpandCreator = AddInputExpandCreator ? false : true" 
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex  leading-4">                     
                      <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                      </svg>
-                     <span class="hidden md:block">Agregar campos</span>
+                     <span class="hidden md:block">Agregar campos {{ AddInputExpandCreator }}</span>
                   </div>
                </button>
                
@@ -132,8 +129,10 @@
       </div>
    </div>
 
-   <ServiceAddInputForm v-if="AgregarAparte === true" @Get_Input_JSON_Mayor="Get_Input_JSON_Mayor" />
-   <ServiceEditInputForm v-if="editarAparte === true" :ArrayInputs="ArrayInputs" :Input_Asigned_By_Edit="Input_Asigned_By_Edit" />
+   <ServiceAddInputForm v-if="AddInputExpandCreator === true" @Get_Input_JSON_Mayor="Get_Input_JSON_Mayor" @Desactive_Input_Creator="Desactive_Input_Creator" />
+   <ServiceEditInputForm :Input_Asigned_By_Edit="Input_Asigned_By_Edit" :ArrayInputs="ArrayInputs"  @Deactive_Input_Edit="Deactive_Input_Edit"/>
+
+   {{ Input_Asigned_By_Edit }}
 
    
 
@@ -219,7 +218,7 @@
             Input_Asigned_By_Edit: null,
 
             editarAparte: false,
-            AgregarAparte: false
+            AddInputExpandCreator: false
           
          }
       },
@@ -341,10 +340,16 @@
             this.ArrayInputs = NewInputs
 
          },
+         Desactive_Input_Creator: function(){
+            this.AddInputExpandCreator = false
+         },
+         Deactive_Input_Edit: function(Desactive){
+            this.Input_Asigned_By_Edit = Desactive
+         },
          Select_Edit_Input_JSON: function (value) {
+       
             this.Input_Asigned_By_Edit = value
-            this.editarAparte = true
-            console.log(value)
+          
          
          },
 
