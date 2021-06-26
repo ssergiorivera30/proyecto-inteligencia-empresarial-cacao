@@ -241,17 +241,28 @@
             InputMin: '',
             InputMax: '',
 
-            ArrayInputs: [],
+          
             ArrayOptions: [],
             sub_option_other: 0,
 
             InputIdEidtAsigned: null,
 
             SelectedTypeOptions: 0,
+
+            ArraySubOptionsTypes: {
+               option1: {
+                  type: 'text',
+               },
+               option2: {
+                  type: 'file',
+               }
+            },
+            ArraySubOptionsValues: [],
           
          }
       },
       props: {
+         ArrayInputs: Object
      
       },
       mounted: function () {
@@ -302,6 +313,33 @@ console.log('Hola')
                this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
             }            
          },
+
+          CRUDSubOptions: function(order, type){
+            var existOtro = false;
+            var existOtroNumero = 0;
+
+            console.log('sdf')
+       
+           this.ArrayOptions.forEach((element, index) => {
+               if (element.option.value == '/otro' || element.option.value == '/otros'){
+                  existOtro = true;
+                  existOtroNumero = existOtroNumero + 1;
+                  if(existOtroNumero > 1){
+                     this.ArrayOptions.splice(index, 1)                  
+                  }
+               }
+            });
+   
+            if( order === 'edit_other' && type == '/otro'){ this.sub_option_other = 1 }
+            if( order === 'edit_other' && type == '/otros'){ this.sub_option_other = 2 }
+
+            if( order === 'edit_other' && type != '/otro' && type != '/otros' && existOtro == false ){ this.sub_option_other = 0 }
+            
+            if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.type = 'text' }
+            if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.type = '' }
+            if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.type = 'file' }
+            if( order === 'inactive_type_file' ){ this.ArraySubOptionsTypes.option2.type = '' }
+         },
    
 
              
@@ -312,7 +350,7 @@ console.log('Hola')
             var NowNumber = Math.floor(Math.random() * (111 - 999)) + 999;
             var TokenValue = this.$route.params.id_service + NowData.getDate() + NowData.getHours() + NowData.getMinutes() + NowData.getSeconds() +  NowData.getTime() + NowNumber;
 
-            this.ArrayInputs.push(
+            this.$props.ArrayInputs.push(
                {
                   input: {
                      'name': this.InputName,

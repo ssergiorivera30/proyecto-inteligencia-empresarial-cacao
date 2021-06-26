@@ -44,8 +44,8 @@
 
 
                                     <form 
-                                       @submit.prevent="open = false, SaveNewForm()"
-                                       v-for="(inputEdit, index) in ArrayInputs[Input_Asigned_By_Edit]" 
+                                       @submit.prevent="open = false, Save_Input_Edit()"
+                                       v-for="(inputEdit, index) in ArrayInputEdit" 
                                        :key="index"
                                        :id="index" 
                                        autocomplete="off" 
@@ -229,6 +229,11 @@
 
                                     </form>
 
+                                      <details class="mt-10 p-3 bg-gray-500 text-white rounded">
+                                    <summary>Editor de campos</summary>
+                                    <pre>{{ ArrayInputEdit  }}</pre>
+                                 </details>
+
                              
                               </div>
                           
@@ -286,14 +291,22 @@
         
             ArrayOptions: [],
 
-         
-
             SelectedTypeOptions: 0,
+
+            ArraySubOptionsTypes: {
+               option1: {
+                  type: 'text',
+               },
+               option2: {
+                  type: 'file',
+               }
+            },
+            ArraySubOptionsValues: [],
           
          }
       },
       props: {
-         ArrayInputs: Object,
+         ArrayInputEdit: Object,
          Input_Asigned_By_Edit:Number
      
       },
@@ -313,6 +326,16 @@
             this.open = false            
             this.$emit('Deactive_Input_Edit', Desactive)
          },
+
+         Save_Input_Edit: function () {
+
+            // JSON_INPUT
+             
+            this.$emit('UpdateEditInput', this.$props.Input_Asigned_By_Edit, this.$props.ArrayInputEdit)
+         },
+
+
+         
 
          // Send_Input_JSON_Mayor: function () {
 
@@ -348,7 +371,30 @@
                this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].splice(index, 1)
             }            
          },
+          CRUDSubOptions: function(order, type){
+            var existOtro = false;
+            var existOtroNumero = 0;
+       
+           this.ArrayOptions.forEach((element, index) => {
+               if (element.option.value == '/otro' || element.option.value == '/otros'){
+                  existOtro = true;
+                  existOtroNumero = existOtroNumero + 1;
+                  if(existOtroNumero > 1){
+                     this.ArrayOptions.splice(index, 1)                  
+                  }
+               }
+            });
    
+            if( order === 'edit_other' && type == '/otro'){ this.sub_option_other = 1 }
+            if( order === 'edit_other' && type == '/otros'){ this.sub_option_other = 2 }
+            if( order === 'edit_other' && type != '/otro' && type != '/otros' && existOtro == false ){ this.sub_option_other = 0 }
+            if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.type = 'text' }
+            if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.type = '' }
+            if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.type = 'file' }
+            if( order === 'inactive_type_file' ){ this.ArraySubOptionsTypes.option2.type = '' }
+         },   
+
+         
 
              
          AddInput: function () {
