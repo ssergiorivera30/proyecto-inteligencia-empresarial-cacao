@@ -1,12 +1,6 @@
 <template>
-<!-- // clase para pantalla completa.
-// fixed top-0 left-0 z-40 w-screen h-screen bg-gray-50 overflow-auto	 -->
-
    <div class="mx-auto 2xl:max-w-screen-md ">
       <div class="grid grid-cols-1 mb-10">
-
- 
-                  
 
          <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
 
@@ -27,33 +21,35 @@
                <button @click="EditHeaderTitleDescriptionService = EditHeaderTitleDescriptionService ? false : true"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-5">
-                     
-                     <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+
+                     <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit w-5 h-5 mr-1" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                      </svg>
                      <span class="hidden md:block">Editar encabezado</span>
                   </div>
                </button>
-                  <!-- @click="Input_Asigned_By_Edit = null, open = true" -->
-
-
-               <button @click="AddInputExpandCreator = AddInputExpandCreator ? false : true" 
+         
+               <button @click="AddInputExpandCreator = AddInputExpandCreator ? false : true"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
-                  <div class="flex  leading-4">                     
-                     <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <div class="flex  leading-4">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit w-5 h-5 mr-1" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                      </svg>
                      <span class="hidden md:block">Agregar campos {{ AddInputExpandCreator }}</span>
                   </div>
                </button>
-               
 
                <button @click="SaveNewForm()"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">
                   <div class="flex leading-5">
 
-                     <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-save w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" 
-                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-save w-5 h-5 mr-1" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
                         <polyline points="17 21 17 13 7 13 7 21"></polyline>
                         <polyline points="7 3 7 8 15 8"></polyline>
@@ -62,15 +58,10 @@
                      <span class="hidden md:block">{{ OrderInfoBasicForm }}</span>
                   </div>
                </button>
-
-               
             </div>
          </div>
 
-
-
-         <form 
-            v-if="EditHeaderTitleDescriptionService === false"
+         <form v-if="EditHeaderTitleDescriptionService === false"
             @submit.prevent="UpdateInfoBasicForm(), EditHeaderTitleDescriptionService = true"
             class="grid gap-x-4 gap-y-1">
 
@@ -91,74 +82,48 @@
 
             <div class="my-1 text-left">
                <button type="submit" class="btn-indigo">Actualizar</button>
-               <button type="button" @click="EditHeaderTitleDescriptionService = true" class="mr-3 btn-light">Cancelar</button>
+               <button type="button" @click="EditHeaderTitleDescriptionService = true"
+                  class="mr-3 btn-light">Cancelar</button>
             </div>
          </form>
-         
-         <ServicePreviewFormEditor 
-            v-show="ArrayInputs.length && EditHeaderTitleDescriptionService == true "
-            FormType='edit'
-            :ServiceName="ServiceName"
-            :ServiceDescription="ServiceDescription"
-            :ArrayInputs="ArrayInputs"
-            @GetIdEdit="Select_Edit_Input_JSON" />
+
+         <ServicePreviewFormEditor v-show="ArrayInputs.length && EditHeaderTitleDescriptionService == true "
+            FormType='edit' :ServiceName="ServiceName" :ServiceDescription="ServiceDescription"
+            :ArrayInputs="ArrayInputs" @GetIdEdit="Select_Edit_Input_JSON" />
 
          <div class="py-5 text-left " v-if="EditHeaderTitleDescriptionService === true">
             <button @click="SaveNewForm()" type="button" class="mr-3 btn-indigo">{{ OrderInfoBasicForm }}</button>
          </div>
 
          <div>
+         </div>
       </div>
-   </div>
 
-   <ServiceAddInputForm v-if="AddInputExpandCreator === true" @Get_Input_JSON_Mayor="Get_Input_JSON_Mayor" @Desactive_Input_Creator="Desactive_Input_Creator" />
-   <ServiceEditInputForm :Input_Asigned_By_Edit="Input_Asigned_By_Edit" :ArrayInputs="ArrayInputs"  @Deactive_Input_Edit="Deactive_Input_Edit"/>
-
-   {{ Input_Asigned_By_Edit }}
-
-   
-
-
+      <ServiceAddInputForm v-if="AddInputExpandCreator === true" @Get_Input_JSON_Mayor="Get_Input_JSON_Mayor"
+         @Desactive_Input_Creator="Desactive_Input_Creator" />
+      <ServiceEditInputForm :Input_Asigned_By_Edit="Input_Asigned_By_Edit" :ArrayInputs="ArrayInputs"
+         @Deactive_Input_Edit="Deactive_Input_Edit" />
 
    </div>
-
-
 </template>
 <script>
 
    import axios from "axios"
-   import Noty from "noty";
    import API_ROUTER from "./../../services/SERVER_API"
    import ArlertBasic from './../../components/Overlay/ArlertBasic'
 
-   import { ref } from 'vue'
-   import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
    import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
    import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
    import ServiceAddInputForm from "./../../components/BuildServices/ServiceAddInputForm"
    import ServiceEditInputForm from "./../../components/BuildServices/ServiceEditInputForm"
 
-  import { VueDraggableNext } from 'vue-draggable-next'
-
    export default {
-      components: {         
+      components: {
+         ArlertBasic,
          ServicePreviewBasicInfo,
          ServicePreviewFormEditor,
          ServiceAddInputForm,
          ServiceEditInputForm,
-         Dialog,
-         DialogOverlay,
-         DialogTitle,
-         TransitionChild,
-         TransitionRoot,
-         ArlertBasic,
-         draggable: VueDraggableNext,    
-      },
-      setup() {
-         const open = ref(false)
-         return {
-            open,
-         }
       },
       data() {
          return {
@@ -167,25 +132,7 @@
             ServiceName: '',
             ServiceDescription: '',
             EditHeaderTitleDescriptionService: true,
-            MinMax: 0,
-            Size: 0,
-            SelectedTypeOptions: 0,
-
-            InputName: '',
-            InputType: 'text',
-            InputRequired: false,
-            InputPlaceholder: '',
-            InputValue: '',
-            InputMinlength: '',
-            InputMaxlength: '',
-            InputSize: '',
-            InputMin: '',
-            InputMax: '',
-
             ArrayInputs: [],
-            ArrayOptions: [],
-
-           
 
             ArraySubOptionsTypes: {
                option1: {
@@ -196,143 +143,27 @@
                }
             },
             ArraySubOptionsValues: [],
-
             Input_Asigned_By_Edit: null,
-
-            editarAparte: false,
             AddInputExpandCreator: false
-          
+
          }
       },
       mounted: function () {
-         this.LoadBasicInfoService()      
+         this.LoadJsonInputsForm()
       },
-      methods: {   
-         CRUDSubOptions: function(order, type){
+      methods: {
 
-            var existOtro = false;
-            var existOtroNumero = 0;
-       
-           this.ArrayOptions.forEach((element, index) => {
-               if (element.option.value == '/otro' || element.option.value == '/otros'){
-                  existOtro = true;
-                  existOtroNumero = existOtroNumero + 1;
-                  if(existOtroNumero > 1){
-                     this.ArrayOptions.splice(index, 1)                  
-                  }
-               }
-            });
-   
-
-            if( order === 'edit_other' && type == '/otro'){ this.sub_option_other = 1 }
-
-            if( order === 'edit_other' && type == '/otros'){ this.sub_option_other = 2 }
-
-            if( order === 'edit_other' && type != '/otro' && type != '/otros' && existOtro == false ){ this.sub_option_other = 0 }
-
-            if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.type = 'text' }
-
-            if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.type = '' }
-
-            if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.type = 'file' }
-
-            if( order === 'inactive_type_file' ){ this.ArraySubOptionsTypes.option2.type = '' }
-
-         },
-
-         CRUDOptionInputJSON: function(order, index) {   
-
-            if( order === 'add' && this.sub_option_other == 0 ){
-               this.ArrayOptions.push({
-                  option: {
-                     value: ''
-                  }
-               })
-            }
-
-            if(order === 'edit'){
-               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].push({
-                  option: {
-                     value: ''
-                  }
-               })
-            }
-
-            if(order === 'delete_option_list_create'){
-
-               this.ArrayOptions.splice(index, 1);
-            }
-
-            if(order === 'delete_option_list_edit'){
-
-               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].splice(index, 1)
-            }            
-         },
-   
-
-         AddInputEdit: function () {
-
-            if (this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['type'] != 'checkbox' &&
-               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['type'] != 'radio' &&
-               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['type'] != 'select') {
-
-                  this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'] = []
-            }
-
-            this.InputType = 'text'
-            this.Input_Asigned_By_Edit = null
-         },
-
-         AttributeInputVisivility: function () {
-            this.MinMax = 0
-            this.Size = 0
-            this.SelectedTypeOptions = 0
-
-            if (this.InputType == 'number' ||
-               this.InputType == 'date' ||
-               this.InputType == 'datetime' ||
-               this.InputType == 'month' ||
-               this.InputType == 'hour' ||
-               this.InputType == 'week') {
-
-               this.MinMax = 1
-            }
-
-            if (this.InputType == 'text' ||
-               this.InputType == 'tel' ||
-               this.InputType == 'url' ||
-               this.InputType == 'email' ||
-               this.InputType == 'password') {
-
-               this.Size = 1
-            }
-
-            if (this.InputType == 'checkbox' ||
-               this.InputType == 'radio' ||
-               this.InputType == 'select') {
-
-               this.SelectedTypeOptions = 1
-            }
-
-            this.ArrayOptions = []
-
-         },
-
-         Get_Input_JSON_Mayor: function(NewInputs){
+         Get_Input_JSON_Mayor: function (NewInputs) {
             this.ArrayInputs = NewInputs
-
          },
-         Desactive_Input_Creator: function(){
+         Desactive_Input_Creator: function () {
             this.AddInputExpandCreator = false
          },
-         Deactive_Input_Edit: function(Desactive){
+         Deactive_Input_Edit: function (Desactive) {
             this.Input_Asigned_By_Edit = Desactive
          },
          Select_Edit_Input_JSON: function (value) {
-       
             this.Input_Asigned_By_Edit = value
-          
-         
          },
 
          // PETICIONES A LA BASES DE DATOS
@@ -343,9 +174,9 @@
                {
                   id_service: parseInt(this.$route.params.id_service),
                   JSON_inputs: this.ArrayInputs
-               }).then((response) => {               
+               }).then((response) => {
 
-                  ArlertBasic.methods.AlertBasic(response.data.icono, response.data.mensaje, 2000, true)                  
+                  ArlertBasic.methods.AlertBasic(response.data.icono, response.data.mensaje, 2000, true)
 
                }).catch(() => {
                   alert('Error de conexión al guardar el servicio')
@@ -367,14 +198,14 @@
                })
          },
 
-         LoadBasicInfoService: function () {
+         LoadJsonInputsForm: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "build/load_info_basic_service.php",
                {
                   id_service: this.$route.params.id_service,
                }).then((response) => {
 
                   if (response.data.mensaje != 1) {
-                     // window.history.back()
+                     window.history.back()
                   }
                   this.ServiceName = response['data']['datos'][0]['name']
                   this.ServiceDescription = response['data']['datos'][0]['description']
@@ -386,8 +217,11 @@
 
                }).catch(() => {
                   alert('Error de conexión al cargar el servicio')
-            })
+               })
          },
       }
    }
 </script>
+
+<!-- // clase para pantalla completa.
+// fixed top-0 left-0 z-40 w-screen h-screen bg-gray-50 overflow-auto	 -->
