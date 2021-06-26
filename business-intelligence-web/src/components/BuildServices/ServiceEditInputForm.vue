@@ -312,37 +312,20 @@
       },
       mounted: function () {
 
-         // 
-
-
          console.log('edit' + this.$props.Input_Asigned_By_Edit )
 
       },
       methods: {
 
          Deactive_Input_Asigned_Edit: function (Desactive) {
-
-            // JSON_INPUT
             this.open = false            
             this.$emit('Deactive_Input_Edit', Desactive)
          },
 
-         Save_Input_Edit: function () {
-
-            // JSON_INPUT
-             
+         Save_Input_Edit: function (){
+            this.open = false 
             this.$emit('UpdateEditInput', this.$props.Input_Asigned_By_Edit, this.$props.ArrayInputEdit)
          },
-
-
-         
-
-         // Send_Input_JSON_Mayor: function () {
-
-         //    // JSON_INPUT
-         //    this.$emit('Get_Input_JSON_Mayor', this.ArrayInputs)
-         // },
-
          CRUDOptionInputJSON: function(order, index) {   
 
             if( order === 'add' && this.sub_option_other == 0 ){
@@ -354,7 +337,7 @@
             }
 
             if(order === 'edit'){
-               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].push({
+               this.$props.ArrayInputEdit['input']['options'].push({
                   option: {
                      value: ''
                   }
@@ -368,7 +351,7 @@
 
             if(order === 'delete_option_list_edit'){
 
-               this.ArrayInputs[this.Input_Asigned_By_Edit]['input']['options'].splice(index, 1)
+               this.$props.ArrayInputEdit['input']['options'].splice(index, 1)
             }            
          },
           CRUDSubOptions: function(order, type){
