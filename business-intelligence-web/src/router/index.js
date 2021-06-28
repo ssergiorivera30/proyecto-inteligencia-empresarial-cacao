@@ -1,9 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
-
 // CONSTRUCTOR DE ENTRADAS PERSONALIZADAS
-
 
 import BuildFirsStep from '../views/BuildService/BuildFirsStep'
 import BuildSecondStep from '../views/BuildService/BuildSecondStep'
@@ -28,12 +26,8 @@ import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
 import EntityData from './../views/Entitys/EntityData'
 import EntityExplotacion from './../views/Entitys/EntityExplotacion'
 
-
-
 import TeamResumen from './../views/Team/TeamResumen'
 import ServiciosInfoBasicDetalles from './../views/Servicios/ServiciosInfoBasicDetalles'
-
-
 
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
 import ServiciosHome from '../views/Servicios/ServiciosHome'
@@ -43,7 +37,6 @@ import ServiciosHome from '../views/Servicios/ServiciosHome'
 import MapsHome from '../views/Maps/MapsHome'
 import MapsCreate from '../views/Maps/MapsCreate'
 
-
 // Cuenta
 
 import MyCuentaHeader from '../views/MyCuenta/MyCuentaHeader'
@@ -51,13 +44,10 @@ import Cuenta from '../views/MyCuenta/Cuenta'
 import Personalizacion from '../views/MyCuenta/Personalizacion'
 import Seguridad from '../views/MyCuenta/Seguridad'
 
-
 const routes = [
-
 
     { path: '/', redirect: 'inicio', component: Home },
     { path: '/inicio', name: 'Home', component: Home },
-
     {
         path: '/herraminetas',
         redirect: '/herraminetas/inicio/',
@@ -67,50 +57,8 @@ const routes = [
             { path: 'inicio', name: 'ServiciosHome', component: ServiciosHome },
         ]
     },
-
     { path: '/maps', name: 'MapsHome', component: MapsHome },
     { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate },
-
-    // {
-    //     path: '/proyecto/formulario',
-    //     name: 'FormularioNuevoHeader',
-    //     component: FormularioNuevoHeader,
-    //     children: [
-    //         { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },
-    //         { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
-    //     ]
-    // },
-    // {
-    //     path: '/proyecto/objeto_nuevo',
-    //     name: 'ObjetoNuevoHeader',
-    //     component: ObjetoNuevoHeader,
-    //     children: [
-    //         { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },
-    //         { path: 'constructor-objeto/:id_object', name: 'ObjetoConstructor', component: ObjetoConstructor },
-    //     ]
-    // },
-    // {
-    //     path: '/proyecto/objeto/detalle',
-    //     name: 'ObjetoDetallesHeader',
-    //     component: ObjetoDetallesHeader,
-    //     children: [
-    //         { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },
-    //         { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },
-    //         { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios },
-    //     ]
-    // },
-    // {
-    //     path: '/formulario/ver/',
-    //     name: 'FormularioDetallesHeader',
-    //     component: FormularioDetallesHeader,
-    //     children: [
-    //         { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },
-    //         { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
-    //     ]
-    // },
-
-    // { path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
-
     {
         path: '/cuenta/ver',
         name: 'MyCuentaHeader',
@@ -123,14 +71,8 @@ const routes = [
         ]
     },
 
-
-
-
     // ******************************************************************************************** //
     // ******************************************************************************************** //
-    // ******************************************************************************************** //
-    // ******************************************************************************************** //
-
 
     { path: '/create-service/:type_service', name: 'BuildFirsStep', component: BuildFirsStep },
     { path: '/constructor-service/:id_service', name: 'BuildSecondStep', component: BuildSecondStep },
@@ -158,8 +100,6 @@ const routes = [
         ]
     },
 
-
-
     {
         path: '/entidad',
         name: 'EntityDetallesHeader',
@@ -175,18 +115,7 @@ const routes = [
     },
 
 
-
-
     { path: '/service/info/basic/:id_service', name: 'ServiciosInfoBasicDetalles', component: ServiciosInfoBasicDetalles },
-
-
-
-
-
-
-
-
-
 
 ]
 
@@ -194,7 +123,5 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes
 })
-
-
 
 export default router
