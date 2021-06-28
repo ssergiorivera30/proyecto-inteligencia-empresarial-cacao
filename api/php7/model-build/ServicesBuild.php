@@ -25,6 +25,19 @@ class ServicesBuild
 	}
 
 
+	function GetInfoTypeService($ServiceType, $id_service){
+
+		$NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
+										2 => 'z2_project_'.$id_service,
+										3 => 'z3_entity_'.$id_service,
+										4 => 'z4_form_'.$id_service  );
+
+		return $NAME_TABLES_SERVICES[$ServiceType];
+
+		
+	}
+
+
 	// PRIMER PASO => REGISTRAR EL SERVICIO => tbl_services.
 	// function CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription){		
 

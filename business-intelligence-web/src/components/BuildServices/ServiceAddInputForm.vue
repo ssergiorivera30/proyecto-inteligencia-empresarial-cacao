@@ -350,7 +350,7 @@ console.log('Hola')
                      'required': this.InputRequired,
                      'placeholder': this.InputPlaceholder,
                      'value': this.InputValue,
-                     'token': TokenValue,
+                     'token': 'c'+TokenValue,
                      'minlength': this.InputMinlength,
                      'maxlength': this.InputMaxlength,
                      'size': this.InputSize,

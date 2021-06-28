@@ -31,7 +31,6 @@
                <button @click="EditHeaderTitleDescriptionService = EditHeaderTitleDescriptionService ? false : true"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200">
                   <div class="flex leading-5">
-
                      <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit w-5 h-5 mr-1" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

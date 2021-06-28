@@ -57,13 +57,16 @@ $class_core_table = new CoreTables();
 // NONBRE DE LOS SERVICIOS DISPONIBLES EN EL SOFTWARE
 
 
-$NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
-								2 => 'z2_project_'.$id_service,
-								3 => 'z3_entity_'.$id_service,
-								4 => 'z4_form_'.$id_service  );
+// $NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
+// 								2 => 'z2_project_'.$id_service,
+// 								3 => 'z3_entity_'.$id_service,
+// 								4 => 'z4_form_'.$id_service  );
 
 
-$NAME_TABLE = $NAME_TABLES_SERVICES[$type_service['id']];
+// $NAME_TABLE = $NAME_TABLES_SERVICES[$type_service['id']];
+
+
+$NAME_TABLE = $class_object->GetInfoTypeService($type_service['id'], $id_service);
 
 // VERIFICAMOS SI EXISTE EL NOMBRE DE LA TABLA EN LA BASE DE DATOS
 
