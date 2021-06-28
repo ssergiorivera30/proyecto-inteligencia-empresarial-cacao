@@ -245,7 +245,7 @@
             ArrayOptions: [],
             sub_option_other: 0,
 
-            InputIdEidtAsigned: null,
+  
 
             SelectedTypeOptions: 0,
 
@@ -286,6 +286,8 @@ console.log('Hola')
          },
 
          CRUDOptionInputJSON: function(order, index) {   
+            
+            console.log('Holaass')
 
             if( order === 'add' && this.sub_option_other == 0 ){
                this.ArrayOptions.push({
@@ -294,24 +296,14 @@ console.log('Hola')
                   }
                })
             }
-
-            if(order === 'edit'){
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].push({
-                  option: {
-                     value: ''
-                  }
-               })
-            }
+           
 
             if(order === 'delete_option_list_create'){
 
                this.ArrayOptions.splice(index, 1);
             }
 
-            if(order === 'delete_option_list_edit'){
-
-               this.ArrayInputs[this.InputIdEidtAsigned]['input']['options'].splice(index, 1)
-            }            
+                      
          },
 
           CRUDSubOptions: function(order, type){
@@ -334,7 +326,7 @@ console.log('Hola')
             if( order === 'edit_other' && type == '/otros'){ this.sub_option_other = 2 }
 
             if( order === 'edit_other' && type != '/otro' && type != '/otros' && existOtro == false ){ this.sub_option_other = 0 }
-            
+
             if( order === 'activate_type_text' ){ this.ArraySubOptionsTypes.option1.type = 'text' }
             if( order === 'inactive_type_text' ){ this.ArraySubOptionsTypes.option1.type = '' }
             if( order === 'activate_type_file' ){ this.ArraySubOptionsTypes.option2.type = 'file' }

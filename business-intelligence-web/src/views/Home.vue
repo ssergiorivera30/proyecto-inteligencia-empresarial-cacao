@@ -23,7 +23,7 @@
       ServiceNameLink="Añadir proyecto" 
       ServiceID="2" />
 
-      <ServicesTitles ServiceName="Mis entidades" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
+ <!-- <ServicesTitles ServiceName="Mis entidades" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['forms']" 
@@ -41,7 +41,7 @@
       RouteLink="/formulario/ver/detalles/"
       FilePathImg="formularios/"
       ServiceNameLink="Añadir formulario" 
-      ServiceID="3" />
+      ServiceID="3" /> -->
 
        <!-- <FileUpload :target="file" action="POST"/> -->
        <!-- <FileUpload :target="file" action="POST" v-on:progress="progress" v-on:start="startUpload" v-on:finish="finishUpload" /> -->

@@ -3,23 +3,6 @@
 class ServicesBuild
 {
 
-	// PRIMER PASO => REGISTRAR EL SERVICIO => tbl_services.
-	function CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription){		
-
-		$sql = "INSERT INTO 
-					tbl_services (tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created) 
-				VALUES
-				(?,?,?, NOW(), NOW())";
-
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $ServiceType);
-		$stm -> bindParam(2, $ServiceName);
-		$stm -> bindParam(3, $ServiceDescription);
-		$stm -> execute();
-		$ID_OBJECT =  $conection->lastInsertId();
-		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_OBJECT );
-	}
-
 	// SEGUNDO PASO => ACTUALIZAR EL CAMPO JSON DE LA TABLA => tbl_services
 	function UpdateJSONServices($conection, $id_service, $JSON_inputs ){	
 		$JSON_inputs = json_encode($JSON_inputs);
@@ -40,6 +23,25 @@ class ServicesBuild
 		$type_service = $stm->fetchAll();
 		return $respuesta = array('id' => intval($type_service[0]['tbse_id_type_service']) );
 	}
+
+
+	// PRIMER PASO => REGISTRAR EL SERVICIO => tbl_services.
+	// function CreateService($conection, $ServiceType, $ServiceName, $ServiceDescription){		
+
+	// 	$sql = "INSERT INTO 
+	// 				tbl_services (tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created) 
+	// 			VALUES
+	// 			(?,?,?, NOW(), NOW())";
+
+	// 	$stm = $conection -> prepare( $sql );
+	// 	$stm -> bindParam(1, $ServiceType);
+	// 	$stm -> bindParam(2, $ServiceName);
+	// 	$stm -> bindParam(3, $ServiceDescription);
+	// 	$stm -> execute();
+	// 	$ID_OBJECT =  $conection->lastInsertId();
+	// 	return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_OBJECT );
+	// }
+
 
 	function GetFullService($conection, $id_service){
 
@@ -70,14 +72,14 @@ class ServicesBuild
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $datos );				
 	}
 
-		function UpdateServiceBasic($conection, $serviceId, $ServiceName, $ServiceDescription ){
-		$sql = "UPDATE tbl_services SET tbse_name=?, tbse_description=? WHERE tbse_auto_id=?";
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $ServiceName);
-		$stm -> bindParam(2, $ServiceDescription);
-		$stm -> bindParam(3, $serviceId);
-		$stm -> execute();
-		return $stm->rowCount();
-	}
+	// 	function UpdateServiceBasic($conection, $serviceId, $ServiceName, $ServiceDescription ){
+	// 	$sql = "UPDATE tbl_services SET tbse_name=?, tbse_description=? WHERE tbse_auto_id=?";
+	// 	$stm = $conection -> prepare( $sql );
+	// 	$stm -> bindParam(1, $ServiceName);
+	// 	$stm -> bindParam(2, $ServiceDescription);
+	// 	$stm -> bindParam(3, $serviceId);
+	// 	$stm -> execute();
+	// 	return $stm->rowCount();
+	// }
 
 }

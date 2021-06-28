@@ -295,10 +295,10 @@
 
             ArraySubOptionsTypes: {
                option1: {
-                  type: 'text',
+                  type: '',
                },
                option2: {
-                  type: 'file',
+                  type: '',
                }
             },
             ArraySubOptionsValues: [],
@@ -312,8 +312,7 @@
       },
       mounted: function () {
 
-         console.log('edit' + this.$props.Input_Asigned_By_Edit )
-
+       
       },
       methods: {
 
@@ -395,7 +394,7 @@
                      'required': this.InputRequired,
                      'placeholder': this.InputPlaceholder,
                      'value': this.InputValue,
-                     'token': TokenValue,
+                     'token': 'c'+TokenValue,
                      'minlength': this.InputMinlength,
                      'maxlength': this.InputMaxlength,
                      'size': this.InputSize,

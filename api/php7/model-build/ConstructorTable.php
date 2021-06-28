@@ -7,14 +7,14 @@ class ConstructorTable
 {
 
 
-	public function GeneratorSqlTable($NAME_TABLE, $JSON_inputs){
+	public function GeneratorSqlTable($NAME_TABLE, $JSON_inputs, $id_service){
 
 		$QUERY_TABLE = array('nombre_tabla'=> "CREATE TABLE $NAME_TABLE ( id_$NAME_TABLE INT AUTO_INCREMENT PRIMARY KEY ");
 		$QUERY_FINA_TABLE = array();
 
 		foreach ($JSON_inputs as $key => $value) {
 
-			$input_name = $value['input']['token'].'_'.$key;
+			$input_name = $value['input']['token'].'_'.$id_service;
 
 
 			if( $value['input']['type'] == 'text'){

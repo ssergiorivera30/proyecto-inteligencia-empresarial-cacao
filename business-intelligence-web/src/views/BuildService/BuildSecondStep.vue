@@ -4,7 +4,7 @@
 
          <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
 
-         <div class="flex items-baseline flex-wrap my-5 justify-center md:justify-start static ">
+         <div class="flex items-baseline flex-wrap my-5 justify-center md:justify-start">
             <div class="flex border-l border-t border-b rounded">
                <a href="javascript:history.back()"
                   class="text-sm border-r focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer hover:bg-gray-200 ">

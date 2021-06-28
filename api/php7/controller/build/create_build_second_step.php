@@ -20,7 +20,7 @@ $JSON_inputs = $array['JSON_inputs'];
 // ****************************************************** //
 
 
-require_once "../../model/ServicesBuild.php";
+require_once "../../model-build/ServicesBuild.php";
 
 $class_object = new ServicesBuild();
 
@@ -30,7 +30,8 @@ $ingrese_json_inputs = $class_object->UpdateJSONServices( $conection, $id_servic
 
 if( $ingrese_json_inputs < 1 ){
 
-	ResponseSystem('Sin cambios registrados', 'warning');
+	// ResponseSystem('Sin cambios registrados', 'warning'); 	// comentar para regenerar tabla (Volver a crear)
+
 }
 
 
@@ -49,11 +50,11 @@ if($type_service['id'] == 1 || $type_service['id'] == 2){
 
 // ****************************************************** //
 
-require_once "../../model/CoreTables.php";
+require_once "../../model-build/CoreTables.php";
 $class_core_table = new CoreTables();
 
 
-// NOBRE DE LOS SERVICIOS DISPONIBLES EN EL SOFTWARE
+// NONBRE DE LOS SERVICIOS DISPONIBLES EN EL SOFTWARE
 
 
 $NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
@@ -74,7 +75,7 @@ if( $verificar_existencia_tabla > 0 ){
 }
 
 
-
+// echo $NAME_TABLE;
 
 
 
@@ -85,7 +86,7 @@ if( $verificar_existencia_tabla > 0 ){
 
 // ****************************************************** //
 
-require_once "../../model/ConstructorTable.php";
+require_once "../../model-build/ConstructorTable.php";
 $class_constructor = new ConstructorTable();
 
 // ****************************************************** //
@@ -93,10 +94,14 @@ $class_constructor = new ConstructorTable();
 
 // SI NO EXISTE LA TABLA, GENERAMOS LA CONSULTA SQL DE LA TABLA
 
+$ingrese_json_inputs = 10; 	// comentar para regenerar tabla (Volver a crear)
+
 if( $ingrese_json_inputs >= 1 && $verificar_existencia_tabla < 1 )
 {	
 	
-	$sql_tabla_construida = $class_constructor ->GeneratorSqlTable($NAME_TABLE, $JSON_inputs);
+	$sql_tabla_construida = $class_constructor ->GeneratorSqlTable($NAME_TABLE, $JSON_inputs, $id_service);
+
+	// echo $sql_tabla_construida;
 
 	// CON EL SQL DE LA TABLA GENERADO, AHORA LO EJECUTAMOS PARA GENERAR LA TABLA EN MYSQL
 

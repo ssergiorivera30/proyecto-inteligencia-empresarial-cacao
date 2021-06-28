@@ -71,13 +71,15 @@
          </div>
       </form>
 
+      <p >{{ laresp }}</p>
+
    </div>
 </template>
 
 <script>
 
-import axios from 'axios'
-import Noty from "noty";
+import axios from 'axios';
+// import Noty from "noty";
 
 import API_ROUTER from "./../../services/SERVER_API"
 
@@ -92,6 +94,7 @@ import API_ROUTER from "./../../services/SERVER_API"
             enabled: true,           
             dragging: false,
             NameTable: '',
+                     laresp: '',
          }
       },
       props: {
@@ -129,7 +132,7 @@ import API_ROUTER from "./../../services/SERVER_API"
                const data = {}; // need to convert it before using not with XMLHttpRequest
                for (let [key, val] of formData.entries()) {
                Object.assign(data, { [key]: val })
-               }
+            }
 
       
              axios.post(API_ROUTER.PHP7_CONTROLLER + "form_regitred_data.php",
@@ -141,10 +144,12 @@ import API_ROUTER from "./../../services/SERVER_API"
 
                   console.log(response)
 
-                                   new Noty({
-                     theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
-                     type: response.data.response, text: response.data.mensaje
-                  }).show();
+                  this.laresp = response
+
+                  //                  new Noty({
+                  //    theme: "sunset", layout: "topRight", progressBar: true, closeWith: ["click", "button"], timeout: 8000,
+                  //    type: response.data.response, text: response.data.mensaje
+                  // }).show();
 
                   if(response.data.response === 'success'){
                      this.$refs.form.reset();

@@ -1,6 +1,6 @@
 <template>
    <div class="py-0">
-      <form autocomplete="off">
+      <form ref="form_save" autocomplete="off" @submit.prevent="RegitredInformation">
          <draggable class="relative mt-5 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 gap-y-2" :list="ArrayInputs">
             <div v-for="(input, index) in ArrayInputs" :key="index">
               
@@ -10,7 +10,7 @@
 
                   <label class="grid grid-cols-5 gap-4 items-center">
                      <div class="col-span-4 text-gray-700 font-medium group flex items-center">                     
-                        <img src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" @mousedown="HoverDragg(index)" />{{ input['input']['name'] }} 
+                        <img  v-if="FormType === 'edit'" src="./../../assets/draggable.svg" alt="" width="20" height="20" class="cursor-move" @mousedown="HoverDragg(index)" />{{ input['input']['name'] }} 
                      </div>
                      <div class="flex justify-end" v-if="FormType === 'edit'">
                         <span class="group cursor-pointer flex rounded-md items-center px-2 py-2 text-sm" @click="SendIdEdit(index)" title="Editar">Editar</span>                                     
@@ -93,11 +93,32 @@
                          <span class="bx bx-plus pt-3 cursor-pointer text-gray-500 justify-self-end" title="Agregar opción"></span>
                      </div>
                   </div>
-
-
-
                </div>
 
+               <div class="block" 
+                  v-if="input['input']['type'] === 'color' ">
+                     <input v-if="input['input']['required'] == 'true'" 
+                        :type="input['input']['type']"
+                        v-model="input['input']['value']"
+                        :placeholder="input['input']['placeholder']"
+                        :value="input['input']['value']"
+                        :minlength="input['input']['minlength']" 
+                        :maxlength="input['input']['maxlength']"
+                        :min="input['input']['min']"
+                        :max="input['input']['max']"
+                        required 
+                        class="form-control3">
+                     <input v-else 
+                        :type="input['input']['type']" 
+                        :placeholder="input['input']['placeholder']"
+                        v-model="input['input']['value']"                       
+                        :value="input['input']['value']" 
+                        :minlength="input['input']['minlength']"                        
+                        :maxlength="input['input']['maxlength']" 
+                        :min="input['input']['min']"
+                        :max="input['input']['max']"
+                        class="form-control3">               
+               </div>
 
 
                <div class="block" 
@@ -109,9 +130,7 @@
                         input['input']['type'] === 'date' ||
                         input['input']['type'] === 'datetime-local' ||
                         input['input']['type'] === 'time' ||
-                        input['input']['type'] === 'file' ||
-                        input['input']['type'] === 'color' ">
-
+                        input['input']['type'] === 'file'  ">
 
                      <input v-if="input['input']['required'] == 'true'" 
                         :type="input['input']['type']"
@@ -134,38 +153,38 @@
                         :maxlength="input['input']['maxlength']" 
                         :min="input['input']['min']"
                         :max="input['input']['max']" 
-                        class="form-control2 py-3">
-               
+                        class="form-control2 py-3">               
                </div>
-
             </div>
          </draggable>
+
+         <div v-if="FormType === 'save'" class="my-5">
+            <input type="submit" class="mr-3 btn-indigo" value="Guardar">
+         </div>         
       </form>
 
       <details class="mt-5 bg-gray-500 text-white rounded p-3">
            <summary>Modo desarrollo</summary>
          <pre>{{ ArrayInputs  }}</pre>
       </details>
-
    </div>
 </template>
 
 <script>
 
+   import axios from "axios"
+   import API_ROUTER from "./../../services/SERVER_API"
    import { VueDraggableNext } from 'vue-draggable-next'
-
-
+   import ArlertBasic from './../../components/Overlay/ArlertBasic'    
 
    export default {
+      name: 'ServicePreviewFormEditor',
       components: {
          draggable: VueDraggableNext,     
       },
-
       data() {
-         return {
-            name: 'ServicePreviewFormEditor',
-            enabled: true,
-            dragging: false
+         return {            
+            OldArrayInputs: [],
          }
       },
       props: {
@@ -176,24 +195,38 @@
       },
       mounted: function () {
 
+   
+
+         
+
       },
-      methods: {
-         log(event) {
-            console.log(event)
-         },
+      methods: {        
          SendIdEdit: function (value) {
             this.$emit('GetIdEdit', value)
-         },
-         guardar: function () {
-            console.log('Guardar')
-         },
+         },         
          DeleteOption: function (index) {
             this.$props.ArrayInputs.splice(index, 1);
          },
          HoverDragg: function(index)
          {
             console.log(index)            
-         }
+         },
+         RegitredInformation: function(){
+            axios.post(
+                 API_ROUTER.PHP7_CONTROLLER + "build-2/1_registred_data.php", { 
+                  id: this.$route.params.id_entity,
+                  data: this.$props.ArrayInputs
+               }).then((response) => {
+
+                  ArlertBasic.methods.AlertBasic(response.data.status, response.data.message, 2000, true)
+          
+                  if(response.data.status === 'success'){
+                     this.$refs.form_save.reset();
+                     this.$emit('save')                 
+                  }                              
+            })
+         
+         },
       }
    }
 </script>

@@ -12,10 +12,12 @@
       <!-- <ServicePreviewFormEditor :NameForm="NameForm" :DescriptionForm="DescriptionForm" :ArrayInputs="ArrayInputs" /> -->
 
       <ServicePreviewFormEditor 
+         v-if="show == true"
             FormType="save"
             :ServiceName="ServiceName"
             :ServiceDescription="ServiceDescription"
-            :ArrayInputs="ArrayInputs" />
+            :ArrayInputs="ArrayInputs"
+            @save="RegitredInformation" />
 
    </div>
 </template>
@@ -24,54 +26,31 @@
 
    import axios from "axios"
    import API_ROUTER from "./../../services/SERVER_API"
+   import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
+   import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
+   import ArlertBasic from './../../components/Overlay/ArlertBasic'    
 
-
-
-      import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
-
-      import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
 
    export default {
       name: 'EntytiRegistrar', 
-      components: {
-   
+      components: {   
          ServicePreviewFormEditor,
          ServicePreviewBasicInfo,
+         ArlertBasic
       },
       data() {
          return {
-                    
+            show: true,               
             OrderForm: 'load',
             ServiceName: '',
             ServiceDescription: '',
-
             ArrayInputs: [],
-
-            rutaFormBasic: '',
-            rutaFormInfoBasic: '',
-
+            OldArrayInputs: []
+            
          }
       },
-      mounted: function () {
-
-         // if(this.$route.params.type == 'ob'){
-
-         //    this.NameTable = 'z_object_'
-         //    this.rutaFormBasic = 'object_load.php'
-         //    this.rutaFormInfoBasic = 'objeto_info_basic.php'
-
-         // }
-         // if(this.$route.params.type == 'fo'){
-
-         //    this.NameTable = 'z_form_'
-         //    this.rutaFormBasic = 'form_load.php'
-         //    this.rutaFormInfoBasic = 'form_info_basic.php'
-            
-         // }
-
-         this.LoadBasicInfoService()
-      
-
+      mounted: function () {    
+         this.LoadBasicInfoService();
       },
       methods: {
           LoadBasicInfoService: function () {
@@ -79,7 +58,6 @@
                {
                   id_service: this.$route.params.id_entity,
                }).then((response) => {
-
                   // if (response.data.mensaje != 1) {
                   //    // window.history.back()
                   // }
@@ -88,23 +66,14 @@
 
                   if (response['data']['datos'][0]['data_json'] != null) {
                      this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
-                     // this.OrderInfoBasicForm = 'Guardar cambios'
                   }
-
                }).catch(() => {
                   alert('Error de conexión al cargar el servicio')
             })
          },
-         LoadFromBasic: function () {
-            axios.post(API_ROUTER.PHP7_CONTROLLER + 'service/service_form_load.php',
-               {
-                  service_type: 3,
-                  service_id: this.$route.params.id_entity,
-
-               }).then((response) => {
-                  this.ArrayInputs = JSON.parse(response.data.datos)
-               })
-         },
+         RegitredInformation: function(){
+            this.LoadBasicInfoService();                  
+         },       
       }
    }
 </script>
