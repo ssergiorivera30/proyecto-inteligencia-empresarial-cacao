@@ -1,10 +1,9 @@
 <template>
-
-    <div class="grid grid-cols-1 md:grid-cols-2">
-  <apexchart class="col-span-1 h-44	" type="bar" :options="options" :series="series"></apexchart>
-  <apexchart class="col-span-1 h-44	" type="radar" :options="options" :series="series"></apexchart>
-</div>
-
+   <div class="grid grid-cols-1 md:grid-cols-3">
+      <apexchart class="col-span-1 h-44" type="bar" :options="options" :series="series"></apexchart>
+      <apexchart class="col-span-1 h-44" type="radar" :options="options" :series="series"></apexchart>
+      <apexchart class="col-span-1 h-44" type="radar" :options="options" :series="series"></apexchart>
+   </div>
 </template>
 
 <script>

@@ -35,18 +35,6 @@ import ServiciosInfoBasicDetalles from './../views/Servicios/ServiciosInfoBasicD
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
 import ServiciosHome from '../views/Servicios/ServiciosHome'
 
@@ -97,17 +85,11 @@ import Personalizacion from '../views/MyCuenta/Personalizacion'
 import Seguridad from '../views/MyCuenta/Seguridad'
 
 
-
-
-
-
-
 const routes = [
+
+
     { path: '/', redirect: 'inicio', component: Home },
     { path: '/inicio', name: 'Home', component: Home },
-
-
-
 
     {
         path: '/herraminetas',
@@ -122,51 +104,45 @@ const routes = [
     { path: '/maps', name: 'MapsHome', component: MapsHome },
     { path: '/maps/crear', name: 'MapsCreate', component: MapsCreate },
 
+    // {
+    //     path: '/proyecto/formulario',
+    //     name: 'FormularioNuevoHeader',
+    //     component: FormularioNuevoHeader,
+    //     children: [
+    //         { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },
+    //         { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
+    //     ]
+    // },
+    // {
+    //     path: '/proyecto/objeto_nuevo',
+    //     name: 'ObjetoNuevoHeader',
+    //     component: ObjetoNuevoHeader,
+    //     children: [
+    //         { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },
+    //         { path: 'constructor-objeto/:id_object', name: 'ObjetoConstructor', component: ObjetoConstructor },
+    //     ]
+    // },
+    // {
+    //     path: '/proyecto/objeto/detalle',
+    //     name: 'ObjetoDetallesHeader',
+    //     component: ObjetoDetallesHeader,
+    //     children: [
+    //         { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },
+    //         { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },
+    //         { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios },
+    //     ]
+    // },
+    // {
+    //     path: '/formulario/ver/',
+    //     name: 'FormularioDetallesHeader',
+    //     component: FormularioDetallesHeader,
+    //     children: [
+    //         { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },
+    //         { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
+    //     ]
+    // },
 
-
-
-    {
-        path: '/proyecto/formulario',
-        name: 'FormularioNuevoHeader',
-        component: FormularioNuevoHeader,
-        children: [
-            { path: 'constructor/:id_project', name: 'FromularioNuevo', component: FromularioNuevo },
-            { path: 'compartir/:id_project', name: 'FromularioCompartir', component: FromularioCompartir },
-        ]
-    },
-
-
-    {
-        path: '/proyecto/objeto_nuevo',
-        name: 'ObjetoNuevoHeader',
-        component: ObjetoNuevoHeader,
-        children: [
-            { path: 'header/:id_object', name: 'HeaderObjetoNuevo', component: HeaderObjetoNuevo },
-            { path: 'constructor-objeto/:id_object', name: 'ObjetoConstructor', component: ObjetoConstructor },
-        ]
-    },
-
-    {
-        path: '/proyecto/objeto/detalle',
-        name: 'ObjetoDetallesHeader',
-        component: ObjetoDetallesHeader,
-        children: [
-            { path: 'inicio/:id', name: 'ObjetoDetalles', component: ObjetoDetalles },
-            { path: 'objetos-predeterminados/:id', name: 'ObjetoPredeterminados', component: ObjetoPredeterminados },
-            { path: 'mis-formularios/:id_project', name: 'MisFormularios', component: MisFormularios },
-        ]
-    },
-    {
-        path: '/formulario/ver/',
-        name: 'FormularioDetallesHeader',
-        component: FormularioDetallesHeader,
-        children: [
-            { path: 'detalles/:id/:type', name: 'FormularioDetalles', component: FormularioDetalles },
-            { path: 'datos/:id/:type', name: 'FormularioDatos', component: FormularioDatos },
-        ]
-    },
-
-    { path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
+    // { path: '/proyecto/formulario/editor/:id/:type', name: 'FromularioEditor', component: FromularioEditor },
 
     {
         path: '/cuenta/ver',
@@ -227,8 +203,6 @@ const routes = [
             { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },
             { path: 'data/:id_entity', name: 'EntityData', component: EntityData },
             { path: 'explotacion/:id_entity', name: 'EntityExplotacion', component: EntityExplotacion },
-
-
             { path: 'equipo/:id_service', component: TeamResumen },
         ]
     },
