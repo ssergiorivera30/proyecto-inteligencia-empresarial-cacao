@@ -43,39 +43,6 @@ import ServiciosHome from '../views/Servicios/ServiciosHome'
 import MapsHome from '../views/Maps/MapsHome'
 import MapsCreate from '../views/Maps/MapsCreate'
 
-// Listar formularios
-
-import MisFormularios from '../views/Formularios/FormularioListas/MisFormularios'
-
-// Formulario nuevo
-
-import FormularioNuevoHeader from '../views/Formularios/FormularioNuevo/FormularioNuevoHeader'
-import FromularioNuevo from '../views/Formularios/FormularioNuevo/FromularioNuevo'
-import FromularioEditor from '../views/Formularios/FormularioNuevo/FromularioEditor'
-import FromularioCompartir from '../views/Formularios/FromularioCompartir'
-
-// Formulario detalles
-
-import FormularioDetallesHeader from '../views/Formularios/FormularioDetalles/FormularioDetallesHeader'
-import FormularioDetalles from '../views/Formularios/FormularioDetalles/FormularioDetalles'
-import FormularioDatos from '../views/Formularios/FormularioDetalles/FormularioDatos'
-
-// Objetos investigación
-
-import MisObjetosInvestigacion from '../views/ObjetosInvestigacion/ListaObjetos/MisObjetosInvestigacion'
-
-// Nuevos objetos de investigación
-
-import ObjetoNuevoHeader from '../views/ObjetosInvestigacion/NuevoObjeto/ObjetoNuevoHeader'
-import HeaderObjetoNuevo from '../views/ObjetosInvestigacion/NuevoObjeto/HeaderObjetoNuevo'
-import ObjetoConstructor from '../views/ObjetosInvestigacion/NuevoObjeto/ObjetoConstructor'
-
-// Objeto detalles
-
-import ObjetoDetallesHeader from '../views/ObjetosInvestigacion/ObjetoDetalles/ObjetoDetallesHeader'
-import ObjetoDetalles from '../views/ObjetosInvestigacion/ObjetoDetalles/ObjetoDetalles'
-import ObjetoPredeterminados from '../views/ObjetosInvestigacion/ObjetoDetalles/ObjetoPredeterminados'
-
 
 // Cuenta
 
