@@ -3,6 +3,7 @@
     <form action="#" method="POST" class="space-y-2 mt-5" @submit.prevent="SaveInitialForm()">
 
       <header class="flex items-center">
+        <a href="javascript:history.back()" class="mr-3 pt-1" title="Atrás"><i class="bx bx-chevron-left font-bold"></i></a>
         <h2 class="text-lg leading-6 font-medium text-black">Creación de
           <span class="font-bold">{{ NameTypeService }}</span>
         </h2>
@@ -97,10 +98,10 @@
     <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" />
 
     <div v-else class="hidden md:flex justify-center">
-      <img v-if="this.$route.params.type_service == 1" class="w-2/3 p-10" :src="service_group" alt="" />
-      <img v-if="this.$route.params.type_service == 2" class="w-2/3 p-10" :src="service_project" alt="" />
-      <img v-if="this.$route.params.type_service == 3" class="w-2/3 p-10" :src="service_entity" alt="" />
-      <img v-if="this.$route.params.type_service == 4" class="w-2/3 p-10" :src="service_form" alt="" />
+      <img v-if="this.$route.params.type_service == 1" class="px-10" :src="service_group" alt="" />
+      <img v-if="this.$route.params.type_service == 2" class="px-10" :src="service_project" alt="" />
+      <img v-if="this.$route.params.type_service == 3" class="px-10" :src="service_entity" alt="" />
+      <img v-if="this.$route.params.type_service == 4" class="px-10" :src="service_form" alt="" />
     </div>
   </div>
 </template>
@@ -117,7 +118,7 @@
     },
     data() {
       return {
-        service_group: API_ROUTER.API_UI + "services/team_2.svg",
+        service_group: API_ROUTER.API_UI + "services/team3.svg",
         service_project: API_ROUTER.API_UI + "services/project_2.svg",
         service_entity: API_ROUTER.API_UI + "services/entity_2.svg",
         service_form: API_ROUTER.API_UI + "services/form_2.svg",

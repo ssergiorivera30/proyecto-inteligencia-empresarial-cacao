@@ -1,5 +1,34 @@
 <template>
-  <div>Seguridad</div>
+ <header class="flex items-center justify-between my-5">
+    <h2 class="text-lg font-bold leading-6 text-gray-600">Cambiar contraseña</h2>
+      <div class="relative">
+        <a href="#" class="flex p-2 rounded-md bg-red-500">
+          <span class="text-xs font-medium leading-none text-red-200">Desactivar cuenta</span>
+        </a>
+      </div>
+  </header>
+
+   
+  <form class="grid grid-cols-1 gap-y-3 w-full md:max-w-md">
+    <div class="block">
+      <label class="text-gray-700 font-semibold text-xs">Contraseña actual</label>
+      <input type="password" class="form-control2" required>
+    </div>
+
+    <div class="block">
+      <label class="text-gray-700 font-semibold text-xs">Nueva contraseña</label>
+      <input type="password" class="form-control2" required>
+    </div>
+
+    <div class="block">
+      <label class="text-gray-700 font-semibold text-xs">Confirme contraseña nueva</label>
+      <input type="password" class="form-control2" placeholder="Opcional">
+    </div>  
+
+    <div class="my-1 text-left">
+      <button type="submit" class="btn-indigo">Confirmar cambio</button>
+    </div>
+  </form>
 </template>
 
 <script>

@@ -84,9 +84,9 @@
         GoBack: '/inicio',
         GoBackTitle: 'Ir al inicio',
         RoutesNavs: [
-          { Linkroute: '/cuenta/ver/info', nameRoute: 'Cuenta' },
-          { Linkroute: '/cuenta/ver/personalizacion/', nameRoute: 'Personalización' },
+          { Linkroute: '/cuenta/ver/info', nameRoute: 'Cuenta' },          
           { Linkroute: '/cuenta/ver/seguridad/', nameRoute: 'Seguridad' },
+          { Linkroute: '/cuenta/ver/personalizacion/', nameRoute: 'Personalización' },
         ]
       }
     },
