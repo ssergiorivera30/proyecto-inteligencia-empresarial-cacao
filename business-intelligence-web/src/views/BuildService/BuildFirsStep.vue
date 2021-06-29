@@ -118,17 +118,17 @@
     },
     data() {
       return {
-        service_group: API_ROUTER.API_UI + "services/team3.svg",
-        service_project: API_ROUTER.API_UI + "services/project_2.svg",
+        service_group: API_ROUTER.API_UI + "services/team1.svg",
+        service_project: API_ROUTER.API_UI + "services/project_1.svg",
         service_entity: API_ROUTER.API_UI + "services/entity_2.svg",
         service_form: API_ROUTER.API_UI + "services/form_2.svg",
 
         NameTypeService: '',
 
         ServiceType: this.$route.params.type_service,        
-        ServiceName: "Grupo de Investigación NOVA",
+        ServiceName: "",
         ServiceNameEntity: null,
-        ServiceDescription: "Ingenierías Eléctrica, Electrónica e Informática -- Ingeniería de Sistemas y Comunicaciones",
+        ServiceDescription: "",
       };
     },
     mounted: function () {

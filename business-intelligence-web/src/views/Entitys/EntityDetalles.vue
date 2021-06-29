@@ -4,22 +4,17 @@
 
      <!-- component -->
 
-            <div class="w-full mt-5">             
+            <div v-if="DataServiceRows.length  > 0" class="w-full mt-5">             
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 capitalize text-sm leading-normal"  >
                                 <th class="py-3 px-6 text-left">Opciones</th>
                                 <th class="py-3 px-6 text-left">Código</th>
-                            
                                 <th class="py-3 px-6 text-left max-w-xs" v-for="(data, index) in resizeColumns(DataServiceColumns)" :key="index" >{{ data.name }}</th>
-                               
-                                
                             </tr>
-                        </thead>
-                        
+                        </thead>                        
                         <tbody class="text-gray-600 text-sm font-light">
                             <tr class="border-b border-gray-200 hover:bg-gray-100" v-for="(data, index) in DataServiceRows" :key="index">
-
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -30,23 +25,21 @@
                                         </div>
                                     </div>
                                 </td>
-
                                 <td  class="px-6 py-4 text-sm text-gray-500">{{ data[0] }}</td>
                                 <td v-for="(column) in sizeColumns" :key="column" class="px-6 py-4 text-sm text-gray-500 max-w-xs">{{ data[column] }}</td>
-
-
-                                
-                                
-                                
-
-
-
-                            </tr>
-                           
+                            </tr>                           
                         </tbody>
                     </table>
                 
             </div>
+
+            <div v-else class="hidden md:flex justify-center">
+                <img  class="px-10 w-96	" :src="Team" alt="" />
+
+
+            </div>
+
+         
    
 
     </div>
@@ -74,9 +67,7 @@ import API_ROUTER from './../../services/SERVER_API'
                { Linkroute: '/proyecto/integrantes', nameRoute: 'Integrantes' },
             ],
 
-            Team: API_ROUTER.API_UI + "chart/chart.svg",
-            Grades: API_ROUTER.API_UI + "chart/grades.svg",
-            Text: API_ROUTER.API_UI + "chart/text.svg",
+            Team: API_ROUTER.API_UI + "empty/empty-data-table.svg",
             ServiceStatus: 1,
 
             DataServiceColumns: [],
