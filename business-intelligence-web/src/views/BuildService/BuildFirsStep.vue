@@ -97,7 +97,7 @@
 
     <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" class="hidden md:flex" />
 
-    <div v-else class="hidden md:flex justify-center">
+    <div v-else class="hidden md:flex justify-center ">
       <img v-if="this.$route.params.type_service == 1" class="px-10" :src="service_group" alt="" />
       <img v-if="this.$route.params.type_service == 2" class="px-10" :src="service_project" alt="" />
       <img v-if="this.$route.params.type_service == 3" class="px-10" :src="service_entity" alt="" />
