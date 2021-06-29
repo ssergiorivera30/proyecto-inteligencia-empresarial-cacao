@@ -1,29 +1,30 @@
 <template>
-   <div class="mt-6"> 
-      <div class="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-10 lg:px-8 lg:pt-3">            
-         <div class="max-w-xl md:mx-auto sm:text-center lg:max-w-2xl">
-            <h2 class="max-w-lg mb-4 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-               {{ NameForm }}
-            </h2>
-            <p class="text-base text-gray-700 md:text-lg">
-               {{ DescriptionForm }}
-            </p>
-         </div>  
+   <div class="px-4 min-w-full	 mx-auto md:px-10 lg:px-8 lg:pt-3 text-center ">
+      <div class="h-max w-full bg-cover bg-center rounded-md flex flex-wrap content-center gap-4" :style="'background-image:url('+imagen_portada_avatar+');'">
+         <h2 class="w-full	mb-4 font-sans text-3xl font-bold leading-none tracking-tight text-black sm:text-2xl md:mx-auto  select-none">
+           <span class="bg-green-400 rounded-full py-3 px-6"> {{ NameForm }}</span>
+         </h2>
+         <p v-if="DescriptionForm != ''" class="w-full md:mx-auto bg-white bg-opacity-80 rounded-full py-3 px-6 md:text-lg select-none">
+         <span class="font-semibold leading-none tracking-tight text-black "> {{ DescriptionForm }}</span>
+         </p>
       </div>
    </div>
 </template>
 
 <script>
+    import API_ROUTER from './../../services/SERVER_API'
 
-export default {
-   props: {
-      NameForm: String,
-      DescriptionForm: String,
-   },
-   data(){
-      return{
-         name: 'PreviewForm',         
-      }
-    },      
-  }
+
+    export default {
+        props: {
+            NameForm: String,
+            DescriptionForm: String,
+        },
+        data() {
+            return {
+                name: 'PreviewForm',
+                imagen_portada_avatar: API_ROUTER.API_UI + "services/create.png",
+            }
+        },
+    }
 </script>

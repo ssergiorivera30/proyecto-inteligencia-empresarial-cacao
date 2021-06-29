@@ -95,7 +95,7 @@
       </div>
     </form>
 
-    <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" />
+    <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" class="hidden md:flex" />
 
     <div v-else class="hidden md:flex justify-center">
       <img v-if="this.$route.params.type_service == 1" class="px-10" :src="service_group" alt="" />
@@ -126,9 +126,9 @@
         NameTypeService: '',
 
         ServiceType: this.$route.params.type_service,        
-        ServiceName: "",
+        ServiceName: "Grupo de Investigación NOVA",
         ServiceNameEntity: null,
-        ServiceDescription: "",
+        ServiceDescription: "Ingenierías Eléctrica, Electrónica e Informática -- Ingeniería de Sistemas y Comunicaciones",
       };
     },
     mounted: function () {
