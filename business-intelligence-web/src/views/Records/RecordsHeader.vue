@@ -20,7 +20,7 @@ import API_ROUTER from './../../services/SERVER_API'
 
 
    export default {
-      name: 'CPDetallesHeader.vue',
+      name: 'RecordsHeader',
       components:{
 
          NavBarSecondary
@@ -28,17 +28,16 @@ import API_ROUTER from './../../services/SERVER_API'
       data() {
          return {           
 
-            TitleHeader: 'Componente',
+            TitleHeader: 'Registro',
             IconModulo: '',
-            SubTitleHeader: 'Entidades, conceptos u objetos de la investigación',
+            SubTitleHeader: 'Detalles del registro',
             GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/componente/detalles/'+this.$route.params.id_service, nameRoute: 'Detalles' },          
-               { Linkroute: '/componente/data/'+this.$route.params.id_service, nameRoute: 'Data' },
-               { Linkroute: '/componente/herramientas-de-recoleccion/'+this.$route.params.id_service, nameRoute: 'Herramientas' },
-               { Linkroute: '/componente/explotacion/'+this.$route.params.id_service, nameRoute: 'Explotación' },   
-               { Linkroute: '/componente/equipo/'+this.$route.params.id_service, nameRoute: 'Equipo' },
+               { Linkroute: '/registro/detalles/'+this.$route.params.id_record, nameRoute: 'Detalles' },
+               { Linkroute: '/registro/detalles/'+this.$route.params.id_record, nameRoute: 'Data' },
+               { Linkroute: '/registro/equipo/'+this.$route.params.id_record, nameRoute: 'Team' },
+
             ]
          }
       },
@@ -52,7 +51,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadInfoBasic :function(){
             axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_load_info_basic.php",
                {
-                  service_id: this.$route.params.id_service,
+                  service_id: this.$route.params.id_record,
                }).then((res) => {
                   
                   this.TitleHeader = res.data['datos'][0]['name']

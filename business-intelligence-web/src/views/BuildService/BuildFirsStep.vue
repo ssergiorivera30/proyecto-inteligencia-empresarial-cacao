@@ -37,54 +37,14 @@
 
       <div class="py-4 flex items-center flex-no-wrap">
         <div class="w-12 h-12 bg-cover bg-center rounded-md">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" alt=""
-            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
+          <img loading="lazy" draggable="false" src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" alt=""
+            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
         </div>
         <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_1.png" alt=""
-            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
+          <img loading="lazy" draggable="false" src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_1.png" alt=""
+            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
         </div>
-        <div class="w-12 h-12 bg-cover rounded-md bg-center -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_2.png" alt=""
-            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_3.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_4.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
- 
-        <div class="w-12 h-12 bg-cover rounded-md bg-center -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_2.png" alt=""
-            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_3.png" alt=""
-            class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow" />
-        </div>
+        
       </div>
 
 
@@ -98,10 +58,10 @@
     <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" class="hidden md:flex" />
 
     <div v-else class="hidden md:flex justify-center ">
-      <img v-if="this.$route.params.type_service == 1" class="px-10 pointer-events-none" draggable="false" :src="service_group" alt="" />
-      <img v-if="this.$route.params.type_service == 2" class="px-10 pointer-events-none" draggable="false" :src="service_project" alt="" />
-      <img v-if="this.$route.params.type_service == 3" class="px-10 pointer-events-none" draggable="false" :src="service_entity" alt="" />
-      <img v-if="this.$route.params.type_service == 4" class="px-10 pointer-events-none" draggable="false" :src="service_form" alt="" />
+      <img v-if="this.$route.params.type_service == 1" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_group" alt="" />
+      <img v-if="this.$route.params.type_service == 2" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_project" alt="" />
+      <img v-if="this.$route.params.type_service == 3" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_entity" alt="" />
+      <img v-if="this.$route.params.type_service == 4" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_form" alt="" />
     </div>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <h2 class="text-lg font-bold leading-6 text-gray-800">{{ ServiceName }}</h2>      
     <div class="relative">
         <router-link :to="ServiceLink" class=" flex p-2 rounded-md bg-my-primary">
-            <span class="text-xs font-medium leading-none text-white">{{ ServiceNameLink }}</span>
+            <span class="text-xs font-medium leading-none text-white"><span v-html="ServiceIconHTML"></span> {{ ServiceNameLink }}</span>
         </router-link >
     </div>
   </header>
@@ -16,6 +16,7 @@ export default {
     ServiceName: String,
     ServiceNameLink: String,
     ServiceLink: String,
+    ServiceIconHTML: String
   }
 }
 </script>

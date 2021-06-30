@@ -8,9 +8,9 @@ import BuildSecondStep from '../views/BuildService/BuildSecondStep'
 
 // GRUPOS
 
-import GrupoDetallesHeader from './../views/Grupos/GrupoDetallesHeader'
-import GrupoResumen from './../views/Grupos/GrupoResumen'
-import GrupoProyectos from './../views/Grupos/GrupoProyectos'
+import GrupoDetallesHeader from './../views/Groups/GrupoDetallesHeader'
+import GrupoResumen from './../views/Groups/GrupoResumen'
+import GrupoProyectos from './../views/Groups/GrupoProyectos'
 
 // PROYECTOS
 
@@ -27,11 +27,17 @@ import CPData from './../views/ComponentProject/CPData'
 import CPExplotacion from './../views/ComponentProject/CPExplotacion'
 import CPRecolection from './../views/ComponentProject/CPRecolection'
 
+// RECORDS
+
+
+import RecordsHeader from './../views/Records/RecordsHeader'
+import RecordsDetalles from './../views/Records/RecordsDetalles'
 
 
 import TeamResumen from './../views/Team/TeamResumen'
-import ServiciosInfoBasicDetalles from './../views/Servicios/ServiciosInfoBasicDetalles'
 
+
+import ServiciosInfoBasicDetalles from './../views/Servicios/ServiciosInfoBasicDetalles'
 import ServiciosMenuPrincipal from '../views/Servicios/ServiciosMenuPrincipal'
 import ServiciosHome from '../views/Servicios/ServiciosHome'
 
@@ -42,10 +48,10 @@ import MapsCreate from '../views/Maps/MapsCreate'
 
 // Cuenta
 
-import MyCuentaHeader from '../views/MyCuenta/MyCuentaHeader'
-import Cuenta from '../views/MyCuenta/Cuenta'
-import Personalizacion from '../views/MyCuenta/Personalizacion'
-import Seguridad from '../views/MyCuenta/Seguridad'
+import MyCuentaHeader from '../views/Account/MyCuentaHeader'
+import Cuenta from '../views/Account/Cuenta'
+import Personalizacion from '../views/Account/Personalizacion'
+import Seguridad from '../views/Account/Seguridad'
 
 const routes = [
 
@@ -113,12 +119,29 @@ const routes = [
             { path: 'registrar/:id_service', name: 'CPRegistrar', component: CPRegistrar },
             { path: 'data/:id_service', name: 'CPData', component: CPData },
             { path: 'explotacion/:id_service', name: 'CPExplotacion', component: CPExplotacion },
-            { path: 'instrumentos-recoleccion/:id_service', name: 'CPRecolection', component: CPRecolection },
+            { path: 'herramientas-de-recoleccion/:id_service', name: 'CPRecolection', component: CPRecolection },
 
 
             { path: 'equipo/:id_service', component: TeamResumen },
         ]
     },
+
+
+    {
+        path: '/registro',
+        name: 'RecordsHeader',
+        redirect: '/registro/',
+        component: RecordsHeader,
+        children: [
+            { path: 'detalles/:id_record', name: 'RecordsDetalles', component: RecordsDetalles },
+            { path: 'equipo/:id_record', component: TeamResumen },
+        ]
+    },
+
+
+
+
+
 
 
     { path: '/service/info/basic/:id_service', name: 'ServiciosInfoBasicDetalles', component: ServiciosInfoBasicDetalles },

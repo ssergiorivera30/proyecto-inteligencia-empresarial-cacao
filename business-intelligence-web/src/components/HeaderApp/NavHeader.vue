@@ -3,7 +3,7 @@
 <header class="print-none flex sticky top-0 z-10 items-center h-14 px-1 sm:pr-10 bg-principal-color-ui shadow-sm w-full">
 
         <router-link to="/" class="hidden sm:hidden md:flex pt-1 justify-center h-10 w-14">
-          <img src="./../../assets/logo.png" class="h-8 w-8" alt="">
+          <img loading="lazy" src="./../../assets/logo.png" class="h-8 w-8" alt="" la>
         </router-link>
 
         <button

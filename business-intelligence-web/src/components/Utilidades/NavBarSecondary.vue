@@ -3,7 +3,7 @@
       <div class="w-full pt-1 flex justify-between border-gray-300">
          <div class="grid grid-rows-1 grid-flow-col gap-3 p-1">
               <div class="row-span-2 w-10 flex flex-wrap content-start justify-start">
-                <img v-if="IconModulo != ''" class="w-full rounded pt-2" :src="SrcIconModulo + IconModulo" />
+                <img loading="lazy" v-if="IconModulo != ''" class="w-full rounded pt-2" :src="SrcIconModulo + IconModulo" />
             </div>         
             <div class="row-span-2 h-12 block flex-wrap content-center justify-center ">
                <div class="pl-1 py-0">
