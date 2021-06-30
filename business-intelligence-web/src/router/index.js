@@ -25,6 +25,9 @@ import EntityDetalles from './../views/Entitys/EntityDetalles'
 import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
 import EntityData from './../views/Entitys/EntityData'
 import EntityExplotacion from './../views/Entitys/EntityExplotacion'
+import EntityRecolection from './../views/Entitys/EntityRecolection'
+
+
 
 import TeamResumen from './../views/Team/TeamResumen'
 import ServiciosInfoBasicDetalles from './../views/Servicios/ServiciosInfoBasicDetalles'
@@ -110,6 +113,9 @@ const routes = [
             { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },
             { path: 'data/:id_entity', name: 'EntityData', component: EntityData },
             { path: 'explotacion/:id_entity', name: 'EntityExplotacion', component: EntityExplotacion },
+            { path: 'instrumentos-recoleccion/:id_entity', name: 'EntityRecolection', component: EntityRecolection },
+
+
             { path: 'equipo/:id_service', component: TeamResumen },
         ]
     },

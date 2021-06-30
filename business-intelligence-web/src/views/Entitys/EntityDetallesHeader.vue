@@ -31,7 +31,7 @@ import API_ROUTER from './../../services/SERVER_API'
                { Linkroute: '/entidad/detalles/'+this.$route.params.id_entity, nameRoute: 'Detalles' },
                { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'Registro' },   
                { Linkroute: '/entidad/data/'+this.$route.params.id_entity, nameRoute: 'Data' },
-               { Linkroute: '/entidad/data/'+this.$route.params.id_entity, nameRoute: 'Intrumentos de recolección' },
+               { Linkroute: '/entidad/instrumentos-recoleccion/'+this.$route.params.id_entity, nameRoute: 'Intrumentos de recolección' },
                { Linkroute: '/entidad/explotacion/'+this.$route.params.id_entity, nameRoute: 'Explotación' },   
                { Linkroute: '/entidad/equipo/'+this.$route.params.id_entity, nameRoute: 'Equipo' },
             ]
