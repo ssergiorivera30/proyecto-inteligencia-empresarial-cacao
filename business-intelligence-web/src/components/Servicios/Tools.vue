@@ -13,7 +13,7 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <span class="block relative">
-                        <img alt="profil" :src="ImgProyectos" class="mx-auto object-cover h-12 w-12 "/>
+                        <img loading="lazy" alt="profil" :src="ImgProyectos" class="mx-auto object-cover h-12 w-12 "/>
                     </span>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
@@ -27,7 +27,7 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <span class="block relative">
-                        <img alt="profil" :src="ImgForm" class="mx-auto object-cover h-12 w-12 "/>
+                        <img loading="lazy" alt="profil" :src="ImgForm" class="mx-auto object-cover h-12 w-12 "/>
                     </span>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
@@ -41,7 +41,7 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <div class="block relative">
-                        <img alt="profil" :src="ImgMaps" class="mx-auto object-cover h-12 w-12 "/>
+                        <img loading="lazy" alt="profil" :src="ImgMaps" class="mx-auto object-cover h-12 w-12 "/>
                     </div>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
@@ -55,7 +55,7 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <span class="block relative">
-                        <img alt="profil" :src="ImgDatabase" class="mx-auto object-cover h-12 w-12 "/>
+                        <img loading="lazy" alt="profil" :src="ImgDatabase" class="mx-auto object-cover h-12 w-12 "/>
                     </span>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
@@ -70,7 +70,7 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <span class="block relative">
-                        <img alt="profil" src="https://informesinternet.com/wp-content/uploads/2019/07/iot.png" class="mx-auto object-cover h-12 w-12 "/>
+                        <img loading="lazy" alt="profil" src="https://informesinternet.com/wp-content/uploads/2019/07/iot.png" class="mx-auto object-cover h-12 w-12 "/>
                     </span>
                 </div>
                 <div class="mt-2 text-center flex flex-col">
@@ -85,7 +85,7 @@
             <div class="flex-col  flex justify-center items-center">
                 <div class="flex-shrink-0">
                     <span class="block relative">
-                        <img alt="profil" :src="Imgkanban" class="mx-auto object-cover h-12 w-12 "/>
+                        <img loading="lazy" alt="profil" :src="Imgkanban" class="mx-auto object-cover h-12 w-12 "/>
                     </span>
                 </div>
                 <div class="mt-2 text-center flex flex-col">

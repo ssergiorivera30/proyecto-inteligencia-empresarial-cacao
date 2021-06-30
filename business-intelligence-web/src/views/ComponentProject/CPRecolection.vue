@@ -12,15 +12,15 @@
                </div>
                <div class="ml-6">
                   <p class="flex items-baseline">
-                     <span class="text-gray-600 dark:text-gray-200 font-bold">Ficha para evalución sensorial de Cacao</span>
+                     <span class="text-gray-600 text-sm font-semibold">Ficha para evalución sensorial de Cacao</span>
                   </p>
                   <div class="flex items-center mt-1">
-                     <span class="text-gray-500 dark:text-gray-300 text-sm">2 months ago</span>
+                     <span class="text-gray-500 text-sm">2 months ago</span>
                   </div>                 
                </div>
             </div>
             <div class="mt-3">
-               <p class="mt-1 max-w-xs dark:text-white">Ficha técnica de para la evalución sensorial de Cacao</p>
+               <p class="mt-1 max-w-xs text-sm">Ficha técnica de para la evalución sensorial de Cacao</p>
             </div>
          </div>
 
@@ -33,15 +33,15 @@
                </div>
                <div class="ml-6">
                   <p class="flex items-baseline">
-                     <span class="text-gray-600 dark:text-gray-200 font-bold">Ficha para evalución sensorial de Cacao</span>
+                     <span class="text-gray-600 text-sm font-semibold">Ficha para evalución sensorial de Cacao</span>
                   </p>
                   <div class="flex items-center mt-1">
-                     <span class="text-gray-500 dark:text-gray-300 text-sm">2 months ago</span>
+                     <span class="text-gray-500 text-sm">2 months ago</span>
                   </div>                 
                </div>
             </div>
             <div class="mt-3">
-               <p class="mt-1 max-w-xs dark:text-white">Ficha técnica de para la evalución sensorial de Cacao</p>
+               <p class="mt-1 max-w-xs text-sm">Ficha técnica de para la evalución sensorial de Cacao</p>
             </div>
          </div>
 
@@ -55,15 +55,15 @@
                </div>
                <div class="ml-6">
                   <p class="flex items-baseline">
-                     <span class="text-gray-600 dark:text-gray-200 font-bold">Ficha para evalución sensorial de Cacao</span>
+                     <span class="text-gray-600 text-sm font-semibold">Ficha para evalución sensorial de Cacao</span>
                   </p>
                   <div class="flex items-center mt-1">
-                     <span class="text-gray-500 dark:text-gray-300 text-sm">2 months ago</span>
+                     <span class="text-gray-500 text-sm">2 months ago</span>
                   </div>                 
                </div>
             </div>
             <div class="mt-3">
-               <p class="mt-1 max-w-xs dark:text-white">Ficha técnica de para la evalución sensorial de Cacao</p>
+               <p class="mt-1 max-w-xs text-sm">Ficha técnica de para la evalución sensorial de Cacao</p>
             </div>
          </div>
 
@@ -78,15 +78,15 @@
                </div>
                <div class="ml-6">
                   <p class="flex items-baseline">
-                     <span class="text-gray-600 dark:text-gray-200 font-bold">Ficha para evalución sensorial de Cacao</span>
+                     <span class="text-gray-600 text-sm font-semibold">Ficha para evalución sensorial de Cacao</span>
                   </p>
                   <div class="flex items-center mt-1">
-                     <span class="text-gray-500 dark:text-gray-300 text-sm">2 months ago</span>
+                     <span class="text-gray-500 text-sm">2 months ago</span>
                   </div>                 
                </div>
             </div>
             <div class="mt-3">
-               <p class="mt-1 max-w-xs dark:text-white">Ficha técnica de para la evalución sensorial de Cacao</p>
+               <p class="mt-1 max-w-xs text-sm">Ficha técnica de para la evalución sensorial de Cacao</p>
             </div>
          </div>
 
@@ -101,15 +101,15 @@
                </div>
                <div class="ml-6">
                   <p class="flex items-baseline">
-                     <span class="text-gray-600 dark:text-gray-200 font-bold">Ficha para evalución sensorial de Cacao</span>
+                     <span class="text-gray-600 text-sm font-semibold">Ficha para evalución sensorial de Cacao</span>
                   </p>
                   <div class="flex items-center mt-1">
-                     <span class="text-gray-500 dark:text-gray-300 text-sm">2 months ago</span>
+                     <span class="text-gray-500 text-sm">2 months ago</span>
                   </div>                 
                </div>
             </div>
             <div class="mt-3">
-               <p class="mt-1 max-w-xs dark:text-white">Ficha técnica de para la evalución sensorial de Cacao</p>
+               <p class="mt-1 max-w-xs text-sm">Ficha técnica de para la evalución sensorial de Cacao</p>
             </div>
          </div>
 
@@ -123,15 +123,15 @@
                </div>
                <div class="ml-6">
                   <p class="flex items-baseline">
-                     <span class="text-gray-600 dark:text-gray-200 font-bold">Ficha para evalución sensorial de Cacao</span>
+                     <span class="text-gray-600 text-sm font-semibold">Ficha para evalución sensorial de Cacao</span>
                   </p>
                   <div class="flex items-center mt-1">
-                     <span class="text-gray-500 dark:text-gray-300 text-sm">2 months ago</span>
+                     <span class="text-gray-500 text-sm">2 months ago</span>
                   </div>                 
                </div>
             </div>
             <div class="mt-3">
-               <p class="mt-1 max-w-xs dark:text-white">Ficha técnica de para la evalución sensorial de Cacao</p>
+               <p class="mt-1 max-w-xs text-sm">Ficha técnica de para la evalución sensorial de Cacao</p>
             </div>
          </div>
      
@@ -146,7 +146,7 @@
     import API_ROUTER from './../../services/SERVER_API'
 
     export default {
-        name: 'EntityRecolection',
+        name: 'CPRecolection',
 
         data() {
             return {

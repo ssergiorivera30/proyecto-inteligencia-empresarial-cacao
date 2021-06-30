@@ -1,6 +1,12 @@
 <template>
    <div class="">
-      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader"  />
+      <NavBarSecondary 
+         :RoutesNavs="RoutesNavs" 
+         :GoBack="GoBack" 
+         :GoBackTitle="GoBackTitle" 
+         :TitleHeader="TitleHeader" 
+         :IconModulo="IconModulo" 
+         :SubTitleHeader="SubTitleHeader"  />
       <router-view/>
    </div>
 </template>
@@ -24,9 +30,9 @@ import API_ROUTER from './../../services/SERVER_API'
             GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/grupo/ver/detalle/'+this.$route.params.id_group, nameRoute: 'Detalles' },
-               { Linkroute: '/grupo/ver/proyectos/'+this.$route.params.id_group, nameRoute: 'Proyectos' },              
-               { Linkroute: '/grupo/ver/equipo/'+this.$route.params.id_group, nameRoute: 'Equipo' },
+               { Linkroute: '/grupo/ver/detalle/'+this.$route.params.id_service, nameRoute: 'Detalles' },
+               { Linkroute: '/grupo/ver/proyectos/'+this.$route.params.id_service, nameRoute: 'Proyectos' },              
+               { Linkroute: '/grupo/ver/equipo/'+this.$route.params.id_service, nameRoute: 'Equipo' },
             ]
          }
       },
@@ -40,7 +46,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadInfoBasic :function(){
             axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_load_info_basic.php",
                {
-                  service_id: this.$route.params.id_group,
+                  service_id: this.$route.params.id_service,
                }).then((res) => {
                   
                   this.TitleHeader = res.data['datos'][0]['name']

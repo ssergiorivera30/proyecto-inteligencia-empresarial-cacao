@@ -13,8 +13,8 @@
 
    <ServicesList v-if="ArrayServices.length  > 0 " 
       :ArrayServices="ArrayServices" 
-       ServiceName="Entidades"
-      RouteLink="/entidad/detalles/"
+      ServiceName="Componente"
+      RouteLink="/componente/detalles/"
       FilePathImg="entidades/"
       ServiceNameLink="Añadir formulario" 
       ServiceID="3" />

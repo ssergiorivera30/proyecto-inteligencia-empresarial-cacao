@@ -1,6 +1,12 @@
 <template>
    <div class="">
-      <NavBarSecondary :RoutesNavs="RoutesNavs" :GoBack="GoBack" :GoBackTitle="GoBackTitle" :TitleHeader="TitleHeader" :IconModulo="IconModulo" :SubTitleHeader="SubTitleHeader"  />
+      <NavBarSecondary 
+         :RoutesNavs="RoutesNavs" 
+         :GoBack="GoBack" 
+         :GoBackTitle="GoBackTitle" 
+         :TitleHeader="TitleHeader" 
+         :IconModulo="IconModulo" 
+         :SubTitleHeader="SubTitleHeader"  />
       <router-view />
    </div>
 </template>
@@ -14,7 +20,7 @@ import API_ROUTER from './../../services/SERVER_API'
 
 
    export default {
-      name: 'EntityDetallesHeader.vue',
+      name: 'CPDetallesHeader.vue',
       components:{
 
          NavBarSecondary
@@ -22,18 +28,17 @@ import API_ROUTER from './../../services/SERVER_API'
       data() {
          return {           
 
-            TitleHeader: 'Entidad',
+            TitleHeader: 'Componente',
             IconModulo: '',
-            SubTitleHeader: 'Entidad, concepto u objeto',
+            SubTitleHeader: 'Entidades, conceptos u objetos de la investigación',
             GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/entidad/detalles/'+this.$route.params.id_entity, nameRoute: 'Detalles' },
-               { Linkroute: '/entidad/registrar/'+this.$route.params.id_entity, nameRoute: 'Registro' },   
-               { Linkroute: '/entidad/data/'+this.$route.params.id_entity, nameRoute: 'Data' },
-               { Linkroute: '/entidad/instrumentos-recoleccion/'+this.$route.params.id_entity, nameRoute: 'Intrumentos de recolección' },
-               { Linkroute: '/entidad/explotacion/'+this.$route.params.id_entity, nameRoute: 'Explotación' },   
-               { Linkroute: '/entidad/equipo/'+this.$route.params.id_entity, nameRoute: 'Equipo' },
+               { Linkroute: '/componente/detalles/'+this.$route.params.id_service, nameRoute: 'Detalles' },          
+               { Linkroute: '/componente/data/'+this.$route.params.id_service, nameRoute: 'Data' },
+               { Linkroute: '/componente/instrumentos-recoleccion/'+this.$route.params.id_service, nameRoute: 'Intrumentos de recolección' },
+               { Linkroute: '/componente/explotacion/'+this.$route.params.id_service, nameRoute: 'Explotación' },   
+               { Linkroute: '/componente/equipo/'+this.$route.params.id_service, nameRoute: 'Equipo' },
             ]
          }
       },
@@ -47,7 +52,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadInfoBasic :function(){
             axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_load_info_basic.php",
                {
-                  service_id: this.$route.params.id_entity,
+                  service_id: this.$route.params.id_service,
                }).then((res) => {
                   
                   this.TitleHeader = res.data['datos'][0]['name']

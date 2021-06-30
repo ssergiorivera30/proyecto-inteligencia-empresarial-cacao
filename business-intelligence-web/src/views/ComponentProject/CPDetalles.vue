@@ -1,6 +1,10 @@
 <template>
     <div>
-        <ServiceToptInfoBasic :ServiceStatus="parseInt(ServiceStatus)" :IdService="parseInt(this.$route.params.id_entity)" />
+        <ServiceToptInfoBasic 
+            :ServiceStatus="parseInt(ServiceStatus)" 
+            :IdService="parseInt(this.$route.params.id_service)" 
+            :ServiceToptInfoNav="ServiceToptInfoNav" 
+            NameService="Componente"/>
 
         <div v-if="DataServiceRows.length > 0" class="w-full mt-5">
             <table class="min-w-max w-full table-auto">
@@ -11,7 +15,7 @@
                         <th class="py-3 px-6 text-left max-w-xs" v-for="(data, index) in resizeColumns(DataServiceColumns)" :key="index">{{ data.name }}</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-600 text-sm font-light">
+                <tbody class="text-gray-600 text-sm">
                     <tr class="border-b border-gray-200 hover:bg-gray-100" v-for="(data, index) in DataServiceRows" :key="index">
                         <td class="py-3 px-6 text-center">
                             <div class="flex item-center justify-center">
@@ -23,7 +27,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">{{ data[0] }}</td>
+                        <td class="px-6 py-4 text-sm text-gray-900">{{ data[0] }}</td>
                         <td v-for="(column) in sizeColumns" :key="column" class="px-6 py-4 text-sm text-gray-500 max-w-xs">{{ data[column] }}</td>
                     </tr>
                 </tbody>
@@ -41,7 +45,7 @@
     import ServiceToptInfoBasic from '../../components/Utilidades/ServiceToptInfoBasic.vue'
 
     export default {
-        name: 'EntityDetalles',
+        name: 'CPDetalles',
         components: {
             ServiceToptInfoBasic,
         },
@@ -58,6 +62,24 @@
                     Linkroute: '/proyecto/integrantes',
                     nameRoute: 'Integrantes'
                 }, ],
+
+                ServiceToptInfoNav: [
+                    {
+                    NameRoute: 'Agregar registro',
+                    IconRoute: `<svg xmlns="http://www.w3.org/2000/svg"  class="w-6 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>`,
+                    Linkroute: '/componente/registrar/'+ this.$route.params.id_service            
+                    }, {
+                        NameRoute: 'Editar entradas',
+                        IconRoute: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>`,
+                        Linkroute: '/constructor-service/'+ this.$route.params.id_service     
+                    },
+                ],
+
+
                 Team: API_ROUTER.API_UI + "empty/empty-data-table.svg",
                 ServiceStatus: 1,
                 DataServiceColumns: [],
@@ -74,7 +96,7 @@
             },
             LoadDataService: function() {
                 axios.post(API_ROUTER.PHP7_CONTROLLER + "build-2/2_listar_data.php", {
-                    id_service: this.$route.params.id_entity,
+                    id_service: this.$route.params.id_service,
                 }).then((res) => {
                     this.DataServiceColumns = res.data.columns
                     if (res.data.rows != null) {

@@ -85,14 +85,14 @@ class ServicesBuild
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $datos );				
 	}
 
-	// 	function UpdateServiceBasic($conection, $serviceId, $ServiceName, $ServiceDescription ){
-	// 	$sql = "UPDATE tbl_services SET tbse_name=?, tbse_description=? WHERE tbse_auto_id=?";
-	// 	$stm = $conection -> prepare( $sql );
-	// 	$stm -> bindParam(1, $ServiceName);
-	// 	$stm -> bindParam(2, $ServiceDescription);
-	// 	$stm -> bindParam(3, $serviceId);
-	// 	$stm -> execute();
-	// 	return $stm->rowCount();
-	// }
+		function UpdateServiceBasic($conection, $serviceId, $ServiceName, $ServiceDescription ){
+		$sql = "UPDATE tbl_services SET tbse_name=?, tbse_description=? WHERE tbse_auto_id=?";
+		$stm = $conection -> prepare( $sql );
+		$stm -> bindParam(1, $ServiceName);
+		$stm -> bindParam(2, $ServiceDescription);
+		$stm -> bindParam(3, $serviceId);
+		$stm -> execute();
+		return $stm->rowCount();
+	}
 
 }

@@ -1,7 +1,11 @@
 <template>
    <div>
 
-      <ServiceToptInfoBasic :ServiceStatus="parseInt(1)" :IdService="parseInt(this.$route.params.id_project)"/>
+        <ServiceToptInfoBasic 
+            :ServiceStatus="parseInt(ServiceStatus)" 
+            :IdService="parseInt(this.$route.params.id_service)" 
+            :ServiceToptInfoNav="ServiceToptInfoNav" 
+            NameService="Proyecto"/>
    
       <div class="grid grid-rows-3 grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-3">
          
@@ -10,7 +14,7 @@
                :ServiceName="ServiceName"
                :ServiceDescription="ServiceDescription"
                :arrayInfoResumenCustom="arrayInfoResumenCustom"
-               :IdService="this.$route.params.id_project"/>
+               :IdService="this.$route.params.id_service"/>
 
 
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
@@ -81,10 +85,14 @@ import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
       data() {
          return {
            
-            RoutesNavs: [
-               { Linkroute: '/proyecto/detalles', nameRoute: 'Detalles' },
-               { Linkroute: '/proyecto/formularios', nameRoute: 'Recolección de datos' },
-               { Linkroute: '/proyecto/integrantes', nameRoute: 'Integrantes' },
+            ServiceToptInfoNav: [
+               {
+                  NameRoute: 'Editar entradas',
+                  IconRoute: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                              </svg>`,
+                  Linkroute: '/constructor-service/'+ this.$route.params.id_service     
+               },
             ],
 
             Team: API_ROUTER.API_UI + "chart/chart.svg",
@@ -110,7 +118,7 @@ import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
          LoadIdProject :function(){
          axios.post(API_ROUTER.PHP7_CONTROLLER + "projects/load_project_resumen.php",
             {
-               id_service: this.$route.params.id_project,
+               id_service: this.$route.params.id_service,
             }).then((res) => {
 
                this.ServiceName = res.data[0]['name']

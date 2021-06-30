@@ -1,7 +1,11 @@
 <template>
    <div>
 
-      <ServiceToptInfoBasic :ServiceStatus="parseInt(ServiceStatus)" :IdService="parseInt(this.$route.params.id_group)"/>
+        <ServiceToptInfoBasic 
+            :ServiceStatus="parseInt(ServiceStatus)" 
+            :IdService="parseInt(this.$route.params.id_service)" 
+            :ServiceToptInfoNav="ServiceToptInfoNav" 
+            NameService="Grupo"/>
 
  
 
@@ -9,7 +13,7 @@
 
          <ServiceLeftInfoBasic v-if="ShowInfoBasic == 1" :ServiceName="ServiceName"
             :ServiceDescription="ServiceDescription" :arrayInfoResumenCustom="arrayInfoResumenCustom"
-            :IdService="this.$route.params.id_group" />
+            :IdService="this.$route.params.id_service" />
 
 
 
@@ -82,10 +86,14 @@
 
             ClassColored: 'bg-gray-50',
 
-            RoutesNavs: [
-               { Linkroute: '/proyecto/detalles', nameRoute: 'Detalles' },
-               { Linkroute: '/proyecto/formularios', nameRoute: 'Recolección de datos' },
-               { Linkroute: '/proyecto/integrantes', nameRoute: 'Integrantes' },
+            ServiceToptInfoNav: [
+               {
+                  NameRoute: 'Editar entradas',
+                  IconRoute: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                              </svg>`,
+                  Linkroute: '/constructor-service/'+ this.$route.params.id_service     
+               },
             ],
 
             Team: API_ROUTER.API_UI + "chart/chart.svg",
@@ -111,7 +119,7 @@
          LoadInfoService: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "groups/service_group_load_resumen.php",
                {
-                  id_service: this.$route.params.id_group,
+                  id_service: this.$route.params.id_service,
                }).then((res) => {
 
                   this.ServiceName = res.data[0]['name']

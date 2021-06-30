@@ -20,12 +20,12 @@ import ProyectoEntidades from './../views/Projects/ProyectoEntidades'
 
 // ENTIDADES
 
-import EntityDetallesHeader from './../views/Entitys/EntityDetallesHeader'
-import EntityDetalles from './../views/Entitys/EntityDetalles'
-import EntytiRegistrar from './../views/Entitys/EntytiRegistrar'
-import EntityData from './../views/Entitys/EntityData'
-import EntityExplotacion from './../views/Entitys/EntityExplotacion'
-import EntityRecolection from './../views/Entitys/EntityRecolection'
+import CPDetallesHeader from './../views/ComponentProject/CPDetallesHeader'
+import CPDetalles from './../views/ComponentProject/CPDetalles'
+import CPRegistrar from './../views/ComponentProject/CPRegistrar'
+import CPData from './../views/ComponentProject/CPData'
+import CPExplotacion from './../views/ComponentProject/CPExplotacion'
+import CPRecolection from './../views/ComponentProject/CPRecolection'
 
 
 
@@ -85,8 +85,8 @@ const routes = [
         name: 'GrupoDetallesHeader',
         component: GrupoDetallesHeader,
         children: [
-            { path: 'detalle/:id_group', name: 'GrupoResumen', component: GrupoResumen },
-            { path: 'proyectos/:id_group', name: 'GrupoProyectos', component: GrupoProyectos },
+            { path: 'detalle/:id_service', name: 'GrupoResumen', component: GrupoResumen },
+            { path: 'proyectos/:id_service', name: 'GrupoProyectos', component: GrupoProyectos },
             { path: 'equipo/:id_service', component: TeamResumen },
         ]
     },
@@ -97,23 +97,23 @@ const routes = [
         redirect: '/proyecto/ver/detalle',
         component: ProyectosDetallesHeader,
         children: [
-            { path: 'detalle/:id_project', name: 'ProyectoResumen', component: ProyectoResumen },
-            { path: 'entidades/:id_project', name: 'ProyectoEntidades', component: ProyectoEntidades },
+            { path: 'detalle/:id_service', name: 'ProyectoResumen', component: ProyectoResumen },
+            { path: 'componentes/:id_service', name: 'ProyectoEntidades', component: ProyectoEntidades },
             { path: 'equipo/:id_service', component: TeamResumen },
         ]
     },
 
     {
-        path: '/entidad',
-        name: 'EntityDetallesHeader',
-        redirect: '/entidad/registros',
-        component: EntityDetallesHeader,
+        path: '/componente',
+        name: 'CPDetallesHeader',
+        redirect: '/componente/registros',
+        component: CPDetallesHeader,
         children: [
-            { path: 'detalles/:id_entity', name: 'EntityDetalles', component: EntityDetalles },
-            { path: 'registrar/:id_entity', name: 'EntytiRegistrar', component: EntytiRegistrar },
-            { path: 'data/:id_entity', name: 'EntityData', component: EntityData },
-            { path: 'explotacion/:id_entity', name: 'EntityExplotacion', component: EntityExplotacion },
-            { path: 'instrumentos-recoleccion/:id_entity', name: 'EntityRecolection', component: EntityRecolection },
+            { path: 'detalles/:id_service', name: 'CPDetalles', component: CPDetalles },
+            { path: 'registrar/:id_service', name: 'CPRegistrar', component: CPRegistrar },
+            { path: 'data/:id_service', name: 'CPData', component: CPData },
+            { path: 'explotacion/:id_service', name: 'CPExplotacion', component: CPExplotacion },
+            { path: 'instrumentos-recoleccion/:id_service', name: 'CPRecolection', component: CPRecolection },
 
 
             { path: 'equipo/:id_service', component: TeamResumen },

@@ -32,7 +32,7 @@
 
 
    export default {
-      name: 'EntytiRegistrar', 
+      name: 'CPRegistrar', 
       components: {   
          ServicePreviewFormEditor,
          ServicePreviewBasicInfo,

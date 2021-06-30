@@ -13,7 +13,7 @@
    import API_ROUTER from './../../services/SERVER_API'
 
    export default {
-      name: 'EntityData',
+      name: 'CPData',
 
       data() {
          return {
