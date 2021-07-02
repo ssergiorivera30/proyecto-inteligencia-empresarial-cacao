@@ -1,6 +1,8 @@
 <template>
 <div class="mt-0 px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-64">
 
+    <button class="p-3" @click="LoadBasicInfoService">Recargar</button>
+
       <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />     
 
       <ServicePreviewFormEditor 
@@ -56,7 +58,7 @@
                      this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
                   }
                }).catch(() => {
-                  alert('Error de conexión al cargar el records')
+                //   alert('Error de conexión al cargar el records')
             })
          },
          RegitredInformation: function(){

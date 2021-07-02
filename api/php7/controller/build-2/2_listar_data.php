@@ -9,13 +9,13 @@ $id_service = $array['id_service'];
 
 require_once "../../services/Conexion.php";
 $connect = new Conexion();
-$conection = $connect -> BDMysqlBigNovaSoftware();
+$conexion = $connect -> BDMysqlBigNovaSoftware();
 
 require_once "../../model-build/ServicesBuild.php";
 
 $ServiceInformation = new ServicesBuild();
 
-$TYPE_SERVICE = $ServiceInformation->GetTypeService( $conection, $id_service );
+$TYPE_SERVICE = $ServiceInformation->GetTypeService( $conexion, $id_service );
 $NAME_TABLE = $ServiceInformation->GetInfoTypeService($TYPE_SERVICE['id'], $id_service);
 
 
@@ -25,11 +25,11 @@ $List_data_and_name = new ListNameAndData();
 
 // GET TH -> NOMBRE DE LAS COLUMNAS DE DATOS
 
-$columns = $List_data_and_name->GetNameDataService($conection, $id_service);
+$columns = $List_data_and_name->GetNameDataService($conexion, $id_service);
 
 // GET DATA
 
-$rows = $List_data_and_name->GetDataRegistredService($conection, $NAME_TABLE);
+$rows = $List_data_and_name->GetDataRegistredService($conexion, $NAME_TABLE);
 
 
 $arrayResponse = array('rows' => $rows, 'columns' =>  $columns);
