@@ -32,6 +32,7 @@ import CPRecolection from './../views/ComponentProject/CPRecolection'
 
 import RecordsHeader from './../views/Records/RecordsHeader'
 import RecordsDetalles from './../views/Records/RecordsDetalles'
+import RecordsUpdate from './../views/Records/RecordsUpdate'
 
 
 import TeamResumen from './../views/Team/TeamResumen'
@@ -128,13 +129,15 @@ const routes = [
 
 
     {
-        path: '/registro',
+        path: '/info-registro',
         name: 'RecordsHeader',
-        redirect: '/registro/',
+        redirect: '/info-registro/',
         component: RecordsHeader,
         children: [
-            { path: 'detalles/:id_record', name: 'RecordsDetalles', component: RecordsDetalles },
-            { path: 'equipo/:id_record', component: TeamResumen },
+            { path: 'detalles/:id_service/:id_record', name: 'RecordsDetalles', component: RecordsDetalles },
+            { path: 'actualizar/:id_service/:id_record', name: 'RecordsUpdate', component: RecordsUpdate },
+            
+            { path: 'equipo/:id_service/:id_record', component: TeamResumen },
         ]
     },
 

@@ -34,10 +34,9 @@ import API_ROUTER from './../../services/SERVER_API'
             GoBack: 'back',
             GoBackTitle: 'Ir al inicio',
             RoutesNavs: [
-               { Linkroute: '/registro/detalles/'+this.$route.params.id_record, nameRoute: 'Detalles' },
-               { Linkroute: '/registro/detalles/'+this.$route.params.id_record, nameRoute: 'Data' },
-               { Linkroute: '/registro/equipo/'+this.$route.params.id_record, nameRoute: 'Team' },
-
+               { Linkroute: '/info-registro/detalles/'+  this.$route.params.id_service +'/'+this.$route.params.id_record, nameRoute: 'Detalles' },
+               { Linkroute: '/info-registro/actualizar/'+  this.$route.params.id_service +'/'+this.$route.params.id_record, nameRoute: 'Actualizar' },
+               { Linkroute: '/info-registro/equipo/'+  this.$route.params.id_service +'/'+this.$route.params.id_record, nameRoute: 'Team' },
             ]
          }
       },

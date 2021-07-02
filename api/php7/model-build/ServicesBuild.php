@@ -3,6 +3,18 @@
 class ServicesBuild
 {
 
+	function GetInfoTypeService($ServiceType, $id_service){
+
+		$NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
+										2 => 'z2_project_'.$id_service,
+										3 => 'z3_entity_'.$id_service,
+										4 => 'z4_form_'.$id_service  );
+
+		return $NAME_TABLES_SERVICES[$ServiceType];
+
+		
+	}
+
 	// SEGUNDO PASO => ACTUALIZAR EL CAMPO JSON DE LA TABLA => tbl_services
 	function UpdateJSONServices($conection, $id_service, $JSON_inputs ){	
 		$JSON_inputs = json_encode($JSON_inputs);
@@ -22,20 +34,7 @@ class ServicesBuild
 		$stm -> execute();
 		$type_service = $stm->fetchAll();
 		return $respuesta = array('id' => intval($type_service[0]['tbse_id_type_service']) );
-	}
-
-
-	function GetInfoTypeService($ServiceType, $id_service){
-
-		$NAME_TABLES_SERVICES = array(	1 => 'z1_group_'.$id_service, 
-										2 => 'z2_project_'.$id_service,
-										3 => 'z3_entity_'.$id_service,
-										4 => 'z4_form_'.$id_service  );
-
-		return $NAME_TABLES_SERVICES[$ServiceType];
-
-		
-	}
+	}	
 
 
 	// PRIMER PASO => REGISTRAR EL SERVICIO => tbl_services.
