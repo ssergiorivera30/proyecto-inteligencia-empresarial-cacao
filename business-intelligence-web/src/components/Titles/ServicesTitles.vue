@@ -1,11 +1,15 @@
 <template>
   <header class="flex items-center justify-between px-2 my-5">
-    <h2 class="text-lg font-bold leading-6 text-gray-800">{{ ServiceName }}</h2>      
+
+    <h2 class="text-lg font-bold leading-6 text-gray-800">{{ ServiceName }}</h2>
+
     <div class="relative">
-        <router-link :to="ServiceLink" class=" flex p-2 rounded-md bg-my-primary">
-            <span class="text-xs font-medium leading-none text-white"><span v-html="ServiceIconHTML"></span> {{ ServiceNameLink }}</span>
+        <router-link :to="ServiceLink" class="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 text-sm font-medium leading-none text-principal-color-ui">  
+            <span v-html="ServiceIconHTML"></span>
+            <span>{{ ServiceNameLink }}</span>
         </router-link >
     </div>
+
   </header>
 </template>
 

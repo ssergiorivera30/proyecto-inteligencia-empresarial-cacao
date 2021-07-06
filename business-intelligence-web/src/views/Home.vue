@@ -3,7 +3,7 @@
   <!-- <WelcomeSistema /> -->
     <ServicesEmpty v-if="RoadEmptyService === 1"/>
 
-    <ServicesTitles ServiceName="Mis grupos" ServiceLink="/create-service/1" ServiceNameLink="Añadir grupo" />
+    <ServicesTitles ServiceName="Mis grupos" ServiceLink="/create-service/1" ServiceNameLink="Añadir grupo" :ServiceIconHTML="ServiceIconHTML"/>
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['groups']" 
@@ -13,7 +13,7 @@
       ServiceNameLink="Añadir grupo" 
       ServiceID="1" />
 
-    <ServicesTitles ServiceName="Mis proyectos" ServiceLink="/create-service/2" ServiceNameLink="Añadir proyecto" />
+    <ServicesTitles ServiceName="Mis proyectos" ServiceLink="/create-service/2" ServiceNameLink="Añadir proyecto" :ServiceIconHTML="ServiceIconHTML"/>
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['projects']" 
@@ -84,7 +84,11 @@ export default {
         forms: []
       }],
       RoadEmptyService: 0,
-      file: API_ROUTER.API_PUBLIC
+      file: API_ROUTER.API_PUBLIC,
+
+      ServiceIconHTML: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>`,
     };
   },
 

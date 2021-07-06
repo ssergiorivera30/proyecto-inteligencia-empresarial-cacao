@@ -1,12 +1,12 @@
 <template> 
    <div class="flex items-center justify-center">
       <div class="w-full pt-1 flex justify-between border-gray-300">
-         <div class="grid grid-rows-1 grid-flow-col gap-3 p-1">
-              <div class="row-span-2 w-10 flex flex-wrap content-start justify-start">
-                <img loading="lazy" v-if="IconModulo != ''" class="w-full rounded pt-2" :src="SrcIconModulo + IconModulo" />
-            </div>         
+         <div class="grid grid-rows-1 grid-flow-col gap-3 py-1">
+              <!-- <div class="row-span-2 w-9 flex flex-wrap content-start justify-start">
+                <img loading="lazy" v-if="IconModulo != ''" class="w-full rounded pt-2 px-1" :src="SrcIconModulo + IconModulo" />
+            </div>          -->
             <div class="row-span-2 h-12 block flex-wrap content-center justify-center ">
-               <div class="pl-1 py-0">
+               <div class="py-0">
                   <h3 v-if="TitleHeader.length > 40" class="font-bold text-md text-gray-600">{{ TitleHeader.substring(0,40) }}...</h3>
                   <h3 v-else class="font-bold text-md text-gray-600">{{ TitleHeader }}</h3>
                   <h4 class="font-semibold text-sm text-gray-500">{{ SubTitleHeader }} {{ breadcrumb }}</h4>
@@ -32,9 +32,9 @@
       </div>
    </div>
 
-  <div class="mt-2 mb-2">
+  <div class="my-2">
     <ul class="list-reset flex pb-2 overscroll-x-auto overflow-y-hidden whitespace-nowrap">       
-        <router-link 
+        <!-- <router-link 
             v-if="GoBack !== 'back'"
             :to="GoBack"
             :title="GoBackTitle"
@@ -47,7 +47,7 @@
             :title="GoBackTitle" 
             class="mr-2 row-span-2 w-6 flex flex-wrap content-center justify-center ">
             <i class='bx bx-chevron-left font-bold'></i>
-         </a> 
+         </a>  -->
          
           
         
@@ -57,7 +57,7 @@
             :to="routes.Linkroute" 
             @click="breadcrumb =  ' / '+ routes.nameRoute, NavRight = routes.NavRight "
             :title="'Ir a '+routes.nameRoute"
-            class="pb-1 -mb-px px-4 text-gray-600 font-semibold inline-block whitespace-nowrap" 
+            class="pb-1 -mb-px pr-4 text-gray-600 font-semibold inline-block whitespace-nowrap" 
             active-class=" text-principal-color-ui font-bold border-b-2 border-principal-color-ui rounded-tr-lg 	">
                {{ routes.nameRoute }}
          </router-link>

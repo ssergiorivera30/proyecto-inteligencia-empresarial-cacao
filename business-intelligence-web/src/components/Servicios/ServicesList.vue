@@ -3,7 +3,7 @@
     <section v-if="ArrayServices === null" class="max-w-lg px-4 py-12 mx-auto">
         <img class="mx-auto sm:w-1/4" :src="EmptyService" />
         <h2 class="mt-2 text-lg font-medium text-center text-gray-800">Tienes (0) {{ ServiceName }},
-            <router-link :to="'/create-service/'+ ServiceID " class="w-full py-2 text-blue-900 font-bold capitalize"><i class="bx bx-plus"></i>{{ ServiceNameLink }}</router-link>
+            <router-link :to="'/create-service/'+ ServiceID " class="w-full py-2 text-blue-900 font-bold capitalize">{{ ServiceNameLink }}</router-link>
         </h2>
     </section>
 
