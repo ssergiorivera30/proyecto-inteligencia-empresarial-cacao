@@ -35,6 +35,8 @@ $JSON_DATA_SERVICE = (new ServicesBuild())->GetFullService($conexion, $id_servic
 require_once "../../model-build/Service_Listar_Update.php";
 $data_record_by_id = (new Service_Listar_Update())->SelectDataById($conexion, $id_record, $NAME_TABLE);
 
+// Asociamos los datos a los del data_json que se usa para mostrar los inputs en el formulario
+
 foreach ($JSON_DATA_SERVICE['data_json'] as $key_padre => $value_padre) {
 
 	$JSON_DATA_SERVICE['data_json'][$key_padre]['input']['value'] = $data_record_by_id[$value_padre['input']['token']];	

@@ -14,7 +14,7 @@ class ConstructorTable
 
 		foreach ($JSON_inputs as $key => $value) {
 
-			$input_name = $value['input']['token'].'_'.$id_service;
+			$input_name = $value['input']['token'];
 
 
 			if( $value['input']['type'] == 'text'){

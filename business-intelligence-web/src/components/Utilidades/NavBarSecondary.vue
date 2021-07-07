@@ -57,7 +57,7 @@
             :to="routes.Linkroute" 
             @click="breadcrumb =  ' / '+ routes.nameRoute, NavRight = routes.NavRight "
             :title="'Ir a '+routes.nameRoute"
-            class="pb-1 -mb-px pr-4 text-gray-600 font-semibold inline-block whitespace-nowrap" 
+            class="pb-1 -mb-px px-4 text-gray-600 font-semibold inline-block whitespace-nowrap" 
             active-class=" text-principal-color-ui font-bold border-b-2 border-principal-color-ui rounded-tr-lg 	">
                {{ routes.nameRoute }}
          </router-link>

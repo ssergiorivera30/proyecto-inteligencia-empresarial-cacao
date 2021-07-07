@@ -1,13 +1,6 @@
 <template>
 
-<header class="flex items-center justify-between px-2 my-5">
-    <h2 class="text-lg font-bold leading-6 text-gray-600">Entidades registradas</h2>      
-    <div class="relative">
-        <router-link to="/create-service/3" class=" flex p-2 rounded-md bg-gray-200">
-            <span class="text-xs font-medium leading-none text-black">Nueva entidad</span>
-        </router-link >
-    </div>
-</header>
+  <ServicesTitles ServiceName="Componentes registrados" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 
                             <!-- :to="'/formulario/ver/datos/'+form.id+'/ob'" -->
 
@@ -27,16 +20,20 @@
 import axios from "axios"
 import API_ROUTER from "./../../services/SERVER_API"
 import ServicesList from "../../components/Servicios/ServicesList";
+import ServicesTitles from "../../components/Titles/ServicesTitles";
 
 export default {
    name: 'ProyectoEntidades',
       components: {
-      ServicesList        
+      ServicesList,
+      ServicesTitles      
    },
     data(){
-      return{
-         
-         ArrayServices: []
+      return{         
+         ArrayServices: [],
+         ServiceIconHTML: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>`,
       }
     },    
     mounted: function(){      

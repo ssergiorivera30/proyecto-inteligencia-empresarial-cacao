@@ -214,7 +214,7 @@
          RegitredInformation: function(){
             axios.post(
                  API_ROUTER.PHP7_CONTROLLER + "build-2/1_registred_data.php", { 
-                  id: this.$route.params.id_entity,
+                  id: parseInt(this.$route.params.id_service),
                   data: this.$props.ArrayInputs
                }).then((response) => {
 

@@ -12,7 +12,7 @@
         <div :class="CenterContent" class="ml-0 sm:ml-12 md:ml-12 px-3 sm:px-4 md:px-4 lg:px-9 pb-24 md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl">
 
             <NavHeader 
-                v-if="this.$route.name != 'RecordsUpdate'"
+                v-if="this.$route.name != 'RecordsUpdate' && this.$route.name != 'BuildFirsStep' && this.$route.name != 'BuildSecondStep'"
                 @StartContentCenterExec="StartContentCenter"
                 :user_name="user_name"
                 :user_photo="user_photo"/>

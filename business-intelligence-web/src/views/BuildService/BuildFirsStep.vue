@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <form action="#" method="POST" class="space-y-2 mt-5" @submit.prevent="SaveInitialForm()">
 
       <header class="flex items-center">
@@ -100,7 +100,7 @@
         this.NameTypeService = 'proyecto'
       }
       else if (this.$route.params.type_service == 3) {
-        this.NameTypeService = 'entidad'
+        this.NameTypeService = 'componente'
       }
 
       else if (this.$route.params.type_service == 4) {

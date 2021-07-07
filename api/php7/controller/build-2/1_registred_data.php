@@ -14,10 +14,9 @@ require_once "../../model-build/registrar_data.php";
 $connect = new Conexion();
 $conexion = $connect -> BDMysqlBigNovaSoftware();
 
-$response = new Response();
+
 
 $id_service = $array['id'];
-$name_table = 'z3_entity_4';
 $data = $array['data'];
 
 
@@ -26,17 +25,20 @@ $get_data_table_service = RegistrarData::GedDataTabeService($conexion, $id_servi
 
 $name_table = $get_data_table_service['tbl_name_service'].$id_service;
 
+
 // Obtención de parametros
 
 $name_camp = '';
 
 foreach ($data as $key => $value) {
-	$name_camp = $name_camp .  ' ' . $value['input']['token'].'_'.$id_service.', ';
+	$name_camp = $name_camp .  ' ' . $value['input']['token'].', ';
 }
 
 
 $name_camp = ''.$name_camp.' '.$name_table.'_hour_created, '.$name_table.'_date_created';
 
+// echo $name_camp;
+// exit();
 
 $sql = "INSERT INTO $name_table ( $name_camp ) VALUES ( ";
 
@@ -60,7 +62,6 @@ for ($i=0; $i <= sizeof( $array['data'] ) - 1; $i++) {
 
 $stm = $conexion->prepare($sql.', NOW(), NOW() ) ');
 
-
 	$item = 1;
 	$mis_values = array_values($array['data']);
 
@@ -83,4 +84,5 @@ if( $stm->rowCount() > 0){
 	$response = array('status' => 'warning', 'message' => 'A ocurrido un error' );
 }
 
+// $response = new Response();
 echo json_encode( $response );
