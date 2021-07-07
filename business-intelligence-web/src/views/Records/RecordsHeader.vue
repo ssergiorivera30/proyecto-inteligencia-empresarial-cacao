@@ -1,6 +1,7 @@
 <template>
    <div class="">
       <NavBarSecondary 
+         v-if="this.$route.name != 'RecordsUpdate'"
          :RoutesNavs="RoutesNavs" 
          :GoBack="GoBack" 
          :GoBackTitle="GoBackTitle" 

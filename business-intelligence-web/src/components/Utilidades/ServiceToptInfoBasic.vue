@@ -11,23 +11,23 @@
 
          <div class="flex">
             <div class="px-6 flex items-center flex-no-wrap">
-               <div class="w-12 h-12 bg-cover bg-center rounded-md">
+               <div class="w-9 h-9 select-none bg-cover bg-center rounded-md">
                   <img loading="lazy" draggable="false" :src="imagen_a" alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
                </div>
-               <div class="w-12 h-12 bg-cover rounded-md -ml-2">
+               <div class="w-9 h-9 select-none bg-cover rounded-md -ml-2">
                   <img loading="lazy" draggable="false" :src="imagen_b"  alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
                </div>
-               <div class="w-12 h-12 bg-cover rounded-md bg-center -ml-2">
+               <div class="w-9 h-9 select-none bg-cover rounded-md bg-center -ml-2">
                   <img loading="lazy" draggable="false" :src="imagen_c"  alt=""
                      class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
                </div>
-               <div class="w-12 h-12 bg-cover rounded-md -ml-2">
+               <div class="w-9 h-9 select-none bg-cover rounded-md -ml-2">
                   <img loading="lazy" draggable="false" :src="imagen_d" alt=""
                      class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
                </div>
-               <div class="w-12 h-12 bg-cover rounded-md -ml-2">
+               <div class="w-9 h-9 select-none bg-cover rounded-md -ml-2">
                   <img loading="lazy" draggable="false" :src="imagen_e" alt=""
                      class="h-full w-full overflow-hidden object-cover object-center rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
                </div>

@@ -6,6 +6,8 @@
             :ServiceToptInfoNav="ServiceToptInfoNav" 
             NameService="Componente"/>
 
+
+
         <div v-if="DataServiceRows.length > 0" class="w-full mt-5">
             <table class="min-w-max w-full table-auto">
                 <thead>
@@ -35,6 +37,7 @@
         </div>
         <div v-else class="hidden md:flex justify-center">
             <img class="px-10 w-96" :src="Team" alt="" />
+            
         </div>
     </div>
 </template>

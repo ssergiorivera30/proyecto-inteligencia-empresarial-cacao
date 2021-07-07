@@ -1,5 +1,5 @@
 <template>
-<div class="mt-0 px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-64">
+<div class="py-3 mx-0 md:mx-auto md:px-0 md:w-full lg:max-w-screen-xl lg:px-48">
 
     <button class="p-3" @click="LoadBasicInfoService">Recargar</button>
 
@@ -12,7 +12,6 @@
             :ServiceDescription="ServiceDescription"
             :ArrayInputs="ArrayInputs"
             @save="RegitredInformation" />
-
    </div>
 </template>
 <script>
@@ -47,16 +46,25 @@
           LoadBasicInfoService: function () {
             axios.post(API_ROUTER.PHP7_CONTROLLER + "build-2/3_listar_data_for_update.php",
                {
-                  id_service: this.$route.params.id_service,
-                  id_record: this.$route.params.id_record,
+                  id_service: parseInt(this.$route.params.id_service),
+                  id_record: parseInt(this.$route.params.id_record),
                }).then((response) => {
-                  
-                  this.ServiceName = response['data']['datos'][0]['name']
-                  this.ServiceDescription = response['data']['datos'][0]['description']
 
-                  if (response['data']['datos'][0]['data_json'] != null) {
-                     this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
-                  }
+                  // console.log( JSON.parse(response['data']['complete'][0]['data_json']) )
+                  console.log(  response['data']['complete'] )
+
+                  // console.log( JSON.parse(response['data']['datos'][0]['data_json']) )
+                  
+                  this.ServiceName = response['data']['object'][0]['name']
+                  this.ServiceDescription = response['data']['object'][0]['description']
+
+                  this.ArrayInputs = (response['data']['complete'])
+
+                  
+
+                  // if (response['data']['datos'][0]['data_json'] != null) {
+                  //    this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])
+                  // }
                }).catch(() => {
                 //   alert('Error de conexión al cargar el records')
             })

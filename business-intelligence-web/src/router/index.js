@@ -136,7 +136,7 @@ const routes = [
         children: [
             { path: 'detalles/:id_service/:id_record', name: 'RecordsDetalles', component: RecordsDetalles },
             { path: 'actualizar/:id_service/:id_record', name: 'RecordsUpdate', component: RecordsUpdate },
-            
+
             { path: 'equipo/:id_service/:id_record', component: TeamResumen },
         ]
     },

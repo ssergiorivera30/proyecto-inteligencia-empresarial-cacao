@@ -350,7 +350,7 @@ console.log('Hola')
                      'required': this.InputRequired,
                      'placeholder': this.InputPlaceholder,
                      'value': this.InputValue,
-                     'token': 'c'+TokenValue,
+                     'token': 'c'+TokenValue+'_'+this.$route.params.id_service,
                      'minlength': this.InputMinlength,
                      'maxlength': this.InputMaxlength,
                      'size': this.InputSize,

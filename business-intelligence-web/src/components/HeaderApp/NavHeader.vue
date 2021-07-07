@@ -2,6 +2,13 @@
 
 <header class="print-none flex sticky top-0 z-10 items-center h-14 w-full bg-gray-50">
 
+   <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-principal-color-ui hover:bg-gray-100 hover:text-principal-color-ui focus:text-principal-color-ui rounded-md">
+          <span class="sr-only">Menu</span>
+          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+        </button>
+
         <div class="print-none flex flex-shrink-0 items-center ">
            <a href="javascript:history.back()" class="relative text-white rounded-full focus:outline-none pr-2" >
              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,15 +25,7 @@
           </button>
         </div>
 
-
-
-
-        <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-principal-color-ui hover:bg-gray-100 hover:text-principal-color-ui focus:text-principal-color-ui rounded-full">
-          <span class="sr-only">Menu</span>
-          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-          </svg>
-        </button>
+       
 
         <div class="hidden md:flex relative w-full max-w-md sm:ml-2">
           <input type="text" class="text-sm md:text-xs h-8 rounded-md py-1 pl-2 pr-4 w-full font-bold text-black placeholder-gray-400 focus:text-black bg-gray-200 focus:bg-gray-200 rounded-sm focus:outline-none" 

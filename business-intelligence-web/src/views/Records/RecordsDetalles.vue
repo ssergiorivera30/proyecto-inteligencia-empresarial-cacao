@@ -6,6 +6,7 @@
             :ServiceToptInfoNav="ServiceToptInfoNav" 
             NameService="Componente"/>
 
+ 
         <div v-if="DataServiceRows.length > 0" class="w-full mt-5">
             <table class="min-w-max w-full table-auto">
                 <thead>
@@ -43,6 +44,7 @@
     import API_ROUTER from './../../services/SERVER_API'
 
     import ServiceToptInfoBasic from '../../components/Utilidades/ServiceToptInfoBasic.vue'
+    
 
     export default {
         name: 'RecordsDetalles',
