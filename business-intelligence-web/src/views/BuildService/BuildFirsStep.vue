@@ -70,10 +70,6 @@
             </select>
           </div>
         </div>
-
-
-
-
     
       </div>
 
@@ -91,26 +87,22 @@
         </div>
       </div>
 
-
       <div class="text-left">
         <button type="submit" class="btn-primary">
           Continuar
         </button>
       </div>
+
     </form>
 
     <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription"
       class="hidden md:flex" />
 
     <div v-else class="hidden md:flex justify-center select-none	">
-      <img v-if="this.$route.params.type_service == 1" class="px-10 pointer-events-none" loading="lazy"
-        draggable="false" :src="service_group" alt="" />
-      <img v-if="this.$route.params.type_service == 2" class="px-10 pointer-events-none" loading="lazy"
-        draggable="false" :src="service_project" alt="" />
-      <img v-if="this.$route.params.type_service == 3" class="px-10 pointer-events-none" loading="lazy"
-        draggable="false" :src="service_entity" alt="" />
-      <img v-if="this.$route.params.type_service == 4" class="px-10 pointer-events-none" loading="lazy"
-        draggable="false" :src="service_form" alt="" />
+      <img v-if="this.$route.params.type_service == 1" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_group" alt="" />
+      <img v-if="this.$route.params.type_service == 2" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_project" alt="" />
+      <img v-if="this.$route.params.type_service == 3" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_entity" alt="" />
+      <img v-if="this.$route.params.type_service == 4" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_form" alt="" />
     </div>
   </div>
 </template>
@@ -164,13 +156,20 @@
     },
     methods: {
       SearchUser: function () {
-        axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
-          IdentificatorNotMember: this.IdentificatorMember
-        }).then((response) => {
 
-          this.UserMembersList = response.data
+        if(this.IdentificatorMember != null && this.IdentificatorMember != "" && this.IdentificatorMember != " " && this.IdentificatorMember != "  "){        
+          axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
+            IdentificatorNotMember: this.IdentificatorMember
+          }).then((response) => {
 
-        });
+            this.UserMembersList = response.data
+
+          });
+
+        } else{
+
+          this.UserMembersList = []
+        }
       },
       SaveInitialForm: function () {
         axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_first_step.php", {
