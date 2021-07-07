@@ -78,7 +78,7 @@
       </div>
 
 
-      <div class="py-4 flex items-center flex-no-wrap">
+      <div class="py-4 flex items-center flex-no-wrap select-none	">
         <div class="w-12 h-12 bg-cover bg-center rounded-md">
           <img loading="lazy" draggable="false"
             src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" alt=""
@@ -102,7 +102,7 @@
     <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription"
       class="hidden md:flex" />
 
-    <div v-else class="hidden md:flex justify-center ">
+    <div v-else class="hidden md:flex justify-center select-none	">
       <img v-if="this.$route.params.type_service == 1" class="px-10 pointer-events-none" loading="lazy"
         draggable="false" :src="service_group" alt="" />
       <img v-if="this.$route.params.type_service == 2" class="px-10 pointer-events-none" loading="lazy"
