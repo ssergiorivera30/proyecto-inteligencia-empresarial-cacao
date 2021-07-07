@@ -30,13 +30,22 @@
         <textarea wrap="hard" rows="7" class="form-control2" required v-model="ServiceDescription"></textarea>
       </div>
 
+      <div v-if="UserMembersSelect.length  > 0" class="py-1 flex items-center flex-wrap select-none pr-2	">
+        <div class="w-12 h-12 bg-cover bg-center rounded-md" v-for="(Members, index) in UserMembersSelect" :key="index" :title="Members.name +' - '+ Members.email">
+          <img             
+            loading="lazy" draggable="false"
+            src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" 
+            alt=""
+            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
+        </div>
+      </div>
+
       <div v-if="ServiceType == 1 || ServiceType == 2 || ServiceType == 4">
         <label class="text-gray-700 font-semibold text-xs">Integrantes</label>
         <input type="text" class="form-control2" v-model="IdentificatorMember" placeholder="Buscar usuario" @keyup="SearchUser" />
       </div>
 
       <div class="items-center justify-between">
-
 
          <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full" v-for="(user, index) in UserMembersList" :key="index">
 
@@ -51,7 +60,7 @@
 
           <div class="col-span-2 lg:col-span-1">
             <h5 class="font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg @click="AddMember(user.code, user.name, user.email)" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
             </h5>
@@ -74,18 +83,7 @@
       </div>
 
 
-      <div class="py-4 flex items-center flex-no-wrap select-none	">
-        <div class="w-12 h-12 bg-cover bg-center rounded-md">
-          <img loading="lazy" draggable="false"
-            src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" alt=""
-            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
-        </div>
-        <div class="w-12 h-12 bg-cover rounded-md -ml-2">
-          <img loading="lazy" draggable="false"
-            src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_1.png" alt=""
-            class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
-        </div>
-      </div>
+      
 
       <div class="text-left">
         <button type="submit" class="btn-primary">
@@ -155,6 +153,16 @@
 
     },
     methods: {
+      AddMember: function(code, name, email){
+
+        this.UserMembersSelect.push({
+          code: code,
+          name: name,
+          email: email,
+        })
+
+
+      },
       SearchUser: function () {
 
         if(this.IdentificatorMember != null && this.IdentificatorMember != "" && this.IdentificatorMember != " " && this.IdentificatorMember != "  "){        
@@ -162,7 +170,14 @@
             IdentificatorNotMember: this.IdentificatorMember
           }).then((response) => {
 
-            this.UserMembersList = response.data
+            console.log(typeof(response.data) )
+
+            if( typeof(response.data) == 'string'){
+              this.UserMembersList = []
+
+            }else{
+              this.UserMembersList = response.data
+            }
 
           });
 
