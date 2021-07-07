@@ -193,9 +193,7 @@
          ArrayInputs: Object,
          FormType: String,
       },
-      mounted: function () {
-
-   
+      mounted: function () {   
 
          console.log('adata')
 
