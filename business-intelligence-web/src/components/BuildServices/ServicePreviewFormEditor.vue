@@ -197,7 +197,7 @@
 
    
 
-         
+         console.log('adata')
 
       },
       methods: {        
