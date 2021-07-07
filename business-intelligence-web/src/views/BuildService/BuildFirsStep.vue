@@ -32,32 +32,31 @@
 
       <div v-if="ServiceType == 1 || ServiceType == 2 || ServiceType == 4">
         <label class="text-gray-700 font-semibold text-xs">Integrantes</label>
-        <input type="text" class="form-control2" v-model="IdentificatorMember" placeholder="Buscar usuario"
-          @change="SearchUser" />
+        <input type="text" class="form-control2" v-model="IdentificatorMember" placeholder="Buscar usuario" @keyup="SearchUser" />
       </div>
 
       <div class="items-center justify-between">
 
 
-         <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full">
+         <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full" v-for="(user, index) in UserMembersList" :key="index">
 
           <div class="col-span-3 sm:col-span-1 md:col-span-2 lg:col-span-1 h-10 w-10 ">
             <img src="https://cdn.tuk.dev/assets/photo-1544817747-b11e3e3b6ac2.jfif" role="img" class="rounded-full object-cover h-full w-full shadow">
           </div>
 
           <div class="col-span-5 md:col-span-6 lg:col-span-7">
-            <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">Jane Doe</p>
-            <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">VP Operations, AlphaSquad</p>
+            <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{ user.name }}</p>
+            <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{ user.email }}</p>
           </div>
 
           <div class="col-span-2 lg:col-span-1">
             <h5 class="font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
             </h5>
             <!-- <h5 class="font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </h5> -->
@@ -65,6 +64,7 @@
 
           <div class="col-span-2 lg:col-span-3">
             <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50">
+              <option value="" disabled>Propietario</option>
               <option value="">Editor</option>
               <option value="">Ver</option>
             </select>
@@ -140,7 +140,8 @@
         ServiceDescription: "",
 
         IdentificatorMember: null,
-        UserMembers: [],
+        UserMembersList: [],
+        UserMembersSelect: [],
 
       };
     },
@@ -167,7 +168,7 @@
           IdentificatorNotMember: this.IdentificatorMember
         }).then((response) => {
 
-          console.log(response)
+          this.UserMembersList = response.data
 
         });
       },

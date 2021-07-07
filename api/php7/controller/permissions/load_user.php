@@ -8,8 +8,16 @@ $array = json_decode($json, true);
 
 require_once "../../services/Conexion.php";
 require_once "../../services/Response.php";
+require_once "../../model/PermissionsUserLoad.php";
 
 $connect = new Conexion();
-$conection = $connect -> BDMysqlBigNovaSoftware();
+$conexion = $connect -> BDMysqlBigNovaSoftware();
 
 $IdentificatorNotMember = $array['IdentificatorNotMember'];
+
+$UserLoad = new PermissionsUserLoad();
+$result = $UserLoad -> PermissionsUserLoadInfoBasic( $conexion, $IdentificatorNotMember );
+
+// var_dump($result);
+
+echo json_encode($result);
