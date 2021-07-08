@@ -28,7 +28,7 @@
        
 
         <div class="hidden md:flex relative w-full max-w-md sm:ml-2">
-          <input type="text" class="text-sm md:text-xs h-8 rounded-md py-1 pl-2 pr-4 w-full font-bold text-black placeholder-gray-400 focus:text-black bg-gray-200 focus:bg-gray-200 rounded-sm focus:outline-none" 
+          <input type="text" class="text-sm md:text-xs h-8 rounded-md py-1 pl-2 pr-4 w-full font-bold text-black placeholder-gray-400 focus:text-black bg-gray-200 focus:bg-gray-200 focus:outline-none" 
                  placeholder="Buscar..."/>
         </div>
         

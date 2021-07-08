@@ -34,7 +34,7 @@
         <div class="w-12 h-12 bg-cover bg-center rounded-md" v-for="(Members, index) in UserMembersSelect" :key="index" :title="Members.name +' - '+ Members.email">
           <img             
             loading="lazy" draggable="false"
-            src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_4_0.png" 
+            :src="Members.avatar" 
             alt=""
             class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white dark:border-gray-700 shadow pointer-events-none" />
         </div>
@@ -60,7 +60,7 @@
 
           <div class="col-span-2 lg:col-span-1">
             <h5 class="font-medium">
-              <svg @click="AddMember(user.code, user.name, user.email)" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg @click="AddMember(user.code, user.name, user.email, user.avatar)" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
             </h5>
@@ -153,12 +153,13 @@
 
     },
     methods: {
-      AddMember: function(code, name, email){
+      AddMember: function(code, name, email, avatar){
 
         this.UserMembersSelect.push({
           code: code,
           name: name,
           email: email,
+          avatar: avatar
         })
 
 
