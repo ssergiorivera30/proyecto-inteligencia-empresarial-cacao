@@ -1,14 +1,41 @@
 <template>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <form action="#" method="POST" class="space-y-2 mt-5" @submit.prevent="SaveInitialForm()">
-
-      <header class="flex items-center">
+    <div class="mt-2">
+      <header class="flex items-center" @click="ShowBasic = 2 ">
         <a href="javascript:history.back()" class="mr-3 pt-1" title="Atrás"><i
             class="bx bx-chevron-left font-bold"></i></a>
         <h2 class="text-lg leading-6 font-medium text-black">Creación de
           <span class="font-bold">{{ NameTypeService }}</span>
         </h2>
       </header>
+
+      <div v-if="ShowBasic === 2" class="space-y-3 ">
+        <div v-if="ServiceType == 1">
+        <label class="text-gray-700 font-semibold text-xs">Logo</label>
+
+        <FileUpload 
+          :target="RouterUploadImage+'?id='+ CodeServiseRegistred"
+          action="POST"
+          class="form-control2"/>
+      </div>
+
+      <div class="text-left">
+        <button type="button" class="btn-light mr-2" @click="ShowBasic = 1 ">
+          Atrás
+        </button>
+
+        <button type="button" class="btn-primary">
+          Continuar
+        </button>
+      </div>
+
+    
+
+      </div>
+    
+    <form v-if="ShowBasic === 1" action="#" method="POST" class="space-y-2 mt-5" @submit.prevent="SaveInitialForm()">
+
+      
 
       <div>
         <label class="text-gray-700 font-semibold text-xs">Nombre</label>
@@ -20,10 +47,8 @@
         <input type="text" class="form-control2" required v-model="ServiceNameEntity" />
       </div>
 
-      <div v-if="ServiceType == 1">
-        <label class="text-gray-700 font-semibold text-xs">Logo</label>
-        <input type="file" class="form-control2" required />
-      </div>
+      
+      
 
       <div>
         <label class="text-gray-700 font-semibold text-xs">Breve descripción</label>
@@ -92,6 +117,7 @@
       </div>
 
     </form>
+    </div>
 
     <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription"
       class="hidden md:flex" />
@@ -109,11 +135,13 @@
   import Noty from "noty";
   import API_ROUTER from "./../../services/SERVER_API";
   import PreviewForm from "./../../components/Formularios/PreviewForm";
+  import FileUpload from 'vue-simple-upload/dist/FileUpload'
 
   export default {
     name: "BuildFirsStep",
     components: {
       PreviewForm,
+      FileUpload
     },
     data() {
       return {
@@ -121,6 +149,12 @@
         service_project: API_ROUTER.API_UI + "services/project_1.svg",
         service_entity: API_ROUTER.API_UI + "services/entity_2.svg",
         service_form: API_ROUTER.API_UI + "services/form_2.svg",
+
+        RouterUploadImage: API_ROUTER.API_GENERAL+'file-upload/upload_avatar_team.php',
+       
+        CodeServiseRegistred: 1,
+        
+        ShowBasic: 1,
 
         NameTypeService: '',
 
@@ -132,6 +166,7 @@
         IdentificatorMember: null,
         UserMembersList: [],
         UserMembersSelect: [],
+
 
       };
     },
@@ -204,7 +239,12 @@
           }).show();
 
           if (response.data.icono == "success") {
-            this.$router.replace("/constructor-service/" + response.data.code);
+            if(this.ServiceType == 1){
+               this.ShowBasic = 2 
+               this.CodeServiseRegistred = response.data.code
+            }else{
+              this.$router.replace("/constructor-service/" + response.data.code);
+            }            
           }
         });
       },

@@ -97,7 +97,7 @@
     },
     methods: {
       VerifySsesionWitchEmail :function(){
-         axios.get(API_ROUTER.API + "/php7/control/user_session.php").then((res) => {
+         axios.get(API_ROUTER.API_GENERAL + "control/user_session.php").then((res) => {
           if(res.data.user_state === false){
             this.CloseDataSesion(res.data.path)            
           }

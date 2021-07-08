@@ -2,7 +2,7 @@
     @import "~noty/lib/noty.css";
     @import "~noty/lib/themes/sunset.css";
     @import "./assets/boxicons-2.0.7/css/boxicons.min.css";
-    @media print{.print-none{display: none !important;}}
+    @media print{ .print-none{display: none !important; } }
 </style>
 
 <template>
@@ -63,7 +63,7 @@
                 this.CenterContent = ClassCenterValue
             },
             VerifySsesionWitchEmail: function() {
-                axios.get(API_ROUTER.API + "/php7/control/user_session.php").then((res) => {
+                axios.get(API_ROUTER.API_GENERAL + "control/user_session.php").then((res) => {
                     if (res.data.user_state === false) {
                         this.CloseDataSesion(res.data.path)
                     }
@@ -73,7 +73,7 @@
                 })
             },
             CloseSessionWitchEmail: function() {
-                axios.get(API_ROUTER.API + "/php7/control/user_close.php").then((res) => {
+                axios.get(API_ROUTER.API_GENERAL + "control/user_close.php").then((res) => {
                     this.CloseDataSesion(res.data.path)
                 }).catch(() => {
                     alert('Error de conexión')
