@@ -1,13 +1,13 @@
 <template>
 
   <header class="flex items-center justify-between my-5">
-    <h2 class="text-lg font-bold leading-6 text-gray-600">Información personalA</h2>
+    <h2 class="text-lg font-bold leading-6 text-gray-600">Información personal</h2>
     <div class="relative"><a href="#/create-service/3" class="flex p-2 rounded-md bg-gray-200"><span
           class="text-xs font-medium leading-none text-black">Agregar</span></a></div>
   </header>
 
   
-  <form class="grid grid-cols-1 gap-y-3 w-full md:max-w-md">
+  <form class="grid grid-cols-2 gap-y-2 gap-x-3 w-full md:max-w-md">
     <div class="block">
       <label class="text-gray-700 font-semibold text-xs">Nombres</label>
       <input type="text" class="form-control2" required>
@@ -34,9 +34,11 @@
       <input type="date" class="form-control2" placeholder="Opcional">
     </div>
 
-    <div class="my-1 text-left">
-      <button type="submit" class="btn-indigo">Guardar cambios</button>
+    <div class="my-1 text-left col-span-2">
+      <button type="submit" class="btn-indigo w-full">Guardar cambios</button>
     </div>
+
+    
   </form>
 </template>
 <script>

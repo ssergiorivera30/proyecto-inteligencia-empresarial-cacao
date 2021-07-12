@@ -1,12 +1,9 @@
 <template>
-   <div class="px-4 min-w-full	 mx-auto md:px-10 lg:px-8 lg:pt-3 text-center ">
-      <div class="h-max w-full bg-cover bg-center rounded-md flex flex-wrap content-center gap-4 " :style="'background-image:url('+imagen_portada_avatar+');'">
-         <h2 class="m-auto mb-16 font-sans text-3xl font-bold leading-none tracking-tight text-black sm:text-2xl select-none">
-           <span class="bg-green-400 rounded-full py-3 px-6"> {{ NameForm }}</span>
-         </h2>
-         <p v-if="DescriptionForm != ''" class="w-full bg-white bg-opacity-80 rounded-full py-3 px-6 md:text-lg select-none">
-         <span class="font-semibold leading-none tracking-tight text-black "> {{ DescriptionForm }}</span>
-         </p>
+   <div class="min-w-full mx-auto lg:pt-3 text-center h-full">
+      <div class="h-max w-full bg-center rounded-md gap-4 pt-40 md:pt-24 lg:pt-28 xl:pt-24" :style="'background-image:url('+imagen_portada_avatar+');'">
+         <h2 class="mx-auto w-72 text:xs md:text-sm lg:text-md font-light capitalize text-black select-none break-all rounded-full py-3 px-8">
+           {{ NameForm }}
+         </h2>        
       </div>
    </div>
 </template>
@@ -23,7 +20,7 @@
         data() {
             return {
                 name: 'PreviewForm',
-                imagen_portada_avatar: API_ROUTER.API_UI + "services/create.png",
+                imagen_portada_avatar: API_ROUTER.API_UI + "services/bg.jpg",
             }
         },
     }

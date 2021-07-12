@@ -9,6 +9,11 @@ module.exports = {
                     DEFAULT: '#3c3e89',
                     dark: '#3c3e89'
                 },
+                'color-text-ui': {
+                    light: '#000',
+                    DEFAULT: '#000',
+                    dark: '#000'
+                },
                 'my-primary': {
                     light: '#3c3e89',
                     DEFAULT: '#3c3e89',

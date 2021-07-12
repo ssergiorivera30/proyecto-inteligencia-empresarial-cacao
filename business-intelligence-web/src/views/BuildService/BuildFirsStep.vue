@@ -1,9 +1,13 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="mt-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+
+    <div class="mt-3">
       <header class="flex items-center" @click="ShowBasic = 2 ">
-        <a href="javascript:history.back()" class="mr-3 pt-1" title="Atrás"><i
-            class="bx bx-chevron-left font-bold"></i></a>
+        <a href="javascript:history.back()" class="relative text-white rounded-full focus:outline-none pr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
         <h2 class="text-lg leading-6 font-medium text-black">Creación de
           <span class="font-bold">{{ NameTypeService }}</span>
         </h2>
@@ -28,15 +32,9 @@
           Continuar
         </button>
       </div>
-
-    
-
-      </div>
+    </div>
     
     <form v-if="ShowBasic === 1" action="#" method="POST" class="space-y-2 mt-5" @submit.prevent="SaveInitialForm()">
-
-      
-
       <div>
         <label class="text-gray-700 font-semibold text-xs">Nombre</label>
         <input type="text" class="form-control2" required v-model="ServiceName" />
@@ -45,10 +43,7 @@
       <div v-if="ServiceType == 2">
         <label class="text-gray-700 font-semibold text-xs">Nombre de la Empresa, entidad o programa de formación</label>
         <input type="text" class="form-control2" required v-model="ServiceNameEntity" />
-      </div>
-
-      
-      
+      </div>      
 
       <div>
         <label class="text-gray-700 font-semibold text-xs">Breve descripción</label>
@@ -71,9 +66,7 @@
       </div>
 
       <div class="items-center justify-between">
-
          <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full" v-for="(user, index) in UserMembersList" :key="index">
-
           <div class="col-span-3 sm:col-span-1 md:col-span-2 lg:col-span-1 h-10 w-10 ">
             <img src="https://cdn.tuk.dev/assets/photo-1544817747-b11e3e3b6ac2.jfif" role="img" class="rounded-full object-cover h-full w-full shadow">
           </div>
@@ -103,31 +96,30 @@
               <option value="">Ver</option>
             </select>
           </div>
-        </div>
-    
-      </div>
-
-
-      
+        </div>    
+      </div>      
 
       <div class="text-left">
         <button type="submit" class="btn-primary">
           Continuar
         </button>
       </div>
-
     </form>
     </div>
 
-    <PreviewForm v-if="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription"
-      class="hidden md:flex" />
 
-    <div v-else class="hidden md:flex justify-center select-none	">
-      <img v-if="this.$route.params.type_service == 1" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_group" alt="" />
-      <img v-if="this.$route.params.type_service == 2" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_project" alt="" />
-      <img v-if="this.$route.params.type_service == 3" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_entity" alt="" />
-      <img v-if="this.$route.params.type_service == 4" class="px-10 pointer-events-none" loading="lazy" draggable="false" :src="service_form" alt="" />
+
+    <PreviewForm v-show="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" class="hidden md:flex" style="height: 490px;" />
+
+
+    <div v-show="ServiceName == ''" class="hidden md:flex justify-center select-none pt-10" style="max-height: 600px;">
+      <img v-if="this.$route.params.type_service == 1" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_group" alt="" />
+      <img v-if="this.$route.params.type_service == 2" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_project" alt="" />
+      <img v-if="this.$route.params.type_service == 3" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_entity" alt="" />
+      <img v-if="this.$route.params.type_service == 4" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_form" alt="" />
     </div>
+
+
   </div>
 </template>
 <script>
@@ -145,8 +137,8 @@
     },
     data() {
       return {
-        service_group: API_ROUTER.API_UI + "services/team1.svg",
-        service_project: API_ROUTER.API_UI + "services/project_1.svg",
+        service_group: API_ROUTER.API_UI + "services/team.jpg",
+        service_project: API_ROUTER.API_UI + "services/project_1.jpg",
         service_entity: API_ROUTER.API_UI + "services/entity_2.svg",
         service_form: API_ROUTER.API_UI + "services/form_2.svg",
 
@@ -173,7 +165,7 @@
     mounted: function () {
 
       if (this.$route.params.type_service == 1) {
-        this.NameTypeService = 'grupo'
+        this.NameTypeService = 'grupo ó equipo de trabajo'
       }
       else if (this.$route.params.type_service == 2) {
         this.NameTypeService = 'proyecto'
