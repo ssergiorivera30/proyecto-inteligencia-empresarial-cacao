@@ -62,7 +62,7 @@
 
       <div v-if="ServiceType == 1 || ServiceType == 2 || ServiceType == 4">
         <label class="text-gray-700 font-semibold text-xs">Integrantes</label>
-        <input type="text" class="form-control2" v-model="IdentificatorMember" placeholder="Buscar usuario" @keyup="SearchUser" />
+        <input type="search" class="form-control2" v-model="IdentificatorMember" placeholder="Buscar usuario" @keyup="SearchUser" />
       </div>
 
       <div class="items-center justify-between">

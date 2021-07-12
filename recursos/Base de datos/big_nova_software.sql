@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2021 a las 15:34:04
+-- Tiempo de generación: 12-07-2021 a las 07:16:52
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.4.16
 
@@ -44,7 +44,10 @@ CREATE TABLE `log_user_sesions_success` (
 
 INSERT INTO `log_user_sesions_success` (`uls_auto_id`, `uls_user_id`, `uls_email`, `uls_data`, `uls_data_cy`, `uls_date`, `uls_hour`, `uls_updated`) VALUES
 (3, 1, 'syrivera89@misena.edu.co', '1234567', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-25', '04:27:59', '2021-04-25 09:27:59'),
-(4, 1, 'syrivera89@misena.edu.co', '1234567', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-26', '11:31:00', '2021-04-26 16:31:00');
+(4, 1, 'syrivera89@misena.edu.co', '1234567', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-26', '11:31:00', '2021-04-26 16:31:00'),
+(5, 1, 'syrivera89@misena.edu.co', '1123581321', 'a2e69488ca217bd7ea47d2059cdeaa46f27ef987', '2021-07-07', '13:07:30', '2021-07-07 18:07:30'),
+(6, 1, 'syrivera89@misena.edu.co', '1123581321', 'a2e69488ca217bd7ea47d2059cdeaa46f27ef987', '2021-07-07', '13:10:47', '2021-07-07 18:10:47'),
+(7, 2, 'yamrtinez232@misena.edu.co', 'yamrtinez232', 'a0f6b01ea797d54ba9de689e2358e285c9ffcd1d', '2021-07-07', '13:13:09', '2021-07-07 18:13:09');
 
 -- --------------------------------------------------------
 
@@ -100,10 +103,13 @@ INSERT INTO `tbl_services` (`tbse_auto_id`, `tbse_id_type_service`, `tbse_name`,
 (1, 1, 'Grupo de Investigación NOVA', 'Ingenierías Eléctrica, Electrónica e Informática -- Ingeniería de Sistemas y Comunicaciones\r\n', NULL, NULL, '[{\"input\":{\"name\":\"Gran \\u00c1rea\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Ingenier\\u00eda y Tecnolog\\u00eda\",\"token\":\"23271155251624812925673900\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"\\u00c1rea\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Ingenier\\u00edas El\\u00e9ctrica, Electr\\u00f3nica e Inform\\u00e1tica -- Ingenier\\u00eda de Sistemas y Comunicaciones\",\"token\":\"23271155421624812942570712\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"CCRG\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"COL0164713\",\"token\":\"23271155551624812955508193\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Fecha de creaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Enero de 2015. Lugar: LA PLATA \\/ HUILA \\/ Centro - Sur \\/ Colombia\",\"token\":\"23271156141624812974574880\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"L\\u00edder\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"HEIMAR HERNAN CORONADO HERNANDEZ\",\"token\":\"23271156321624812992360381\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Instituciones\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"(1) SERVICIO NACIONAL DE APRENDIZAJE SENA (Avalado)\",\"token\":\"23271156401624813000313469\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Programa Nacional\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Ciencia, Tecnolog\\u00eda e Innovaci\\u00f3n en Ingenier\\u00eda\",\"token\":\"23271156561624813016762506\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Programa Nacional Secundario\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Ciencia, Tecnolog\\u00eda e Innovaci\\u00f3n en Ciencias Agropecuarias\",\"token\":\"23271157121624813032308884\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-27 17:08:16', 1, 1),
 (2, 1, 'Grupo de Investigación de La Angostura', 'Campoalegre (H)', NULL, NULL, '[{\"input\":{\"name\":\"aS\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"16232137551624502275914641\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"as\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"sdfsdf\",\"type\":\"checkbox\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"16232142271624502547540255\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"sdfsdf\"}},{\"option\":{\"value\":\"dsfsdf\"}},{\"option\":{\"value\":\"sdf\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-27 17:07:51', 1, 1),
 (3, 2, 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.', '82 - Fomento de la innovación y desarrollo tecnológico en las empresas', NULL, NULL, '[{\"input\":{\"name\":\"Tipo de proyecto\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Desarrollado en alianza con empresa\",\"token\":\"17251545561624653956820657\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0}},{\"input\":{\"name\":\"C\\u00f3digo del proyecto\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"8635-SGPS-2021\",\"token\":\"17251545591624653959131500\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0}},{\"input\":{\"name\":\"Estado del proyecto\",\"type\":\"radio\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"on\",\"token\":\"17252259151624679955060361\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"En ejecuci\\u00f3n\"}},{\"option\":{\"value\":\"Finalizado\"}}],\"sub_option_other\":0}},{\"input\":{\"name\":\"Centro de formaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Centro de Desarrollo Agroempresarial y Tur\\u00edstico del Huila\",\"token\":\"1726048581624686538276710\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"L\\u00ednea de investigaci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Desarrollo tecnol\\u00f3gico e innovaci\\u00f3n industrial\",\"token\":\"172604911624686541300798\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"L\\u00ednea program\\u00e1tica\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Fomento de la innovaci\\u00f3n y desarrollo tecnol\\u00f3gico en las empresas\",\"token\":\"1727123381624813418507913\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Red de conocimiento sectorial\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Red Agr\\u00edcola\",\"token\":\"172712481624813448871491\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-06-27 17:09:05', 1, 1),
-(4, 3, 'Ambiental', 'Elder Rendón Rengifo, Daniel Rodríguez Acosta', NULL, NULL, '[{\"input\":{\"name\":\"Instructor que dise\\u00f1o el instrumento de investigaci\\u00f3n\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"Daniel Rodr\\u00edguez Acosta -\",\"token\":\"c20231441381624477298201376\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"A\"}},{\"option\":{\"value\":\"B\"}},{\"option\":{\"value\":\"C\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Titulo de proyecto\",\"type\":\"textarea\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"Estrategias Tecnol\\u00f3gicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercializaci\\u00f3n del cacao en el departamento del Huila.\\t\",\"token\":\"c20231441501624477310090255\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Fecha\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"4272240391624851639358157\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Municipio\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231442161624477336789520\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Vereda\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231448581624477738228734\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre de la finca\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231449151624477755893958\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Coordenadas geogr\\u00e1ficas del predio N:\",\"type\":\"text\",\"required\":\"false\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231449491624477789065204\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Coordenadas geogr\\u00e1ficas del predio W:\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231450331624477833781403\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"ASNM\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"4272237131624851433337809\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre del propietario\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231451161624477876657628\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre del investigador que aplica el instrumento\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231451381624477898107201\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-07-01 15:43:51', 1, 1),
+(4, 3, 'Ambiental', 'Elder Rendón Rengifo, Daniel Rodríguez Acosta', NULL, NULL, '[{\"input\":{\"name\":\"Instructor que dise\\u00f1o el instrumento de investigaci\\u00f3n\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"Daniel Rodr\\u00edguez Acosta -\",\"token\":\"c20231441381624477298201376_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[{\"option\":{\"value\":\"A\"}},{\"option\":{\"value\":\"B\"}},{\"option\":{\"value\":\"C\"}}],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Fecha\",\"type\":\"date\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c4272240391624851639358157_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Municipio\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231442161624477336789520_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Vereda\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231448581624477738228734_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre de la finca\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231449151624477755893958_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre del propietario\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231451161624477876657628_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Titulo de proyecto\",\"type\":\"textarea\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"Estrategias Tecnol\\u00f3gicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercializaci\\u00f3n del cacao en el departamento del Huila.\\t\",\"token\":\"c20231441501624477310090255_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Coordenadas geogr\\u00e1ficas del predio N:\",\"type\":\"text\",\"required\":\"false\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231449491624477789065204_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Coordenadas geogr\\u00e1ficas del predio W:\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231450331624477833781403_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"ASNM\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c4272237131624851433337809_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Nombre del investigador que aplica el instrumento\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c20231451381624477898107201_4\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-06-23', '2021-06-23', '2021-07-07 03:49:04', 1, 1),
 (5, 3, 'Componente empresarial', 'Yubeli Martínez Sánchez', NULL, NULL, '[]', '2021-06-23', '2021-06-23', '2021-06-27 17:11:10', 1, 1),
 (6, 3, 'Componente de Lixiviados', 'Dennis Milena Villamil', NULL, NULL, NULL, '2021-06-23', '2021-06-23', '2021-06-27 17:11:36', 1, 1),
-(24, 4, 'asd', 'asdas', NULL, NULL, '[]', '2021-06-30', '2021-06-30', '2021-06-30 22:16:00', 1, 1);
+(24, 4, 'asd', 'asdas', NULL, NULL, '[]', '2021-06-30', '2021-06-30', '2021-06-30 22:16:00', 1, 1),
+(25, 3, 'Vigilancia Científico', 'Vigilancia Científico del proyecto', NULL, NULL, '[]', '2021-07-06', '2021-07-06', '2021-07-07 03:40:09', 1, 1),
+(26, 2, 'Proyecto de cacao la Angostura', '...', NULL, NULL, '[{\"input\":{\"name\":\"L\\u00edder\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"Ingeniera Leidy Machado\",\"token\":\"c266224261625629326865781_26\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-07-06', '2021-07-06', '2021-07-07 03:42:09', 1, 1),
+(27, 3, 'Caracterización de cacao - CF. La Angostura ', 'Fincas de Campoalegre - Huila', NULL, NULL, '[{\"input\":{\"name\":\"Nombre de la Empresa\",\"type\":\"text\",\"required\":\"true\",\"placeholder\":\"\",\"value\":\"\",\"token\":\"c276234291625630669813422_27\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"NIT\\/C.C.\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c276234451625630685374491_27\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Contacto\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c27623561625630706977352_27\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Direcci\\u00f3n\",\"type\":\"text\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c276235161625630716634157_27\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"Tel\\u00e9fono\",\"type\":\"number\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c276235201625630720490554_27\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}},{\"input\":{\"name\":\"E-mail\",\"type\":\"email\",\"required\":false,\"placeholder\":\"\",\"value\":\"\",\"token\":\"c276235281625630728691117_27\",\"minlength\":\"\",\"maxlength\":\"\",\"size\":\"\",\"min\":\"\",\"max\":\"\",\"edit\":0,\"options\":[],\"sub_option_other\":0,\"sub_options_types\":{\"option1\":{\"type\":\"text\"},\"option2\":{\"type\":\"file\"}},\"sub_options_values\":[]}}]', '2021-07-06', '2021-07-06', '2021-07-07 04:17:46', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +173,14 @@ CREATE TABLE `users_avatars` (
 --
 
 INSERT INTO `users_avatars` (`usava_id_user`, `usava_avatar`, `usava_date_created`, `usava_hour_date`, `usava_updated`) VALUES
-(1, '0', '2021-04-25', '04:27:50', '2021-04-25 09:27:50');
+(1, '0', '2021-04-25', '04:27:50', '2021-04-25 09:27:50'),
+(2, '0', '2021-07-07', '13:12:54', '2021-07-07 18:12:54'),
+(3, '0', '2021-07-07', '13:14:08', '2021-07-07 18:14:08'),
+(4, '0', '2021-07-07', '13:14:47', '2021-07-07 18:14:47'),
+(5, '0', '2021-07-07', '13:16:32', '2021-07-07 18:16:32'),
+(6, '0', '2021-07-07', '13:18:10', '2021-07-07 18:18:10'),
+(7, '0', '2021-07-07', '13:18:49', '2021-07-07 18:18:49'),
+(8, '0', '2021-07-07', '13:19:23', '2021-07-07 18:19:23');
 
 -- --------------------------------------------------------
 
@@ -188,7 +201,14 @@ CREATE TABLE `users_credentials` (
 --
 
 INSERT INTO `users_credentials` (`usr_user_id`, `usr_count_id_type`, `usr_email`, `usr_password`, `usr_update`) VALUES
-(1, 1, 'syrivera89@misena.edu.co', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2021-04-25 09:27:50');
+(1, 1, 'syrivera89@misena.edu.co', 'a2e69488ca217bd7ea47d2059cdeaa46f27ef987', '2021-07-07 18:07:22'),
+(2, 1, 'yamrtinez232@misena.edu.co', 'a0f6b01ea797d54ba9de689e2358e285c9ffcd1d', '2021-07-07 18:12:54'),
+(3, 1, 'hcoronado@sena.edu.co', 'cc1ab7fc87ac3b6db843de449414e725db4e9657', '2021-07-07 18:14:08'),
+(4, 1, 'gmurciar@sena.edu.co', 'd8239684b78c1a6c8122f8392c374f5d109f39c9', '2021-07-07 18:14:47'),
+(5, 1, 'lmachado@sena.edu.co', 'f227e392f2e2c3d829b4c5c1b2925d67bb4d1019', '2021-07-07 18:16:32'),
+(6, 1, 'sorduz@sena.edu.co', '098f7212ba26783e396e0ec31a4aff6a043b9989', '2021-07-07 18:18:10'),
+(7, 1, 'kyguzman@sena.edu.co', '854303ba392808fc07c27f4fd6e92482c7be2cf6', '2021-07-07 18:18:49'),
+(8, 1, 'erendonr@sena.edu.co', '9f39c07dedf507bfa4acb99f5d6365a38ff7b191', '2021-07-07 18:19:23');
 
 -- --------------------------------------------------------
 
@@ -211,7 +231,14 @@ CREATE TABLE `users_keys` (
 --
 
 INSERT INTO `users_keys` (`usk_auto_id`, `usk_name`, `usk_date_created`, `usk_hour_created`, `usk_updated`, `usk_status`, `usk_vigence`) VALUES
-(1, 'syrivera89@misena.edu.co', '2021-04-25', '11:04:50', '2021-04-25 09:27:50', 1, 1);
+(1, 'syrivera89@misena.edu.co', '2021-04-25', '11:04:50', '2021-04-25 09:27:50', 1, 1),
+(2, 'yamrtinez232@misena.edu.co', '2021-07-07', '20:07:54', '2021-07-07 18:12:54', 1, 1),
+(3, 'hcoronado@sena.edu.co', '2021-07-07', '20:07:08', '2021-07-07 18:14:08', 1, 1),
+(4, 'gmurciar@sena.edu.co', '2021-07-07', '20:07:47', '2021-07-07 18:14:47', 1, 1),
+(5, 'lmachado@sena.edu.co', '2021-07-07', '20:07:32', '2021-07-07 18:16:32', 1, 1),
+(6, 'sorduz@sena.edu.co', '2021-07-07', '20:07:10', '2021-07-07 18:18:10', 1, 1),
+(7, 'kyguzman@sena.edu.co', '2021-07-07', '20:07:49', '2021-07-07 18:18:49', 1, 1),
+(8, 'erendonr@sena.edu.co', '2021-07-07', '20:07:23', '2021-07-07 18:19:23', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -255,7 +282,14 @@ CREATE TABLE `user_data_personals` (
 --
 
 INSERT INTO `user_data_personals` (`udp_user_id`, `udp_name`, `udp_gender`, `udp_date_birth`, `udp_type_id`, `udp_numer_id`) VALUES
-(1, 'Sergio Rivera', 'Masculino', '0000-00-00', 'TI', 0);
+(1, 'Sergio Rivera', 'Masculino', '0000-00-00', 'TI', 0),
+(2, 'Yubeli Martinez Sanchez', 'Masculino', '0000-00-00', 'TI', 0),
+(3, 'Heimar Hernán  Coronado Hernández', 'Masculino', '0000-00-00', 'TI', 0),
+(4, 'Gilberto Murcia Ramos', 'Masculino', '0000-00-00', 'TI', 0),
+(5, 'Leidy Machado Cuellar', 'Masculino', '0000-00-00', 'TI', 0),
+(6, 'Sergio Andres Orduz Tovar', 'Masculino', '0000-00-00', 'TI', 0),
+(7, 'Kathryn Yadira Guzman', 'Masculino', '0000-00-00', 'TI', 0),
+(8, 'Elder Rendon Rengifo', 'Masculino', '0000-00-00', 'TI', 0);
 
 -- --------------------------------------------------------
 
@@ -267,13 +301,13 @@ CREATE TABLE `z3_entity_4` (
   `id_z3_entity_4` int(11) NOT NULL,
   `c20231441381624477298201376_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231441501624477310090255_4` text COLLATE utf8_spanish_ci DEFAULT NULL,
-  `4272240391624851639358157_4` date DEFAULT NULL,
+  `c4272240391624851639358157_4` date DEFAULT NULL,
   `c20231442161624477336789520_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231448581624477738228734_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231449151624477755893958_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231449491624477789065204_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231450331624477833781403_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `4272237131624851433337809_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `c4272237131624851433337809_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231451161624477876657628_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `c20231451381624477898107201_4` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
   `z3_entity_4_hour_created` time NOT NULL,
@@ -287,8 +321,8 @@ CREATE TABLE `z3_entity_4` (
 -- Volcado de datos para la tabla `z3_entity_4`
 --
 
-INSERT INTO `z3_entity_4` (`id_z3_entity_4`, `c20231441381624477298201376_4`, `c20231441501624477310090255_4`, `4272240391624851639358157_4`, `c20231442161624477336789520_4`, `c20231448581624477738228734_4`, `c20231449151624477755893958_4`, `c20231449491624477789065204_4`, `c20231450331624477833781403_4`, `4272237131624851433337809_4`, `c20231451161624477876657628_4`, `c20231451381624477898107201_4`, `z3_entity_4_hour_created`, `z3_entity_4_date_created`, `z3_entity_4_updated`, `z3_entity_4_status`, `z3_entity_4_vigence`) VALUES
-(1, 'Daniel Rodríguez Acosta', 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.	', '2021-04-23', 'Paicol', 'Matanzas', 'Buenos Aires', '2-27-50.97', '75-47-20.61', '919.7', 'Algemiro Cabrera Vargas', 'Elder Rendón Rengifo', '22:42:19', '2021-06-27', '2021-06-28 03:42:19', 1, 1),
+INSERT INTO `z3_entity_4` (`id_z3_entity_4`, `c20231441381624477298201376_4`, `c20231441501624477310090255_4`, `c4272240391624851639358157_4`, `c20231442161624477336789520_4`, `c20231448581624477738228734_4`, `c20231449151624477755893958_4`, `c20231449491624477789065204_4`, `c20231450331624477833781403_4`, `c4272237131624851433337809_4`, `c20231451161624477876657628_4`, `c20231451381624477898107201_4`, `z3_entity_4_hour_created`, `z3_entity_4_date_created`, `z3_entity_4_updated`, `z3_entity_4_status`, `z3_entity_4_vigence`) VALUES
+(1, 'Daniel Rodríguez Acosta', 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.	', '2021-04-23', 'Paicol', 'Matanzas', 'Buenos Aires', '2-27-50.97', '75-47-20.61', '919.7', 'Algemiro Cabrera Vargas', 'Elder Rendón Rengifo', '22:42:19', '2021-06-27', '2021-07-06 22:54:42', 1, 1),
 (2, 'Daniel Rodríguez Acosta', 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.	', '2021-04-23', 'Paicol', 'Primavera', 'Rancho Don Juan', '2 24 8.25', '75 45 51.17', '1100', 'Juan Carlos Diaz Charri', 'Sergio Yamit Rivera Flor', '13:42:17', '2021-06-28', '2021-06-28 18:42:17', 1, 1),
 (3, 'Daniel Rodríguez Acosta', 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.	', '2021-04-21', 'La Plata', 'Cabuyal', 'La Unión', '2 23 51.74', '75 51 51.68', '', 'José Ramiro Rojas Rojas', 'Elder Rendón Rengifo', '13:44:44', '2021-06-28', '2021-06-28 18:44:44', 1, 1),
 (4, 'Daniel Rodríguez Acosta', 'Estrategias Tecnológicas para el fortalecimiento de la cadena productiva, sostenibilidad ambiental y comercialización del cacao en el departamento del Huila.	', '2021-04-20', 'La Plata', 'Cabuyal', 'La Esmeralda', '', '', '', 'Eduardo Pérez Pérez ', 'Elder Rendón Rengifo', '13:46:47', '2021-06-28', '2021-06-28 18:46:47', 1, 1),
@@ -298,17 +332,31 @@ INSERT INTO `z3_entity_4` (`id_z3_entity_4`, `c20231441381624477298201376_4`, `c
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `z4_form_24`
+-- Estructura de tabla para la tabla `z3_entity_27`
 --
 
-CREATE TABLE `z4_form_24` (
-  `id_z4_form_24` int(11) NOT NULL,
-  `z4_form_24_hour_created` time NOT NULL,
-  `z4_form_24_date_created` date NOT NULL,
-  `z4_form_24_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `z4_form_24_status` tinyint(1) NOT NULL DEFAULT 1,
-  `z4_form_24_vigence` tinyint(1) NOT NULL DEFAULT 1
+CREATE TABLE `z3_entity_27` (
+  `id_z3_entity_27` int(11) NOT NULL,
+  `c276234291625630669813422_27` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `c276234451625630685374491_27` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `c27623561625630706977352_27` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `c276235161625630716634157_27` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `c276235201625630720490554_27` varchar(120) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `c276235281625630728691117_27` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `z3_entity_27_hour_created` time NOT NULL,
+  `z3_entity_27_date_created` date NOT NULL,
+  `z3_entity_27_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `z3_entity_27_status` tinyint(1) NOT NULL DEFAULT 1,
+  `z3_entity_27_vigence` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `z3_entity_27`
+--
+
+INSERT INTO `z3_entity_27` (`id_z3_entity_27`, `c276234291625630669813422_27`, `c276234451625630685374491_27`, `c27623561625630706977352_27`, `c276235161625630716634157_27`, `c276235201625630720490554_27`, `c276235281625630728691117_27`, `z3_entity_27_hour_created`, `z3_entity_27_date_created`, `z3_entity_27_updated`, `z3_entity_27_status`, `z3_entity_27_vigence`) VALUES
+(1, 'Belltic', '1084577898', '3136426375', 'Calle 5a #8a-07', '3115118238', 'syrivera89@misena.edu.co', '23:10:24', '2021-07-06', '2021-07-07 04:10:24', 1, 1),
+(2, 'La Perla', '55789451', '3136458725', 'Nátaga Huila', '4178569', 'laperla@outlook.com.co', '23:49:17', '2021-07-06', '2021-07-07 04:49:17', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -384,10 +432,10 @@ ALTER TABLE `z3_entity_4`
   ADD PRIMARY KEY (`id_z3_entity_4`);
 
 --
--- Indices de la tabla `z4_form_24`
+-- Indices de la tabla `z3_entity_27`
 --
-ALTER TABLE `z4_form_24`
-  ADD PRIMARY KEY (`id_z4_form_24`);
+ALTER TABLE `z3_entity_27`
+  ADD PRIMARY KEY (`id_z3_entity_27`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -397,7 +445,7 @@ ALTER TABLE `z4_form_24`
 -- AUTO_INCREMENT de la tabla `log_user_sesions_success`
 --
 ALTER TABLE `log_user_sesions_success`
-  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uls_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `system_status`
@@ -409,7 +457,7 @@ ALTER TABLE `system_status`
 -- AUTO_INCREMENT de la tabla `tbl_services`
 --
 ALTER TABLE `tbl_services`
-  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_service_permissions`
@@ -427,7 +475,7 @@ ALTER TABLE `tbl_type_service`
 -- AUTO_INCREMENT de la tabla `users_keys`
 --
 ALTER TABLE `users_keys`
-  MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usk_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `user_count_type`
@@ -442,10 +490,10 @@ ALTER TABLE `z3_entity_4`
   MODIFY `id_z3_entity_4` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `z4_form_24`
+-- AUTO_INCREMENT de la tabla `z3_entity_27`
 --
-ALTER TABLE `z4_form_24`
-  MODIFY `id_z4_form_24` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `z3_entity_27`
+  MODIFY `id_z3_entity_27` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
