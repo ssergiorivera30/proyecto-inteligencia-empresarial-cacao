@@ -4,7 +4,7 @@ class PermissionsUserLoad
 {	
 	function PermissionsUserLoadInfoBasic( $conexion, $IdentificatorNotMember){
 
-		$data = null;
+		$data = array();
 		$IdentificatorNotMember = '%'.$IdentificatorNotMember.'%';
 		
 		$sql = "SELECT 
@@ -21,14 +21,20 @@ class PermissionsUserLoad
 		$stm -> bindParam(2, $IdentificatorNotMember);
 		$stm -> execute();
 
-		if( $stm->rowCount() > 0 ){
+		if( $stm->rowCount() > 0 ){		
 
-			$data = $stm->fetchAll();
+			foreach ($stm->fetchAll()as $key => $value) {
+				$NestData['code'] = $value['code'];
+				$NestData['email'] = $value['email'];
+				$NestData['name'] = $value['name'];
+				$NestData['avatar'] = $value['avatar'];
+				$NestData['permissions'] = 2;
+				$data[] = $NestData;
+			}
 		}
 
 		return $data;		
 	}
-
 
 
 

@@ -50,9 +50,16 @@
         <textarea wrap="hard" rows="7" class="form-control2" required v-model="ServiceDescription"></textarea>
       </div>
 
+      <pre>{{ UserMembersSelect }}</pre>
+
       <div v-if="UserMembersSelect.length  > 0" class="py-1 flex items-center flex-wrap select-none pr-2	">
-        <div class="w-12 h-12 bg-cover bg-center rounded-md" v-for="(Members, index) in UserMembersSelect" :key="index" :title="Members.name +' - '+ Members.email">
-          <img             
+        <div class="w-12 h-12 bg-cover bg-center rounded-md" 
+          v-for="(Members, index) in UserMembersSelect" 
+          :key="index" 
+          :title="Members.name +' - '+ Members.email"
+          @click="UserMembersSelectUpdate = UserMembersSelect[index]"
+        >
+          <img
             loading="lazy" draggable="false"
             :src="Members.avatar" 
             alt=""
@@ -60,46 +67,98 @@
         </div>
       </div>
 
+       <pre>{{ UserMembersSelectUpdate.length  }}</pre>
+
+      
+
+      <div v-show="UserMembersSelectUpdate.length != 0" class="items-center justify-between">
+         <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full">
+
+          
+          <div class="col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-1 h-10 w-10 ">
+            <img :src="UserMembersSelectUpdate['avatar'] " role="img" class="rounded-full object-cover h-full w-full shadow">
+          </div>
+
+          <div class="col-span-4 md:col-span-5 lg:col-span-6">
+            <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{ UserMembersSelectUpdate['name'] }}</p>
+            <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{ UserMembersSelectUpdate['email'] }}</p>
+          </div>
+
+          <div class="col-span-1 lg:col-span-1">            
+            <h5 class="font-medium">
+              <svg @click="UserMembersSelect.splice(index, 1)" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </h5>
+          </div>
+
+          <div class="col-span-1 lg:col-span-1">            
+            <h5 class="font-medium">              
+              <svg @click="UserMembersSelectUpdate = []"  xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </h5>
+          </div>
+
+          <div class="col-span-2 lg:col-span-3">
+            <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50" v-model="UserMembersSelectUpdate['permissions']">
+              <option value="1" disabled>Propietario</option>
+              <option value="2">Ver</option>
+              <option value="3">Editar</option>
+
+            </select>
+          </div>
+
+          
+        </div>    
+      </div>    
+
       <div v-if="ServiceType == 1 || ServiceType == 2 || ServiceType == 4">
         <label class="text-gray-700 font-semibold text-xs">Integrantes</label>
         <input type="search" class="form-control2" v-model="IdentificatorMember" placeholder="Buscar usuario" @keyup="SearchUser" />
       </div>
 
       <div class="items-center justify-between">
-         <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full" v-for="(user, index) in UserMembersList" :key="index">
-          <div class="col-span-3 sm:col-span-1 md:col-span-2 lg:col-span-1 h-10 w-10 ">
-            <img src="https://cdn.tuk.dev/assets/photo-1544817747-b11e3e3b6ac2.jfif" role="img" class="rounded-full object-cover h-full w-full shadow">
-          </div>
+         <div class="" v-for="(user, index) in UserMembersList" :key="index">
 
-          <div class="col-span-5 md:col-span-6 lg:col-span-7">
-            <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{ user.name }}</p>
-            <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{ user.email }}</p>
-          </div>
+          <!-- <span >{{ UserMembersSelect.find( user => user.email ) }} d</span> -->
 
-          <div class="col-span-2 lg:col-span-1">
-            <h5 class="font-medium">
-              <svg @click="AddMember(user.code, user.name, user.email, user.avatar)" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-            </h5>
-            <!-- <h5 class="font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </h5> -->
-          </div>
+              <span >{{ UserMembersSelect.includes('syrivera89@misena.edu.co') }}</span>
 
-          <div class="col-span-2 lg:col-span-3">
-            <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50">
-              <option value="" disabled>Propietario</option>
-              <option value="">Editor</option>
-              <option value="">Ver</option>
-            </select>
-          </div>
+
+          <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full">
+              <div class="col-span-3 sm:col-span-1 md:col-span-3 lg:col-span-1 h-10 w-10 ">
+                <img src="https://cdn.tuk.dev/assets/photo-1544817747-b11e3e3b6ac2.jfif" role="img" class="rounded-full object-cover h-full w-full shadow">
+              </div>
+
+              <div class="col-span-5 md:col-span-6 lg:col-span-7">
+                <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{ user.name }}</p>
+                <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{ user.email }}</p>
+              </div>
+
+              <div class="col-span-2 lg:col-span-1">
+                <h5 class="font-medium">
+                  <svg @click="AddMember(user.code, user.name, user.email, 'https://cdn.tuk.dev/assets/photo-1544817747-b11e3e3b6ac2.jfif', UserMembersList[index]['permissions'] )" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </h5>
+              </div>
+
+              <div class="col-span-2 lg:col-span-3">
+                <pre>{{ UserMembersList[index]['permissions'] }}</pre>
+                <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50" v-model="UserMembersList[index]['permissions']">
+                  <option value="1" disabled>Propietario</option>
+                  <option value="2">Ver</option>
+                  <option value="3">Editar</option>
+                </select>
+              </div>
+          </div>         
+
+
         </div>    
       </div>      
 
-      <div class="text-left">
+      <div class="text-left pt-2">
         <button type="submit" class="btn-primary">
           Continuar
         </button>
@@ -107,16 +166,10 @@
     </form>
     </div>
 
-
-
     <PreviewForm v-show="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" class="hidden md:flex" style="height: 490px;" />
 
-
-    <div v-show="ServiceName == ''" class="hidden md:flex justify-center select-none pt-10" style="max-height: 600px;">
-      <img v-if="this.$route.params.type_service == 1" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_group" alt="" />
-      <img v-if="this.$route.params.type_service == 2" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_project" alt="" />
-      <img v-if="this.$route.params.type_service == 3" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_entity" alt="" />
-      <img v-if="this.$route.params.type_service == 4" class="pointer-events-none bg-gray-50 rounded-md static" loading="lazy" draggable="false" :src="service_form" alt="" />
+    <div v-show="ServiceName == ''" class="hidden md:flex items-start justify-center select-none pt-10 object-contain">
+      <img class="pointer-events-none bg-gray-50 rounded-md static object-contain" loading="lazy" draggable="false" :src="ImageService" alt="" />
     </div>
 
 
@@ -141,6 +194,7 @@
         service_project: API_ROUTER.API_UI + "services/project_1.jpg",
         service_entity: API_ROUTER.API_UI + "services/entity_2.svg",
         service_form: API_ROUTER.API_UI + "services/form_2.svg",
+        ImageService: '',
 
         RouterUploadImage: API_ROUTER.API_GENERAL+'file-upload/upload_avatar_team.php',
        
@@ -158,6 +212,7 @@
         IdentificatorMember: null,
         UserMembersList: [],
         UserMembersSelect: [],
+        UserMembersSelectUpdate: [],       
 
 
       };
@@ -166,27 +221,32 @@
 
       if (this.$route.params.type_service == 1) {
         this.NameTypeService = 'grupo ó equipo de trabajo'
+        this.ImageService = this.service_group
       }
       else if (this.$route.params.type_service == 2) {
         this.NameTypeService = 'proyecto'
+        this.ImageService = this.service_project
       }
       else if (this.$route.params.type_service == 3) {
         this.NameTypeService = 'componente'
+        this.ImageService = this.service_entity
       }
 
       else if (this.$route.params.type_service == 4) {
         this.NameTypeService = 'formulario'
+        this.ImageService = this.service_form
       }
 
     },
     methods: {
-      AddMember: function(code, name, email, avatar){
+      AddMember: function(code, name, email, avatar, permissions){
 
         this.UserMembersSelect.push({
           code: code,
           name: name,
           email: email,
-          avatar: avatar
+          avatar: avatar,
+          permissions: permissions 
         })
 
 
