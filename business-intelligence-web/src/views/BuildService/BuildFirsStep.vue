@@ -20,7 +20,10 @@
         <FileUpload 
           :target="RouterUploadImage+'?id='+ CodeServiseRegistred"
           action="POST"
-          class="form-control2"/>
+          />
+
+        <input type="file" name="fileUpload" class="form-control2" @change="onFileChange" >
+
       </div>
 
       <div class="text-left">
@@ -50,7 +53,7 @@
         <textarea wrap="hard" rows="7" class="form-control2" required v-model="ServiceDescription"></textarea>
       </div>
 
-      <pre>{{ UserMembersSelect }}</pre>
+      <!-- <pre>{{ UserMembersSelect }}</pre> -->
 
       <div v-if="UserMembersSelect.length  > 0" class="py-1 flex items-center flex-wrap select-none pr-2	">
         <div class="w-12 h-12 bg-cover bg-center rounded-md" 
@@ -67,7 +70,7 @@
         </div>
       </div>
 
-       <pre>{{ UserMembersSelectUpdate.length  }}</pre>
+       <!-- <pre>{{ UserMembersSelectUpdate.length  }}</pre> -->
 
       
 
@@ -121,11 +124,6 @@
       <div class="items-center justify-between">
          <div class="" v-for="(user, index) in UserMembersList" :key="index">
 
-          <!-- <span >{{ UserMembersSelect.find( user => user.email ) }} d</span> -->
-
-              <span >{{ UserMembersSelect.includes('syrivera89@misena.edu.co') }}</span>
-
-
           <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full">
               <div class="col-span-3 sm:col-span-1 md:col-span-3 lg:col-span-1 h-10 w-10 ">
                 <img src="https://cdn.tuk.dev/assets/photo-1544817747-b11e3e3b6ac2.jfif" role="img" class="rounded-full object-cover h-full w-full shadow">
@@ -145,7 +143,7 @@
               </div>
 
               <div class="col-span-2 lg:col-span-3">
-                <pre>{{ UserMembersList[index]['permissions'] }}</pre>
+                
                 <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50" v-model="UserMembersList[index]['permissions']">
                   <option value="1" disabled>Propietario</option>
                   <option value="2">Ver</option>
@@ -239,8 +237,14 @@
 
     },
     methods: {
-      AddMember: function(code, name, email, avatar, permissions){
 
+      onFileCahnge(){
+        this.file = files[0]
+        let formData = new FormData()
+        formData.append('file', this.file)
+
+      },
+      AddMember: function(code, name, email, avatar, permissions){
         this.UserMembersSelect.push({
           code: code,
           name: name,
@@ -248,12 +252,11 @@
           avatar: avatar,
           permissions: permissions 
         })
-
-
       },
       SearchUser: function () {
 
-        if(this.IdentificatorMember != null && this.IdentificatorMember != "" && this.IdentificatorMember != " " && this.IdentificatorMember != "  "){        
+        if(this.IdentificatorMember != null && this.IdentificatorMember != "" && this.IdentificatorMember != " " && this.IdentificatorMember != "  "){
+          
           axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
             IdentificatorNotMember: this.IdentificatorMember
           }).then((response) => {

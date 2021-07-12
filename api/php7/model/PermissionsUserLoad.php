@@ -21,7 +21,7 @@ class PermissionsUserLoad
 		$stm -> bindParam(2, $IdentificatorNotMember);
 		$stm -> execute();
 
-		if( $stm->rowCount() > 0 ){		
+		if( $stm->rowCount() > 0 ){
 
 			foreach ($stm->fetchAll()as $key => $value) {
 				$NestData['code'] = $value['code'];

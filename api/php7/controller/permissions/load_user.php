@@ -18,6 +18,6 @@ $IdentificatorNotMember = $array['IdentificatorNotMember'];
 $UserLoad = new PermissionsUserLoad();
 $result = $UserLoad -> PermissionsUserLoadInfoBasic( $conexion, $IdentificatorNotMember );
 
-// var_dump($result);
+
 
 echo json_encode($result);
