@@ -27,7 +27,7 @@ class PermissionsUserLoad
 				$NestData['code'] = $value['code'];
 				$NestData['email'] = $value['email'];
 				$NestData['name'] = $value['name'];
-				$NestData['avatar'] = $value['avatar'];
+				$NestData['avatar'] = $value['avatar'] == 0 ? intval( $value['avatar'] ) :  $value['avatar'] ;
 				$NestData['permissions'] = 2;
 				$data[] = $NestData;
 			}
