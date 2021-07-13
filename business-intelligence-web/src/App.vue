@@ -3,14 +3,20 @@
     @import "~noty/lib/themes/sunset.css";
     @import "./assets/boxicons-2.0.7/css/boxicons.min.css";
     @media print{ .print-none{display: none !important; } }
+
+   .my-white-space {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;   
+}
 </style>
 
 <template>
-    <div class="bg-gray-50 min-h-screen flex-grow text-gray-800">
+    <div class="h-screen flex overflow-hidden bg-gray-50 text-gray-800">
 
         <NavAside />
 
-        <div :class="CenterContent" class="ml-0 sm:ml-12 md:ml-12 px-3 sm:px-6 md:px-auto md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:w-10/12">
+        <div class="flex-1 flex-col relative z-0 overflow-y-auto">
 
             <NavHeader 
                 v-if="this.$route.name != 'RecordsUpdate' 
@@ -19,7 +25,11 @@
                 @StartContentCenterExec="StartContentCenter"
                 :user_name="user_name"
                 :user_photo="user_photo"/>
-            <router-view />
+
+            <div :class="' '+ CenterContent +' '" class="md:mx-auto px-4 pt-4 pb-8">
+                <router-view />
+            </div>
+            
 
         </div>
     </div>
@@ -33,7 +43,7 @@
     import NavHeader from './components/HeaderApp/NavHeader.vue'
     import NavAside from './components/HeaderApp/NavAside.vue'
 
-    const ContainerCenter = "3xl:m-auto"
+    const ContainerCenter = "md:max-w-7xl"
 
     export default {
         components: {

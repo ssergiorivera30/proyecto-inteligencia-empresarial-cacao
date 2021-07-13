@@ -23,28 +23,17 @@
       ServiceNameLink="Añadir proyecto" 
       ServiceID="2" />
 
- <!-- <ServicesTitles ServiceName="Mis entidades" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
+             
+  <ServicesTitles ServiceName="Componentes registrados" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 
-    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
-      :ArrayServices="ArrayServices['forms']" 
-      ServiceName="Entidades"
-      RouteLink="/entidad/detalles/"
-      FilePathImg="entidades/"
-      ServiceNameLink="Añadir formulario" 
+   <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
+      :ArrayServices="ArrayServices['componets']" 
+      ServiceName="Componentes" 
+      RouteLink="/componente/detalles/"
+      FilePathImg="componentes/"
+      ServiceNameLink="Añadir componente" 
       ServiceID="3" />
 
-    <ServicesTitles ServiceName="Mis formularios" ServiceLink="/create-service/4" ServiceNameLink="Añadir formulario" />
-
-    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
-      :ArrayServices="ArrayServices['forms']" 
-      ServiceName="formularios"
-      RouteLink="/formulario/ver/detalles/"
-      FilePathImg="formularios/"
-      ServiceNameLink="Añadir formulario" 
-      ServiceID="3" /> -->
-
-       <!-- <FileUpload :target="file" action="POST"/> -->
-       <!-- <FileUpload :target="file" action="POST" v-on:progress="progress" v-on:start="startUpload" v-on:finish="finishUpload" /> -->
       
   </div>
 
@@ -81,7 +70,7 @@ export default {
       ArrayServices: [{
         groups: [],
         projects: [],
-        forms: []
+        componets: []
       }],
       RoadEmptyService: 0,
       file: API_ROUTER.API_PUBLIC,
@@ -101,20 +90,22 @@ export default {
   },
   methods: {
     LoadAllServices: function () {
-      axios.get(API_ROUTER.PHP7_CONTROLLER + "home/home_services_load.php").then((res) => {
+      axios.post(API_ROUTER.PHP7_CONTROLLER + "home/home_services_load.php", { type_service: 'all' }).then((res) => {
+
           this.ArrayServices['projects'] = Object.entries(res.data.projects).length === 0  ? null : res.data.projects
           this.ArrayServices['groups'] = Object.entries(res.data.groups).length === 0  ? null : res.data.groups
-          this.ArrayServices['forms'] = Object.entries(res.data.forms).length === 0  ? null : res.data.forms
-          // console.log(this.ArrayServices['groups'] )
-          // console.log(this.ArrayServices['projects'] )
-          // console.log(this.ArrayServices['forms'] )
-          if( this.ArrayServices['groups'] != null && this.ArrayServices['projects'] != null && this.ArrayServices['forms'] != null ){
-            // this.RoadEmptyService = 1              
+          this.ArrayServices['componets'] = Object.entries(res.data.componets).length === 0  ? null : res.data.componets
+    
+          if( this.ArrayServices['groups'] != null && this.ArrayServices['projects'] != null && this.ArrayServices['componets'] != null ){
+            // this.RoadEmptyService = 1          
           }
+
         }).catch(() => {
-          console.log('Error de conexión')
+          console.log('Error de conexión')          
       })
     },
+
+
   },
 };
 </script>

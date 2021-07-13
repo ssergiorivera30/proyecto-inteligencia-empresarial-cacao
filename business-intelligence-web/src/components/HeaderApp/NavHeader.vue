@@ -1,6 +1,8 @@
 <template>
 
-<header class="print-none flex sticky top-0 z-10 items-center h-14 w-full bg-gray-50">
+<!-- print-none flex sticky top-0 z-10 items-center h-14 w-full bg-gray-50 -->
+
+<header class="print-none sticky top-0 z-10 px-4 md:px-8 py-2 h-14 flex justify-between items-center shadow-sm bg-gray-50">
 
    <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-color-text-ui hover:bg-gray-100 hover:text-color-text-ui focus:text-color-text-ui rounded-md">
           <span class="sr-only">Menu</span>
@@ -81,7 +83,7 @@
 
 
 
-  const ContainerCenter = "3xl:m-auto"
+  const ContainerCenter = "md:max-w-7xl"
 
   export default {
     name: 'NavHeader',
@@ -104,7 +106,7 @@
     },
     methods: {
       ClickCenterConter: function(){
-        this.CenterContent == ContainerCenter ? localStorage.setItem("classContainer", 'lg:ml-7 ') : localStorage.setItem("classContainer", ContainerCenter)
+        this.CenterContent == ContainerCenter ? localStorage.setItem("classContainer", 'md:max-w-8xl') : localStorage.setItem("classContainer", ContainerCenter)
         this.CenterContent = localStorage.getItem("classContainer")
         this.$emit('StartContentCenterExec', this.CenterContent)
       },

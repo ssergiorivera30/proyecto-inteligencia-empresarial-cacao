@@ -19,8 +19,8 @@ $type_service = $array['type_service'];
 $id_user = 1;
 
 
-$respuesta = (new Objects())->LoadInfoBasicByService($conection, $type_service, $id_user);
+$respuesta = (new Objects())->EntitysLoad($conection, $type_service, $id_user);
 
-
+$arrayName = array( 'components' => $respuesta );
 $response = new Response();
-$response_view = $response -> ResponseMsgObject($respuesta['respuesta'], $respuesta['object']);
+$response -> ResponseInfiniteObjects( $arrayName );

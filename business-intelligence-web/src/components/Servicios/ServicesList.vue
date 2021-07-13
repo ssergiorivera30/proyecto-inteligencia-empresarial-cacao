@@ -7,33 +7,39 @@
         </h2>
     </section>
 
-    <div v-else class="w-full">
-        <div class="bg-white shadow overflow-hidden	">
-            <div class="w-full whitespace-nowrap">
-                <div class="w-full">
-                    <div v-for="info in ArrayServices" :key="info"
-                        class="grid grid-cols-12 h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100  pl-4 ">
+    <div v-else class="w-full bg-white shadow overflow-hidden">
+      
+       
+                    <div v-for="info in ArrayServices" :key="info" class="grid grid-cols-12 h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-gray-100">
 
-                        <div class="col-span-5 flex justify-between cursor-pointer"
-                            @click="this.$router.push(RouteLink + info.id)">
+                        <div class="col-span-5 flex justify-between cursor-pointer " @click="this.$router.push(RouteLink + info.id)">
+
                             <div class="flex items-center">
-                                <div class="w-10 h-full">
-                                    <img v-if="this.$props.ServiceID == 1" class="w-full h-full"
-                                        :src="SrcPublic+info.logo" />
-                                    <img v-if="this.$props.ServiceID == 2" class="w-full h-full"
-                                        :src="SrcPublic+'default.svg'" />
-                                    <img v-if="this.$props.ServiceID == 3" class="w-full h-full"
-                                        :src="SrcPublic+'default.svg'" />
+                                <div class="w-10 h-full">                                 
+                             
+                                    <img v-if="this.$props.ServiceID == 1" class="w-full h-full select-none" :class="[ info.logo === 'default.svg' ? 'ml-1' : 'object-cover' ]" :src="SrcPublic+info.logo" draggable="false"/>
+
+                                    <img v-if="this.$props.ServiceID == 2" class="w-full h-full select-none" :class="[ info.logo === 'default.svg' ? 'ml-1' : 'object-cover' ]" :src="SrcPublic+info.logo" draggable="false"/>
+
+                                    <img v-if="this.$props.ServiceID == 3" class="w-full h-full select-none" :class="[ info.logo === 'default.svg' ? 'ml-1' : 'object-cover' ]" :src="SrcPublic+info.logo" draggable="false"/>
+
                                 </div>
-                                <div class="pl-4">
-                                    <p v-if="info.name.length > 36" class="font-medium">{{ info.name.substring(0,36)
-                                        }}...</p>
-                                    <p v-else class="font-medium">{{ info.name }}</p>
-                                    <p v-if="info.description.length > 28" class="text-xs leading-3 text-gray-600 pt-2">
-                                        {{ info.description.substring(0,28) }}...</p>
-                                    <p v-else class="text-xs leading-3 text-gray-600 pt-2">{{ info.description }}</p>
+
+                                <div class="pl-4">                                 
+                                    <p class="font-medium my-white-space py-1 max-w-xl md:max-w-xs lg:max-w-md xl:max-w-lg ">{{ info.name }}</p>
+                                    <p class="text-xs leading-3 text-gray-600 py-1 my-white-space max-w-xl md:max-w-xs lg:max-w-md xl:max-w-lg ">{{ info.description }}</p>                                    
                                 </div>
+                                
+
                             </div>
+                        </div>
+
+
+<!-- flex-col overflow-hidden
+whitespace-nowrap truncate -->
+
+                        <div class="hidden md:flex col-span-1 justify-center ml-4">
+
                         </div>
 
                         <div class="hidden md:flex col-span-2 justify-center ml-4">
@@ -59,26 +65,19 @@
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex col-span-6 md:col-span-5  justify-between ml-12 md:ml-4">
+                        <div class="hidden md:flex col-span-3 md:col-span-3 justify-between ml-12 md:ml-4">
                             <div class="flex items-center">
-                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow"
-                                    :src="imagen_a" />
-                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
-                                    :src="imagen_b" />
-                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
-                                    :src="imagen_c" />
-                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
-                                    :src="imagen_d" />
-                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2"
-                                    :src="imagen_e" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow select-none" draggable="false" :src="imagen_a" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none" draggable="false" :src="imagen_b" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none" draggable="false" :src="imagen_c" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none" draggable="false" :src="imagen_d" />
+                                <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none" draggable="false" :src="imagen_e" />
                             </div>
                         </div>
 
-
                     </div>
-                </div>
-            </div>
-        </div>
+              
+   
     </div>
 </template>
 

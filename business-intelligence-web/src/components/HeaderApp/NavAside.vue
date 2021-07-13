@@ -2,7 +2,11 @@
 
   <!-- min-h-screen -->
 
-  <aside class="py-4 print-none hidden sm:flex sm:flex-col items-center justify-between fixed w-14 h-screen bg-principal-color-ui shadow">
+ 
+
+  <!-- py-4 print-none hidden sm:flex sm:flex-col items-center justify-between fixed w-14 h-screen bg-principal-color-ui shadow -->
+
+  <aside class="py-4 w-14 min-h-screen overflow-y-auto hidden sm:flex sm:flex-col items-center justify-between bg-principal-color-ui shadow relative z-30">
 
     <div class="flex flex-col space-y-4">
 
@@ -45,18 +49,6 @@
         </div>
       </router-link>
 
-      <router-link to="/cuenta/ver" class="inline-flex items-center justify-center text-white rounded-lg cursor-pointer">
-        <div class="bg-white h-5 w-5 md:h-7 md:w-7 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden transition duration-700 ease-out transform hover:scale-150">
-          <img :src="imagen_d" alt="" class="shadow object-cover h-full" draggable="false">
-        </div>
-      </router-link>
-
-      <router-link to="/cuenta/ver"
-        class="inline-flex items-center justify-center text-white rounded-lg cursor-pointer 	">
-        <div class="bg-white h-5 w-5 md:h-7 md:w-7 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden transition duration-700 ease-out transform hover:scale-150 ">
-          <img :src="imagen_c" alt="" class="shadow object-cover h-full" draggable="false">
-        </div>
-      </router-link>
 
        <router-link to="/cuenta/ver" class="inline-flex items-center justify-center text-white rounded-lg cursor-pointer">
         <div class="bg-white h-5 w-5 md:h-7 md:w-7 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden transition duration-700 ease-out transform hover:scale-150">
@@ -65,7 +57,7 @@
       </router-link>
 
       <router-link to="/cuenta/ver" class="inline-flex items-center justify-center text-white rounded-lg cursor-pointer">
-        <div class="bg-white h-5 w-5 md:h-7 md:w-7  flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden transition duration-700 ease-out transform hover:scale-150">
+        <div class="bg-white h-5 w-5 md:h-7 md:w-7 flex items-center justify-center text-black text-2xl font-semibold rounded-3xl mb-1 overflow-hidden transition duration-700 ease-out transform hover:scale-150">
           <img :src="imagen_b" alt="" class="shadow object-cover h-full" draggable="false">
         </div>
       </router-link>

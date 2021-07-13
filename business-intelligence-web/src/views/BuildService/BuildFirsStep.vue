@@ -1,10 +1,8 @@
 <template>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-
-    <div class="mt-3">
-      
-      <header class="flex items-center" @click="ShowBasic = 2 ">
+    <div class="mt-3">      
+      <header class="flex items-center">
         <a href="javascript:history.back()" class="relative text-white rounded-full focus:outline-none pr-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -14,19 +12,13 @@
         </h2>
       </header>
 
-      <div v-if="ShowBasic === 2" class="space-y-3 mt-10">
+       <div v-if="ShowBasic === 2" class="space-y-3 mt-10">
         <div v-if="ServiceType == 1">
+
         <label class="text-gray-700 font-semibold text-xs">Logo</label>
         <input type="file" name="fileUpload" class="form-control2" @change="onFileChange" >
-      </div>
+      </div>     
 
-      <div class="text-left">
-       
-
-        <button type="button" class="btn-primary">
-          Continuar
-        </button>
-      </div>
     </div>
     
     <form v-if="ShowBasic === 1" action="#" method="POST" class="space-y-2 mt-5" @submit.prevent="SaveInitialForm()">
@@ -43,9 +35,7 @@
       <div>
         <label class="text-gray-700 font-semibold text-xs">Breve descripción</label>
         <textarea wrap="hard" rows="7" class="form-control2" required v-model="ServiceDescription"></textarea>
-      </div>
-
-          
+      </div>        
 
       <div class="text-left pt-2">
         <button type="submit" class="btn-primary">
@@ -85,10 +75,11 @@
         service_form: API_ROUTER.API_UI + "services/form_2.svg",
         ImageService: '',
         ImageAvatar:  API_ROUTER.API_PUBLIC + "avatars/",
+        ImageServiceLoad: null,
 
         RouterUploadImage: API_ROUTER.API_GENERAL+'file-upload/upload_avatar_team.php',
        
-        CodeServiseRegistred: 1,
+        CodeServiseRegistred: null,
         
         ShowBasic: 1,
 
@@ -126,14 +117,34 @@
 
     },
     methods: {
+      onFileChange: function(event){
+        let formData = new FormData();
+        formData.append("name", "file");
+        formData.append("file", event.target.files[0]);
+        formData.append("type_service", this.$route.params.type_service );
+        formData.append("service", this.CodeServiseRegistred );
+        
 
-      onFileCahnge(){
-        this.file = files[0]
-        let formData = new FormData()
-        formData.append('file', this.file)
+        axios.post(API_ROUTER.PHP7_CONTROLLER +'uploadFile/upload_logo.php', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+         }).then(res =>{
 
-      },
-   
+            if(res.data.response == 'success'){
+                this.ImageServiceLoad = API_ROUTER.API_UI +"grupos/"+ res.data.image              
+            }
+
+            new Noty({
+            theme: "sunset",
+            layout: "topRight",
+            progressBar: true,
+            closeWith: ["click", "button"],
+            timeout: 8000,
+            type: res.data.response,
+            text: res.data.mensaje,
+          }).show();
+            this.$router.replace("/constructor-service/" + this.CodeServiseRegistred);         
+        })
+      }, 
       SaveInitialForm: function () {
         axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_first_step.php", {
           ServiceType: this.$route.params.type_service,
@@ -154,9 +165,7 @@
             if(this.ServiceType == 1){
                this.ShowBasic = 2 
                this.CodeServiseRegistred = response.data.code
-            }else{
-              this.$router.replace("/constructor-service/" + response.data.code);
-            }            
+            }           
           }
         });
       },

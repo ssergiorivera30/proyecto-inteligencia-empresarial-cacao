@@ -85,9 +85,15 @@
                   <textarea rows="8" class="form-control2 py-2" required v-model="ServiceDescription"></textarea>
                </div>
                <p class="mt-1 text-sm text-gray-500">
-                  * Esta información se puede actualizar posteriormente.
+                  * Esta información se puede actualizar en cualquier momento.
                </p>
             </div>
+
+            <div v-if="ServiceType != null && ServiceType == 1 || ServiceType == 2">          
+               <label class="text-gray-700 font-semibold text-xs">Logo</label>
+               <input type="file" name="fileUpload" class="form-control2" @change="onFileChange" >
+            </div>
+
 
             <div class="my-1 text-left">
                <button type="submit" class="btn-indigo">Actualizar</button>
@@ -128,14 +134,15 @@
 </template>
 <script>
 
-   import axios from "axios"
-   import API_ROUTER from "./../../services/SERVER_API"
-   import ArlertBasic from './../../components/Overlay/ArlertBasic'
+   import axios from "axios";
+   import API_ROUTER from "./../../services/SERVER_API";
+   import ArlertBasic from './../../components/Overlay/ArlertBasic';
+     import Noty from "noty";
 
-   import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo"
-   import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor"
-   import ServiceAddInputForm from "./../../components/BuildServices/ServiceAddInputForm"
-   import ServiceEditInputForm from "./../../components/BuildServices/ServiceEditInputForm"
+   import ServicePreviewBasicInfo from "./../../components/BuildServices/ServicePreviewBasicInfo";
+   import ServicePreviewFormEditor from "./../../components/BuildServices/ServicePreviewFormEditor";
+   import ServiceAddInputForm from "./../../components/BuildServices/ServiceAddInputForm";
+   import ServiceEditInputForm from "./../../components/BuildServices/ServiceEditInputForm";
 
    export default {
       components: {
@@ -164,7 +171,10 @@
             },
             ArraySubOptionsValues: [],
             Input_Asigned_By_Edit: null,
-            AddInputExpandCreator: false
+            AddInputExpandCreator: false,
+
+            ImageServiceLoad: null,
+            ServiceType: null
 
          }
       },
@@ -185,6 +195,34 @@
          Select_Edit_Input_JSON: function (value) {            
             this.Input_Asigned_By_Edit = value
          },
+
+         onFileChange: function(event){
+            let formData = new FormData();
+            formData.append("name", "file");
+            formData.append("file", event.target.files[0]);
+            formData.append("type_service", this.ServiceType );
+            formData.append("service", parseInt(this.$route.params.id_service) );
+
+            axios.post(API_ROUTER.PHP7_CONTROLLER +'uploadFile/upload_logo.php', formData, {
+                  headers: { 'Content-Type': 'multipart/form-data' }
+               }).then(res =>{
+
+                  if(res.data.response == 'success'){
+                     this.ImageServiceLoad = API_ROUTER.API_UI +"grupos/"+ res.data.image              
+                  }
+
+                  new Noty({
+                     theme: "sunset",
+                     layout: "topRight",
+                     progressBar: true,
+                     closeWith: ["click", "button"],
+                     timeout: 8000,
+                     type: res.data.response,
+                     text: res.data.mensaje,
+                  }).show();
+              
+            })
+         }, 
 
          // PETICIONES A LA BASES DE DATOS
 
@@ -235,6 +273,7 @@
                   }
                   this.ServiceName = response['data']['datos'][0]['name']
                   this.ServiceDescription = response['data']['datos'][0]['description']
+                  this.ServiceType = response['data']['datos'][0]['type']
 
                   if (response['data']['datos'][0]['data_json'] != null) {
                      this.ArrayInputs = JSON.parse(response['data']['datos'][0]['data_json'])

@@ -27,36 +27,6 @@ class Projects
 	}
 
 
-
-	function CreateProjects($conection, $ProjectName, $USER_CODE){
-		$sql = "INSERT projects(pro_name, pro_date_create, pro_hour_create)VALUES(?, NOW(), NOW() )";
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $ProjectName);
-		$stm -> execute();
-
-		$ID_PROJECT = $conection->lastInsertId();
-
-		$sql_pro = "INSERT INTO projects_users (pus_id_project, pus_id_user, pus_date_create, pus_hour_create ) VALUES ( ?,?, NOW(), NOW() )";
-		$stm_pro = $conection -> prepare( $sql_pro );
-		$stm_pro -> bindParam(1, $ID_PROJECT);
-		$stm_pro -> bindParam(2, $USER_CODE);
-		$stm_pro -> execute();
-
-		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_PROJECT );
-	}
-
-	function RegisterCodeProjects($conection, $ProjectCodeID, $ProjectCode, $ProjectEntity){
-		$sql = "INSERT projects_codes(prco_project_id, prco_code, prco_entity ) VALUES(?, ?, ? )";
-		$stm = $conection -> prepare( $sql );
-		$stm -> bindParam(1, $ProjectCodeID);
-		$stm -> bindParam(2, $ProjectCode);
-		$stm -> bindParam(3, $ProjectEntity);
-		$stm -> execute();
-		return $respuesta = array('respuesta' => $stm->rowCount());
-	}
-
-
-
 	function LoadProjectsIdBasics($conection, $ProjectId){	
 
 		$datos = array();	 
