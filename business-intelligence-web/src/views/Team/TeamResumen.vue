@@ -80,7 +80,7 @@
 
       
 
-      <div class=" shadow-md bg-yellow-50" v-if="UserMembersSelectUpdate.length != 0">
+      <div class="" v-if="UserMembersSelectUpdate.length != 0">
          <div v-if="UserMembersSelectUpdate.length != 0" class="items-center justify-between">
             <div class="grid grid-cols-12 items-center my-3 px-2 py-2 rounded w-full">
                <div class="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-1 h-10 w-10 ">
@@ -90,7 +90,7 @@
                   <img v-else :src="ImageAvatar+UserMembersSelectUpdate.avatar" role="img"
                      class="rounded-full object-cover h-full w-full shadow">
                </div>
-               <div class="col-span-3 md:col-span-6 lg:col-span-6">
+               <div class="col-span-3 md:col-span-5 lg:col-span-5">
                   <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{
                      UserMembersSelectUpdate['name'] }}</p>
                   <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{
@@ -124,7 +124,7 @@
                </div>
 
                <div class="col-span-2 lg:col-span-2">
-                  <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-yellow-50"
+                  <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50"
                      v-model="UserMembersSelectUpdate['permissions']">
                      <option value="1" disabled>Propietario</option>
                      <option value="2">Ver</option>
