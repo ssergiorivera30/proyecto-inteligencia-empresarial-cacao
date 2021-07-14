@@ -1,5 +1,5 @@
 <template>
-   <div class="mx-auto 2xl:max-w-screen-md pt-2">
+   <div class="mx-auto 2xl:max-w-screen-md">
       <div class="grid grid-cols-1 mb-10">
 
          <ServicePreviewBasicInfo :ServiceName="ServiceName" :ServiceDescription="ServiceDescription" />
