@@ -32,7 +32,7 @@
       </div>
    </div>
 
-  <div class="my-2">
+  <div class="my-2 pt-6 md:pt-0">
     <ul class="list-reset flex pb-2 overscroll-x-auto overflow-y-hidden whitespace-nowrap">       
         <!-- <router-link 
             v-if="GoBack !== 'back'"

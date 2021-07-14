@@ -1,11 +1,11 @@
 <template>
    <header class="flex items-center justify-between">
       <div class="flex">
-            <span v-if="ServiceStatus == 1" class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none bg-green-200 text-green-800 rounded-full">
-               {{ NameService }} activo
+            <span v-if="ServiceStatus == 1" class="inline-flex items-center justify-center text-center px-3 py-1 text-xs font-bold leading-none bg-green-200 text-green-800 rounded-full">
+               <span class="pr-1">{{ NameService }} activo</span>
             </span>
-            <span v-else class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-yellow-100 bg-yellow-400 rounded-full">
-               {{ NameService }} Inactivo
+            <span v-else class="inline-flex items-center justify-center text-center px-3 py-1 text-xs font-bold leading-none text-yellow-100 bg-yellow-400 rounded-full">
+               <span class="pr-1">{{ NameService }} Inactivo</span>
             </span>
          </div>
 
