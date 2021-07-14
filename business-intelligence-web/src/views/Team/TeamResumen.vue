@@ -47,7 +47,7 @@
                      <div class="col-span-2 lg:col-span-1">
                         <h5 class="font-medium">
                            <svg
-                              @click="AddMember(user.code, user.name, user.email, user.avatar, UserMembersList[index]['permissions']), UserMembersList.splice(index, 1)"
+                              @click="AddUserService(user.code, UserMembersList[index]['permissions']), UserMembersList.splice(index, 1)"
                               xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui"
                               fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -94,9 +94,11 @@
                <div class="col-span-2 lg:col-span-2">
                   <h5 class="font-medium pl-5">
                      
-                     <svg  @click="DeleteUsersService(UserMembersSelectUpdate)" 
-                           xmlns="http://www.w3.org/2000/svg" 
-                           class="cursor-pointer h-5 w-5 text-red-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                     <svg 
+                        v-if="UserMembersSelectUpdate['permissions'] != 1"
+                        @click="DeleteUsersService(UserMembersSelectUpdate)" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        class="cursor-pointer h-5 w-5 text-red-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <line x1="4" y1="7" x2="20" y2="7"></line>
                         <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -110,7 +112,9 @@
 
                <div class="col-span-2 lg:col-span-2">
                   <h5 class="font-medium">
-                     <svg @click="UpdateUsersService(UserMembersSelectUpdate)" xmlns="http://www.w3.org/2000/svg"
+                     <svg 
+                        v-if="UserMembersSelectUpdate['permissions'] != 1"
+                        @click="UpdateUsersService(UserMembersSelectUpdate)" xmlns="http://www.w3.org/2000/svg"
                         class="cursor-pointer h-5 w-5 text-principal-color-ui" width="24" height="24"
                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -123,13 +127,17 @@
                   </h5>
                </div>
 
-               <div class="col-span-2 lg:col-span-2">
-                  <select class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50"
+               <div class="col-span-2 lg:col-span-2" >
+                  <select v-if="UserMembersSelectUpdate['permissions'] != 1" class="pr-5 font-medium truncate overflow-ellipsis overflow-hidden bg-gray-50"
                      v-model="UserMembersSelectUpdate['permissions']">
                      <option value="1" disabled>Propietario</option>
                      <option value="2">Ver</option>
                      <option value="3">Editar</option>
 
+                  </select>
+
+                  <select v-else class="bg-gray-50">
+                     <option value="1" selected disabled>Propietario</option>
                   </select>
                </div>
             </div>
@@ -178,17 +186,7 @@
                });
          },
 
-         AddUserService: function(code, permissions){
-            axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
-               order: 'create',
-               id_service: parseInt(this.$route.params.id_service),
-               id_user: parseInt(code),
-               permissions: parseInt(permissions)
-               }).then(() => {
-                  this.LoadUsersService()
-               });
-         }, 
-
+         
 
          UpdateUsersService: function(UserMembersSelectUpdate){
                 
@@ -208,7 +206,7 @@
                order: 'delete_user',
                identificator: parseInt(UserMembersSelectUpdate.identificator)
                }).then(() => {
-                  
+
                   this.UserMembersSelectUpdate = [];
                   this.UserMembersSelectUpdateID = null;
                   this.LoadUsersService();
@@ -217,9 +215,10 @@
          },
          
          OrderSearchUser: function(){
-            if (this.IdentificatorMember != null && this.IdentificatorMember != "" && this.IdentificatorMember != " " && this.IdentificatorMember != "  ") {
+            if (this.IdentificatorMember != null && 
+               this.IdentificatorMember != "") {
 
-               this.SearchUser();
+                  this.SearchUser();
 
                } else {
 
@@ -246,16 +245,21 @@
             });            
          },
 
-         AddMember: function (code, name, email, avatar, permissions) {
-            this.UserMembersSelect.push({
-               code: code,
-               name: name,
-               email: email,
-               avatar: avatar,
-               permissions: permissions
-            })
-            this.AddUserService(code, permissions);
-         },
+         AddUserService: function(code, permissions){
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
+               order: 'create',
+               id_service: parseInt(this.$route.params.id_service),
+               id_user: parseInt(code),
+               permissions: parseInt(permissions)
+               }).then((response) => {
+
+                  if(response.data.status === 'success'){
+                     this.LoadUsersService()
+                  }
+               });
+         }, 
+
+
       }
    }
 </script>

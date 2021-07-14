@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2021 a las 05:17:37
+-- Tiempo de generación: 15-07-2021 a las 01:22:36
 -- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.4.16
+-- Versión de PHP: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -123,10 +123,28 @@ CREATE TABLE `tbl_service_permissions` (
   `tbsep_auto_id` int(11) NOT NULL,
   `tbsep_id_service` int(11) NOT NULL,
   `tbsep_id_user` int(11) NOT NULL,
-  `tbsep_create` tinyint(1) NOT NULL DEFAULT 0,
-  `tbsep_read` tinyint(1) NOT NULL DEFAULT 0,
-  `tbsep_update` tinyint(1) NOT NULL DEFAULT 0,
-  `tbsep_delete` tinyint(1) NOT NULL DEFAULT 0
+  `tbsep_is_create` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_is_read` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_is_update` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_is_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_is_share` tinyint(1) NOT NULL DEFAULT 0,
+  `tbsep_date_created` date NOT NULL,
+  `tbsep_hour_created` time NOT NULL,
+  `tbsep_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tbsep_status` tinyint(1) NOT NULL DEFAULT 1,
+  `tbsep_end_permissions` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_service_structure`
+--
+
+CREATE TABLE `tbl_service_structure` (
+  `tbsst_auto_id` int(11) NOT NULL,
+  `tbsst_id_service_phather` int(11) NOT NULL,
+  `tbsst_id_service_son` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -388,7 +406,16 @@ ALTER TABLE `tbl_services`
 -- Indices de la tabla `tbl_service_permissions`
 --
 ALTER TABLE `tbl_service_permissions`
-  ADD PRIMARY KEY (`tbsep_auto_id`);
+  ADD PRIMARY KEY (`tbsep_auto_id`),
+  ADD KEY `tbsep_id_user` (`tbsep_id_user`),
+  ADD KEY `tbl_service_permissions_ibfk_2` (`tbsep_id_service`);
+
+--
+-- Indices de la tabla `tbl_service_structure`
+--
+ALTER TABLE `tbl_service_structure`
+  ADD PRIMARY KEY (`tbsst_auto_id`),
+  ADD KEY `tbsst_id_service_phather` (`tbsst_id_service_phather`);
 
 --
 -- Indices de la tabla `tbl_type_service`
@@ -459,13 +486,19 @@ ALTER TABLE `system_status`
 -- AUTO_INCREMENT de la tabla `tbl_services`
 --
 ALTER TABLE `tbl_services`
-  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `tbse_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_service_permissions`
 --
 ALTER TABLE `tbl_service_permissions`
-  MODIFY `tbsep_auto_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tbsep_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_service_structure`
+--
+ALTER TABLE `tbl_service_structure`
+  MODIFY `tbsst_auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_type_service`
@@ -514,6 +547,19 @@ ALTER TABLE `tbl_services`
   ADD CONSTRAINT `tbl_services_ibfk_1` FOREIGN KEY (`tbse_id_type_service`) REFERENCES `tbl_type_service` (`tbtse_auto_id`);
 
 --
+-- Filtros para la tabla `tbl_service_permissions`
+--
+ALTER TABLE `tbl_service_permissions`
+  ADD CONSTRAINT `tbl_service_permissions_ibfk_1` FOREIGN KEY (`tbsep_id_user`) REFERENCES `users_keys` (`usk_auto_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_service_permissions_ibfk_2` FOREIGN KEY (`tbsep_id_service`) REFERENCES `tbl_services` (`tbse_auto_id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `tbl_service_structure`
+--
+ALTER TABLE `tbl_service_structure`
+  ADD CONSTRAINT `tbl_service_structure_ibfk_1` FOREIGN KEY (`tbsst_id_service_phather`) REFERENCES `tbl_services` (`tbse_auto_id`) ON DELETE CASCADE;
+
+--
 -- Filtros para la tabla `users_avatars`
 --
 ALTER TABLE `users_avatars`
@@ -552,6 +598,10 @@ USE `phpmyadmin`;
 
 --
 -- Metadatos para la tabla tbl_service_permissions
+--
+
+--
+-- Metadatos para la tabla tbl_service_structure
 --
 
 --
@@ -604,13 +654,19 @@ SET @LAST_PAGE = LAST_INSERT_ID();
 --
 
 INSERT INTO `pma__table_coords` (`db_name`, `table_name`, `pdf_page_number`, `x`, `y`) VALUES
-('big_nova_software', 'tbl_services', @LAST_PAGE, 606, 378),
-('big_nova_software', 'tbl_type_service', @LAST_PAGE, 971, 153),
-('big_nova_software', 'user_count_type', @LAST_PAGE, 69, 585),
-('big_nova_software', 'user_data_personals', @LAST_PAGE, 345, 12),
+('big_nova_software', 'log_user_sesions_success', @LAST_PAGE, 361, 484),
+('big_nova_software', 'system_status', @LAST_PAGE, 58, 735),
+('big_nova_software', 'tbl_service_permissions', @LAST_PAGE, 821, 113),
+('big_nova_software', 'tbl_service_structure', @LAST_PAGE, 1139, 452),
+('big_nova_software', 'tbl_services', @LAST_PAGE, 821, 457),
+('big_nova_software', 'tbl_type_service', @LAST_PAGE, 1141, 557),
+('big_nova_software', 'user_count_type', @LAST_PAGE, 48, 338),
+('big_nova_software', 'user_data_personals', @LAST_PAGE, 360, 12),
 ('big_nova_software', 'users_avatars', @LAST_PAGE, 50, 12),
-('big_nova_software', 'users_credentials', @LAST_PAGE, 68, 426),
-('big_nova_software', 'users_keys', @LAST_PAGE, 67, 231);
+('big_nova_software', 'users_credentials', @LAST_PAGE, 47, 180),
+('big_nova_software', 'users_keys', @LAST_PAGE, 358, 250),
+('big_nova_software', 'z3_entity_27', @LAST_PAGE, 1106, 882),
+('big_nova_software', 'z3_entity_4', @LAST_PAGE, 741, 877);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

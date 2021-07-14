@@ -3,7 +3,7 @@
   <!-- <WelcomeSistema /> -->
     <ServicesEmpty v-if="RoadEmptyService === 1"/>
 
-    <ServicesTitles ServiceName="Mis grupos" ServiceLink="/create-service/1" ServiceNameLink="Añadir grupo" :ServiceIconHTML="ServiceIconHTML"/>
+    <ServicesTitles ServiceName="Mis grupos" :TitlteContenLinks="true" ServiceLink="/create-service/1/0/start" ServiceNameLink="Añadir grupo" :ServiceIconHTML="ServiceIconHTML"/>
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['groups']" 
@@ -13,7 +13,7 @@
       ServiceNameLink="Añadir grupo" 
       ServiceID="1" />
 
-    <ServicesTitles ServiceName="Mis proyectos" ServiceLink="/create-service/2" ServiceNameLink="Añadir proyecto" :ServiceIconHTML="ServiceIconHTML"/>
+    <ServicesTitles ServiceName="Mis proyectos" :TitlteContenLinks="false" ServiceLink="/create-service/2" ServiceNameLink="Añadir proyecto" :ServiceIconHTML="ServiceIconHTML"/>
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['projects']" 
@@ -24,7 +24,7 @@
       ServiceID="2" />
 
              
-  <ServicesTitles ServiceName="Componentes registrados" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
+  <ServicesTitles ServiceName="Componentes registrados" :TitlteContenLinks="false" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 
    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['componets']" 
@@ -49,12 +49,7 @@ import API_ROUTER from './../services/SERVER_API'
 import WelcomeSistema from "../components/Home/WelcomeSistema";
 import ServicesEmpty from "../components/Servicios/ServicesEmpty";
 import ServicesTitles from "../components/Titles/ServicesTitles";
-
-import FileUpload from 'vue-simple-upload/dist/FileUpload'
-
-
 import ServicesList from "../components/Servicios/ServicesList";
-
 
 export default {
   name: "Home",
@@ -62,8 +57,7 @@ export default {
     WelcomeSistema,
     ServicesEmpty,
     ServicesTitles,
-    ServicesList, 
-    FileUpload
+    ServicesList
   },
   data() {
     return {            

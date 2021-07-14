@@ -51,7 +51,6 @@
       <img class="pointer-events-none bg-gray-50 rounded-md static object-contain" loading="lazy" draggable="false" :src="ImageService" alt="" />
     </div>
 
-
   </div>
 </template>
 <script>
@@ -96,6 +95,8 @@
       };
     },
     mounted: function () {
+
+      console.log(this.$route)
 
       if (this.$route.params.type_service == 1) {
         this.NameTypeService = 'grupo ó equipo de trabajo'
@@ -142,12 +143,15 @@
             type: res.data.response,
             text: res.data.mensaje,
           }).show();
-            this.$router.replace("/constructor-service/" + this.CodeServiseRegistred);         
+
+          this.$router.replace("/constructor-service/" + this.CodeServiseRegistred);
+
         })
       }, 
       SaveInitialForm: function () {
         axios.post(API_ROUTER.PHP7_CONTROLLER + "build/create_build_first_step.php", {
           ServiceType: this.$route.params.type_service,
+          ServiceFather: this.$route.params.id_service_father,
           ServiceName: this.ServiceName,
           ServiceDescription: this.ServiceDescription,
         }).then((response) => {

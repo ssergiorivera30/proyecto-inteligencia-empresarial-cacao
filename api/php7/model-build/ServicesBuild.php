@@ -38,7 +38,7 @@ class ServicesBuild
 
 
 	// PRIMER PASO => REGISTRAR EL SERVICIO => tbl_services.
-	function CreateService($conexion, $ServiceType, $ServiceName, $ServiceDescription){		
+	function CreateService($conexion, $ServiceType, $ServiceName, $ServiceDescription){	    
 
 		$sql = "INSERT INTO 
 					tbl_services (tbse_id_type_service, tbse_name, tbse_description, tbse_date_created, tbse_hour_created) 
@@ -51,6 +51,7 @@ class ServicesBuild
 		$stm -> bindParam(3, $ServiceDescription);
 		$stm -> execute();
 		$ID_OBJECT =  $conexion->lastInsertId();
+
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'id' => $ID_OBJECT );
 	}
 
@@ -87,7 +88,7 @@ class ServicesBuild
 		return $respuesta = array('respuesta' => $stm->rowCount(), 'object' => $datos, 'data_json' => $data_json  );		
 	}
 
-		function UpdateServiceBasic($conexion, $serviceId, $ServiceName, $ServiceDescription ){
+	function UpdateServiceBasic($conexion, $serviceId, $ServiceName, $ServiceDescription ){
 		$sql = "UPDATE tbl_services SET tbse_name=?, tbse_description=? WHERE tbse_auto_id=?";
 		$stm = $conexion -> prepare( $sql );
 		$stm -> bindParam(1, $ServiceName);
@@ -96,5 +97,7 @@ class ServicesBuild
 		$stm -> execute();
 		return $stm->rowCount();
 	}
+
+	
 
 }

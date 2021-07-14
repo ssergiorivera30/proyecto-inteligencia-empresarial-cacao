@@ -14,7 +14,7 @@ class PermissionsUserLoad
 				FROM 
 					users_credentials a
 					INNER JOIN user_data_personals b ON a.usr_user_id = b.udp_user_id
-					INNER JOIN users_avatars c ON a.usr_user_id = c.usava_id_user
+					INNER JOIN users_avatars c ON a.usr_user_id = c.usava_id_user					
 				WHERE
 				b.udp_name LIKE ? OR a.usr_email LIKE ? limit 5";
 
@@ -39,26 +39,38 @@ class PermissionsUserLoad
 	function UserPermissionCreate( $conexion, $id_service, $id_user, $permissions  ){
 
 		$response_permissions_config = self::PermissionsAdapateBD($permissions);
-		
-		$sql = "INSERT INTO 
-					tbl_service_permissions 
-						(	tbsep_id_service, tbsep_id_user, 
-						tbsep_is_create, tbsep_is_read, tbsep_is_update, tbsep_is_delete, tbsep_is_share, 
-						tbsep_date_created, tbsep_hour_created	) 
-					VALUES 
-						(?, ?, ?, ?, ?, ?, ?, NOW(), NOW() )";
 
-		$stm = $conexion -> prepare( $sql );
-		$stm -> bindParam(1, $id_service);
-		$stm -> bindParam(2, $id_user);
-		$stm -> bindParam(3, $response_permissions_config['is_create']);
-		$stm -> bindParam(4, $response_permissions_config['is_read']);
-		$stm -> bindParam(5, $response_permissions_config['is_update']);
-		$stm -> bindParam(6, $response_permissions_config['is_delete']);
-		$stm -> bindParam(7, $response_permissions_config['is_share']);
-		$stm -> execute();
+		$existencia = self::VerifiExistenciaUser( $conexion, $id_service, $id_user );
 
-		return array( 'response' => $stm->rowCount() );
+		$response_user = $existencia > 0 ? 'El usuaro ya existe' : 0;
+
+		$status = 'error';
+
+			if( $existencia == 0){
+
+				$sql = "INSERT INTO 
+							tbl_service_permissions 
+								( tbsep_id_service, tbsep_id_user, 
+								tbsep_is_create, tbsep_is_read, tbsep_is_update, tbsep_is_delete, tbsep_is_share, 
+								tbsep_date_created, tbsep_hour_created ) 
+							VALUES 
+								(?, ?, ?, ?, ?, ?, ?, NOW(), NOW() )";
+
+				$stm = $conexion -> prepare( $sql );
+				$stm -> bindParam(1, $id_service);
+				$stm -> bindParam(2, $id_user);
+				$stm -> bindParam(3, $response_permissions_config['is_create']);
+				$stm -> bindParam(4, $response_permissions_config['is_read']);
+				$stm -> bindParam(5, $response_permissions_config['is_update']);
+				$stm -> bindParam(6, $response_permissions_config['is_delete']);
+				$stm -> bindParam(7, $response_permissions_config['is_share']);
+				$stm -> execute();
+
+				$response_user = $stm->rowCount() > 0 ? 'Guardado' : 'A ocurrido un error';
+				$status = $stm->rowCount() > 0 ? 'success' : 'error';
+			}
+
+		return array( 'status' => $status, 'mensaje' => $response_user  );		
 	}
 
 	function LoadUsersByService( $conexion, $id_service ){
@@ -98,6 +110,17 @@ class PermissionsUserLoad
 		}	
 
 		return $data;
+	}
+
+	function VerifiExistenciaUser( $conexion, $id_service, $id_user ){		
+
+		$sql = "SELECT tbsep_id_user, tbsep_id_service FROM tbl_service_permissions WHERE tbsep_id_user = ? and tbsep_id_service = ? and tbsep_status = 1 ";
+		$stm = $conexion -> prepare( $sql );		
+		$stm -> bindParam(1, $id_user );
+		$stm -> bindParam(2, $id_service );
+		$stm -> execute();
+		return $stm->rowCount();
+
 	}
 
 

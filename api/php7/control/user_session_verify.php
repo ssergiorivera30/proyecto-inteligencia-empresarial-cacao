@@ -11,7 +11,7 @@ session_start();
 
 $_SESSION['USER_STATE'] = true;
 $_SESSION['USER_CODE']  = 1;
-$_SESSION['USER_NAME']  = 'Sergio Yamit Rivera flor';
+$_SESSION['USER_NAME']  = 'Sergio Yamit Rivera Flor';
 
 // Fin de código a comentar
 

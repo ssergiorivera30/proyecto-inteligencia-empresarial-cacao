@@ -84,7 +84,7 @@ const routes = [
     // ******************************************************************************************** //
     // ******************************************************************************************** //
 
-    { path: '/create-service/:type_service', name: 'BuildFirsStep', component: BuildFirsStep },
+    { path: '/create-service/:type_service/:id_service_father/:decoration', name: 'BuildFirsStep', component: BuildFirsStep },
     { path: '/constructor-service/:id_service', name: 'BuildSecondStep', component: BuildSecondStep },
 
     {
