@@ -1,9 +1,13 @@
 <template>
  <header class="flex items-center justify-between my-5">
     <h2 class="text-lg font-bold leading-6 text-gray-600">Cambiar contraseña</h2>
-      <div class="relative">
+      <div class="relative flex gap-x-3">
+        <a href="#" class="flex p-2 rounded-md bg-gray-200">
+          <span class="text-xs font-medium leading-none text-black">Desactivar cuenta</span>
+        </a>
+
         <a href="#" class="flex p-2 rounded-md bg-red-500">
-          <span class="text-xs font-medium leading-none text-red-200">Desactivar cuenta</span>
+          <span class="text-xs font-medium leading-none text-red-50">Eliminar cuenta</span>
         </a>
       </div>
   </header>

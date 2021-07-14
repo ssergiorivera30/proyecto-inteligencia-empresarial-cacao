@@ -7,16 +7,38 @@ $json = file_get_contents('php://input');
 $array = json_decode($json, true);
 
 require_once "../../services/Conexion.php";
-require_once "../../services/Response.php";
-require_once "../../model/PermissionsUserLoad.php";
 
 $connect = new Conexion();
 $conexion = $connect -> BDMysqlBigNovaSoftware();
 
-$IdentificatorNotMember = $array['IdentificatorNotMember'];
+require_once "../../services/Response.php";
 
-$UserLoad = new PermissionsUserLoad();
-$result = $UserLoad -> PermissionsUserLoadInfoBasic( $conexion, $IdentificatorNotMember );
+require_once "../../model/PermissionsUserLoad.php";
+$user_class = new PermissionsUserLoad();
+
+
+if($array['order'] == 'load_users'){
+
+	$id_service = $array['id_service'];
+	$result = $user_class -> LoadUsersByService( $conexion, $id_service );
+}
+
+
+if($array['order'] == 'load'){
+
+	$IdentificatorNotMember = $array['IdentificatorNotMember'];
+	$result = $user_class -> PermissionsUserLoadInfoBasic( $conexion, $IdentificatorNotMember );
+}
+
+if($array['order'] == 'create'){
+
+	$id_service = $array['id_service'];
+	$id_user = $array['id_user'];
+	$permissions = $array['permissions'];
+	
+	$result = $user_class -> UserPermissionCreate( $conexion, $id_service, $id_user, $permissions  );
+
+}
 
 
 
