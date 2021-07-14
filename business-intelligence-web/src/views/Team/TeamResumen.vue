@@ -8,7 +8,7 @@
       <div>
          <div v-if="UserMembersSelect.length  > 0" class="flex items-center flex-wrap select-none antialized my-5">
             <div v-for="(Members, index) in UserMembersSelect" :key="index"
-               :title="Members.name +' - '+ Members.email + ' - ' + Members.permissions"
+               :title="Members.name +' - '+ Members.email "
                @click="UserMembersSelectUpdate = UserMembersSelect[index], UserMembersSelectUpdateID = index"
                v-bind:class="[ index > 0 ? '-ml-2' : '' ]" class="w-12 h-12 bg-cover bg-center rounded-md">
                <span v-if="Members.avatar == 0"
@@ -92,14 +92,19 @@
                </div>
 
                <div class="col-span-2 lg:col-span-2">
-                  <h5 class="font-medium">
-                     <svg
-                        @click="UserMembersSelect.splice(UserMembersSelectUpdateID, 1), UserMembersSelectUpdate = [], UserMembersSelectUpdateID=null"
-                        xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-5 w-5 text-principal-color-ui"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                           d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <h5 class="font-medium pl-5">
+                     
+                     <svg  @click="DeleteUsersService(UserMembersSelectUpdate)" 
+                           xmlns="http://www.w3.org/2000/svg" 
+                           class="cursor-pointer h-5 w-5 text-red-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <line x1="4" y1="7" x2="20" y2="7"></line>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                      </svg>
+
                   </h5>
                </div>
 
@@ -114,6 +119,7 @@
                         <circle cx="12" cy="14" r="2"></circle>
                         <polyline points="14 4 14 8 8 8 8 4"></polyline>
                      </svg>
+                     
                   </h5>
                </div>
 
@@ -178,31 +184,35 @@
                id_service: parseInt(this.$route.params.id_service),
                id_user: parseInt(code),
                permissions: parseInt(permissions)
-               }).then((response) => {
-                  console.log(response)
+               }).then(() => {
+                  this.LoadUsersService()
                });
          }, 
 
 
          UpdateUsersService: function(UserMembersSelectUpdate){
-
-            console.log( UserMembersSelectUpdate )
-
-            let code_user = parseInt(UserMembersSelectUpdate.code);
-            let permissions = parseInt(UserMembersSelectUpdate.permissions);
-
-            console.log( code )
-            console.log( permissions )
-
-             
+                
             axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
                order: 'update_user',
-               id_service: parseInt(this.$route.params.id_service),
-               id_user: code_user,
-               permissions: permissions,
-               }).then((response) => {
-                  console.log(response);
-                  // UserMembersSelectUpdate = [];
+               permissions: parseInt(UserMembersSelectUpdate.permissions),
+               identificator: parseInt(UserMembersSelectUpdate.identificator)
+               }).then(() => {
+               
+                  this.UserMembersSelectUpdate = [];
+               });
+         },
+
+         DeleteUsersService: function(UserMembersSelectUpdate){
+            
+            axios.post(API_ROUTER.PHP7_CONTROLLER + "permissions/load_user.php", {
+               order: 'delete_user',
+               identificator: parseInt(UserMembersSelectUpdate.identificator)
+               }).then(() => {
+                  
+                  this.UserMembersSelectUpdate = [];
+                  this.UserMembersSelectUpdateID = null;
+                  this.LoadUsersService();
+
                });
          },
          

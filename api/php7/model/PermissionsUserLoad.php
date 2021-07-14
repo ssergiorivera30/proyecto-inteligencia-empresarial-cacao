@@ -66,7 +66,7 @@ class PermissionsUserLoad
 		$data = array();
 
 		$sql = "SELECT
-					a.tbsep_id_service, a.tbsep_id_user,
+					a.tbsep_auto_id as identificator, a.tbsep_id_service, a.tbsep_id_user,
 						a.tbsep_is_create as is_create, a.tbsep_is_read as is_read,
 						a.tbsep_is_update as is_update, a.tbsep_is_delete as is_delete, a.tbsep_is_share as is_share,
 					b.usr_user_id AS code, b.usr_email AS email,
@@ -78,7 +78,7 @@ class PermissionsUserLoad
 					INNER JOIN user_data_personals c ON a.tbsep_id_user = c.udp_user_id
 					INNER JOIN users_avatars d ON a.tbsep_id_user = d.usava_id_user					
 				WHERE				
-					a.tbsep_id_service = ?";
+					a.tbsep_id_service = ? and tbsep_status = 1";
 
 		$stm = $conexion -> prepare( $sql );
 		$stm -> bindParam(1, $id_service);
@@ -86,6 +86,7 @@ class PermissionsUserLoad
 
 		foreach ($stm->fetchAll() as $key => $value) {
 
+			$NestData['identificator'] = $value['identificator'];
 			$NestData['code'] = $value['code'];
 			$NestData['email'] = $value['email'];
 			$NestData['name'] = $value['name'];
@@ -98,6 +99,49 @@ class PermissionsUserLoad
 
 		return $data;
 	}
+
+
+	function UpdatePermissionsUser( $conexion, $permissions, $identificator ){
+
+		$response_permissions_config = self::PermissionsAdapateBD($permissions);
+
+		$sql = "UPDATE
+					tbl_service_permissions 
+				SET
+					tbsep_is_create = ?, tbsep_is_read = ?, tbsep_is_update = ?, tbsep_is_delete = ?, tbsep_is_share = ?
+				WHERE
+					tbsep_auto_id = ? ";
+
+		$stm = $conexion -> prepare( $sql );		
+		$stm -> bindParam(1, $response_permissions_config['is_create']);
+		$stm -> bindParam(2, $response_permissions_config['is_read']);
+		$stm -> bindParam(3, $response_permissions_config['is_update']);
+		$stm -> bindParam(4, $response_permissions_config['is_delete']);
+		$stm -> bindParam(5, $response_permissions_config['is_share']);
+		$stm -> bindParam(6, $identificator);
+		$stm -> execute();
+
+		return array( 'response' => $stm->rowCount() );
+	}
+
+	function DeletePermissionsUser( $conexion, $identificator ){
+
+		$sql = "UPDATE
+					tbl_service_permissions 
+				SET
+					tbsep_status = 0, tbsep_end_permissions = NOW()
+				WHERE
+					tbsep_auto_id = ? ";
+
+		$stm = $conexion -> prepare( $sql );
+		$stm -> bindParam(1, $identificator);
+		$stm -> execute();
+
+		return array( 'response' => $stm->rowCount() );
+	}
+
+
+
 
 	function PermissionsAdapateBD($permissions){
 

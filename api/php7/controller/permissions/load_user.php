@@ -41,5 +41,22 @@ if($array['order'] == 'create'){
 }
 
 
+if($array['order'] == 'update_user'){
+
+
+	$permissions = $array['permissions'];
+	$identificator = $array['identificator'];
+	
+	$result = $user_class -> UpdatePermissionsUser(  $conexion, $permissions, $identificator );
+
+}
+
+if($array['order'] == 'delete_user'){
+
+	$identificator = $array['identificator'];
+	
+	$result = $user_class -> DeletePermissionsUser(  $conexion, $identificator );
+}
+
 
 echo json_encode($result);
