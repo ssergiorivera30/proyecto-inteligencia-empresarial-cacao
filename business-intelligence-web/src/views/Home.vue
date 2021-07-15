@@ -24,7 +24,7 @@
       ServiceID="2" />
 
              
-  <ServicesTitles ServiceName="Componentes registrados" :TitlteContenLinks="false" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
+  <ServicesTitles ServiceName="Componentes" :TitlteContenLinks="false" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 
    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['componets']" 
@@ -33,12 +33,8 @@
       FilePathImg="componentes/"
       ServiceNameLink="Añadir componente" 
       ServiceID="3" />
-
       
   </div>
-
-
-
 </template>
 
 <script>

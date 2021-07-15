@@ -16,7 +16,7 @@ class PermissionsUserLoad
 					INNER JOIN user_data_personals b ON a.usr_user_id = b.udp_user_id
 					INNER JOIN users_avatars c ON a.usr_user_id = c.usava_id_user					
 				WHERE
-				b.udp_name LIKE ? OR a.usr_email LIKE ? limit 5";
+					b.udp_name LIKE ? OR a.usr_email LIKE ? limit 5 ";
 
 		$stm = $conexion -> prepare( $sql );
 		$stm -> bindParam(1, $IdentificatorNotMember);

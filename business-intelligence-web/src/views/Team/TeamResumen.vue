@@ -133,7 +133,6 @@
                      <option value="1" disabled>Propietario</option>
                      <option value="2">Ver</option>
                      <option value="3">Editar</option>
-
                   </select>
 
                   <select v-else class="bg-gray-50">

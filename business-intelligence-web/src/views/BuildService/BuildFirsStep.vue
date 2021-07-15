@@ -50,8 +50,8 @@
     <div v-show="ServiceName == ''" class="hidden md:flex items-start justify-center select-none pt-10 object-contain">
       <img class="pointer-events-none bg-gray-50 rounded-md static object-contain" loading="lazy" draggable="false" :src="ImageService" alt="" />
     </div>
-
   </div>
+  
 </template>
 <script>
   import axios from "axios";

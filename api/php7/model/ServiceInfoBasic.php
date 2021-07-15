@@ -3,13 +3,34 @@
 class ServiceInfoBasic
 {
 
-		function LoadListPrincipalServices($conection_bd, $type_service, $user_code){
+	function LoadListPrincipalServices($conection_bd, $type_service, $user_code){
 
 		$datos = array();
 
-		$sql = "SELECT tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_business, tbse_logo, tbse_date_created, tbse_hour_created, tbse_updated, tbse_status, tbse_vigence FROM tbl_services WHERE tbse_id_type_service = ? and tbse_vigence = 1";
-		$stm = $conection_bd -> prepare( $sql );
-		$stm -> bindParam(1, $type_service);
+		// $sql = "SELECT tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_business, tbse_logo, tbse_date_created, tbse_hour_created, tbse_updated, tbse_status, tbse_vigence FROM tbl_services WHERE tbse_id_type_service = ? and tbse_vigence = 1";
+		// $stm = $conection_bd -> prepare( $sql );
+		// $stm -> bindParam(1, $type_service);
+		// $stm -> execute();
+
+		$sql = "SELECT 
+					services.tbse_auto_id, services.tbse_id_type_service, services.tbse_name, services.tbse_description, services.tbse_business, services.tbse_logo, 
+					services.tbse_date_created, services.tbse_hour_created,
+
+					user_permiss.tbsep_auto_id, user_permiss.tbsep_id_service, user_permiss.tbsep_id_user
+
+				FROM
+
+					tbl_services services, tbl_service_permissions user_permiss
+																		
+				WHERE
+					
+					services.tbse_auto_id = user_permiss.tbsep_id_service AND services.tbse_id_type_service = ? AND services.tbse_vigence = 1 AND user_permiss.tbsep_id_user = ? 
+					AND (  user_permiss.tbsep_is_create = 1 OR user_permiss.tbsep_is_read = 1 OR user_permiss.tbsep_is_update = 1 OR user_permiss.tbsep_is_delete = 1 OR user_permiss.tbsep_is_share = 1  )  AND user_permiss.tbsep_status = 1 ";
+
+
+		$stm = $conection_bd -> prepare( $sql );		
+		$stm -> bindParam(1, $type_service );
+		$stm -> bindParam(2, $user_code);
 		$stm -> execute();
 
 		foreach ($stm->fetchAll() as $key => $value) {
@@ -21,6 +42,7 @@ class ServiceInfoBasic
 			$row['logo'] = $value['tbse_logo'] == null ? 'default.svg' : $value['tbse_logo'];
 			$row['create_date'] = $value['tbse_date_created'];
 			$row['create_hour'] = $value['tbse_hour_created'];
+			$row['users'] = $value['tbse_hour_created'];
 			$datos[] = $row;		
 		}
 

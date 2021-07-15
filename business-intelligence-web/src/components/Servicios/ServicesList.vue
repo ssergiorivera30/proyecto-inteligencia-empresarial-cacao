@@ -1,11 +1,8 @@
 <template>
 
     <section v-if="ArrayServices === null" class="max-w-lg px-4 py-12 mx-auto">
-        <img class="mx-auto sm:w-1/4" :src="EmptyService" />
-        <h2 class="mt-2 text-lg font-medium text-center text-gray-800">Tienes (0) {{ ServiceName }},
-            <router-link :to="'/create-service/'+ ServiceID " class="w-full py-2 text-blue-900 font-bold capitalize">{{
-                ServiceNameLink }}</router-link>
-        </h2>
+        <img class="mx-auto sm:w-1/4 select-none pointer-events-none" :src="EmptyService" draggable="false"/>
+        <h2 class="mt-5 text-xs font-medium text-center text-gray-600 select-none" draggable="false">Tienes (0) {{ ServiceName }}</h2>
     </section>
 
     <div v-else class="w-full  overflow-hidden">
@@ -20,9 +17,9 @@
                 <div class="flex items-center">
                     <div class="w-16 h-full rounded">
 
-                        <img class="w-full h-full select-none rounded-sm"
+                        <img class="w-full h-full rounded-sm  select-none pointer-events-none" draggable="false"
                             :class="[ info.logo === 'default.svg' ? 'ml-1' : 'object-cover' ]"
-                            :src="SrcPublic+info.logo" draggable="false" />
+                            :src="SrcPublic+info.logo" />
 
                     </div>
 
@@ -68,18 +65,18 @@ whitespace-nowrap truncate -->
                 </div>
             </div>
 
-            <div class="hidden md:flex col-span-3 md:col-span-3 justify-between ml-12 md:ml-4">
+            <div class="hidden md:flex col-span-3 md:col-span-3 justify-between ml-12 md:ml-4 ">
                 <div class="flex items-center">
-                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow select-none"
-                        draggable="false" :src="imagen_a" />
+                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow select-none "
+                        draggable="false" :src="imagen_a" alt="" title="Nombre usuario - editor" />
                     <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_b" />
+                        draggable="false" :src="imagen_b" alt="" title="Nombre usuario - editor" />
                     <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_c" />
+                        draggable="false" :src="imagen_c" alt="" title="Nombre usuario - editor" />
                     <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_d" />
+                        draggable="false" :src="imagen_d" alt="" title="Nombre usuario - editor" />
                     <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_e" />
+                        draggable="false" :src="imagen_e" alt="" title="Nombre usuario - editor" />
                 </div>
             </div>
 
@@ -100,7 +97,7 @@ whitespace-nowrap truncate -->
         data() {
             return {
                 RouteSrc: API_ROUTER.API_UI + 'icons/database.png',
-                EmptyService: API_ROUTER.API_UI + 'empty-services.png',
+                EmptyService: API_ROUTER.API_UI + 'empty-services.svg',
                 SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg,
                 imagen_a: API_ROUTER.API_PUBLIC + 'users/a_4_0.png',
                 imagen_b: API_ROUTER.API_PUBLIC + 'users/a_4_1.png',
