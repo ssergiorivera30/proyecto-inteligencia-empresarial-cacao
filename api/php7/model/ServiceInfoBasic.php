@@ -7,25 +7,16 @@ class ServiceInfoBasic
 
 		$datos = array();
 
-		// $sql = "SELECT tbse_auto_id, tbse_id_type_service, tbse_name, tbse_description, tbse_business, tbse_logo, tbse_date_created, tbse_hour_created, tbse_updated, tbse_status, tbse_vigence FROM tbl_services WHERE tbse_id_type_service = ? and tbse_vigence = 1";
-		// $stm = $conection_bd -> prepare( $sql );
-		// $stm -> bindParam(1, $type_service);
-		// $stm -> execute();		
-
 		$sql = "SELECT 
 					services.tbse_auto_id, services.tbse_id_type_service, services.tbse_name, services.tbse_description, services.tbse_business, services.tbse_logo, 
 					services.tbse_date_created, services.tbse_hour_created,
 
-					user_permiss.tbsep_auto_id, user_permiss.tbsep_id_service, user_permiss.tbsep_id_user,
+					user_permiss.tbsep_auto_id, user_permiss.tbsep_id_service, user_permiss.tbsep_id_user
 
-					b.udp_name as name, 
 
 				FROM
 
 					tbl_services services, tbl_service_permissions user_permiss
-
-					INNER JOIN user_data_personals b ON  user_permiss.tbsep_id_user = b.udp_user_id
-
 					
 				WHERE
 					
@@ -47,7 +38,7 @@ class ServiceInfoBasic
 			$row['create_date'] = $value['tbse_date_created'];
 			$row['create_hour'] = $value['tbse_hour_created'];
 			$row['users'] = $value['tbse_hour_created'];
-			$row['members'] = $value['name'];
+	
 			$datos[] = $row;		
 		}
 
@@ -89,7 +80,7 @@ class ServiceInfoBasic
 			$row['create_date'] = $value['tbse_date_created'];
 			$row['create_hour'] = $value['tbse_hour_created'];
 			$row['users'] = $value['tbse_hour_created'];
-			$row['members'] = $arrayUsersInService[];
+			// $row['members'] = $arrayUsersInService[];
 			$datos[] = $row;		
 		}
 
