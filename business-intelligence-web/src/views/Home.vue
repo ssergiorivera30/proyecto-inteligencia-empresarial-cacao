@@ -22,7 +22,6 @@
       FilePathImg="proyectos/"
       ServiceNameLink="Añadir proyecto" 
       ServiceID="2" />
-
              
   <ServicesTitles ServiceName="Componentes" :TitlteContenLinks="false" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 

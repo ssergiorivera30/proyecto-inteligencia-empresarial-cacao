@@ -4,7 +4,7 @@
          :RoutesNavs="RoutesNavs" 
          :GoBack="GoBack" 
          :GoBackTitle="GoBackTitle" 
-         :TitleHeader="TitleHeader" 
+         :TitleHeader="TitleHeader"
          :IconModulo="IconModulo" 
          :SubTitleHeader="SubTitleHeader"  />
       <router-view/>

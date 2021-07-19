@@ -29,19 +29,16 @@
                   <div class="grid grid-cols-12 items-center shadow-sm my-3 px-2 py-2 rounded w-full">
 
                      <div class="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-1 h-10 w-10 ">
-                        <button v-if="user.avatar == 0"
-                           class="w-8 h-8 rounded-full bg-purple-800 text-white flex items-center justify-center uppercase">{{
-                           user.name.substring(0,2) }}</button>
-                        <img v-else :src="ImageAvatar+user.avatar" role="img"
-                           class="rounded-full object-cover h-full w-full shadow">
+
+                        <button v-if="user.avatar == 0" class="w-8 h-8 rounded-full bg-purple-800 text-white flex items-center justify-center uppercase">{{ user.name.substring(0,2) }}</button>
+
+                        <img v-else :src="ImageAvatar+user.avatar" role="img" class="rounded-full object-cover h-full w-full shadow">
+
                      </div>
 
                      <div class="col-span-3 md:col-span-6 lg:col-span-7">
-                        <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{
-                           user.name
-                           }}</p>
-                        <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{
-                           user.email }}</p>
+                        <p class="text-md text-gray-600 font-bold truncate overflow-ellipsis overflow-hidden">{{ user.name }}</p>
+                        <p class="sm:text-md text-sm text-gray-600 truncate overflow-ellipsis overflow-hidden ">{{ user.email }}</p>
                      </div>
 
                      <div class="col-span-2 lg:col-span-1">

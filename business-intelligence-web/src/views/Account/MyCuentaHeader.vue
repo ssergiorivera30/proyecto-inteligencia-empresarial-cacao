@@ -2,10 +2,10 @@
   <div class="">
    
       <div class="h-48 w-full bg-cover bg-gray-200 rounded-md" :style="'background-image:url('+imagen_portada_avatar+')'"></div>
-      <div class="px-6 md:px-32 flex justify-between lg:flex-row flex-col">
+      <div class="px-6 flex justify-between lg:flex-row flex-col">
 
-        <div class="flex lg:flex-row flex-col">
-          <div class="w-36 h-36 bg-cover rounded-full bg-center absolute transform -translate-y-1/2 ring-4 ring-white" :style="'background-image:url('+avatar+')'"></div>          
+        <div class="flex flex-col">
+          <div class="w-28 h-28 bg-cover rounded-full bg-center absolute transform -translate-y-1/2 ring-4 ring-white" :style="'background-image:url('+avatar+')'"></div>          
           <p class="lg:ml-36 mt-16 lg:mt-0 pl-4 text-2xl font-semibold py-5">{{ user_name }}</p>
         </div>
 

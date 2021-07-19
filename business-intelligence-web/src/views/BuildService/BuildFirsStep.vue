@@ -58,13 +58,12 @@
   import Noty from "noty";
   import API_ROUTER from "./../../services/SERVER_API";
   import PreviewForm from "./../../components/Formularios/PreviewForm";
-  import FileUpload from 'vue-simple-upload/dist/FileUpload'
+
 
   export default {
     name: "BuildFirsStep",
     components: {
-      PreviewForm,
-      FileUpload
+      PreviewForm
     },
     data() {
       return {

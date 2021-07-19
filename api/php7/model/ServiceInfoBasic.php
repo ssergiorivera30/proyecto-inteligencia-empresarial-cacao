@@ -38,6 +38,7 @@ class ServiceInfoBasic
 			$row['create_date'] = $value['tbse_date_created'];
 			$row['create_hour'] = $value['tbse_hour_created'];
 			$row['users'] = $value['tbse_hour_created'];
+			$row['members'] = self::UserInService($conection_bd, $value['tbse_auto_id']);
 	
 			$datos[] = $row;		
 		}
@@ -46,46 +47,51 @@ class ServiceInfoBasic
 	}
 
 
-	function UserInService($conection_bd, $id_service ){
 
-		$members = array();
 
-		// SELECT `tbsep_auto_id`, `tbsep_id_service`, `tbsep_id_user`, `tbsep_is_create`, `tbsep_is_read`, `tbsep_is_update`, `tbsep_is_delete`, `tbsep_is_share`, `tbsep_date_created`, `tbsep_hour_created`, `tbsep_updated`, `tbsep_status`, `tbsep_end_permissions` FROM `tbl_service_permissions` WHERE 1"
+	function UserInService( $conexion, $id_service ){
 
-		$sql = "SELECT 
-					permis.tbsep_auto_id, permis.tbsep_id_service, permis.tbsep_id_user,
+		$data = array();
 
-					a.usr_user_id as code, a.usr_email as email,
-					b.udp_name as name, 
-					c.usava_avatar as avatar
-				FROM 
-					tbl_service_permissions permis
-					INNER JOIN users_credentials a ON permis.tbsep_id_user = a.usr_user_id
-					INNER JOIN user_data_personals b ON permis.tbsep_id_user = b.udp_user_id
-					INNER JOIN users_avatars c ON permis.tbsep_id_user = c.usava_id_user					
-				WHERE
-					permis.tbsep_id_service= ?";
+		$sql = "SELECT
+					a.tbsep_auto_id as identificator, a.tbsep_id_service, a.tbsep_id_user,
+						a.tbsep_is_create as is_create, a.tbsep_is_read as is_read,
+						a.tbsep_is_update as is_update, a.tbsep_is_delete as is_delete, a.tbsep_is_share as is_share,
+					b.usr_user_id AS code, b.usr_email AS email,
+					c.udp_name AS name, 
+					d.usava_avatar AS avatar					
+				FROM
+					tbl_service_permissions a
+					INNER JOIN users_credentials b ON a.tbsep_id_user = b.usr_user_id
+					INNER JOIN user_data_personals c ON a.tbsep_id_user = c.udp_user_id
+					INNER JOIN users_avatars d ON a.tbsep_id_user = d.usava_id_user					
+				WHERE				
+					a.tbsep_id_service = ? and tbsep_status = 1";
 
-		$stm = $conection_bd -> prepare( $sql );		
-		$stm -> bindParam(1, $id_service );
-		$stm -> execute();
+		$stm = $conexion -> prepare( $sql );
+		$stm -> bindParam(1, $id_service);
+		$stm -> execute();		
 
 		foreach ($stm->fetchAll() as $key => $value) {
 
-			$row['id'] = $value['tbse_auto_id'];
-			$row['name'] = $value['tbse_name'];
-			$row['description'] = $value['tbse_description'];
-			$row['business'] = $value['tbse_business'];
-			$row['logo'] = $value['tbse_logo'] == null ? 'default.svg' : $value['tbse_logo'];
-			$row['create_date'] = $value['tbse_date_created'];
-			$row['create_hour'] = $value['tbse_hour_created'];
-			$row['users'] = $value['tbse_hour_created'];
-			// $row['members'] = $arrayUsersInService[];
-			$datos[] = $row;		
-		}
+			$NestData['identificator'] = $value['identificator'];
+			$NestData['code'] = $value['code'];
+			$NestData['email'] = $value['email'];
+			$NestData['name'] = $value['name'];
+			$NestData['avatar'] = $value['avatar'] == 0 ? intval( $value['avatar'] ) :  $value['avatar'];				
+			$data[] = $NestData;
+		}	
 
-		return $members;
+		return $data;
 	}
+
+
+
+
+
+
+
+
 	
 
 	function LoadInfoBasicOneService($conection, $service_id, $id_user){

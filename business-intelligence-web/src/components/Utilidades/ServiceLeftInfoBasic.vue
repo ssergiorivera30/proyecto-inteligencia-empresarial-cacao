@@ -1,17 +1,34 @@
 <template>
 <div class="col-span-2 row-span-3 bg-white shadow overflow-hidden rounded-sm">
-            <div class="" >               
-               <div class="px-3 py-3 ">
-                  <h3 class="text-md leading-6 font-medium text-gray-600">
-                     {{ ServiceName}}
-                  </h3>
+            <div class="" >
+
+               <div class="flex items-start">
+
+                  <div class="w-36 h-full" >
+                        <img class="w-full h-full rounded-md  select-none pointer-events-none pl-3 py-3 object-cover" draggable="false"
+                            :class="[ ServiceLogo === 'default.svg' ? 'ml-1' : ' ' ]"
+                            :src="SrcIconModulo+FilePathImg+ServiceLogo" />                            
+                    </div>                
+
+
+                  <div class="px-3 py-3 ">
+                     <h3 class="text-md leading-6 font-medium text-gray-600">
+                        {{ ServiceName}} 
+                     </h3>
+                     
+                  </div>
+               </div> 
+
+               <div class="px-3 pb-3 ">
                   <p class="mt-3 max-w-2xl text-sm text-gray-500">
-                     {{ ServiceDescription }}
-                  </p>
+                        {{ ServiceDescription }}
+                     </p>
                </div>
+
+
                <div class="border-t border-gray-200">
                   <dl>
-                     <div v-for="(info, index) in arrayInfoResumenCustom" :key="info">
+                     <div v-for="(info, index) in arrayInfoResumenCustom" :key="index">
                         <div v-if="index <= 10">           
                            <div v-if="index % 2 == true"                      
                               class="bg-white px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4'">
@@ -104,15 +121,24 @@ export default {
   data() {
     return {      
       SrcIconModulo: API_ROUTER.API_PUBLIC,
+    
     }
   },   
   props: {
-  ServiceName: String,
-  ServiceDescription: String,
-  arrayInfoResumenCustom: Object, 
-  IdService: String
+   ServiceName: String,
+   ServiceDescription: String,
+   arrayInfoResumenCustom: Object, 
+   IdService: String,
+   FilePathImg: String,
+   ServiceLogo: String,
   },
   mounted: function () {  
+
+   //   this.SrcPublic = API_ROUTER.API_PUBLIC + this.FilePathImg
+
+   // console.log(FilePathImg)
+
+    
    
   }      
 }

@@ -4,16 +4,21 @@
         <ServiceToptInfoBasic 
             :ServiceStatus="parseInt(ServiceStatus)" 
             :IdService="parseInt(this.$route.params.id_service)" 
-            :ServiceToptInfoNav="ServiceToptInfoNav" 
-            NameService="Grupo"/>
+            :ServiceToptInfoNav="ServiceToptInfoNav"            
+            NameService="Grupo"  />
 
  
 
       <div class="grid grid-rows-3 grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-3">
 
-         <ServiceLeftInfoBasic v-if="ShowInfoBasic == 1" :ServiceName="ServiceName"
-            :ServiceDescription="ServiceDescription" :arrayInfoResumenCustom="arrayInfoResumenCustom"
-            :IdService="this.$route.params.id_service" />
+         <ServiceLeftInfoBasic 
+            v-if="ShowInfoBasic == 1" 
+            :ServiceName="ServiceName"
+            :ServiceDescription="ServiceDescription" 
+            :arrayInfoResumenCustom="arrayInfoResumenCustom"
+            :IdService="this.$route.params.id_service"
+            :ServiceLogo="ServiceLogo"
+            FilePathImg="grupos/"  />
 
 
 
@@ -102,6 +107,7 @@
 
             ServiceName: '',
             ServiceDescription: '',
+            ServiceLogo: '',
             ServiceStatus: 1,
             arrayInfoResumenCustom: [],
             ShowInfoBasic: 0,
@@ -125,6 +131,7 @@
                   this.ServiceName = res.data[0]['name']
                   this.ServiceDescription = res.data[0]['description']
                   this.ServiceStatus = res.data[0]['status']
+                  this.ServiceLogo = res.data[0]['logo']
 
                   this.arrayInfoResumenCustom = JSON.parse(res.data[0]['data_json'])
 

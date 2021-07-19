@@ -7,31 +7,22 @@
 
     <div v-else class="w-full  overflow-hidden">
 
-
         <div v-for="info in ArrayServices" :key="info"
             class="grid grid-cols-12 my-2 h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-50 border-b border-gray-100 shadow-sm">
 
-            <div class="col-span-5 flex justify-between cursor-pointer "
-                @click="this.$router.push(RouteLink + info.id)">
+            <div class="col-span-5 flex justify-between cursor-pointer" @click="this.$router.push(RouteLink + info.id)">
 
                 <div class="flex items-center">
                     <div class="w-16 h-full rounded">
-
                         <img class="w-full h-full rounded-sm  select-none pointer-events-none" draggable="false"
                             :class="[ info.logo === 'default.svg' ? 'ml-1' : 'object-cover' ]"
                             :src="SrcPublic+info.logo" />
-
                     </div>
 
                     <div class="pl-4 pr-10 ">
-                        <p class="font-medium my-white-space py-1 max-w-xs md:max-w-xs lg:max-w-md xl:max-w-lg ">{{
-                            info.name }}</p>
-                        <p
-                            class="text-xs leading-3 text-gray-600 py-1 my-white-space max-w-xs md:max-w-xs lg:max-w-md xl:max-w-lg ">
-                            {{ info.description }}</p>
+                        <p class="font-medium my-white-space py-1 max-w-xs md:max-w-xs lg:max-w-md xl:max-w-lg ">{{ info.name }}</p>
+                        <p class="text-xs leading-3 text-gray-600 py-1 my-white-space max-w-xs md:max-w-xs lg:max-w-md xl:max-w-lg ">{{ info.description }}</p>
                     </div>
-
-
                 </div>
             </div>
 
@@ -45,7 +36,6 @@ whitespace-nowrap truncate -->
 
             <div class="hidden md:flex col-span-2 justify-center ml-4">
                 <div class="flex items-center">
-
                     <svg class="_418c4939 flex-none" width="100" height="40" stroke-width="2" stroke="#003976"
                         fill="rgba(137, 86, 255, 0)">
                         <path class="sparkline--fill"
@@ -60,29 +50,23 @@ whitespace-nowrap truncate -->
                             class="sparkline--interaction-layer">
                         </rect>
                     </svg>
-
-
                 </div>
             </div>
 
-            <div class="hidden md:flex col-span-3 md:col-span-3 justify-between ml-12 md:ml-4 ">
-                <div class="flex items-center">
-                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow select-none "
-                        draggable="false" :src="imagen_a" alt="" title="Nombre usuario - editor" />
-                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_b" alt="" title="Nombre usuario - editor" />
-                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_c" alt="" title="Nombre usuario - editor" />
-                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_d" alt="" title="Nombre usuario - editor" />
-                    <img class="w-8 h-8 overflow-hidden object-cover rounded-full border-2 border-white shadow -ml-2 select-none"
-                        draggable="false" :src="imagen_e" alt="" title="Nombre usuario - editor" />
-                </div>
-            </div>
+            <div class="hidden md:flex col-span-3 md:col-span-3 justify-left ml-12 md:ml-4 overflow-x-hidden">
 
+                <div class="flex items-center pl-2">
+                    <div  v-for="(memb, index) in info.members" :key="index" class="">
+                        <div v-if="memb.avatar == 0" :title="memb.name + ' - ' + memb.email" class="-ml-2 flex items-center justify-center w-10 h-10 rounded-full bg-purple-800 text-white border-2 border-white uppercase shadow select-none" draggable="false">{{ memb.name.substring(0,2) }}</div>
+
+                        <div class="-ml-2 " v-else>
+                            <img  :src="ImageAvatar+memb.avatar" :title="memb.name + ' - ' + memb.email" role="img" class="flex w-10 h-10 object-cover rounded-full border-2 bg-white  border-white shadow select-none"  draggable="false">
+                        </div>                       
+                      
+                    </div>
+                </div>                
+            </div>
         </div>
-
-
     </div>
 </template>
 
@@ -98,6 +82,7 @@ whitespace-nowrap truncate -->
             return {
                 RouteSrc: API_ROUTER.API_UI + 'icons/database.png',
                 EmptyService: API_ROUTER.API_UI + 'empty-services.svg',
+                ImageAvatar: API_ROUTER.API_PUBLIC + "avatars/",
                 SrcPublic: API_ROUTER.API_PUBLIC + this.$props.FilePathImg,
                 imagen_a: API_ROUTER.API_PUBLIC + 'users/a_4_0.png',
                 imagen_b: API_ROUTER.API_PUBLIC + 'users/a_4_1.png',
@@ -115,6 +100,8 @@ whitespace-nowrap truncate -->
             FilePathImg: String,
         },
         mounted: function () {
+
+            console.log(this.ArrayServices)
 
         },
         methods: {
