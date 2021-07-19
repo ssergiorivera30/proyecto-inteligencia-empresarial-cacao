@@ -1,20 +1,10 @@
 <template>
    <div class="">
-      <header class="flex items-center justify-between">
-         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_service }} - Información
-            general</h2>
+      <header class="flex items-center justify-between">    
+         
+         <h2 class="px-3 text-lg leading-6 font-medium text-black"># {{ this.$route.params.id_service }} - Información general</h2>
 
          <div class="flex">
-            <a href="javascript:history.back()"
-               class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
-               <svg xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-6 group-hover:text-light-blue-600 text-light-blue-500 mr-2" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-               </svg>
-               Atrás
-            </a>
-
             <router-link :to="'/constructor-service/'+ this.$route.params.id_service"
                class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2 cursor-pointer">
                <svg xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +15,7 @@
                </svg>
                Actualizar información
             </router-link>
-         </div>
+         </div>         
       </header>
 
       <div class="grid grid-rows-1 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-3">

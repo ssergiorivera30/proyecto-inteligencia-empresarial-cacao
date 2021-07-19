@@ -1,6 +1,6 @@
 <template>
       
-  <ServicesTitles ServiceName="Componentes registrados" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
+  <ServicesTitles ServiceName="Componentes registrados" :TitlteContenLinks="true" :ServiceLink="'/create-service/3/'+ this.$route.params.id_service +'/start'" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 
    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['componets']" 
