@@ -2,22 +2,21 @@
 <div class="col-span-2 row-span-3 bg-white shadow overflow-hidden rounded-sm">
             <div class="" >
 
-               <div class="flex items-start">
+               <div class="flex items-center">
 
                   <div class="w-36 h-full" >
-                        <img class="w-full h-full rounded-md  select-none pointer-events-none pl-3 py-3 object-cover" draggable="false"
+                        <img class="w-full max-h-36 rounded-md  select-none pointer-events-none pl-3 py-3 object-cover" draggable="false"
                             :class="[ ServiceLogo === 'default.svg' ? 'ml-1' : ' ' ]"
                             :src="SrcIconModulo+FilePathImg+ServiceLogo" />                            
-                    </div>                
+                    </div>
+               </div> 
 
-
-                  <div class="px-3 py-3 ">
+               <div class="px-3 py-3 ">
                      <h3 class="text-md leading-6 font-medium text-gray-600">
                         {{ ServiceName}} 
                      </h3>
                      
-                  </div>
-               </div> 
+               </div>
 
                <div class="px-3 pb-3 ">
                   <p class="mt-3 max-w-2xl text-sm text-gray-500">
