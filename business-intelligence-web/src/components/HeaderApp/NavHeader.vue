@@ -2,7 +2,7 @@
 
 <!-- print-none flex sticky top-0 z-10 items-center h-14 w-full bg-gray-50 -->
 
-<header class="print-none sticky top-0 z-10 px-4 md:px-8 py-2 h-14 flex justify-between items-center shadow-sm bg-gray-50">
+<header class="print-none sticky top-0 z-10 px-4 md:px-4 py-2 h-14 flex justify-between items-center shadow-sm bg-gray-50">
 
    <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-color-text-ui hover:bg-gray-100 hover:text-color-text-ui focus:text-color-text-ui rounded-md">
           <span class="sr-only">Menu</span>

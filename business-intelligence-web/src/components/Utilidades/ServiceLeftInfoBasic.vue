@@ -99,11 +99,15 @@
                         </dd>
                      </div> -->
 
-                      <router-link 
-                        :to="'/service/info/basic/'+ IdService" 
-                        class="mx-2 p-5 fpex hover:font-bold rounded text-gray-700 px-2 py-2 text-sm font-semibold">
+                     
+                     <div class="px-3 py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <router-link 
+                           :to="'/service/info/basic/'+ IdService" 
+                           class="hover:font-bold rounded text-gray-700 text-sm font-semibold">
                            Ver más...
-                     </router-link>
+                        </router-link>
+                     </div>
+                      
 
                   </dl>
                </div>

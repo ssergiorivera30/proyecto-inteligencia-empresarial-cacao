@@ -16,7 +16,7 @@
                   {{ Members.name.substring(0,2) }}
                </span>
                <img v-else :src="ImageAvatar+Members.avatar" loading="lazy" draggable="false" alt=""
-                  class="h-full w-full overflow-hidden object-cover rounded-full border-2 border-white shadow pointer-events-none" />
+                  class="h-full w-full overflow-hidden object-cover rounded-full border-2 bg-white border-white shadow pointer-events-none" />
             </div>
          </div>
 
@@ -30,7 +30,7 @@
 
                      <div class="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-1 h-10 w-10 ">
 
-                        <button v-if="user.avatar == 0" class="w-8 h-8 rounded-full bg-purple-800 text-white flex items-center justify-center uppercase">{{ user.name.substring(0,2) }}</button>
+                        <div v-if="user.avatar == 0" class="w-9 h-9 rounded-full bg-purple-800 text-white flex items-center justify-center uppercase">{{ user.name.substring(0,2) }}</div>
 
                         <img v-else :src="ImageAvatar+user.avatar" role="img" class="rounded-full object-cover h-full w-full shadow">
 
@@ -76,7 +76,7 @@
             <div class="grid grid-cols-12 items-center my-3 px-2 py-2 rounded w-full">
                <div class="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-1 h-10 w-10 ">
                   <button v-if="UserMembersSelectUpdate.avatar == 0"
-                     class="w-8 h-8 rounded-full bg-purple-800 text-white flex items-center justify-center uppercase">
+                     class="w-9 h-9 rounded-full bg-purple-800 text-white flex items-center justify-center uppercase">
                      {{ UserMembersSelectUpdate.name.substring(0,2) }}</button>
                   <img v-else :src="ImageAvatar+UserMembersSelectUpdate.avatar" role="img"
                      class="rounded-full object-cover h-full w-full shadow">

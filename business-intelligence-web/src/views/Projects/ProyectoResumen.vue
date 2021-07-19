@@ -14,7 +14,9 @@
                :ServiceName="ServiceName"
                :ServiceDescription="ServiceDescription"
                :arrayInfoResumenCustom="arrayInfoResumenCustom"
-               :IdService="this.$route.params.id_service"/>
+               :IdService="this.$route.params.id_service"
+               :ServiceLogo="ServiceLogo"
+               FilePathImg="proyectos/"  />
 
 
          <div class="row-span-3 col-span-2 bg-white shadow overflow-hidden rounded-sm">
@@ -102,6 +104,7 @@ import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
             arrayInfoResumenCustom: [],
             ServiceName : '',
             ServiceDescription : '',
+            ServiceLogo: '',
             ServiceStatus: 1,
             ShowInfoBasic: 0,
          }
@@ -124,6 +127,7 @@ import NavBarSecondary from './../../components/Utilidades/NavBarSecondary.vue'
                this.ServiceName = res.data[0]['name']
                this.ServiceDescription = res.data[0]['description']
                this.ServiceStatus = res.data[0]['status']
+               this.ServiceLogo = res.data[0]['logo']
                
                this.arrayInfoResumenCustom = JSON.parse(res.data[0]['json_input_data'])
                this.ShowInfoBasic = 1

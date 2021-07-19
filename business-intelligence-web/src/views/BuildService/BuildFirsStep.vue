@@ -1,7 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-    <div class="mt-3">      
+<div class="mt-3 max-w-5xl mx-auto">      
       <header class="flex items-center">
         <a href="javascript:history.back()" class="relative text-white rounded-full focus:outline-none pr-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-principal-color-ui" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -11,6 +9,11 @@
           <span class="font-bold">{{ NameTypeService }}</span>
         </h2>
       </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
+
+    <div class="mt-3 ">      
+      
 
        <div v-if="ShowBasic === 2" class="space-y-3 mt-10">
         <div v-if="ServiceType == 1">
@@ -34,7 +37,7 @@
 
       <div>
         <label class="text-gray-700 font-semibold text-xs">Breve descripción</label>
-        <textarea wrap="hard" rows="7" class="form-control2" required v-model="ServiceDescription"></textarea>
+        <textarea wrap="hard" rows="10" class="form-control2" required v-model="ServiceDescription"></textarea>
       </div>        
 
       <div class="text-left pt-2">
@@ -45,13 +48,18 @@
     </form>
     </div>
 
-    <PreviewForm v-show="ServiceName != ''" :NameForm="ServiceName" :DescriptionForm="ServiceDescription" class="hidden md:flex" style="height: 490px;" />
+    <PreviewForm
+      v-show="ServiceName != ''" 
+      :NameForm="ServiceName" 
+      :DescriptionForm="ServiceDescription" 
+      class="hidden md:grid"  />
 
-    <div v-show="ServiceName == ''" class="hidden md:flex items-start justify-center select-none pt-10 object-contain">
-      <img class="pointer-events-none bg-gray-50 rounded-md static object-contain" loading="lazy" draggable="false" :src="ImageService" alt="" />
+    <div v-show="ServiceName == ''" class="hidden md:flex items-start justify-center select-none pt-10">
+      <img class="pointer-events-none bg-gray-50 rounded-md overflow-hidden static object-cover" loading="lazy" draggable="false" :src="ImageService" alt="" />
     </div>
+
   </div>
-  
+  </div>
 </template>
 <script>
   import axios from "axios";

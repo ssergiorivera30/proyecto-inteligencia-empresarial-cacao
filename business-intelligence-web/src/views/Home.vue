@@ -13,7 +13,7 @@
       ServiceNameLink="Añadir grupo" 
       ServiceID="1" />
 
-    <ServicesTitles ServiceName="Mis proyectos" :TitlteContenLinks="false" ServiceLink="/create-service/2" ServiceNameLink="Añadir proyecto" :ServiceIconHTML="ServiceIconHTML"/>
+    <ServicesTitles ServiceName="Mis proyectos" :TitlteContenLinks="false" ServiceLink="/create-service/2/0/start" ServiceNameLink="Añadir proyecto" :ServiceIconHTML="ServiceIconHTML"/>
 
     <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['projects']" 
@@ -23,7 +23,7 @@
       ServiceNameLink="Añadir proyecto" 
       ServiceID="2" />
              
-  <ServicesTitles ServiceName="Componentes" :TitlteContenLinks="false" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
+  <!-- <ServicesTitles ServiceName="Componentes" :TitlteContenLinks="false" ServiceLink="/create-service/3" ServiceNameLink="Añadir componente" :ServiceIconHTML="ServiceIconHTML"/>
 
    <ServicesList v-if="ArrayServices.length  > 0 && RoadEmptyService != 1" 
       :ArrayServices="ArrayServices['componets']" 
@@ -31,7 +31,7 @@
       RouteLink="/componente/detalles/"
       FilePathImg="componentes/"
       ServiceNameLink="Añadir componente" 
-      ServiceID="3" />
+      ServiceID="3" /> -->
       
   </div>
 </template>

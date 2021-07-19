@@ -51,7 +51,7 @@ import API_ROUTER from './../../services/SERVER_API'
          LoadInfoBasic :function(){
             axios.post(API_ROUTER.PHP7_CONTROLLER + "service/service_load_info_basic.php",
                {
-                  service_id: this.$route.params.id_record,
+                  service_id: this.$route.params.id_service,
                }).then((res) => {
                   
                   this.TitleHeader = res.data['datos'][0]['name']
