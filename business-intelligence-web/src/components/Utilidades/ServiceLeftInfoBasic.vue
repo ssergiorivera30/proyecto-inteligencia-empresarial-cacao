@@ -4,8 +4,8 @@
 
                <div class="flex items-center">
 
-                  <div class="w-36 h-full" >
-                        <img class="w-full max-h-36 rounded-md  select-none pointer-events-none pl-3 py-3 object-cover" draggable="false"
+                  <div class="w-full h-full" >
+                        <img class="w-full max-h-36 select-none pointer-events-none object-cover rounded-sm" draggable="false"
                             :class="[ ServiceLogo === 'default.svg' ? 'ml-1' : ' ' ]"
                             :src="SrcIconModulo+FilePathImg+ServiceLogo" />                            
                     </div>
@@ -101,7 +101,7 @@
 
                       <router-link 
                         :to="'/service/info/basic/'+ IdService" 
-                        class="mx-2 my-5 flex hover:font-bold rounded text-gray-700 px-2 py-2 text-sm font-semibold">
+                        class="mx-2 p-5 fpex hover:font-bold rounded text-gray-700 px-2 py-2 text-sm font-semibold">
                            Ver más...
                      </router-link>
 
