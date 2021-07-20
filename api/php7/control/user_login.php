@@ -18,5 +18,5 @@ $UserPassword = $array['UserPassword'];
 
 $result_autentication = (new UserAutentication())->Autentication($conexion, $UserEmail, $UserPassword  );
 
-
+// var_dump($result_autentication);
 (new Response())->ResponseInfiniteObjects($result_autentication);

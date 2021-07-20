@@ -52,12 +52,13 @@ class Users
 
 	}
 
-	function CreateUserDataPersonalBasic($conection, $result_created_id, $UserNames ){
+	function CreateUserDataPersonalBasic($conection, $result_created_id, $UserNames, $UserLastNames ){
 
-		$sql = "INSERT INTO user_data_personals (udp_user_id, udp_name ) VALUES (?, ? )";
+		$sql = "INSERT INTO user_data_personals (udp_user_id, udp_name, udp_last_name ) VALUES (?, ?, ? )";
 		$stm = $conection -> prepare( $sql );
 		$stm -> bindParam(1, $result_created_id);
 		$stm -> bindParam(2, $UserNames);
+		$stm -> bindParam(3, $UserLastNames);
 		$stm -> execute();
 
 		return $stm->rowCount();		
